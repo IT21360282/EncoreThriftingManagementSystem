@@ -1,0 +1,267 @@
+.App {}
+
+.tab-list {
+    padding-left: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+.tab-list-item {
+    display: inline-block;
+    list-style: none;
+    padding: 3.5%;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: #ff5520 solid 2px;
+}
+
+.iconActive {
+    padding: 10px;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    background-color: #ff5520;
+    border-radius: 50px;
+    border: none;
+    width: 40px;
+    height: 40px;
+}
+
+.tabs {
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+.tabBody {
+    flex: 2;
+    height: calc(100vh - 180px);
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgb(192, 192, 213);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(144, 135, 135);
+}
+
+.iconBar {
+    color: #ff5520;
+    margin: auto;
+    width: 100%;
+}
+
+.icon {
+    padding: 10px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ff5520;
+    background-color: white;
+    border-radius: 50px;
+    border: none;
+}
+
+button.icon {
+    width: 40px;
+    height: 40px;
+}
+
+.icon:hover {
+    color: white;
+    background-color: #ff5520;
+    border-radius: 50px;
+    border: none;
+}
+
+.system {
+    border: none;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    color: #ff5520;
+    height: 40px;
+    text-align: left;
+    cursor: pointer;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+}
+
+.system:hover {
+    background-color: #ff5520;
+    color: white;
+}
+
+.head {
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ff5520;
+    margin-bottom: 15px;
+    height: 70px;
+}
+
+.head-right {
+    text-align: right;
+    width: 20%;
+    margin-right: 10px;
+}
+
+.nav-icon {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
+}
+
+.head-left {
+    padding: 10px;
+}
+
+.header-logo {
+    width: 180px;
+    height: 60px;
+}
+
+.profile-icon {
+    font-size: 30px;
+    padding: 10px;
+    border: solid black 2px;
+    background-color: #f2f2f2;
+    width: 50px;
+    height: 50px;
+    border-radius: 200px;
+}
+
+div.profile {
+    color: white;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+img.profile {
+    width: 50px;
+    height: 50px;
+}
+
+.profile-button {
+    width: 80%;
+    height: 25px;
+    background-color: #f2f2f2;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: none;
+    color: black;
+}
+
+.profile-button:hover {
+    background-color: #ff5520;
+    cursor: pointer;
+    color: white;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: #ff5520;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #ff5520;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+.setting {
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ff5520;
+}
+
+.bodyDiv {
+    margin-top: 2cm;
+}
+
+img.home-img {
+    width: 450px;
+    height: 150px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+div.home-img {
+    margin-left: auto;
+    margin-right: auto;
+    width: 45%;
+}
+
+.login-home {
+    text-align: center;
+    border: #ff5520 solid 2px;
+    border-radius: 10px;
+    width: 450px;
+    height: 350px;
+}
