@@ -83,9 +83,10 @@ button.icon {
 
 .system {
     border: none;
-    border-radius: 10px;
-    background-color: #f2f2f2;
-    color: #ff5520;
+    border: 2px solid #ff5520;
+    border-radius: 20px;
+    background-color: white;
+    color: black;
     height: 40px;
     text-align: left;
     cursor: pointer;
@@ -95,6 +96,27 @@ button.icon {
 }
 
 .system:hover {
+    background-color: #ff5520;
+    color: white;
+}
+
+.home-tab {
+    border: none;
+    border: 2px solid #ff5520;
+    border-radius: 20px;
+    background-color: white;
+    color: black;
+    height: 40px;
+    text-align: left;
+    cursor: pointer;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.home-tab:hover {
     background-color: #ff5520;
     color: white;
 }
@@ -264,4 +286,45 @@ div.home-img {
     border-radius: 10px;
     width: 450px;
     height: 350px;
+}
+
+
+/*btn css*/
+
+.btn {
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #0D6EFD;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+}
+
+.btn-warning {
+    background-color: #FFC107;
+    color: black;
+}
+
+.btn-warning:hover {
+    background-color: #ffca2c;
+}
+
+.btn-danger {
+    background-color: #DC3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #bb2d3b;
 }
