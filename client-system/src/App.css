@@ -328,3 +328,12 @@ div.home-img {
 .btn-danger:hover {
     background-color: #bb2d3b;
 }
+
+.btn-submit {
+    background-color: #28A745;
+    color: white;
+}
+
+.btn-submit:hover {
+    background-color: #28A745;
+}

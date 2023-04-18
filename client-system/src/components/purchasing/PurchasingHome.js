@@ -149,7 +149,7 @@ export default class PurchasingHome extends Component {
                 <td className='table-home' title={results.supplier}>{results.supplier.slice(0, 4)+"..."}</td> 
                 <td className='table-home' style={{padding:"5px",border:"none"}}>
                   <div className='btn-inline-table'>
-                    <button type="button" className="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Confirmed</button>
+                    <button type="button" className="btn btn-warning"><i class="fa-regular fa-circle-check"></i> Confirmed</button>
                     <button type="button" className="btn btn-primary">More</button>
                   </div>
                 </td>

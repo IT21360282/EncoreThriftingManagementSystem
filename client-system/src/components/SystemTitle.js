@@ -17,7 +17,7 @@ function PurchasingFunc() {
     return (
       <div >
         <h1 className='head-title'>Purchasing Management System</h1>
-        <hr/>
+        <hr style={{marginLeft:"60px", marginRight:"60px"}}/>
       </div>
     )
 } 
