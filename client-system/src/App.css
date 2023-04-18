@@ -298,6 +298,18 @@ div.home-img {
     font-weight: bold;
 }
 
+.btn:disabled {
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+}
+
+.btn:disabled:hover {
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+}
+
 .btn:hover {
     cursor: pointer;
 }
@@ -329,11 +341,11 @@ div.home-img {
     background-color: #bb2d3b;
 }
 
-.btn-submit {
+.btn-success {
     background-color: #28A745;
     color: white;
 }
 
-.btn-submit:hover {
-    background-color: #28A745;
+.btn-success:hover {
+    background-color: #157347;
 }

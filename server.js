@@ -5,13 +5,17 @@ const cors = require('cors')
 
 const app = express()
 
-const getRouter = require('./routes/purchasing/routesGet')
-const postRouter = require('./routes/purchasing/routesPost')
+const getRouterPurchasing = require('./routes/purchasing/routesGet')
+const postRouterPurchasing = require('./routes/purchasing/routesPost')
+const deleteRouterPurchasing = require('./routes/purchasing/routesDelete')
+const putRouterPurchasing = require('./routes/purchasing/routesPut')
 
 app.use(bodyParser.json())
 app.use(cors())
-app.use('/purchasingPost', postRouter)
-app.use('/purchasingGet', getRouter)
+app.use('/purchasingPost', postRouterPurchasing)
+app.use('/purchasingGet', getRouterPurchasing)
+app.use('/purchasingDelete', deleteRouterPurchasing)
+app.use('/purchasingPut', putRouterPurchasing)
 
 const PORT = 8000
 const DB_URL = "mongodb+srv://t5:1234@cluster0.awr06ma.mongodb.net/THRIFT_STORE?retryWrites=true&w=majority"

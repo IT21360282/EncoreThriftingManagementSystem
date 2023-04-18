@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import ReactModal from 'react-modal'
 import  './Purchasing.css'
 
 export default class PurchasingHome extends Component {
@@ -7,8 +8,15 @@ export default class PurchasingHome extends Component {
     super(props)
     this.state ={
       currentMonth: null,
-      stockOrderDetails: []
+      stockOrderDetails: [],
+      otherPurchaseDetails: [],
+      pendingOrderDetails: [],
+      pendingOrderDetailsAll: [],
+      confirmationPendingOrderDetails: [],
+      isOpen:true,
+      searchQuery: "",
     }
+    this.handlePopUp = this.handlePopUp.bind(this)
   }
 
   componentDidMount(){
@@ -16,13 +24,56 @@ export default class PurchasingHome extends Component {
     const month = nowTime.toLocaleString('default',{month:'short'})
     this.setState({currentMonth:month})
 
-    axios.get("http://localhost:8000/purchasingGet/stockOrder/get").then(res =>{
+    axios.get("http://localhost:8000/purchasingGet/stockOrder/getLastFourOrder").then(res =>{
       if(res.data.success){
         this.setState({
           stockOrderDetails:res.data.existingDetails
         })
       }
     })
+    
+    axios.get("http://localhost:8000/purchasingGet/stockOrder/pending").then(res =>{
+      if(res.data.success){
+        this.setState({
+          pendingOrderDetails:res.data.pendingOrders
+        })
+      }
+    })
+    
+    axios.get("http://localhost:8000/purchasingGet/stockOrder/pendingAll").then(res =>{
+      if(res.data.success){
+        this.setState({
+          pendingOrderDetailsAll:res.data.pendingOrders
+        })
+      }
+    })
+    
+    axios.get("http://localhost:8000/purchasingGet/stockOrder/confirmation-pending").then(res =>{
+      if(res.data.success){
+        this.setState({
+          confirmationPendingOrderDetails:res.data.confirmationPendingOrders
+        })
+      }
+    })
+    
+    axios.get("http://localhost:8000/purchasingGet/otherPurchase/getLastFourOrder").then(res =>{
+      if(res.data.success){
+        this.setState({
+          otherPurchaseDetails:res.data.existingDetails
+        })
+      }
+    })
+  }
+
+  handleSearchInput = (e) => {
+    const {name, value} = e.target
+    this.setState({
+        ...this.state, [name]:value
+    })
+  }
+
+  handlePopUp(){
+    this.setState({isOpen:false})
   }
 
   render() {
@@ -30,7 +81,7 @@ export default class PurchasingHome extends Component {
     let un = "Sanjana"
     let thisMonth = "March"
     const {currentMonth} = this.state
-    const pendingOrder = 23
+    const pendingOrder = this.state.pendingOrderDetailsAll.length
     const pendingPayment = 3
     const totalOrderMonth = 54
 
@@ -41,9 +92,10 @@ export default class PurchasingHome extends Component {
         <div >
           <div className='btn-inline' style={{marginTop:"140px"}} >
             <a href={`/purchasing/place-order`}><button className='btn-inline'>Place Stock Order</button></a>
-            <button className='btn-inline'>Add Other Purchase</button>
-            <button className='btn-inline'>View All Purchases</button>
-            <div><button className='search'><i class="fa-solid fa-magnifying-glass"></i></button><input className='search' placeholder='Search Details Here'></input></div>
+            <a><button className='btn-inline'>Add Other Purchase</button></a>
+            <a href={`/purchasing/display-orders`}><button className='btn-inline'>View All Purchases</button></a>
+            <div><a href={`/purchasing/search-purchase/search?searchQuery=${this.state.searchQuery}`}><button className='search'><i class="fa-solid fa-magnifying-glass"></i></button></a>
+            <input className='search' name='searchQuery' placeholder='Search Details By PurchaseID or Title or Shop Name' value={this.state.searchQuery} onChange={this.handleSearchInput}></input></div>
           </div>
 
           <div className='btn-inline' style={{marginTop:"20px"}}>
@@ -70,9 +122,9 @@ export default class PurchasingHome extends Component {
               </tr>
             </thead>
             <tbody scope="raw" >      
-            {this.state.stockOrderDetails.map((results,index)=>(
+            {this.state.pendingOrderDetails.map((results,index)=>(
               <tr>
-                <td className='table-home'>{results.purID}</td>
+                <td className='table-home'>{results.purID}{results.purDigitID}</td>
                 <td className='table-home'title={results.title}>{results.title.slice(0, 7)+"..."}</td>
                 <td className='table-home'>{results.placedDate}</td>
                 <td className='table-home' title={results.supplier}>{results.supplier.slice(0, 4)+"..."}</td> 
@@ -104,11 +156,11 @@ export default class PurchasingHome extends Component {
               </tr>
             </thead>
             <tbody scope="raw" >      
-            {this.state.stockOrderDetails.map((results,index)=>(
+            {this.state.otherPurchaseDetails.map((results,index)=>(
               <tr>
-                <td className='table-home'>{results.purID}</td>
+                <td className='table-home'>{results.purID}{results.purDigitID}</td>
                 <td className='table-home' title={results.title}>{results.title.slice(0, 7)+"..."}</td>
-                <td className='table-home'>{results.placedDate}</td>
+                <td className='table-home'>{results.purchasedDate}</td>
                 <td className='table-home' style={{padding:"5px",border:"none"}}>
                   <div className='btn-inline-table'>
                     <button type="button" className="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Update</button>
@@ -141,15 +193,15 @@ export default class PurchasingHome extends Component {
               </tr>
             </thead>
             <tbody scope="raw" >      
-            {this.state.stockOrderDetails.map((results,index)=>(
+            {this.state.confirmationPendingOrderDetails.map((results,index)=>(
               <tr>
-                <td className='table-home'>{results.purID}</td>
+                <td className='table-home'>{results.purID}{results.purDigitID}</td>
                 <td className='table-home' title={results.title}>{results.title.slice(0, 7)+"..."}</td>
                 <td className='table-home'>{results.placedDate}</td>
                 <td className='table-home' title={results.supplier}>{results.supplier.slice(0, 4)+"..."}</td> 
                 <td className='table-home' style={{padding:"5px",border:"none"}}>
                   <div className='btn-inline-table'>
-                    <button type="button" className="btn btn-warning"><i class="fa-regular fa-circle-check"></i> Confirmed</button>
+                    <button type="button" className="btn btn-warning"><i class="fa-regular fa-circle-check"></i> Confirm</button>
                     <button type="button" className="btn btn-primary">More</button>
                   </div>
                 </td>
@@ -178,7 +230,7 @@ export default class PurchasingHome extends Component {
             <tbody scope="raw" >      
             {this.state.stockOrderDetails.map((results,index)=>(
               <tr>
-                <td className='table-home'>{results.purID}</td>
+                <td className='table-home'>{results.purID}{results.purDigitID}</td>
                 <td className='table-home' title={results.title}>{results.title.slice(0, 5)+"..."}</td>
                 <td className='table-home'>{results.placedDate}</td>
                 <td className='table-home' title={results.orderStatus}>{results.orderStatus.slice(0, 5)+"..."}</td>
@@ -203,6 +255,11 @@ export default class PurchasingHome extends Component {
             <button className='btn-inline' style={{width:"360px"}}>Data Analyzing and Calculating</button>
           </div>
         </div>
+        <ReactModal isOpen={this.state.isOpen} onRequestClose={this.handlePopUp} style={{content: {width: '50%',height: '34%',margin:"auto",border:"2px solid #ff5520",borderRadius:"20px"}}}>
+                <h1 style={{color:"#ff5520",textAlign:"center"}}>Purchasing Management System</h1>
+                <h3 style={{textAlign:"justify"}}>You logged in as purchasing manager. So, You have only access for Purchasing Management System.</h3>
+                <div style={{marginLeft:"auto",marginRight:"auto",width:"10%"}}><button onClick={this.handlePopUp} className="btn btn-primary" >Continue</button></div>
+        </ReactModal>
       </div>
     )
   }

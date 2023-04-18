@@ -29,6 +29,7 @@ export default class SystemTitle extends Component {
             <Routes>
                 <Route path="/purchasing/purchasing-home" element={<PurchasingHomeFunc/>}/>
                 <Route path="/purchasing/:name" element={<PurchasingFunc/>}/>
+                <Route path="/purchasing/:name/:name" element={<PurchasingFunc/>}/>
             </Routes>
       </BrowserRouter>
     )

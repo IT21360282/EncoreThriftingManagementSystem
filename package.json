@@ -17,6 +17,8 @@
         "express": "^4.18.2",
         "mongodb": "^5.1.0",
         "mongoose": "^7.0.3",
-        "nodemon": "^2.0.21"
+        "nodemon": "^2.0.21",
+        "react-modal": "^3.16.1",
+        "react-router-dom": "^6.10.0"
     }
 }
