@@ -23,7 +23,14 @@ function DashboardFunc() {
   return (
     <div>
       <h4 style={{textAlign:"center"}}>Dashboard</h4>
-      
+     
+      <button className='home-tab' ><a href="/dashboard-home/graph">Manager Graph</a></button>
+      <button className='home-tab' ><a href="/dashboard-home/manager">Manager Management</a></button>
+      <button className='home-tab' ><a href="/dashboard-home/category">Add categories</a></button>
+      <button className='home-tab' ><a href="/ViewCategory">View categories</a></button>
+      <button className='home-tab' ><a href="/dashboard-home/todo">Notes</a></button>
+      <button className='home-tab' ><a href="/dashboard-home/graph">Category Graph</a></button>
+      <button className='home-tab' ><a href="/dashboard-home/contact">Contact</a></button>
     </div>
   )
 } 
@@ -50,6 +57,8 @@ class SideBar extends Component {
           <Routes>
               <Route path="/purchasing/:name" element={<PurchasingFunc/>}/>
               <Route path="/dashboard-home" element={<DashboardFunc/>}/>
+              <Route path="/dashboard-home/:name" element={<DashboardFunc/>}/>
+              <Route path="/dashboard-home/:name/:name" element={<DashboardFunc/>}/>
           </Routes>
         </BrowserRouter>
         </div>
