@@ -30,6 +30,15 @@ import LowStockList from '../components/stock/stock-components/LowStockList'
 
 import SupplierHome from './supplier/SupplierHome'
 import DeliveryHome from './delivery/DeliveryHome'
+import DisplayStockOrders from './purchasing/purchasing-components/DisplayStockOrders'
+import DisplaySpecificStockOrder from './purchasing/purchasing-components/DisplaySpecificStockOrder'
+import TestPurchasing from './purchasing/purchasing-components/TestPurchasing'
+import AddOtherPurchase from './purchasing/purchasing-components/AddOtherPurchase'
+import DisplayOtherPurchases from './purchasing/purchasing-components/DisplayOtherPurchases'
+import UpdateOtherPurchase from './purchasing/purchasing-components/UpdateOtherPurchase'
+import DisplaySpecificOtherPurchase from './purchasing/purchasing-components/DisplaySpecificOtherPurchase'
+import SearchOtherPurchases from './purchasing/purchasing-components/SearchOtherPurchases'
+import SearchStockOrders from './purchasing/purchasing-components/SearchStockOrders'
 
 
 
@@ -42,6 +51,15 @@ export default class Body extends Component {
             <Route path="/" element={<Home/>}/>
             <Route path="/purchasing/purchasing-home" element={<PurchasingHome/>}/>
             <Route path="/purchasing/place-order" element={<PlaceStockOrder/>}/>
+            <Route path="/purchasing/add-purchase" element={<AddOtherPurchase/>}/>
+            <Route path="/purchasing/update-purchase/:id" element={<UpdateOtherPurchase/>}/>
+            <Route path="/purchasing/display-orders" element={<DisplayStockOrders/>}/>
+            <Route path="/purchasing/display-purchases" element={<DisplayOtherPurchases/>}/>
+            <Route path="/purchasing/:id" element={<DisplaySpecificStockOrder/>}/>
+            <Route path="/purchasing/TestPurchasing" element={<TestPurchasing/>}/>
+            <Route path="/purchasing/spec-purchase/:id" element={<DisplaySpecificOtherPurchase/>}/>
+            <Route path="/purchasing/search-purchase/:name" element={<SearchOtherPurchases/>}/>
+            <Route path="/purchasing/search-order/:name" element={<SearchStockOrders/>}/>
             <Route path="/dashboard-home" element={<DashboardHome/>}/>
             <Route path="/order-home" element={<OrderHome/>}/>
             <Route path="/financial-home" element={<FinancialHome/>}/>

@@ -6,6 +6,10 @@ const stock_order_schema = new mongoose.Schema({
         type: String,
         required: true
     },
+    purDigitID: {
+        type: String,
+        required: true
+    },
     title: {
         type: String,
         required: true
@@ -20,7 +24,11 @@ const stock_order_schema = new mongoose.Schema({
     },
     orderStatus: {
         type: String,
-        required: true
+        required: false
+    },
+    expectedDate: {
+        type: String,
+        required: false
     },
     receivedDate: {
         type: String,
@@ -42,6 +50,22 @@ const stock_order_schema = new mongoose.Schema({
         type: String,
         required: true
     },
+    stockItems: {
+        type: [String],
+        required: false
+    },
+    stockItemsQty: {
+        type: [Number],
+        required: false
+    },
+    stockItemsUnitPrice: {
+        type: [String],
+        required: false
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    }
 
 })
 

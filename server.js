@@ -5,13 +5,17 @@ const cors = require('cors')
 
 const app = express()
 
-const getRouter = require('./routes/purchasing/routesGet')
-const postRouter = require('./routes/purchasing/routesPost')
+const getRouterPurchasing = require('./routes/purchasing/routesGet')
+const postRouterPurchasing = require('./routes/purchasing/routesPost')
+const deleteRouterPurchasing = require('./routes/purchasing/routesDelete')
+const putRouterPurchasing = require('./routes/purchasing/routesPut')
 
 app.use(bodyParser.json())
 app.use(cors())
-app.use('/purchasingPost', postRouter)
-app.use('/purchasingGet', getRouter)
+app.use('/purchasingPost', postRouterPurchasing)
+app.use('/purchasingGet', getRouterPurchasing)
+app.use('/purchasingDelete', deleteRouterPurchasing)
+app.use('/purchasingPut', putRouterPurchasing)
 
 //stock
 const postRoutes = require('./routes/stock/routesPost')

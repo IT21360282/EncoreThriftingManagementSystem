@@ -7,10 +7,10 @@ function PurchasingFunc() {
   return (
     <div>
       <h4 style={{textAlign:"center"}}>Purchasing Management System</h4>
-      <button className='home-tab' >Place Stock Order</button>
-      <button className='home-tab' >Add Other Purchase</button>
-      <button className='home-tab' >View All Other Purchases</button>
-      <button className='home-tab' >View All Stock Orders</button>
+      <a href={`/purchasing/place-order`}><button className='home-tab' >Place Stock Order</button></a>
+      <a href={`/purchasing/add-purchase`}><button className='home-tab' >Add Other Purchase</button></a>
+      <a href={`/purchasing/display-orders`}><button className='home-tab' >View All Stock Orders</button></a>
+      <a href={`/purchasing/display-purchases`}><button className='home-tab' >View All Other Purchases</button></a>
       <button className='home-tab' >Generate Reports</button>
       <button className='home-tab' >Send Emails</button>
       <button className='home-tab' >Graph Generator</button>  
@@ -67,9 +67,9 @@ class SideBar extends Component {
         <BrowserRouter>
           <Routes>
               <Route path="/purchasing/:name" element={<PurchasingFunc/>}/>
+              <Route path="/purchasing/:name/:name" element={<PurchasingFunc/>}/>
               <Route path="/stock/:name" element={<StockFunc/>}/>
               <Route path="/stock/:name/:name" element={<StockFunc/>}/>
-
               <Route path="/dashboard-home" element={<DashboardFunc/>}/>
           </Routes>
         </BrowserRouter>

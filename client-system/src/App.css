@@ -298,6 +298,18 @@ div.home-img {
     font-weight: bold;
 }
 
+.btn:disabled {
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+}
+
+.btn:disabled:hover {
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+}
+
 .btn:hover {
     cursor: pointer;
 }
@@ -328,12 +340,16 @@ div.home-img {
 .btn-danger:hover {
     background-color: #bb2d3b;
 }
+
 .btn-success {
     background-color: #28A745;
     color: white;
 }
 
 .btn-success:hover {
-    background-color: #0e7025;
+    background-color: #157347;
 }
+
+
+
 
