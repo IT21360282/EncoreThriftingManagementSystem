@@ -21,6 +21,7 @@ export default class UpConfirmStockOrder extends Component {
 
         this.handlePopUp = this.handlePopUp.bind(this)
         this.handleFinalPopUp = this.handleFinalPopUp.bind(this)
+        this.handleClosePopUp = this.handleClosePopUp.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
     }
 
@@ -59,11 +60,18 @@ export default class UpConfirmStockOrder extends Component {
     }
 
     handlePopUp(){
-        this.setState({isOpen:!this.state.isOpen})
+        this.setState({isOpen:true})
+        this.setState({isOpenFinal:false})
     }
 
     handleFinalPopUp(){
         this.setState({isOpenFinal:true})
+        this.setState({isOpen:false})
+    }
+    
+    handleClosePopUp(){
+        this.setState({isOpenFinal:false})
+        this.setState({isOpen:false})
     }
 
     onSubmit = (e) =>{
@@ -71,8 +79,14 @@ export default class UpConfirmStockOrder extends Component {
 
         const id = this.state.ID
 
+        const today = new Date()
+        const y = today.getFullYear()
+        const m = (today.getMonth()+1).toString().padStart(2,"0")
+        const d = today.getDate().toString().padStart(2,"0")
+
         const data = {  
             orderStatus:"Pending",
+            confirmedDate:`${y}-${m}-${d}`,
         }
 
         axios.put(`http://localhost:8000/purchasingPut/stockOrder/putOrderStatus/${id}`,data).then((res)=>{
@@ -92,7 +106,7 @@ export default class UpConfirmStockOrder extends Component {
         return (
         <div>
             <a onClick={this.handlePopUp}><button className="btn btn-warning"  disabled={this.state.isConfirmBtnDisabled}><i class="fa-regular fa-circle-check"></i>&nbsp;&nbsp;Confirm</button></a>
-            <ReactModal isOpen={this.state.isOpen} onRequestClose={this.handlePopUp} style={{content: {width: '50%',height: '42%',margin:"auto",border:"2px solid #ff5520",borderRadius:"20px"}}}>
+            <ReactModal isOpen={this.state.isOpen} onRequestClose={this.handleClosePopUp} className="popUp40 zoom-in">
                 <h2>Is Following Stock Order Confirmed?</h2>
                 <h5>
                     <table>
@@ -111,17 +125,16 @@ export default class UpConfirmStockOrder extends Component {
                     </table>
                 </h5>
                 <h5><span style={{color:"red",fontSize:"20px"}}>*</span>After click 'Yes', 'Order Status' will be updated in database and you cannot able to undo this.</h5>
-                <button onClick={this.handlePopUp} className="btn btn-primary" >No</button>&nbsp;&nbsp;&nbsp;
+                <button onClick={this.handleClosePopUp} className="btn btn-primary" >No</button>&nbsp;&nbsp;&nbsp;
                 <a onClick={this.handleFinalPopUp}><button onClick={this.onSubmit} className="btn btn-warning" >Yes</button></a>
-                <ReactModal isOpen={this.state.isOpenFinal} onRequestClose={this.handleFinalPopUp} style={{overlay:{backgroundColor:"transparent"}, content: {width: '50%',height: '42%',margin:"auto",border:"2px solid #ff5520",borderRadius:"20px"}}}>
-                    <div style={{marginTop:"70px"}}>
-                        <h2><span style={{color:"red"}}>{this.state.redAlert}</span>{this.state.popUpMsg}</h2>
-                        <br/>
-                        <a href={`/purchasing/${this.state.ID}`}><button className="btn btn-primary" >OK</button></a>&nbsp;&nbsp;&nbsp;
-                        <a href={`/purchasing/display-orders`}><button className="btn btn-primary" >View All Orders</button></a>&nbsp;&nbsp;&nbsp;
-                        <a href={`/purchasing/purchasing-home`}><button className="btn btn-primary" ><i class="fa-solid fa-house"></i>&nbsp;Home</button></a>
-                    </div>
-                </ReactModal>
+            </ReactModal>
+            <ReactModal isOpen={this.state.isOpenFinal} onRequestClose={this.handleClosePopUp} className="popUp20 zoom-in">
+                <div>
+                    <h2><span style={{color:"red"}}>{this.state.redAlert}</span>{this.state.popUpMsg}</h2>
+                    <a href={`/purchasing/${this.state.ID}`}><button className="btn btn-primary" >OK</button></a>&nbsp;&nbsp;&nbsp;
+                    <a href={`/purchasing/display-orders`}><button className="btn btn-primary" >View All Orders</button></a>&nbsp;&nbsp;&nbsp;
+                    <a href={`/purchasing/purchasing-home`}><button className="btn btn-primary" ><i class="fa-solid fa-house"></i>&nbsp;Home</button></a>
+                </div>
             </ReactModal>
         </div>
         )

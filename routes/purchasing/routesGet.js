@@ -187,6 +187,21 @@ router.get('/stockOrder/confirmation-pendingAll', (req, res) => {
     })
 })
 
+router.get('/stockOrder/search', (req, res) => {
+    const orderQuery = req.query.q
+    const regex = new RegExp(orderQuery, 'i')
+
+    stockOrderModel.find({ $or: [{ title: regex }, { supplier: regex }, { purDigitID: regex }, { purID: regex }] }).then((results) => {
+        console.log(results)
+        return res.status(200).json({
+            success: true,
+            searchedDetails: results
+        })
+    }).catch((err) => {
+        console.error(err)
+    })
+})
+
 
 //Search APIs for Other Purchases
 router.get('/otherPurchase/search', (req, res) => {

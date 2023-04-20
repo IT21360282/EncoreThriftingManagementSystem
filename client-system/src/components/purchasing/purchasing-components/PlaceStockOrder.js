@@ -19,7 +19,7 @@ export default class PlaceStockOrder extends Component {
       orderStatus: "",
       expectedDate: "",
       receivedDate: "",
-      totalCost: "",
+      totalCost: "-",
       totalQty: 0,
       paymentStatus: "",
       supplier: "",
@@ -102,6 +102,12 @@ export default class PlaceStockOrder extends Component {
   onSubmit = (e) =>{
     e.preventDefault()
 
+    let totalQty = this.state.totalQty
+      for(let i = 0; i < this.state.stockItemsQty.length; i++){
+        totalQty = totalQty + parseInt(this.state.stockItemsQty[i])
+    }
+    this.setState({totalQty})
+
     const lastOrderDetail = this.state.stockOrderDetails.pop()
     let lastPurID = lastOrderDetail.purDigitID
     lastPurID = String(Number(lastPurID)+1).padStart(lastPurID.length,"0")
@@ -111,7 +117,7 @@ export default class PlaceStockOrder extends Component {
     const m = (today.getMonth()+1).toString().padStart(2,"0")
     const d = today.getDate().toString().padStart(2,"0")
     
-    const {purID,purDigitID,title,placedDate,confirmedDate,orderStatus,expectedDate,receivedDate,totalCost,totalQty,paymentStatus,supplier,stockItems,stockItemsQty,stockItemsUnitPrice} = this.state
+    const {purID,purDigitID,title,placedDate,confirmedDate,orderStatus,expectedDate,receivedDate,totalCost,paymentStatus,supplier,stockItems,stockItemsQty,stockItemsUnitPrice} = this.state
     const data = {
       purID:"PS",
       purDigitID:lastPurID,
@@ -199,6 +205,7 @@ export default class PlaceStockOrder extends Component {
               <select className='form-select' name='paymentStatus' value={this.state.paymentStatus} onChange={this.handleInputChange}>
                 <option>Select One</option>
                 <option>Paid</option>
+                <option>Payment Pending</option>
                 <option>Send to Financial Manager</option>
               </select><br/>
               <label>Note for Supplier:</label>
@@ -211,8 +218,8 @@ export default class PlaceStockOrder extends Component {
             <div className='div-frame add-stock-input' >
               
             <div className='btn-inline'>
-                <div className='add-item-input'>Item Name</div>
-                <div className='add-item-price-input'>Qty</div>
+              <div className='add-item-input' style={{width:"86%"}}>Item Name</div>
+                <div className='add-item-price-input'style={{width:"12%"}}>Qty</div>
             </div>
 
               <div key="0" style={{marginTop:"10px"}}>

@@ -7,8 +7,10 @@ const router = express.Router()
 router.put('/stockOrder/putOrderStatus/:id', (req, res) => {
     const id = req.params.id
     const orderStatus = req.body.orderStatus
+    const confirmedDate = req.body.confirmedDate
+    const receivedDate = req.body.receivedDate
 
-    stockOrderModel.findByIdAndUpdate(id, { orderStatus }, { new: true }).then(() => {
+    stockOrderModel.findByIdAndUpdate(id, { orderStatus, confirmedDate, receivedDate }, { new: true }).then(() => {
         res.send("successfuly updated")
     }).catch((err) => {
         return res.status(500).send('Error orcurred')

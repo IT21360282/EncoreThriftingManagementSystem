@@ -18,6 +18,7 @@ import DisplayOtherPurchases from './purchasing/purchasing-components/DisplayOth
 import UpdateOtherPurchase from './purchasing/purchasing-components/UpdateOtherPurchase'
 import DisplaySpecificOtherPurchase from './purchasing/purchasing-components/DisplaySpecificOtherPurchase'
 import SearchOtherPurchases from './purchasing/purchasing-components/SearchOtherPurchases'
+import SearchStockOrders from './purchasing/purchasing-components/SearchStockOrders'
 
 export default class Body extends Component {
   render() {
@@ -35,6 +36,7 @@ export default class Body extends Component {
             <Route path="/purchasing/TestPurchasing" element={<TestPurchasing/>}/>
             <Route path="/purchasing/spec-purchase/:id" element={<DisplaySpecificOtherPurchase/>}/>
             <Route path="/purchasing/search-purchase/:name" element={<SearchOtherPurchases/>}/>
+            <Route path="/purchasing/search-order/:name" element={<SearchStockOrders/>}/>
             <Route path="/dashboard-home" element={<DashboardHome/>}/>
             <Route path="/order-home" element={<OrderHome/>}/>
             <Route path="/financial-home" element={<FinancialHome/>}/>

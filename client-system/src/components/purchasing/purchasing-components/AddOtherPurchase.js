@@ -248,6 +248,7 @@ export default class AddOtherPurchase extends Component {
                             <button type="button" className='remove-item-input' onClick={() => this.handleRemovePurchasedItem(index+1)}><i class="fa-solid fa-minus"></i></button>
                             </div>
                         ))}
+                      
                         <button className="btn btn-success" style={{right:"0",marginTop:"10px"}} type="button" onClick={this.handleAddPurchasedItem}><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Add Another Item</button>
                         <div className='btn-inline' style={{marginBottom:'5px', marginTop:'15px'}}>
                             <div className='form-preview-container'>Item Type quantity<br/><span style={{color:"red",fontSize:"20px"}}>{itemTypeQty}</span></div> 

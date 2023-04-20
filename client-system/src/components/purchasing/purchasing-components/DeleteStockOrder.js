@@ -109,7 +109,7 @@ export default class DeleteStockOrder extends Component {
                 </ReactModal>
                 <ReactModal isOpen={this.state.isOpenIsSuccess} className="popUp20 zoom-in">
                         <h2><span style={{color:"red"}}>{this.state.redAlert}</span>{this.state.isSuccessMsg}</h2>
-                        <a href={`/purchasing/display-purchases`}><button className="btn btn-primary" >OK</button></a>&nbsp;&nbsp;&nbsp;
+                        <a href={`/purchasing/display-orders`}><button className="btn btn-primary" >OK</button></a>&nbsp;&nbsp;&nbsp;
                         <a href={`/purchasing/purchasing-home`}><button className="btn btn-primary" ><i class="fa-solid fa-house"></i>&nbsp;Home</button></a> 
                 </ReactModal>
             </div>

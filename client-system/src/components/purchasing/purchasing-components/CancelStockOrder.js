@@ -15,12 +15,13 @@ export default class CancelStockOrder extends Component {
             title: "",
             supplier: "",
             isReceiveBtnDisabled: false,
-            popUpMsg:"Order Status is Updated as 'Received' Successfully!",
+            popUpMsg:"Order Status is Updated as 'Canceled' Successfully and Cancelation Email is Sent to the Supplier.",
             redAlert:"",
         }
 
         this.handlePopUp = this.handlePopUp.bind(this)
         this.handleFinalPopUp = this.handleFinalPopUp.bind(this)
+        this.handleClosePopUp = this.handleClosePopUp.bind(this)
         
     }
 
@@ -59,11 +60,18 @@ export default class CancelStockOrder extends Component {
     }
 
     handlePopUp(){
-        this.setState({isOpen:!this.state.isOpen})
+        this.setState({isOpen:true})
+        this.setState({isOpenFinal:false})
     }
 
     handleFinalPopUp(){
         this.setState({isOpenFinal:true})
+        this.setState({isOpen:false})
+    }
+
+    handleClosePopUp(){
+        this.setState({isOpen:false})
+        this.setState({isOpenFinal:false})
     }
 
     onSubmit = (e) =>{
@@ -81,7 +89,7 @@ export default class CancelStockOrder extends Component {
             console.error("error occurred")
             let popUpMsg = this.state.popUpMsg
             let redAlert = this.state.redAlert
-            popUpMsg = "Order Status is not Updated."
+            popUpMsg = "Order Cancelation is not occured, Please Try Again."
             redAlert = "Something Wrong! "
             this.setState({popUpMsg})
             this.setState({redAlert})
@@ -92,8 +100,8 @@ export default class CancelStockOrder extends Component {
         return (
         <div>
             <a onClick={this.handlePopUp}><button className="btn btn-danger"  disabled={this.state.isReceiveBtnDisabled}><i class="fa-solid fa-ban"></i>&nbsp;&nbsp;Cancel</button></a>
-            <ReactModal isOpen={this.state.isOpen} onRequestClose={this.handlePopUp} style={{content: {width: '50%',height: '42%',margin:"auto",border:"2px solid #ff5520",borderRadius:"20px"}}}>
-                <h2>Is Following Stock Order Received?</h2>
+            <ReactModal isOpen={this.state.isOpen} onRequestClose={this.handleClosePopUp} className=" zoom-in" style={{content:{height:"45%"}}}>
+                <h2>Do You Want to Cancel Following Stock Order?</h2>
                 <h5>
                     <table>
                         <tr>
@@ -110,18 +118,18 @@ export default class CancelStockOrder extends Component {
                         </tr>
                     </table>
                 </h5>
-                <h5><span style={{color:"red",fontSize:"20px"}}>*</span>After click 'Yes', 'Order Status' will be updated in database and you cannot able to undo this.</h5>
-                <button onClick={this.handlePopUp} className="btn btn-primary" >No</button>&nbsp;&nbsp;&nbsp;
+                <h5><span style={{color:"red",fontSize:"20px"}}>*</span>After click 'Yes', 'Order Status' will be updated in database and sent a Cancelation email to the supplier. And also, you cannot able to undo this task.</h5>
+                <button onClick={this.handleClosePopUp} className="btn btn-primary" >No</button>&nbsp;&nbsp;&nbsp;
                 <a onClick={this.handleFinalPopUp}><button onClick={this.onSubmit} className="btn btn-warning" >Yes</button></a>
-                <ReactModal isOpen={this.state.isOpenFinal} onRequestClose={this.handleFinalPopUp} style={{overlay:{backgroundColor:"transparent"}, content: {width: '50%',height: '42%',margin:"auto",border:"2px solid #ff5520",borderRadius:"20px"}}}>
-                    <div style={{marginTop:"70px"}}>
-                        <h2><span style={{color:"red"}}>{this.state.redAlert}</span>{this.state.popUpMsg}</h2>
-                        <br/>
-                        <a href={`/purchasing/${this.state.ID}`}><button className="btn btn-primary" >OK</button></a>&nbsp;&nbsp;&nbsp;
-                        <a href={`/purchasing/display-orders`}><button className="btn btn-primary" >View All Orders</button></a>&nbsp;&nbsp;&nbsp;
-                        <a href={`/purchasing/purchasing-home`}><button className="btn btn-primary" ><i class="fa-solid fa-house"></i>&nbsp;Home</button></a>
-                    </div>
-                </ReactModal>
+                
+            </ReactModal>
+            <ReactModal isOpen={this.state.isOpenFinal} onRequestClose={this.handleClosePopUp} className=" zoom-in" style={{content:{height:"25%"}}}>
+                <div >
+                    <h2><span style={{color:"red"}}>{this.state.redAlert}</span>{this.state.popUpMsg}</h2>
+                    <a href={`/purchasing/${this.state.ID}`}><button className="btn btn-primary" >OK</button></a>&nbsp;&nbsp;&nbsp;
+                    <a href={`/purchasing/display-orders`}><button className="btn btn-primary" >View All Orders</button></a>&nbsp;&nbsp;&nbsp;
+                    <a href={`/purchasing/purchasing-home`}><button className="btn btn-primary" ><i class="fa-solid fa-house"></i>&nbsp;Home</button></a>
+                </div>
             </ReactModal>
         </div>
         )

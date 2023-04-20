@@ -46,7 +46,7 @@ class SearchOtherPurchasesBody extends Component {
     render() {
         return (
             <div className='Purchasing-others'>
-                <h2 style={{marginTop:"70px"}}>Display Details of All Other Purchases</h2>
+                <h2 style={{marginTop:"70px"}}>Display Details of Other Purchases Related to <span style={{color:"#ff5520"}}>"{this.state.searchQuery}"</span> </h2>
                 <div className='btn-inline'>
                     <div><a href={`/purchasing/search-purchase/search?searchQuery=${this.state.searchQuery}`}><button type='submit' className='search'><i class="fa-solid fa-magnifying-glass"></i></button></a>
                     <input className='search' style={{width:"500px"}} name='searchQuery' placeholder='Search Details By PurchaseID or Title or Shop Name' value={this.state.searchQuery} onChange={this.handleSearchInput} ></input></div>

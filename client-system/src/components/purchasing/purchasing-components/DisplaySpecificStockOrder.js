@@ -57,6 +57,18 @@ class DisplaySpecificStockOrdersBody extends Component {
     }
     
     render() {
+        const name = []
+        for(let i = 0; i<this.state.stockItems.length; i++){
+            let a = this.state.stockItems[i]
+            if(a.length>13){
+                a = this.state.stockItems[i].slice(0, 18)+"..."
+            }
+            name.push(
+                <tr>
+                    <td style={{padding:"10px"}} title={this.state.stockItems[i]}>{a}</td>
+                </tr>
+            )
+        }
         return (
         <div className='Purchasing-others'>
             <h2 style={{marginTop:"70px"}}>Details of Stock Order Under PurID <span style={{color:"#ff5520"}}>{this.state.specificStockOrderDetails.purID}{this.state.specificStockOrderDetails.purDigitID}</span></h2>
@@ -131,15 +143,14 @@ class DisplaySpecificStockOrdersBody extends Component {
                                 <tr>
                                     <td>  
                                         <table>
-                                            {this.state.stockItems.map((item, index) => (
-                                                <span>{item}<br/></span>
-                                            ))}
+                                            {name}
                                         </table>
                                     </td>
                                     <td style={{borderRight:"2px solid #ff5520",borderLeft:"2px solid #ff5520"}}>
                                         <table>
+                                            <br/>
                                             {this.state.stockItemsQty.map((item, index) => (
-                                                <span>{item}<br/></span>
+                                                <span>{item}<br/><br/></span>
                                             ))}
                                         </table>
                                     </td>
