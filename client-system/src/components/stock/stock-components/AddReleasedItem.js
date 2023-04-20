@@ -7,7 +7,7 @@ class AddReleasedItem extends Component {
     constructor(props){
         super(props);
         this.state={
-            pId:"IT1004",
+            pId:"IT1005",
             pName:"",
             pCategory:"",
             pQuantity:"",

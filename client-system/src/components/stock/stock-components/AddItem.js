@@ -7,7 +7,7 @@ class AddItem extends Component {
     constructor(props){
         super(props);
         this.state={
-            pId:"IT1003",
+            pId:"IT1004",
             pName:"",
             pCategory:"",
             pQuantity:"",
