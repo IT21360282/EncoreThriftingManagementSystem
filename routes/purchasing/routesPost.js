@@ -37,4 +37,8 @@ router.post('/otherPurchase/post', (req, res) => {
     })
 })
 
+
+
+
+
 module.exports = router
