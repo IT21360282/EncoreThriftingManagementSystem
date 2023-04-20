@@ -7,13 +7,14 @@ class AddItem extends Component {
     constructor(props){
         super(props);
         this.state={
-            pId:"IT1005",
+            pId:"IT1003",
             pName:"",
             pCategory:"",
             pQuantity:"",
             pPrice:"",
             pImageURL:"",
-            pDescription:""
+            pDescription:"",
+            pLevel:""
         }
     }
 
@@ -31,7 +32,7 @@ class AddItem extends Component {
 
         e.preventDefault();
 
-        const{pId,pName,pCategory,pQuantity,pPrice,pPlacedDate,pImageURL,pDescription}=this.state;
+        const{pId,pName,pCategory,pQuantity,pPrice,pPlacedDate,pImageURL,pDescription,pLevel}=this.state;
 
         
         const data ={
@@ -43,6 +44,7 @@ class AddItem extends Component {
             pPlacedDate:pPlacedDate,
             pImageURL:pImageURL,
             pDescription:pDescription,
+            pLevel:pLevel
         }
 
         console.log(data)
@@ -58,7 +60,8 @@ class AddItem extends Component {
                         pPrice:"",
                         pPlacedDate:"",
                         pImageURL:"",
-                        pDescription:""
+                        pDescription:"",
+                        pLevel:""
                     }
                 )
             }
@@ -92,7 +95,9 @@ class AddItem extends Component {
                       </select><br/>
                       <label>Product Quantity:</label>
                       <input type='number' className='form-input' name='pQuantity' placeholder='10' value={this.state.pQuantity} onChange={this.handleInputChange}/><br/>
-                      <label>Unit Price:</label>
+                      <label>Product Reorder Level:</label>
+                      <input type='number' className='form-input' name='pLevel' placeholder='10' value={this.state.pLevel} onChange={this.handleInputChange}/><br/>
+                      <label>Unit Price(LKR):</label>
                       <input type='number' className='form-input' name='pPrice' placeholder='Rs:1000' value={this.state.pPrice} onChange={this.handleInputChange}/><br/>
                       <label>Date:</label><br/>
                       <input type='date' className='form-input' name='pPlacedDate' placeholder='' value={this.state.pPlacedDate} onChange={this.handleInputChange}/><br/>

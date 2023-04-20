@@ -58,6 +58,7 @@ class ItemViewPageBody extends Component {
                              <li><label className='view-content-data'>Product Name:</label>{this.state.specificItemView.pName}</li><br/>
                              <li><label className='view-content-data'>Product Category:</label>{this.state.specificItemView.pCategory}</li><br/>
                              <li><label className='view-content-data'>Product Quantity:</label>{this.state.specificItemView.pQuantity}</li><br/>
+                             <li><label className='view-content-data'>Product Reorder Level:</label>{this.state.specificItemView.pLevel}</li><br/>
                              <li><label className='view-content-data'>Unit Price:</label>{this.state.specificItemView.pPrice}</li><br/>
                              <li><label className='view-content-data'>Placed Date:</label>{this.state.specificItemView.pPlacedDate}</li><br/>
                              <li><label className='view-content-data'>Product Description:</label><br/>{this.state.specificItemView.pDescription}</li>

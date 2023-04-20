@@ -7,7 +7,7 @@ class AddDamagedItem extends Component {
     constructor(props){
         super(props);
         this.state={
-            pId:"IT1004",
+            pId:"IT1001",
             pName:"",
             pCategory:"",
             pQuantity:"",
@@ -94,15 +94,15 @@ class AddDamagedItem extends Component {
                         <option>Clothes</option>
                       </select><br/>
                       <label>Damaged Product Quantity:</label>
-                      <input type='number' className='form-input' name='pQuantity' placeholder='' value={this.state.pQuantity} onChange={this.handleInputChange}/><br/>
-                      <label>Unit Price:</label>
-                      <input type='number' className='form-input' name='pPrice' placeholder='' value={this.state.pPrice} onChange={this.handleInputChange}/><br/>
+                      <input type='number' className='form-input' name='pQuantity' placeholder='0' value={this.state.pQuantity} onChange={this.handleInputChange}/><br/>
+                      <label>Unit Price(LKR):</label>
+                      <input type='number' className='form-input' name='pPrice' placeholder='RS:1000' value={this.state.pPrice} onChange={this.handleInputChange}/><br/>
                       <label>Date:</label><br/>
                       <input type='date' className='form-input' name='pPlacedDate' placeholder='' value={this.state.pPlacedDate} onChange={this.handleInputChange}/><br/>
                       <label>Product Image URL:</label>
-                      <input type='text' className='form-input' name='pImageURL' placeholder='' value={this.state.pImageURL} onChange={this.handleInputChange}/><br/>
+                      <input type='text' className='form-input' name='pImageURL' placeholder='https://www.abcd.com' value={this.state.pImageURL} onChange={this.handleInputChange}/><br/>
                       <label>Damaged Reason:</label><br></br>
-                      <textarea className='form-input' rows={8} cols={34} type="text" name='pReason' placeholder='' value={this.state.pReason} onChange={this.handleInputChange}></textarea>
+                      <textarea className='form-input' rows={8} cols={34} type="text" name='pReason' placeholder='Enter Reason' value={this.state.pReason} onChange={this.handleInputChange}></textarea>
                       <div className='buttn-success-1'>
                       <button className="btn btn-success" type='submit' style={{marginTop:"15px"}} onClick={this.onSubmit}><i class="fa-regular fa-square-check" style={{marginRight:"10px"}}></i>Save</button>
                       </div>

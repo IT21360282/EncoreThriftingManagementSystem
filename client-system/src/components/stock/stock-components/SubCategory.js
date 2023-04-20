@@ -98,7 +98,7 @@ class SubCategory extends Component {
                 <table className='content-table'>
                   <thead className='tData'>
                     <tr>
-                      <th scope="col"  style={{borderTopLeftRadius:"10px"}}>C/No</th>
+                      <th scope="col"  style={{borderTopLeftRadius:"10px"}}>I/No</th>
                       <th scope="col" >Category Name</th>
                       <th scope="col" >Item Quantity</th>
                       <th scope="col" >Item Price</th>

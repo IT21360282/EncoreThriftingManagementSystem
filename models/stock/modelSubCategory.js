@@ -19,6 +19,10 @@ const subCategoryStock = new mongoose.Schema({
         type: Number,
         required:false
     },
+    pLevel:{
+        type:Number,
+        required:true
+    },
     pPrice: {
         type: String,
         required:false
