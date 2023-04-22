@@ -3,11 +3,12 @@ import '../stock.css'
 import axios from 'axios';
 
 
+
 class AddItem extends Component {
     constructor(props){
         super(props);
         this.state={
-            pId:"IT1004",
+            pId:"IT1405",
             pName:"",
             pCategory:"",
             pQuantity:"",
@@ -17,6 +18,8 @@ class AddItem extends Component {
             pLevel:""
         }
     }
+
+    
 
     handleInputChange=(e)=>{
         const {name,value} = e.target;
@@ -32,11 +35,11 @@ class AddItem extends Component {
 
         e.preventDefault();
 
-        const{pId,pName,pCategory,pQuantity,pPrice,pPlacedDate,pImageURL,pDescription,pLevel}=this.state;
+        const{pName,pCategory,pQuantity,pPrice,pPlacedDate,pImageURL,pDescription,pLevel}=this.state;
 
         
         const data ={
-            pId: pId,
+            
             pName:pName,
             pCategory:pCategory,
             pQuantity:pQuantity,
@@ -53,7 +56,7 @@ class AddItem extends Component {
             if(res.data.success){
                 this.setState(
                     {
-                        pId:"",
+                        
                         pName:"",
                         pCategory:"",
                         pQuantity:"",
@@ -73,7 +76,7 @@ class AddItem extends Component {
         
         return (
             <div className='stock'>
-                <div style={{marginTop:"80px"}}> 
+                <div style={{marginTop:"140px"}}> 
                 <div className='head-add-item'>
                   <h2>Add Item</h2>
                   <div className='back-buttn-item-view'>
@@ -85,7 +88,7 @@ class AddItem extends Component {
                   <div className='inline-form' >
                     <div style={{width:"100%"}}> 
                       <label>Product Name:</label>
-                      <input type='text' className='form-input' name='pName' placeholder='Enter Name' value={this.state.pName} onChange={this.handleInputChange}/><br/>
+                      <input type='text' className='form-input' name='pName' placeholder='Enter Name'  value={this.state.pName} onChange={this.handleInputChange} /><br/>
                       <label>Product Category:</label>
                       <select className='form-select' name='pCategory' value={this.state.pCategory} onChange={this.handleInputChange}>
                         <option>Select One</option>
@@ -113,6 +116,7 @@ class AddItem extends Component {
                   </div>
                   
                   </form>
+                  
                 </div>
       </div>
         );

@@ -1,9 +1,14 @@
 import axios from 'axios';
 import React, { Component } from 'react';
-import '../stock.css'
+import '../stock.css';
+import { toast, ToastContainer } from "react-toastify";
+
+
 
 class DamagedItemList extends Component {
 
+
+  
 
   constructor(props){
     super(props)
@@ -15,6 +20,8 @@ class DamagedItemList extends Component {
   componentDidMount(){
     this.retrieveDamagedDetails();
   }
+
+  
 
 
   retrieveDamagedDetails(){
@@ -29,20 +36,46 @@ class DamagedItemList extends Component {
 
   onDelete = (id) =>{
     axios.delete(`http://localhost:8000/damageditem/delete/${id}`).then((res)=>{
-      alert("Deleted Succesfully!");
+      
       this.retrieveDamagedDetails()
 
 
     })
   }
 
+  
 
     render() {
         const totalProduct = 23
+        const displayLoginNotification = () => {
+          toast.success("Deleted Succesfully");
+        };
+
+        
+
+        
         
 
         return (
+
+          
             <div className='stock'>
+              <div className='App'>
+                  <ToastContainer
+                    position='top-right'
+                    autoClose={2000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme='dark'
+                    
+                    
+                   />
+                </div>
                 <div>
 
             <div className='btn-inline' style={{marginTop:"80px"}} >
@@ -80,8 +113,8 @@ class DamagedItemList extends Component {
                       
 
                       <div >
-                      <td ><a href={`../stock/stock-components/SubCategory.js`}><button className="btn btn-warning">Edit</button></a></td>
-                      <td ><button className="btn btn-danger"  onClick={()=>this.onDelete(results._id)} >Delete</button></td>
+                      <td ><a href={`/stock/edit-sub-item/${results._id}`}><button className="btn btn-warning">Edit</button></a></td>
+                      <td ><button className="btn btn-danger"  onClick={()=>{this.onDelete(results._id);displayLoginNotification()}} >Delete</button></td>
                       <td ><a href={`/stock/view-damaged-item/${results._id}`}><button className="btn btn-primary">View</button></a></td>
                       </div>
                     </tr>

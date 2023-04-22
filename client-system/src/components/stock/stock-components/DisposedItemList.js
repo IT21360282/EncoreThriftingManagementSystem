@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { Component } from 'react';
-import '../stock.css'
+import '../stock.css';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 class DisposedItemList extends Component {
 
@@ -29,7 +31,7 @@ class DisposedItemList extends Component {
 
   onDelete = (id) =>{
     axios.delete(`http://localhost:8000/disposeditem/delete/${id}`).then((res)=>{
-      alert("Deleted Succesfully!");
+     
       this.retrieveDisposedDetails()
 
 
@@ -39,10 +41,27 @@ class DisposedItemList extends Component {
 
     render() {
         const totalProduct = 23
-        
+        const displayLoginNotification = () => {
+          toast.success("Deleted Succesfully");
+        };
 
         return (
             <div className='stock'>
+
+              <div className='App'>
+                  <ToastContainer
+                    position='top-right'
+                    autoClose={2000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme='light'
+                   />
+                </div>
                 <div>
 
             <div className='btn-inline' style={{marginTop:"80px"}} >
@@ -81,7 +100,7 @@ class DisposedItemList extends Component {
 
                       <div >
                       <td ><a href={`../stock/stock-components/SubCategory.js`}><button className="btn btn-warning">Edit</button></a></td>
-                      <td ><button className="btn btn-danger"  onClick={()=>this.onDelete(results._id)} >Delete</button></td>
+                      <td ><button className="btn btn-danger"  onClick={()=>{this.onDelete(results._id);displayLoginNotification()}} >Delete</button></td>
                       <td ><a href={`/stock/view-disposed-item/${results._id}`}><button className="btn btn-primary">View</button></a></td>
                       </div>
                     </tr>

@@ -2,11 +2,6 @@ const mongoose = require('mongoose')
 
 const subCategoryStock = new mongoose.Schema({
 
-    pId: {
-        type: String,
-        unique: true,
-        required: true,
-    },
     pName: {
         type: String,
         required: false
@@ -21,7 +16,7 @@ const subCategoryStock = new mongoose.Schema({
     },
     pLevel:{
         type:Number,
-        required:true
+        required:false
     },
     pPrice: {
         type: String,
@@ -30,7 +25,7 @@ const subCategoryStock = new mongoose.Schema({
     pPlacedDate:{
 
         type: String,
-        required:true
+        required:false
     },
     pImageURL:{
         type:String,

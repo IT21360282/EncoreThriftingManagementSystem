@@ -18,7 +18,7 @@ class EditItemBody extends Component {
     constructor(props){
         super(props);
         this.state={
-            pId:"IT1005",
+            pId:"",
             pName:"",
             pCategory:"",
             pQuantity:"",
@@ -60,7 +60,7 @@ class EditItemBody extends Component {
         console.log(data)
 
         axios.put(`http://localhost:8000/subcategory/update/${this.state.id}`,data).then((res)=>{
-            if(res.data.success){
+        
                 alert("Post Updated")
                 this.setState(
                     {
@@ -74,7 +74,7 @@ class EditItemBody extends Component {
                         pDescription:""
                     }
                 )
-            }
+            
         })
 
     }
@@ -85,7 +85,10 @@ class EditItemBody extends Component {
             if(res.data.success){
                 this.setState({
 
-                    specificItemView:res.data.existingDetails
+                    pId:res.data.existingDetails.pId,
+                    pName:res.data.existingDetails.pName,
+                    pCategory:res.data.existingDetails.pCategory,
+                    pQuantity:res.data.existingDetails.pQuantity
                 });
                 console.log(this.state.specificItemView)
             }
@@ -95,9 +98,9 @@ class EditItemBody extends Component {
         
         return (
             <div className='stock'>
-                <div style={{marginTop:"80px"}}>
+                <div style={{marginTop:"140px"}}>
                 <div className='head-add-item'> 
-                  <h2>Add Item</h2>
+                  <h2>Update Item Under ID : {this.state.pName}</h2>
                   <div className='back-buttn-item-view'>
                   <a href={`/stock/sub-category`}><button className='btn-back'><i class="fa-solid fa-arrow-left"></i> Back</button></a>
                   

@@ -21,7 +21,7 @@ router.get('/maincategory/get', (req, res) => {
 
 
 router.get('/subcategory/get', (req, res) => {
-    subCategoryModel.find().exec().then((results) => {
+    subCategoryModel.find().sort({_id:-1}).exec().then((results) => {
         console.log(results)
         return res.status(200).json({
             success: true,
@@ -117,6 +117,17 @@ router.get('/releaseditem/get/:id',(req,res)=>{
         console.error(err)
     })
 })
+
+
+
+router.get('/', async (req, res) => {
+    try {
+      const docs = await YourModel.find();
+      res.json(docs);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  });
 
 
 module.exports = router

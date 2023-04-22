@@ -26,28 +26,34 @@ button.btn-inline:hover {
     cursor: pointer;
 }
 
-button.search {
+button.search-1 {
     border: #ff5520 2px solid;
     color: #ff5520;
     padding: 10px;
     background-color: white;
     border-bottom-left-radius: 20px;
     border-top-left-radius: 20px;
+    border-right: none;
 }
 
-button.search:hover {
-    background-color: #ff5520;
-    color: white;
-    cursor: pointer;
-}
 
-input.search {
+
+
+input.search-1 {
     border: #ff5520 2px solid;
     padding: 10px;
     border-left: 1px;
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
     width: 300px;
+}
+input.search-1:hover{
+    background-color: #f2f2f2;
+}
+
+input.search-1:focus{
+    outline: none;
+    background-color: #f2f2f2;
 }
 
 .semi-preview-container {
@@ -63,7 +69,7 @@ input.search {
     color: red;
     background-color: white;
     border-radius: 50px;
-    padding: 5px;
+    
     margin-left: 40%;
     margin-right: 40%;
 }
@@ -133,17 +139,18 @@ div.btn-back {
 }
 
 button.btn-back {
-    border: #d0d0d0 2px solid;
+    border: #d0d0d0 1px solid;
     border-radius: 8px;
     padding: 10px;
     width: 100px;
     background-color: white;
     font-weight: bold;
+    margin: 0%;
 }
 
 button.btn-back:hover {
-    background-color: #7e7e7e;
-    color: rgb(255, 255, 255);
+    background-color: #b9b9b9;
+    color: rgb(0, 0, 0);
     cursor: pointer;
 }
 
@@ -177,6 +184,11 @@ button.btn-back:hover {
     
 }
 
+.label-1{
+    margin-bottom: 10px;
+    margin-left: 110px;
+}
+
 .inline-form{
     background-color: #f2f2f2;
     margin-top: 20px;
@@ -200,6 +212,36 @@ button.btn-back:hover {
 .head-add-item{
     display: flex;
 }
+.modal{
+    max-height: 450px;
+   background-color: #f2f2f2;
+   margin: 20px ;
+   padding-bottom: 22%;
+   border-radius: 10px;
+   
+}
+.my-add{
+    display: flex;
+    margin: 0%;
+    padding: 0%;
+}
+
+.close-btn{
+    width: fit-content;
+    height: fit-content;
+    margin-left: 40%;
+    margin-top: 5px;
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+    font-size: 20px;
+}
+.close-btn:hover{
+    background-color: #ff0000;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    border-radius: 4px;
+}
 
 .back-buttn-item-view{
     margin-left: 80%;
@@ -210,3 +252,43 @@ button.btn-back:hover {
     margin-left: 70%;
     margin-top: 5px;
 }
+
+.form-enter{
+    
+    width: 80%; 
+    
+    
+    box-sizing: border-box;
+    border: 0.5px solid #a5a5a5;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    padding: 5px 0;
+    
+}
+
+.form-textarea{
+    width: 80%;
+    
+    
+    box-sizing: border-box;
+    border: 0.5px solid #a5a5a5;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+  
+}
+
+.popup-head{
+    color: #ff5520;
+    
+    margin-left: 40%;
+}
+
+.popup{
+    border-radius: 5%;
+}
+
+
+   
+ 

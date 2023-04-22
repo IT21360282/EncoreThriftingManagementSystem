@@ -42,6 +42,7 @@ router.post('/subcategory/post', (req, res) => {
     });
 });
 
+
 router.post('/damageditem/post', (req, res) => {
     let newDamagedItem = new damagedItemModel(req.body)
 
@@ -90,5 +91,16 @@ router.post('/releaseditem/post', (req, res) => {
         });
     });
 });
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = router

@@ -2,11 +2,7 @@ const mongoose = require('mongoose')
 
 const damagedItem = new mongoose.Schema({
 
-    pId: {
-        type: String,
-        
-        required: true,
-    },
+    
     pName: {
         type: String,
         required: false

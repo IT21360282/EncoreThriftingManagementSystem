@@ -7,7 +7,7 @@ class AddDamagedItem extends Component {
     constructor(props){
         super(props);
         this.state={
-            pId:"IT1002",
+            pId:"IT1006",
             pName:"",
             pCategory:"",
             pQuantity:"",
