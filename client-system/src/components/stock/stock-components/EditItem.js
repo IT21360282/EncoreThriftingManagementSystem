@@ -18,13 +18,16 @@ class EditItemBody extends Component {
     constructor(props){
         super(props);
         this.state={
-            pId:"",
+            
             pName:"",
             pCategory:"",
+            pSubCategory:"",
             pQuantity:"",
             pPrice:"",
+            pPlacedDate:"",
             pImageURL:"",
             pDescription:"",
+            pLevel:"",
             id:props.id,
         }
     }
@@ -43,18 +46,20 @@ class EditItemBody extends Component {
 
         e.preventDefault();
 
-        const{pId,pName,pCategory,pQuantity,pPrice,pPlacedDate,pImageURL,pDescription}=this.state;
+        const{pName,pCategory,pSubCategory,pQuantity,pPrice,pPlacedDate,pImageURL,pDescription,pLevel}=this.state;
 
         
         const data ={
-            pId: pId,
-            pName:pName,
-            pCategory:pCategory,
-            pQuantity:pQuantity,
-            pPrice:pPrice,
-            pPlacedDate:pPlacedDate,
-            pImageURL:pImageURL,
-            pDescription:pDescription,
+            
+          pName:pName,
+          pCategory:pCategory,
+          pSubCategory:pSubCategory,
+          pQuantity:pQuantity,
+          pPrice:pPrice,
+          pPlacedDate:pPlacedDate,
+          pImageURL:pImageURL,
+          pDescription:pDescription,
+          pLevel:pLevel
         }
 
         console.log(data)
@@ -64,14 +69,16 @@ class EditItemBody extends Component {
                 alert("Post Updated")
                 this.setState(
                     {
-                        pId:"",
-                        pName:"",
-                        pCategory:"",
-                        pQuantity:"",
-                        pPrice:"",
-                        pPlacedDate:"",
-                        pImageURL:"",
-                        pDescription:""
+                        
+                      pName:"",
+                      pCategory:"",
+                      pSubCategory:"",
+                      pQuantity:"",
+                      pPrice:"",
+                      pPlacedDate:"",
+                      pImageURL:"",
+                      pDescription:"",
+                      pLevel:""
                     }
                 )
             
@@ -85,10 +92,16 @@ class EditItemBody extends Component {
             if(res.data.success){
                 this.setState({
 
-                    pId:res.data.existingDetails.pId,
+                    
                     pName:res.data.existingDetails.pName,
                     pCategory:res.data.existingDetails.pCategory,
-                    pQuantity:res.data.existingDetails.pQuantity
+                    pSubCategory:res.data.existingDetails.pSubCategory,
+                    pQuantity:res.data.existingDetails.pQuantity,
+                    pPrice:res.data.existingDetails.pPrice,
+                    pPlacedDate:res.data.existingDetails.pPlacedDate,
+                    pImageURL:res.data.existingDetails.pImageURL,
+                    pDescription:res.data.existingDetails.pDescription,
+                    pLevel:res.data.existingDetails.pLevel
                 });
                 console.log(this.state.specificItemView)
             }
@@ -98,13 +111,14 @@ class EditItemBody extends Component {
         
         return (
             <div className='stock'>
-                <div style={{marginTop:"140px"}}>
-                <div className='head-add-item'> 
-                  <h2>Update Item Under ID : {this.state.pName}</h2>
-                  <div className='back-buttn-item-view'>
+                <div style={{marginTop:"45px"}}>
+                <div className='head-add-item-edit'> 
+                <div className='back-buttn-edit-page'>
                   <a href={`/stock/sub-category`}><button className='btn-back'><i class="fa-solid fa-arrow-left"></i> Back</button></a>
                   
                   </div>
+                  <h2 className='sub-head-edit'>Update__<div className='edit-sub-heading'> {this.state.pName}</div>__Details</h2>
+                  
 
                 </div>
                   <form className='form-in'>
@@ -112,25 +126,70 @@ class EditItemBody extends Component {
                     <div style={{width:"100%"}}> 
                       <label>Edit Product Name:</label>
                       <input type='text' className='form-input' name='pName' placeholder='Enter Name' value={this.state.pName} onChange={this.handleInputChange}/><br/>
-                      <label>Edit Category:</label>
-                      <select className='form-select' name='pCategory' value={this.state.pCategory} onChange={this.handleInputChange}>
-                        <option>Select One</option>
+                      <label>Product Category:</label><br/>
+                      <select className='form-input' name='pCategory' value={this.state.pCategory} onChange={this.handleInputChange}>
+                        <option>--Select a category--</option>
                         <option>Electronics</option>
                         <option>Books</option>
                         <option>Clothes</option>
                       </select><br/>
-                      <label>Edit Product Quantity:</label>
-                      <input type='number' className='form-input' name='pQuantity' placeholder='0' value={this.state.pQuantity} onChange={this.handleInputChange}/><br/>
-                      <label>Edit Unit Price:</label>
-                      <input type='number' className='form-input' name='pPrice' placeholder='0' value={this.state.pPrice} onChange={this.handleInputChange}/><br/>
-                      <label>Edit Date:</label><br/>
-                      <input type='date' className='form-input' name='pPlacedDate' placeholder='' value={this.state.pPlacedDate} onChange={this.handleInputChange}/><br/>
-                      <label>Edit Product Image URL:</label>
-                      <input type='text' className='form-input' name='pImageURL' placeholder='http://www.abc.com' value={this.state.pImageURL} onChange={this.handleInputChange}/><br/>
-                      <label>Edit Product Description:</label><br></br>
-                      <textarea className='form-input' rows={8} cols={34} type="text" name='pDescription' placeholder='Enter Item Details' value={this.state.pDescription} onChange={this.handleInputChange}></textarea>
+
+                      <label>Sub Category:</label><br/>
+                        <select className='form-input' name='pSubCategory' value={this.state.pSubCategory} onChange={this.handleInputChange}>
+                          <option value="">--Select a subcategory--</option>
+                          {
+                            this.state.pCategory=== 'Books' ?
+                            <>
+                              <option value="novel">Novel</option>
+                              <option value="story">Story</option>
+                            </> :
+                            this.state.pCategory === 'Electronics' ?
+                            <>
+                              <option value="phone">mobile-Phone</option>
+                              <option value="tv">TV</option>
+                              <option value="laptop">Laptop</option>
+                              <option value="radio">Radio</option>
+                              <option value="hometheater">HomeTheater</option>
+                              
+                            </> :
+                            this.state.pCategory=== 'Clothes' ?
+                            <>
+                              <option value="short">Short</option>
+                              <option value="t-shirt">T-shirt</option>
+                              <option value="trouser">Trouser</option>
+                              <option value="frock">Frock</option>
+                              <option value="skirt">Skirt</option>
+                              <option value="blouse">Blouse</option>
+                            </> :
+                            null
+                          }
+                        </select><br/>
+                        <label>Product Quantity:</label><br/>
+                        <input type='number' className='form-input' name='pQuantity' placeholder='10' value={this.state.pQuantity} onChange={this.handleInputChange}/><br/>
+                        <label>Product Reorder Level:</label><br/>
+                        <input type='number' className='form-input' name='pLevel' placeholder='10' value={this.state.pLevel} onChange={this.handleInputChange}/><br/>
+                        <label>Unit Price(LKR):</label><br/>
+                        <input type='number' className='form-input' name='pPrice' placeholder='Rs:1000' value={this.state.pPrice} onChange={this.handleInputChange}/><br/>
+                        <label>Date:</label><br/>
+                        <input type='date' className='form-input' name='pPlacedDate' placeholder='' value={this.state.pPlacedDate} onChange={this.handleInputChange}/><br/>
+                        <label>Product Image URL:</label><br/>
+                        <input type='text' className='form-input' name='pImageURL' placeholder='https://www.abcd.com' value={this.state.pImageURL} onChange={this.handleInputChange}/><br/>
+                        <label>Product Description:</label><br/>
+                        <textarea className='form-textarea-edit' rows={8} cols={34} type="text" name='pDescription' placeholder='Enter Item Details' value={this.state.pDescription} onChange={this.handleInputChange}></textarea><br/>
+
+
                       <div className='buttn-success-1'>
                       <button className="btn btn-success" type='submit' style={{marginTop:"15px"}} onClick={this.onSubmit}><i class="fa-regular fa-square-check" style={{marginRight:"10px"}}></i>Save</button>
+
+
+
+
+
+                      
+                      
+										
+								
+                      
                       </div>
                       
                     </div>

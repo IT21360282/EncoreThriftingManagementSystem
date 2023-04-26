@@ -24,10 +24,11 @@ import AddReleasedItem from '../components/stock/stock-components/AddReleasedIte
 import AddDisposedItem from '../components/stock/stock-components/AddDisposedItem'
 import ViewLowStock from '../components/stock/stock-components/ViewLowStock'
 import ViewReleasedItem from '../components/stock/stock-components/ViewReleasedItem'
-import SendEmail from '../components/stock/stock-components/SendEmail'
 import LowStockList from '../components/stock/stock-components/LowStockList'
 import GenerateReport from '../components/stock/stock-components/GenerateReport'
-import LowCount from '../components/stock/stock-components/OutStock'
+
+import SendEmail from '../components/stock/stock-components/SendMailForm'
+import OutStock from '../components/stock/stock-components/OutStock'
 
 
 import SupplierHome from './supplier/SupplierHome'
@@ -54,7 +55,6 @@ export default class Body extends Component {
             <Route path="/stock/sub-category" element={<SubCategory/>}/>
             <Route path="/stock/item-view/:id" element={<ItemView/>}/>
             <Route path="/stock/add-item" element={<AddItem/>}/>
-            <Route path="/stock/send-email" element={<SendEmail/>}/>
             <Route path="/stock/damaged-item" element={<DamagedItem/>}/>
             <Route path="/stock/add-damaged-item" element={<AddDamagedItem/>}/>
             <Route path="/stock/view-damaged-item/:id" element={<ViewDamage/>}/>
@@ -64,11 +64,12 @@ export default class Body extends Component {
             <Route path="/stock/add-released-item" element={<AddReleasedItem/>}/>
             <Route path="/stock/edit-sub-item/:id"element={<EditSubCategory/>}/>
             <Route path="/stock/add-disposed-item" element={<AddDisposedItem/>}/>
-            <Route path="/stock/view-lowstock-item/:id" element={<ViewLowStock/>}/>
+            <Route path="/stock/view-lowstock-item" element={<ViewLowStock/>}/>
             <Route path="/stock/view-released-item/:id" element={<ViewReleasedItem/>}/>
             <Route path="/stock/view-lowstock-item" element={<LowStockList/>}/>
             <Route path="/stock/generate-report" element={<GenerateReport/>}/>
-            <Route path="/stock/stock-out" element={<LowCount/>}/>
+            <Route path="/stock/stock-out" element={<OutStock/>}/>
+            <Route path="/stock/mail" element={<SendEmail/>}/>
             
 
 

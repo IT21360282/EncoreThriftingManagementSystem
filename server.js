@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 
+
 const app = express()
 
 const getRouter = require('./routes/purchasing/routesGet')
@@ -36,3 +37,10 @@ mongoose.connect(DB_URL).then(() => {
 app.listen(PORT, () => {
     console.log(`Server is Running on ${PORT}`)
 })
+
+
+
+
+ 
+ 
+

@@ -4,7 +4,6 @@ const disposedItem = new mongoose.Schema({
 
     pId: {
         type: String,
-        
         required: true,
     },
     pName: {

@@ -1,9 +1,12 @@
 const express = require('express')
 const categoryModel = require('../../models/stock/modelMainCategory')
-const subCategoryModel= require('../../models/stock/modelSubCategory')
+const subCategoryModel= require('../../models/stock/modelItemNew')
 const DamagedItemModel = require('../../models/stock/modelDamagedItem')
 const DisposedItemModel= require('../../models/stock/modelDisposedItem')
 const ReleasedItemModel = require('../../models/stock/modelReleasedItem')
+
+
+const SentItem = require('../../models/stock/modelSentEmail');
 
 const router = express.Router()
 
@@ -120,14 +123,34 @@ router.get('/releaseditem/get/:id',(req,res)=>{
 
 
 
-router.get('/', async (req, res) => {
+
+
+
+  router.get('/subcategory/get', async (req, res) => {
     try {
-      const docs = await YourModel.find();
-      res.json(docs);
-    } catch (err) {
-      res.status(500).json({ message: err.message });
+      const items = await Item.find({});
+      res.json(items);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal server error' });
     }
   });
+
+
+
+
+
+  const path = require('path');
+  
+  router.get('stock/getemail', (req, res) => {
+    res.sendFile(path.join(__dirname, 'SendMailForm.js'));
+  });
+  
+
+  
+
+
+ 
 
 
 module.exports = router

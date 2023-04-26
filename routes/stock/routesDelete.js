@@ -1,5 +1,5 @@
 const express = require('express')
-const subCategoryDelete= require('../../models/stock/modelSubCategory')
+const subCategoryDelete= require('../../models/stock/modelItemNew')
 const damagedItemDelete= require('../../models/stock/modelDamagedItem')
 const disposedItemDelete=require('../../models/stock/modelDisposedItem')
 const releasedItemDelete = require('../../models/stock/modelReleasedItem')

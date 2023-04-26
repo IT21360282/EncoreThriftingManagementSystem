@@ -1,29 +1,83 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Popup from 'reactjs-popup';
+import jsPDF from 'jspdf'
+import 'jspdf-autotable';
+
+
+
 import { toast, ToastContainer } from "react-toastify";
 
 class SubCategory extends Component {
 
+ 
 
     constructor(props){
         super(props)
         this.state ={
 
-          
+            
             pName:"",
             pCategory:"",
             pQuantity:"",
+            pSubCategory:"",
             pPrice:"",
             pImageURL:"",
+            pPlacedDate:"",
             pDescription:"",
             pLevel:"",
-            subCategoryDetails: []
+            subCategoryDetails: [],
+            errors: {},
+               
         }
+        
       }
+
+      
+
+      generatePDF() {
+        
+        const itemTable = document.getElementById("itemDetailsTable")
+        const {height, width} = itemTable.getBoundingClientRect()
+        const pdf = new jsPDF()
+
+        pdf.setFontSize("28")
+        pdf.setTextColor("#ff5520")
+        pdf.text("Encore Stock Management",50,25)
+        
+        
+        
+
+        const columns = [];
+        for (let i = 0; i < 7; i++) {
+          columns.push({ header: `Column ${i + 1}`, dataKey: `col${i}` });
+        }
+
+        const scaleFactor = pdf.internal.pageSize.width / width
+        pdf.autoTable({
+            html: '#itemDetailsTable',
+            startY: 42,
+            theme: 'grid',
+            margin: { left:22,top: 20, bottom: 20,  },
+            tableWidth: 950 * scaleFactor,
+            columnStyles: {
+              0: { fontStyle: 'bold' },
+            },
+            scaleFactor: scaleFactor,
+            columns
+        })
+
+
+        pdf.setFontSize("16")
+        pdf.setTextColor("#00baa1")
+        pdf.text("Item Table Details",82,35)
+        pdf.save("item.pdf")
+      
+      } 
     
       componentDidMount(){
         this.retrieveCategoryDetails();
+        
       }
         
       retrieveCategoryDetails(){
@@ -31,6 +85,8 @@ class SubCategory extends Component {
           if(res.data.success){
             this.setState({
               subCategoryDetails:res.data.existingDetails
+
+              
             })
           }
         });
@@ -49,10 +105,15 @@ class SubCategory extends Component {
       }
 
       filterData(results,searchKey){
-        const output = results.filter((postSearch)=>
-        postSearch.pName.includes(searchKey),
-        
-        
+          const output = results.filter((postSearch)=>
+          postSearch.pName.toLowerCase().includes(searchKey) ||
+          postSearch.pSubCategory.toLowerCase().includes(searchKey)||
+          postSearch.pQuantity.includes(searchKey)||
+          postSearch.pPlacedDate.includes(searchKey)||
+          postSearch.pPrice.includes(searchKey)||
+          postSearch.pName.includes(searchKey) ||
+          postSearch.pSubCategory.includes(searchKey)||
+          postSearch.pLevel.includes(searchKey)
         
         )
 
@@ -74,12 +135,15 @@ class SubCategory extends Component {
 
       }
 
-      
-
-    
 
     handleInputChange=(e)=>{
         const {name,value} = e.target;
+
+        const errors = { ...this.state.errors };
+        if (errors[name]) {
+          delete errors[name];
+        }
+        this.setState({ [name]: value, errors });
 
         this.setState({
             ...this.state,
@@ -93,7 +157,81 @@ class SubCategory extends Component {
         e.preventDefault();
 
 
-        const{pName,pCategory,pQuantity,pPrice,pPlacedDate,pImageURL,pDescription,pLevel}=this.state;
+        
+
+        
+
+
+        const{pName,pCategory,pSubCategory,pQuantity,pPrice,pPlacedDate,pImageURL,pDescription,pLevel}=this.state;
+
+        
+            const errors = {};
+            if (pName.trim() === "") {
+              errors.pName = "Please enter a product name.";
+            }
+            if (pQuantity.trim() === "") {
+              errors.pQuantity = "Please enter a product quantity.";
+            } else if (isNaN(pQuantity)||pQuantity<0) {
+              errors.pQuantity = "Please enter a valid quantity.";
+            }
+            
+            if (pLevel.trim() === "") {
+              errors.pLevel = "Please enter a ReOrder Level.";
+            } else if (isNaN(pLevel)||pLevel<0) {
+              errors.pLevel = "Please enter a valid ReOrder Level.";
+            }
+
+            if (pPrice.trim() === "") {
+              errors.pPrice = "Please enter a product Price.";
+            } else if (isNaN(pPrice)||pPrice<0) {
+              errors.pPrice = "Please enter a valid Price.";
+            }
+
+            if (pPlacedDate.trim() === "") {
+              errors.pPlacedDate = "Please enter a date.";
+            }
+
+
+            if (pImageURL.trim() === "") {
+              errors.pImageURL = "Please Enter Image URL.";
+            }
+            if (pSubCategory.trim() === "") {
+              errors.pSubCategory = "Please select a product category.";
+            }
+            if (pCategory.trim() === "") {
+              errors.pCategory = "Please select a product category.";
+            }
+            if (pDescription.trim() === "") {
+              errors.pDescription = "Please Enter Product Description.";
+            }
+            
+            if (Object.keys(errors).length > 0) {
+              this.setState({ errors });
+            } else {
+              // Perform form submission logic here
+              console.log("Product Name: ", pName);
+              console.log("Product Quantity: ", pQuantity);
+              console.log("Product Reorder Level: ", pPrice);
+              console.log("Product Category: ", pCategory);
+              console.log("Product Sub Category: ", pSubCategory);
+              console.log("Product Placed Date: ", pPlacedDate);
+              console.log("Product ImageURL: ", pImageURL);
+              console.log("Product Product Description: ", pDescription);
+              console.log("Product ReOrder Level: ", pLevel);
+              // Reset form fields
+              this.setState({
+                pName: "",
+                pQuantity: "",
+                pPrice: "",
+                pCategory: "",
+                pSubCategory: "",
+                pPlacedDate:"",
+                pImageURL:"",
+                pDescription:"",
+                pLevel:"",
+                errors: {},
+              });
+            }
 
         
         const data ={
@@ -101,6 +239,7 @@ class SubCategory extends Component {
             
             pName:pName,
             pCategory:pCategory,
+            pSubCategory:pSubCategory,
             pQuantity:pQuantity,
             pPrice:pPrice,
             pPlacedDate:pPlacedDate,
@@ -118,6 +257,7 @@ class SubCategory extends Component {
                         
                         pName:"",
                         pCategory:"",
+                        pSubCategory:"",
                         pQuantity:"",
                         pPrice:"",
                         pPlacedDate:"",
@@ -132,15 +272,29 @@ class SubCategory extends Component {
     }
 
 
+    
+
+
 
 
 
 
     render() {
 
+      const{pName,pCategory,pSubCategory,pQuantity,errors}=this.state;
+
+
+      let outOfStock=0
+      this.state.subCategoryDetails.map((results,index)=>{
+        if(results.pQuantity<=results.pLevel){
+          outOfStock=outOfStock+1
+
+        }
+      })
+
         const totalProduct = 23
         const allCategory = 3
-        const outOfStock = 3
+        
         const displayLoginNotification = () => {
           toast.success("Deleted Succesfully");
         };
@@ -148,6 +302,8 @@ class SubCategory extends Component {
         
 
         return (
+
+          
             <div className='stock'>
 
 <div className='App'>
@@ -170,7 +326,7 @@ class SubCategory extends Component {
 
                 <div>
 
-            <div className='btn-inline' style={{marginTop:"140px"}} >
+            <div className='btn-inline' style={{marginTop:"65px"}} >
                 <div className='semi-preview-container'>Total Product<br/>{totalProduct}</div>
                 <div className='semi-preview-container'>All Category <br/>{allCategory}</div>
                 <div className='semi-preview-container'>Out Of Stock<br/><div className='redNumb'>{outOfStock}</div></div>
@@ -181,14 +337,8 @@ class SubCategory extends Component {
 
               </div>
 
-            <div className='btn-inline' style={{marginTop:"20px"}} >
+            <div className='btn-inline' style={{marginTop:"8px"}} >
             <div>
-
-
-
-
-
-
 
 
 
@@ -201,60 +351,120 @@ class SubCategory extends Component {
 							<div className='stock'>
                 <div> 
                 <div className='my-add' >
-                  <h2 className='popup-head'>Add Item</h2>
+                  <h3 className='popup-head-add-item'>Add Item</h3>
                   <button className='close-btn' onClick={() => close()}><i class="fa-solid fa-xmark"></i></button>
-
                   </div>
-                  <form className='' > 
+                  <form className='add-form' onClick={this.onSubmit} > 
                   <div className='popUp-form' >
                     <div style={{width:"100%"}}> 
                       <div className='label-1'>
                       <label >Product Name:</label><br/>
-                      <input type='text' className='form-enter' name='pName' placeholder='Enter Name'  value={this.state.pName} onChange={this.handleInputChange} /><br/>
+                      <input type='text' id="username" className='form-enter' name='pName' placeholder='Enter Name'  value={this.state.pName} onChange={this.handleInputChange} aria-errormessage='username-error' required /><br/>
+                      
+                      {errors.pName && (
+                      <div style={{ color: "red" }}>{errors.pName}</div>
+                    )}
                       </div>
 
                       <div className='label-1'>
                       <label>Product Category:</label><br/>
                       <select className='form-enter' name='pCategory' value={this.state.pCategory} onChange={this.handleInputChange}>
-                        <option>Select One</option>
+                        <option>--Select a category--</option>
                         <option>Electronics</option>
                         <option>Books</option>
                         <option>Clothes</option>
                       </select><br/>
+                      {errors.pCategory && (
+                      <div style={{ color: "red" }}>{errors.pQuantity}</div>
+                    )}
+                      <div className='label-2'>
+                      <label>Subcategory:</label><br/>
+                        <select className='form-enter' name='pSubCategory' value={this.state.pSubCategory} onChange={this.handleInputChange}>
+                          <option value="">--Select a subcategory--</option>
+                          {
+                            this.state.pCategory=== 'Books' ?
+                            <>
+                              <option value="novel">Novel</option>
+                              <option value="story">Story</option>
+                            </> :
+                            this.state.pCategory === 'Electronics' ?
+                            <>
+                              <option value="phone">mobile-Phone</option>
+                              <option value="tv">TV</option>
+                              <option value="laptop">Laptop</option>
+                              <option value="radio">Radio</option>
+                              <option value="hometheater">HomeTheater</option>
+                              
+                            </> :
+                            this.state.pCategory=== 'Clothes' ?
+                            <>
+                              <option value="short">Short</option>
+                              <option value="t-shirt">T-shirt</option>
+                              <option value="trouser">Trouser</option>
+                              <option value="frock">Frock</option>
+                              <option value="skirt">Skirt</option>
+                              <option value="blouse">Blouse</option>
+                            </> :
+                            null
+                          }
+                        </select>
+                        </div>
+                      
                       </div>
+                      {errors.pSubCategory && (
+                      <div style={{ color: "red" }}>{errors.pSubCategory}</div>
+                    )}
 
                       <div className='label-1'>
                       <label>Product Quantity:</label><br/>
-                      <input type='number' className='form-enter' name='pQuantity' placeholder='10' value={this.state.pQuantity} onChange={this.handleInputChange}/><br/>
+                      <input type='number' min={0} className='form-enter' name='pQuantity' placeholder='10' value={this.state.pQuantity} onChange={this.handleInputChange}/><br/>
                       </div>
+                      {errors.pQuantity && (
+                        <div style={{ color: "red" }}>{errors.pQuantity}</div>
+                      )}
 
                       <div className='label-1'>
                       <label>Product Reorder Level:</label><br/>
                       <input type='number' className='form-enter' name='pLevel' placeholder='10' value={this.state.pLevel} onChange={this.handleInputChange}/><br/>
                       </div>
+                      {errors.pLevel && (
+                        <div style={{ color: "red" }}>{errors.pLevel}</div>
+                      )}
                       
                       <div className='label-1'>
                       <label>Unit Price(LKR):</label><br/>
                       <input type='number' className='form-enter' name='pPrice' placeholder='Rs:1000' value={this.state.pPrice} onChange={this.handleInputChange}/><br/>
                       </div>
+                      {errors.pPrice && (
+                        <div style={{ color: "red" }}>{errors.pPrice}</div>
+                      )}
 
                       <div className='label-1'>
                       <label>Date:</label><br/>
                       <input type='date' className='form-enter' name='pPlacedDate' placeholder='' value={this.state.pPlacedDate} onChange={this.handleInputChange}/><br/>
                       </div>
+                      {errors.pPlacedDate && (
+                      <div style={{ color: "red" }}>{errors.pPlacedDate}</div>
+                    )}
 
 
                       <div className='label-1'>
                       <label>Product Image URL:</label><br/>
                       <input type='text' className='form-enter' name='pImageURL' placeholder='https://www.abcd.com' value={this.state.pImageURL} onChange={this.handleInputChange}/><br/>
                       </div>
+                      {errors.pImageURL && (
+                      <div style={{ color: "red" }}>{errors.pImageURL}</div>
+                    )}
 
                       <div className='label-1'>
                       <label>Product Description:</label><br/>
-                      <textarea className='form-textarea' rows={2} cols={20} type="text" name='pDescription' placeholder='Enter Item Details' value={this.state.pDescription} onChange={this.handleInputChange}></textarea><br/>
+                      <textarea className='form-textarea' rows={2} cols={20} type="text" name='pDescription' placeholder='Enter Item Details' value={this.state.pDescription} onChange={this.handleInputChange} required/><br/>
                       </div>
+                      {errors.pDescription && (
+                      <div style={{ color: "red" }}>{errors.pDescription}</div>
+                    )}
                      <div className='buttn-success-1'>
-                      <button className="btn btn-success" type='submit' style={{marginTop:"15px"}} onClick={this.onSubmit}><i class="fa-regular fa-square-check" style={{marginRight:"10px"}}></i>Save</button>
+                      <button className="btn btn-success" type='submit' style={{marginTop:"15px"}} ><i class="fa-regular fa-square-check" style={{marginRight:"10px"}}></i>Save</button>
                       
 										
 								
@@ -275,29 +485,27 @@ class SubCategory extends Component {
 				}
 			</Popup>
 
-      
-
-
-
-
-
 
 
 		</div>
-                <a href={`/stock/add-item`}><button className='btn-inline'>Add Item</button></a>
-                <a href={`/stock/view-lowstock-item`}><button className='btn-inline'>Low Stock Item</button></a>
                 <a href={`/stock/send-email`}><button className='btn-inline'>Send Email</button></a>
+                <a href={`/stock/view-lowstock-item`}><button className='btn-inline'>Low Stock Item</button></a>
+                <button className='btn btn-primary' onClick={this.generatePDF} type="primary">Download Table(PDF)</button>
                 <div><button className='search-1'><i class="fa-solid fa-magnifying-glass"></i></button><input className='search-1' name="searchQuery" placeholder='Search Details Here' onChange={this.handleSearchArea}></input></div>
               </div>
 
-              <div>
-                <table className='content-table'>
+             
+              <div className='table-div'>
+                
+                <table className='content-table' id='itemDetailsTable'>
                   <thead className='tData'>
                     <tr>
                       <th scope="col"  style={{borderTopLeftRadius:"10px"}}>I/No</th>
-                      <th scope="col" >Category Name</th>
+                      <th scope="col" >Item Name</th>
+                      <th scope="col" >SubCategory Name</th>
                       <th scope="col" >Item Quantity</th>
                       <th scope="col" >Item Price</th>
+                      <th scope="col" >Item PreOrder Level</th>
                       <th scope="col" >Item Placed Date</th>
                       <th scope="col"  style={{border:"none",borderTopRightRadius:"10px"}}>Option</th>
                     </tr>
@@ -307,55 +515,53 @@ class SubCategory extends Component {
                   {this.state.subCategoryDetails.map((results,index)=>(
                     <tr>
                       
-                      <td >IT{String(index+1).padStart(5,"0")}</td>
+                      <td >IT{String(index+1).padStart(4,"0")}</td>
                       <td >{results.pName}</td>
+                      <td >{results.pSubCategory}</td>
                       <td >{results.pQuantity}</td>
                       <td >{results.pPrice}</td>
+                      <td >{results.pLevel}</td>
                       <td >{results.pPlacedDate}</td>
 
-                      <div >
+                      <div className='table-btn-div'>
                       <td ><a href={`/stock/edit-sub-item/${results._id}`}><button className="btn btn-warning">Edit</button></a></td>
                       <td >
-                      <Popup className='popup' trigger=
+                        
+                        
+                      <Popup className='pop-delete'  trigger=
+
+                      
                             {<button className="btn btn-danger" >Delete</button>}
+                            
                             modal nested>
                             
                             {
                               close => (
-                                <div className='modal' >
-                                <div className='stock'>
+                                <div className='delete-model' >
+                                <div className=''>
                                   <div> 
-                                  <div className='my-add' >
-                                    <h2 className='popup-head'>Delete Item!!!</h2>
-                                    <div style={{marginTop:"100px"}}>
-                                    {results.pName}
-                                    
+                                  <div className='' >
+                                    <div className='delete-head'>
+                                    <h2 className=''>Delete Item!!!</h2>
+                                    <button className='close-btn-delete' onClick={() => close()}><i class="fa-solid fa-xmark"></i></button>
                                     </div>
+                                    <div className='delete-msg'>
+                                    If you want to delete 
+                                    <div className='delete-id'>
+                                      "{results.pName}"</div>Click the Delete button to delete this item
+                                    </div>
+                                    <div className='delete-button'>
                                     <button className='btn btn-danger' onClick={()=>{this.onDelete(results._id);displayLoginNotification();close()}}>Delete</button>
-                                    <button className='close-btn' onClick={() => close()}><i class="fa-solid fa-xmark"></i></button>
+                                    </div>
 
                                     </div>
                                     </div>
                                   </div>
                                   </div>
                               )}</Popup>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
+
+
+
                         </td>
                       <td ><a href={`/stock/item-view/${results._id}`}><button className="btn btn-primary">View</button></a></td>
                       </div>
@@ -363,7 +569,9 @@ class SubCategory extends Component {
                   ))}
                   </tbody>
                 </table>
+                
               </div>
+              
                 
                 
                 

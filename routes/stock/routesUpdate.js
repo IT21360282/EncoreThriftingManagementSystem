@@ -1,5 +1,5 @@
 const express = require('express')
-const subCategoryModel = require('../../models/stock/modelSubCategory')
+const subCategoryModel = require('../../models/stock/modelItemNew')
 
 
 const router = express.Router()
