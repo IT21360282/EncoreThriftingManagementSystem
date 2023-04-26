@@ -20,7 +20,7 @@
         "nodemailer": "^6.9.1",
         "nodemon": "^2.0.21",
         "react-modal": "^3.16.1",
-        "react-router-dom": "^6.10.0"
+        "react-router-dom": "^6.10.0",
         "nodemailer": "^6.9.1",
         "nodemon": "^2.0.21"
     }
