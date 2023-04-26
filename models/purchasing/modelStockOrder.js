@@ -40,7 +40,7 @@ const stock_order_schema = new mongoose.Schema({
     },
     totalQty: {
         type: String,
-        required: false
+        required: true
     },
     paymentStatus: {
         type: String,
@@ -50,13 +50,17 @@ const stock_order_schema = new mongoose.Schema({
         type: String,
         required: true
     },
+    shippingFee: {
+        type: String,
+        required: false
+    },
     stockItems: {
         type: [String],
-        required: false
+        required: true
     },
     stockItemsQty: {
         type: [Number],
-        required: false
+        required: true
     },
     stockItemsUnitPrice: {
         type: [String],

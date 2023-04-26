@@ -17,8 +17,11 @@ import AddOtherPurchase from './purchasing/purchasing-components/AddOtherPurchas
 import DisplayOtherPurchases from './purchasing/purchasing-components/DisplayOtherPurchases'
 import UpdateOtherPurchase from './purchasing/purchasing-components/UpdateOtherPurchase'
 import DisplaySpecificOtherPurchase from './purchasing/purchasing-components/DisplaySpecificOtherPurchase'
-import SearchOtherPurchases from './purchasing/purchasing-components/SearchOtherPurchases'
 import SearchStockOrders from './purchasing/purchasing-components/SearchStockOrders'
+import GenerateReport from './purchasing/purchasing-components/GenerateReport'
+import SendMails from './purchasing/purchasing-components/SendMails'
+import GenerateGraph from './purchasing/purchasing-components/GenerateGraph'
+import PurchasingCalculating from './purchasing/purchasing-components/PurchasingCalculating'
 
 export default class Body extends Component {
   render() {
@@ -35,8 +38,13 @@ export default class Body extends Component {
             <Route path="/purchasing/:id" element={<DisplaySpecificStockOrder/>}/>
             <Route path="/purchasing/TestPurchasing" element={<TestPurchasing/>}/>
             <Route path="/purchasing/spec-purchase/:id" element={<DisplaySpecificOtherPurchase/>}/>
-            <Route path="/purchasing/search-purchase/:name" element={<SearchOtherPurchases/>}/>
             <Route path="/purchasing/search-order/:name" element={<SearchStockOrders/>}/>
+            <Route path="/purchasing/generate-report" element={<GenerateReport/>}/>
+            <Route path="/purchasing/generate-graph" element={<GenerateGraph/>}/>
+            <Route path="/purchasing/send-mails" element={<SendMails/>}/>
+            <Route path="/purchasing/calc" element={<PurchasingCalculating/>}/>
+
+
             <Route path="/dashboard-home" element={<DashboardHome/>}/>
             <Route path="/order-home" element={<OrderHome/>}/>
             <Route path="/financial-home" element={<FinancialHome/>}/>

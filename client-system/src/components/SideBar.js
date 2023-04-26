@@ -11,8 +11,8 @@ function PurchasingFunc() {
       <a href={`/purchasing/add-purchase`}><button className='home-tab' >Add Other Purchase</button></a>
       <a href={`/purchasing/display-orders`}><button className='home-tab' >View All Stock Orders</button></a>
       <a href={`/purchasing/display-purchases`}><button className='home-tab' >View All Other Purchases</button></a>
-      <button className='home-tab' >Generate Reports</button>
-      <button className='home-tab' >Send Emails</button>
+      <a href='/purchasing/generate-report'><button className='home-tab' >Generate Reports</button></a>
+      <a href='/purchasing/send-mails'><button className='home-tab' >Send Emails</button></a>
       <button className='home-tab' >Graph Generator</button>  
       <button className='home-tab' >Data Analyzing & Calculating</button>  
     </div>

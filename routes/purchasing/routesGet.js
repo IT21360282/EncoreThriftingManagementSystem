@@ -191,7 +191,7 @@ router.get('/stockOrder/search', (req, res) => {
     const orderQuery = req.query.q
     const regex = new RegExp(orderQuery, 'i')
 
-    stockOrderModel.find({ $or: [{ title: regex }, { supplier: regex }, { purDigitID: regex }, { purID: regex }] }).then((results) => {
+    stockOrderModel.find({ $or: [{ title: regex }, { supplier: regex }, { purDigitID: regex }, { purID: regex }] }).sort({ _id: -1 }).then((results) => {
         console.log(results)
         return res.status(200).json({
             success: true,
@@ -208,7 +208,26 @@ router.get('/otherPurchase/search', (req, res) => {
     const purchaseQuery = req.query.q
     const regex = new RegExp(purchaseQuery, 'i')
 
-    otherPurchaseModel.find({ $or: [{ title: regex }, { shop: regex }, { purDigitID: regex }, { purID: regex }] }).then((results) => {
+    otherPurchaseModel.find({ $or: [{ title: regex }, { shop: regex }, { purDigitID: regex }, { purID: regex }] }).sort({ _id: -1 }).then((results) => {
+        console.log(results)
+        return res.status(200).json({
+            success: true,
+            searchedDetails: results
+        })
+    }).catch((err) => {
+        console.error(err)
+    })
+})
+
+
+
+//report generating APIs
+
+router.get('/stockOrder/search', (req, res) => {
+    const purchaseQuery = req.query.q
+    const regex = new RegExp(purchaseQuery, 'i')
+
+    otherPurchaseModel.find({ $or: [{ title: regex }, { shop: regex }, { purDigitID: regex }, { purID: regex }] }).sort({ _id: -1 }).then((results) => {
         console.log(results)
         return res.status(200).json({
             success: true,

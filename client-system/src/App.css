@@ -43,6 +43,8 @@
 
 ::-webkit-scrollbar {
     width: 0px;
+    height: 0;
+    background: transparent;
 }
 
 ::-webkit-scrollbar-track {

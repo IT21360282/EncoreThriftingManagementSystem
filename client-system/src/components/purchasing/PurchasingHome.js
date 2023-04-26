@@ -93,9 +93,15 @@ export default class PurchasingHome extends Component {
           <div className='btn-inline' style={{marginTop:"140px"}} >
             <a href={`/purchasing/place-order`}><button className='btn-inline'>Place Stock Order</button></a>
             <a><button className='btn-inline'>Add Other Purchase</button></a>
-            <a href={`/purchasing/display-orders`}><button className='btn-inline'>View All Purchases</button></a>
-            <div><a href={`/purchasing/search-purchase/search?searchQuery=${this.state.searchQuery}`}><button className='search'><i class="fa-solid fa-magnifying-glass"></i></button></a>
-            <input className='search' name='searchQuery' placeholder='Search Details By PurchaseID or Title or Shop Name' value={this.state.searchQuery} onChange={this.handleSearchInput}></input></div>
+            <a href={`/purchasing/display-orders`}><button className='btn-inline'>View All Stock Orders</button></a>
+            <a href={`/purchasing/display-purchases`}><button className='btn-inline'>View All Other Purchases</button></a>
+          </div>
+
+          <div className='btn-inline' style={{marginTop:"30px",marginBottom:"30px"}}>
+            <button className='btn-inline'>Generate Reports</button>
+            <button className='btn-inline'>Send Emails</button>
+            <button className='btn-inline'>Graph Generator</button>
+            <button className='btn-inline'>Data Analyzing and Calculating</button>
           </div>
 
           <div className='btn-inline' style={{marginTop:"20px"}}>
@@ -111,24 +117,24 @@ export default class PurchasingHome extends Component {
               <button className="btn btn-primary">View All</button>
             </div>
           <div className='div-frame'>
-          <table className='table-home' >
+          <table className='details-table' >
             <thead>
               <tr>
-                <th scope="col" className='table-home' style={{borderTopLeftRadius:"10px"}}>PurID</th>
-                <th scope="col" className='table-home'>Title</th>
-                <th scope="col" className='table-home'>Placed Date</th>
-                <th scope="col" className='table-home'>Supplier</th>
-                <th scope="col" className='table-home' style={{border:"none",borderTopRightRadius:"10px"}}>Options</th>
+                <th scope="col"  style={{borderTopLeftRadius:"7px"}}>PurID</th>
+                <th scope="col" >Title</th>
+                <th scope="col" >Placed Date</th>
+                <th scope="col" >Supplier</th>
+                <th scope="col" style={{border:"none",borderTopRightRadius:"7px",width:"153px"}}>Options</th>
               </tr>
             </thead>
             <tbody scope="raw" >      
             {this.state.pendingOrderDetails.map((results,index)=>(
               <tr>
-                <td className='table-home'>{results.purID}{results.purDigitID}</td>
-                <td className='table-home'title={results.title}>{results.title.slice(0, 7)+"..."}</td>
-                <td className='table-home'>{results.placedDate}</td>
-                <td className='table-home' title={results.supplier}>{results.supplier.slice(0, 4)+"..."}</td> 
-                <td className='table-home' style={{padding:"5px",border:"none"}}>
+                <td >{results.purID}{results.purDigitID}</td>
+                <td title={results.title}>{results.title.slice(0, 7)+"..."}</td>
+                <td >{results.placedDate}</td>
+                <td title={results.supplier}>{results.supplier.slice(0, 4)+"..."}</td> 
+                <td style={{padding:"5px",border:"none"}}>
                   <div className='btn-inline-table'>
                     <button type="button" className="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Received</button>
                     <button type="button" className="btn btn-primary">More</button>
@@ -146,22 +152,22 @@ export default class PurchasingHome extends Component {
               <button className="btn btn-primary">View All</button>
             </div>
           <div className='div-frame'>
-          <table className='table-home' >
-            <thead>
+          <table className='details-table' >
+            <thead className='tData'>
               <tr>
-                <th scope="col" className='table-home' style={{borderTopLeftRadius:"10px"}}>PurID</th>
-                <th scope="col" className='table-home'>Title</th>
-                <th scope="col" className='table-home'>Purchased Date</th>
-                <th scope="col" className='table-home' style={{border:"none",borderTopRightRadius:"10px"}}>Options</th>
+                <th scope="col" style={{borderTopLeftRadius:"7px"}}>PurID</th>
+                <th scope="col" >Title</th>
+                <th scope="col" >Purchased Date</th>
+                <th scope="col"  style={{border:"none",borderTopRightRadius:"7px", width:"220px"}}>Options</th>
               </tr>
             </thead>
             <tbody scope="raw" >      
             {this.state.otherPurchaseDetails.map((results,index)=>(
               <tr>
-                <td className='table-home'>{results.purID}{results.purDigitID}</td>
-                <td className='table-home' title={results.title}>{results.title.slice(0, 7)+"..."}</td>
-                <td className='table-home'>{results.purchasedDate}</td>
-                <td className='table-home' style={{padding:"5px",border:"none"}}>
+                <td >{results.purID}{results.purDigitID}</td>
+                <td  title={results.title}>{results.title.slice(0, 7)+"..."}</td>
+                <td >{results.purchasedDate}</td>
+                <td style={{padding:"5px",border:"none"}}>
                   <div className='btn-inline-table'>
                     <button type="button" className="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Update</button>
                     <button type="button" className="btn btn-danger"><i class="fa-regular fa-trash-can"></i> Delete</button>
@@ -182,24 +188,24 @@ export default class PurchasingHome extends Component {
               <button className="btn btn-primary">View All</button>
             </div>
           <div className='div-frame'>
-          <table className='table-home' >
+          <table className='details-table' >
             <thead>
               <tr>
-                <th scope="col" className='table-home' style={{borderTopLeftRadius:"10px"}}>PurID</th>
-                <th scope="col" className='table-home'>Title</th>
-                <th scope="col" className='table-home'>Placed Date</th>
-                <th scope="col" className='table-home'>Supplier</th>
-                <th scope="col" className='table-home' style={{border:"none",borderTopRightRadius:"10px"}}>Options</th>
+                <th scope="col" style={{borderTopLeftRadius:"7px"}}>PurID</th>
+                <th scope="col" >Title</th>
+                <th scope="col" >Placed Date</th>
+                <th scope="col" >Supplier</th>
+                <th scope="col" style={{border:"none",borderTopRightRadius:"7px",width:"145px"}}>Options</th>
               </tr>
             </thead>
             <tbody scope="raw" >      
             {this.state.confirmationPendingOrderDetails.map((results,index)=>(
               <tr>
-                <td className='table-home'>{results.purID}{results.purDigitID}</td>
-                <td className='table-home' title={results.title}>{results.title.slice(0, 7)+"..."}</td>
-                <td className='table-home'>{results.placedDate}</td>
-                <td className='table-home' title={results.supplier}>{results.supplier.slice(0, 4)+"..."}</td> 
-                <td className='table-home' style={{padding:"5px",border:"none"}}>
+                <td >{results.purID}{results.purDigitID}</td>
+                <td title={results.title}>{results.title.slice(0, 7)+"..."}</td>
+                <td >{results.placedDate}</td>
+                <td title={results.supplier}>{results.supplier.slice(0, 4)+"..."}</td> 
+                <td style={{padding:"5px",border:"none"}}>
                   <div className='btn-inline-table'>
                     <button type="button" className="btn btn-warning"><i class="fa-regular fa-circle-check"></i> Confirm</button>
                     <button type="button" className="btn btn-primary">More</button>
@@ -217,28 +223,28 @@ export default class PurchasingHome extends Component {
               <button className="btn btn-primary">View All</button>
             </div>
           <div className='div-frame'>
-          <table className='table-home' >
+          <table className='details-table' >
             <thead>
               <tr>
-                <th scope="col" className='table-home' style={{borderTopLeftRadius:"10px"}}>PurID</th>
-                <th scope="col" className='table-home'>Title</th>
-                <th scope="col" className='table-home'>Ordered</th>
-                <th scope="col" className='table-home'>Status</th>
-                <th scope="col" className='table-home' style={{border:"none",borderTopRightRadius:"10px"}}>Options</th>
+                <th scope="col" style={{borderTopLeftRadius:"7px"}}>PurID</th>
+                <th scope="col" >Title</th>
+                <th scope="col" >Ordered Date</th>
+                <th scope="col" style={{width:"80px"}}>Status</th>
+                <th scope="col" style={{border:"none",borderTopRightRadius:"7px",width:"130px"}}>Options</th>
               </tr>
             </thead>
             <tbody scope="raw" >      
             {this.state.stockOrderDetails.map((results,index)=>(
               <tr>
-                <td className='table-home'>{results.purID}{results.purDigitID}</td>
-                <td className='table-home' title={results.title}>{results.title.slice(0, 5)+"..."}</td>
-                <td className='table-home'>{results.placedDate}</td>
-                <td className='table-home' title={results.orderStatus}>{results.orderStatus.slice(0, 5)+"..."}</td>
-                <td className='table-home' style={{padding:"5px",border:"none"}}>
+                <td >{results.purID}{results.purDigitID}</td>
+                <td title={results.title}>{results.title.slice(0, 5)+"..."}</td>
+                <td >{results.placedDate}</td>
+                <td title={results.orderStatus}>{results.orderStatus.slice(0, 10)+"..."}</td>
+                <td style={{padding:"5px",border:"none"}}>
                   <div className='btn-inline-table'>
-                    <button type="button" className="btn btn-warning"><i class="fa-solid fa-arrows-rotate"></i> Change</button>
-                    <button type="button" className="btn btn-danger"><i class="fa-solid fa-ban"></i> Cancel</button>
-                    <button type="button" className="btn btn-primary"><i class="fa fa-circle-ellipsis"></i> More</button>
+                    <button type="button" className="btn btn-warning"><i class="fa-solid fa-arrows-rotate"></i> </button>
+                    <button type="button" className="btn btn-danger"><i class="fa-solid fa-ban"></i> </button>
+                    <button type="button" className="btn btn-primary">More</button>
                   </div>
                 </td>
               </tr>
@@ -247,12 +253,6 @@ export default class PurchasingHome extends Component {
           </table>
           </div>
           </div>
-          </div>
-          <div className='btn-inline' style={{marginTop:"30px",marginBottom:"30px"}}>
-            <button className='btn-inline'>Generate Reports</button>
-            <button className='btn-inline'>Send Emails</button>
-            <button className='btn-inline'>Graph Generator</button>
-            <button className='btn-inline' style={{width:"360px"}}>Data Analyzing and Calculating</button>
           </div>
         </div>
         <ReactModal isOpen={this.state.isOpen} onRequestClose={this.handlePopUp} style={{content: {width: '50%',height: '34%',margin:"auto",border:"2px solid #ff5520",borderRadius:"20px"}}}>
