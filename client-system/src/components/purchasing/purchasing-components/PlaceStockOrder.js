@@ -31,9 +31,15 @@ export default class PlaceStockOrder extends Component {
       isOpen:false,
       popUpMsg:"Stock Order is Placed and Details are Saved Successfully.",
       redAlert:"",
+      errMsg:"",
+      titleErr:"",
+      supplierErr:"",
+      isSuccess:false,
     }
     this.handlePopUp = this.handlePopUp.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
+    this.titleValidation = this.titleValidation.bind(this)
+    this.titleSupplierValidation = this.titleSupplierValidation.bind(this)
   }
 
   componentDidMount(){
@@ -55,6 +61,67 @@ export default class PlaceStockOrder extends Component {
     this.setState({
       ...this.state, [name]:value
     })
+  }
+  
+  handleTitleInputChange = (e) => {
+    const title = e.target.value
+    if(title == ""){
+      this.setState({
+        title:title,
+        titleErr:"Title is Required"
+      })
+    }
+    else{
+      this.setState({
+        title:title,
+        titleErr:""
+      })
+    }
+  }
+
+  handleSupplierInputChange = (e) => {
+      const supplier = e.target.value
+      if(supplier == ""){
+        this.setState({
+          supplier:supplier,
+          supplierErr:"Supplier Name is Required"
+        })
+      }
+      else if(supplier == "Select One"){
+        this.setState({
+          supplier:"",
+          supplierErr:"Supplier Name is Required"
+        })
+      }
+      else{
+        this.setState({
+          supplier:supplier,
+          supplierErr:""
+        })
+      }
+    }
+
+  handleDateInputChange = (e) => {
+    const selectedDate = e.target.value
+    const today = new Date(new Date().getTime() + 5.5 * 60 * 60 * 1000).toISOString().slice(0,10)
+    if(selectedDate < today){
+      this.setState({
+        expectedDate:'',
+        errMsg:"You Cannot Select Past Date as Expected Date"
+      })
+    }
+    else if(selectedDate == today){
+      this.setState({
+        expectedDate:'',
+        errMsg:"You Cannot Select Today as Expected Date"
+      })
+    }
+    else{
+      this.setState({
+        expectedDate:selectedDate,
+        errMsg:""
+      })
+    }
   }
 
   handleItemInputChange = (e, index) => {
@@ -90,13 +157,48 @@ export default class PlaceStockOrder extends Component {
     const stockItemsQty = [...this.state.stockItemsQty]
     const stockItemsUnitPrice = [...this.state.stockItemsUnitPrice]
     stockItemsInput.splice((index-1), 1)
-    stockItems[index] = ''
-    stockItemsQty[index] = ''
-    stockItemsUnitPrice[index] = ''
+    stockItems.splice((index),1)
+    stockItemsQty.splice((index),1)
+    stockItemsUnitPrice.splice((index),1)
     this.setState({ stockItemsInput })
     this.setState({ stockItems })
     this.setState({ stockItemsQty })
     this.setState({ stockItemsUnitPrice })
+  }
+
+  titleValidation(){
+    if(this.state.title == ""){
+      this.setState({
+        titleErr:"Title is Required",
+      })
+    }
+    else{
+      this.setState({titleErr:""})
+    }
+  }
+  
+  titleSupplierValidation(){
+    if(this.state.title == "" && this.state.supplier == ""){
+      this.setState({
+        titleErr:"Title is Required",
+        supplierErr:"Supplier Name is Required",
+      })
+    }
+    else if(this.state.title == ""){
+      this.setState({
+        titleErr:"Title is Required",
+        supplierErr:"",
+      })
+    }
+    else if(this.state.supplier == ""){
+      this.setState({
+        titleErr:"",
+        supplierErr:"Supplier Name is Required",
+      })
+    }
+    else{
+      this.setState({titleErr:"",supplierErr:"",})
+    }
   }
 
   onSubmit = (e) =>{
@@ -122,7 +224,7 @@ export default class PlaceStockOrder extends Component {
       purID:"PS",
       purDigitID:lastPurID,
       title:title,
-      placedDate:`${d}-${m}-${y}`,
+      placedDate:`${y}-${m}-${d}`,
       confirmedDate:"not yet",
       orderStatus:"Confirmation Pending",
       expectedDate:expectedDate,
@@ -161,6 +263,7 @@ export default class PlaceStockOrder extends Component {
           }
         )
       }
+    this.sendPlacingEmail()
     }).catch(error=>{
       console.error("error orccured")
       let popUpMsg = this.state.popUpMsg
@@ -170,7 +273,31 @@ export default class PlaceStockOrder extends Component {
       this.setState({popUpMsg})
       this.setState({redAlert})
     })
+  }
 
+  sendPlacingEmail(){
+    const stocksItems = []
+    for(let i = 0; i < this.state.stockItems.length; i++){
+      stocksItems.push(
+        `   • ${this.state.stockItems[i]} - ${this.state.stockItemsQty[i]}`
+        ) 
+    }
+
+    const mailOptions = {
+        name:`Order Manager of ${this.state.supplier}`,
+        email:"nilankasanjana803@gmail.com",
+        subject:`Placing a Order Under Title ${this.state.title}`,
+        msg:`I hope this email finds you well. As the purchasing manager of our inventory, I would like to place an order for the following items:\n${stocksItems}\nPlease provide me with the unit prices and any applicable discounts for these items. Also, please confirm the availability of the items and the estimated time of delivery.\n\nWe are expecting to receive the order by ${this.state.expectedDate}. Please let me know if this timeline is feasible and if there are any issues that may delay the delivery.\n\nIf everything is in order, please send me an invoice with the total cost of the items, including any taxes or shipping fees.\n\nThank you for your prompt attention to this matter. I look forward to hearing from you soon.\n\nBest regards,\nSanjana Nilanka\nPurchasing Manager,\nEncore Thrift Store\n`
+    }
+
+    axios.post('http://localhost:8000/purchasingPost/sendEmail',mailOptions).then((res) => {
+        console.log(res)
+        this.setState({isSuccess:true})
+        
+    }).catch((err) => {
+        console.log(err)
+        this.setState({isSuccess:false})
+    })
   }
 
   render() {
@@ -183,6 +310,13 @@ export default class PlaceStockOrder extends Component {
         totalQty = totalQty + parseInt(this.state.stockItemsQty[i])
     }
 
+    const stocksItems = []
+    for(let i = 0; i < this.state.stockItems.length; i++){
+      stocksItems.push(
+        `   • ${this.state.stockItems[i]} - ${this.state.stockItemsQty[i]}\n`
+        ) 
+    }
+
     return (
       <div className='Purchasing-others'> 
         <h2 style={{marginTop:"70px"}}>Place Stock Order</h2>
@@ -190,26 +324,29 @@ export default class PlaceStockOrder extends Component {
           <div className='form-main'>
           <div>
             <br/>
-          <label>Title of Order:</label>
-              <input type='text' className='form-input' name='title' placeholder='Title' value={this.state.title} onChange={this.handleInputChange}/><br/>
+              <label>Title of Order:</label>
+              <input type='text' className='form-input' style={{marginBottom:"0px"}} name='title' placeholder='Title' value={this.state.title} onChange={this.handleTitleInputChange}/><br/>
+              <div style={{color:"red",marginBottom:"15px"}}>{this.state.titleErr}</div>
               <label>Select Supplier:</label>
-              <select className='form-select' name='supplier' value={this.state.supplier} onChange={this.handleInputChange}>
+              <select className='form-select' style={{marginBottom:"0px"}} name='supplier' value={this.state.supplier} onFocus={this.titleValidation} onChange={this.handleSupplierInputChange}>
                 <option>Select One</option>
                 <option>Leaf Knowledge (PVT Ltd.)</option>
                 <option>ZOHO International</option>
                 <option>Alpha Wholesale Thirifting Ltd.</option>
-              </select><br/>
+              </select>
+              <div style={{color:"red",marginBottom:"15px"}}>{this.state.supplierErr}</div>
               <label>Order Expected Day:</label>
-              <input type='date' className='form-input' name='expectedDate' placeholder='' value={this.state.expectedDate} onChange={this.handleInputChange}/>
+              <input type='date' className='form-input' style={{marginBottom:"0px"}} name='expectedDate' placeholder='' value={this.state.expectedDate} onFocus={this.titleSupplierValidation} onChange={this.handleDateInputChange}/>
+              <div style={{color:"red",marginBottom:"15px"}}>{this.state.errMsg}</div>
               <label>Payment:</label>
-              <select className='form-select' name='paymentStatus' value={this.state.paymentStatus} onChange={this.handleInputChange}>
+              <select className='form-select' name='paymentStatus' value={this.state.paymentStatus} onFocus={this.titleSupplierValidation} onChange={this.handleInputChange}>
                 <option>Select One</option>
                 <option>Paid</option>
                 <option>Payment Pending</option>
                 <option>Send to Financial Manager</option>
               </select><br/>
               <label>Note for Supplier:</label>
-              <textarea className='form-textarea' name='' cols={30} rows={6} placeholder='Special Note for Supplier'></textarea>
+              <textarea className='form-textarea' name='' cols={30} rows={6} onFocus={this.titleSupplierValidation} placeholder='Special Note for Supplier'></textarea>
             
           </div>
 
@@ -223,14 +360,14 @@ export default class PlaceStockOrder extends Component {
             </div>
 
               <div key="0" style={{marginTop:"10px"}}>
-                <input type="text" className='add-stock-input' value={this.state.stockItems[0]} onChange={(event) => this.handleItemInputChange(event, 0)} />
-                <input type="text" className='add-stock-qty-input' style={{width:"12%",borderTopRightRadius:"8px",borderBottomRightRadius:"8px"}} value={this.state.stockItemsQty[0]} onChange={(event) => this.handleQtyInputChange(event, 0)} />
+                <input type="text" className='add-stock-input' onFocus={this.titleSupplierValidation} value={this.state.stockItems[0]} onChange={(event) => this.handleItemInputChange(event, 0)} />
+                <input type="text" className='add-stock-qty-input' onFocus={this.titleSupplierValidation} style={{width:"12%",borderTopRightRadius:"8px",borderBottomRightRadius:"8px"}} value={this.state.stockItemsQty[0]} onChange={(event) => this.handleQtyInputChange(event, 0)} />
               </div>   
 
               {stockItemsInput.map((input, index) => (
                 <div key={index+1} style={{marginTop:"10px"}}>
-                  <input type="text" className='add-stock-input' value={this.state.stockItems[index+1]} onChange={(event) => this.handleItemInputChange(event, (index+1))} />
-                  <input type="text" className='add-stock-qty-input' value={this.state.stockItemsQty[index+1]} onChange={(event) => this.handleQtyInputChange(event, (index+1))} />
+                  <input type="text" className='add-stock-input' onFocus={this.titleSupplierValidation} value={this.state.stockItems[index+1]} onChange={(event) => this.handleItemInputChange(event, (index+1))} />
+                  <input type="text" className='add-stock-qty-input' onFocus={this.titleSupplierValidation} value={this.state.stockItemsQty[index+1]} onChange={(event) => this.handleQtyInputChange(event, (index+1))} />
                   <button type="button" className='remove-stock-input' onClick={() => this.handleRemoveStockItem(index+1)}><i class="fa-solid fa-minus"></i></button>
                 </div>
               ))}

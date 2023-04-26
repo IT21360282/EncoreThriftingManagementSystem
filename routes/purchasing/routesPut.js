@@ -17,6 +17,25 @@ router.put('/stockOrder/putOrderStatus/:id', (req, res) => {
     })
 })
 
+router.put('/stockOrder/put/:id', (req, res) => {
+    const id = req.params.id
+    const title = req.body.title
+    const expectedDate = req.body.expectedDate
+    const paymentStatus = req.body.paymentStatus
+    const stockItemsQty = req.body.stockItemsQty
+    const stockItems = req.body.stockItems
+    const stockItemsUnitPrice = req.body.stockItemsUnitPrice
+    const shippingFee = req.body.shippingFee
+    const totalCost = req.body.totalCost
+    const totalQty = req.body.totalQty
+
+    stockOrderModel.findByIdAndUpdate(id, { title, expectedDate, paymentStatus, stockItemsQty, stockItems, stockItemsUnitPrice, shippingFee, totalCost, totalQty }, { new: true }).then(() => {
+        res.send("successfuly updated")
+    }).catch((err) => {
+        return res.status(500).send('Error orcurred')
+    })
+})
+
 router.put('/otherPurchase/put/:id', (req, res) => {
     const id = req.params.id
     const title = req.body.title

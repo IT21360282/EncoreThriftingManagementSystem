@@ -36,6 +36,7 @@ class DisplaySpecificStockOrdersBody extends Component {
             specificStockOrderDetails: [],
             stockItems: [],
             stockItemsQty: [],
+            stockItemsUnitPrice: [],
             id: "",
             orderStatus: "",
         }
@@ -50,6 +51,7 @@ class DisplaySpecificStockOrdersBody extends Component {
                 specificStockOrderDetails:res.data.existingDetails,
                 stockItems:res.data.existingDetails.stockItems,
                 stockItemsQty:res.data.existingDetails.stockItemsQty,             
+                stockItemsUnitPrice:res.data.existingDetails.stockItemsUnitPrice,             
                 orderStatus:res.data.existingDetails.orderStatus,             
             })
           }
@@ -60,14 +62,23 @@ class DisplaySpecificStockOrdersBody extends Component {
         const name = []
         for(let i = 0; i<this.state.stockItems.length; i++){
             let a = this.state.stockItems[i]
-            if(a.length>13){
-                a = this.state.stockItems[i].slice(0, 18)+"..."
+            if(a.length>35){
+                a = this.state.stockItems[i].slice(0, 35)+"..."
             }
             name.push(
                 <tr>
                     <td style={{padding:"10px"}} title={this.state.stockItems[i]}>{a}</td>
                 </tr>
             )
+        }
+
+        const cost = []
+        for(let i = 0; i<this.state.stockItemsUnitPrice.length; i++){
+            cost.push(
+            <tr>
+                <td style={{textAlign:"center",padding:"10px"}}>{(parseInt(this.state.stockItemsQty[i])*parseFloat(this.state.stockItemsUnitPrice[i])).toFixed(2)}</td>
+            </tr>
+            ) 
         }
         return (
         <div className='Purchasing-others'>
@@ -121,23 +132,27 @@ class DisplaySpecificStockOrdersBody extends Component {
                                     </tr>
                                     <tr>
                                         <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}><span style={{fontWeight:"bold"}}>Total Cost</span></td>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}>&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.specificStockOrderDetails.totalCost}<br/></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}>&nbsp;&nbsp;:&nbsp;&nbsp;LKR {parseFloat(this.state.specificStockOrderDetails.totalCost).toFixed(2)}<br/></td>
                                     </tr>
                                     <tr>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px"}}><span style={{fontWeight:"bold"}}>Supplier</span></td>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px"}}>&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.specificStockOrderDetails.supplier}<br/></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}><span style={{fontWeight:"bold"}}>Supplier</span></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}>&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.specificStockOrderDetails.supplier}<br/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px"}}><span style={{fontWeight:"bold"}}>Shipping Fee</span></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px"}}>&nbsp;&nbsp;:&nbsp;&nbsp;LKR {parseFloat(this.state.specificStockOrderDetails.shippingFee).toFixed(2)}<br/></td>
                                     </tr>
                                 </table> 
                             </div>     
                         </div>
                         
-                        <div style={{marginTop:"20px",marginLeft:"auto", marginRight:"auto", width:"50%"}}>
+                        <div style={{marginTop:"20px",marginLeft:"auto", marginRight:"auto", width:"80%"}}>
                         <table style={{borderCollapse:"collapse"}}>
                                 <tr>
                                     <th style={{textAlign:"left",padding:"10px",borderBottom:"2px solid #ff5520",width:"55%"}}>Stock Items</th>
                                     <th style={{borderRight:"2px solid #ff5520",borderLeft:"2px solid #ff5520",borderBottom:"2px solid #ff5520", padding:"5px", width:"15%"}}>Quantity</th>
-                                    <th style={{borderRight:"2px solid #ff5520",padding:"5px",borderBottom:"2px solid #ff5520", width:"15%"}}>Unit Price</th>
-                                    <th style={{padding:"5px",borderBottom:"2px solid #ff5520", width:"15%"}}>Cost</th>
+                                    <th style={{borderRight:"2px solid #ff5520",padding:"5px",borderBottom:"2px solid #ff5520", width:"20%"}}>Unit Price (LKR)</th>
+                                    <th style={{padding:"5px",borderBottom:"2px solid #ff5520", width:"15%"}}>Cost (LKR)</th>
                                 </tr>
                                 
                                 <tr>
@@ -156,12 +171,15 @@ class DisplaySpecificStockOrdersBody extends Component {
                                     </td>
                                     <td style={{borderRight:"2px solid #ff5520"}}>
                                         <table>
-                                            
+                                            <br/>
+                                            {this.state.stockItemsUnitPrice.map((item, index) => (
+                                                <span>{parseFloat(item).toFixed(2)}<br/><br/></span>
+                                            ))}
                                         </table>
                                     </td>
                                     <td>
                                         <table>
-                                            
+                                            {cost}
                                         </table>
                                     </td>
                                 </tr>

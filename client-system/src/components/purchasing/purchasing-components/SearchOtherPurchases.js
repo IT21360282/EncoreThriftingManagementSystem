@@ -24,7 +24,7 @@ class SearchOtherPurchasesBody extends Component {
         }
     }
 
-    componentDidMount(){
+    search(){
         this.setState({searchQuery:this.props.purchaseQuery})
         axios.get(`http://localhost:8000/purchasingGet/otherPurchase/search?q=${this.state.purchaseQuery}`).then(res => {
             if(res.data.success){
@@ -37,9 +37,9 @@ class SearchOtherPurchasesBody extends Component {
     }
 
     handleSearchInput = (e) => {
-        const {name, value} = e.target
-        this.setState({
-            ...this.state, [name]:value
+        const searchQuery = e.target.value
+        this.setState({ searchQuery }, () => {
+            this.search()
         })
     }
 
@@ -57,30 +57,30 @@ class SearchOtherPurchasesBody extends Component {
                 <br/>
         
                 <div className='div-frame'>
-                    <table className='table-home' >
+                    <table className='content-table' >
                         <thead>
                             <tr>
-                                <th scope="col" className='table-home' style={{borderTopLeftRadius:"10px",borderBottom:"2px solid #ff5520"}}>PurID</th>
-                                <th scope="col" className='table-home' style={{borderBottom:"2px solid #ff5520"}}>Title</th>
-                                <th scope="col" className='table-home' style={{borderBottom:"2px solid #ff5520"}}>Purchased Date</th>
-                                <th scope="col" className='table-home' style={{borderBottom:"2px solid #ff5520"}}>Purchased For</th>
-                                <th scope="col" className='table-home' style={{borderBottom:"2px solid #ff5520"}}>Total Cost</th>
-                                <th scope="col" className='table-home' style={{borderBottom:"2px solid #ff5520"}}>Total Qty</th>
-                                <th scope="col" className='table-home' style={{borderBottom:"2px solid #ff5520"}}>Shop</th>
-                                <th scope="col" className='table-home' style={{border:"none",borderTopRightRadius:"10px",borderBottom:"2px solid #ff5520",width:"230px"}}>Options</th>
+                                <th scope="col" style={{borderTopLeftRadius:"7px",borderBottom:"2px solid #ff5520"}}>PurID</th>
+                                <th scope="col" style={{borderBottom:"2px solid #ff5520"}}>Title</th>
+                                <th scope="col" style={{borderBottom:"2px solid #ff5520"}}>Purchased Date</th>
+                                <th scope="col" style={{borderBottom:"2px solid #ff5520"}}>Purchased For</th>
+                                <th scope="col" style={{borderBottom:"2px solid #ff5520"}}>Total Cost</th>
+                                <th scope="col" style={{borderBottom:"2px solid #ff5520"}}>Total Qty</th>
+                                <th scope="col" style={{borderBottom:"2px solid #ff5520"}}>Shop</th>
+                                <th scope="col" style={{border:"none",borderTopRightRadius:"7px",borderBottom:"2px solid #ff5520",width:"230px"}}>Options</th>
                             </tr>
                         </thead>
                         <tbody scope="raw" >      
                             {this.state.searchedOtherPurchaseDetails.map((results,index)=>(
                             <tr>
-                                <td className='table-home'>{results.purID}{results.purDigitID}</td>
-                                <td className='table-home' title={results.title}>{results.title}</td>
-                                <td className='table-home'>{results.purchasedDate}</td>
-                                <td className='table-home'>{results.purchasedSection}</td>
-                                <td className='table-home'>{results.totalCost}</td>
-                                <td className='table-home'>{results.totalQty}</td>
-                                <td className='table-home'>{results.shop}</td>
-                                <td className='table-home' style={{padding:"5px",border:"none"}}>
+                                <td >{results.purID}{results.purDigitID}</td>
+                                <td title={results.title}>{results.title}</td>
+                                <td >{results.purchasedDate}</td>
+                                <td >{results.purchasedSection}</td>
+                                <td >{results.totalCost}</td>
+                                <td >{results.totalQty}</td>
+                                <td >{results.shop}</td>
+                                <td style={{padding:"5px",border:"none"}}>
                                     <div className='btn-inline-table'>
                                         <a href={`/purchasing/update-purchase/${results._id}`}><button type="button" className="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Update</button></a>
                                         <DeleteOtherPurchase purID = {results.purID} purDigitID = {results.purDigitID} title = {results.title} section = {results.purchasedSection} shop = {results.shop} ID = {results._id} />

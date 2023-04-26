@@ -46,7 +46,7 @@ export default class FilterOtherPurchases extends Component {
     render() {
         return (
         <div>
-            <a><button className='btn-inline' onClick={this.handleConfirmPopUpOpen}>Add Filter</button></a>
+            <a><button className='btn-inline' style={{width:"200px"}} onClick={this.handleConfirmPopUpOpen}>Add Filter</button></a>
                 <ReactModal isOpen={this.state.isOpenConfirm}  className="popUp90 zoom-in" style={{content:{paddingLeft:"30px",paddingRight:"30px"}}}>
                     <h2 style={{textAlign:"center"}}>Add Filters for Other Purchases' Details</h2>
                     <div className='btn-inline'>
