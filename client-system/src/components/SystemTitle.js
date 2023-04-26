@@ -17,7 +17,7 @@ function PurchasingFunc() {
     return (
       <div >
         <h1 className='head-title'>Purchasing Management System</h1>
-        <hr/>
+        <hr style={{marginLeft:"60px", marginRight:"60px"}}/>
       </div>
     )
 } 
@@ -52,6 +52,7 @@ export default class SystemTitle extends Component {
             <Routes>
                 <Route path="/purchasing/purchasing-home" element={<PurchasingHomeFunc/>}/>
                 <Route path="/purchasing/:name" element={<PurchasingFunc/>}/>
+                <Route path="/purchasing/:name/:name" element={<PurchasingFunc/>}/>
                 <Route path="/stock/stock-home" element={<StockHomeFunc/>}/>
                 <Route path="/stock/:name/:name" element={<StockFunc/>}/>
                 <Route path="/stock/:name" element={<StockFunc/>}/>
