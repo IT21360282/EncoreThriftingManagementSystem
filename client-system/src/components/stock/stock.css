@@ -1,0 +1,212 @@
+.stock{
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+}
+
+div.btn-inline {
+    align-items: center;
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+button.btn-inline {
+    border: #ff5520 2px solid;
+    border-radius: 20px;
+    padding: 10px;
+    width: 200px;
+    background-color: white;
+    font-weight: bold;
+}
+
+button.btn-inline:hover {
+    background-color: #ff5520;
+    color: white;
+    cursor: pointer;
+}
+
+button.search {
+    border: #ff5520 2px solid;
+    color: #ff5520;
+    padding: 10px;
+    background-color: white;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+button.search:hover {
+    background-color: #ff5520;
+    color: white;
+    cursor: pointer;
+}
+
+input.search {
+    border: #ff5520 2px solid;
+    padding: 10px;
+    border-left: 1px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    width: 300px;
+}
+
+.semi-preview-container {
+    width: 20%;
+    background-color: #81C3D8;
+    padding: 15px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+.redNumb{
+    color: red;
+    background-color: white;
+    border-radius: 50px;
+    padding: 5px;
+    margin-left: 40%;
+    margin-right: 40%;
+}
+
+.content-table{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 15px 15px 0 0;
+    padding: 50%;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 5%;
+    
+    
+}
+
+
+.content-table thead tr{
+    background-color: #ff5520;
+    color:white;
+    text-align: center;
+    font-weight: bold;
+    padding-left: 30%;
+    
+}
+
+.content-table th,
+.content-table td{
+    padding: 12px 15px;
+    text-align: center;
+    
+    
+}
+
+.content-table tbody tr{
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.content-table tbody tr:nth-of-type(even){
+    background-color: #f2f2f2;
+}
+
+.content-table tbody tr:last-of-type{
+    border-bottom: 2px solid #ff5520;
+}
+
+.tData{
+    
+    
+    align-items: center;
+}
+
+.btn-inline-table {
+    align-items: center;
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+div.btn-back {
+    align-items: center;
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+button.btn-back {
+    border: #d0d0d0 2px solid;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100px;
+    background-color: white;
+    font-weight: bold;
+}
+
+button.btn-back:hover {
+    background-color: #7e7e7e;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.form-view{
+    text-align: left;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding-bottom: 20px;
+}
+
+.view-content-img{
+    text-align: center;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 50px;
+    border: 1px solid #ff5520;
+    padding: 2%;
+}
+
+.view-content-div{
+    margin-left: 20%;
+    margin-right: 20%;
+    
+
+}
+
+.view-content-data{
+    margin-bottom: 20px;
+    
+}
+
+.inline-form{
+    background-color: #f2f2f2;
+    margin-top: 20px;
+    margin-left: 20%;
+    padding: 40px;
+    padding-left: 100px;
+    
+    
+    border-radius: 10px;
+}
+
+.form-in{
+    margin-right: 40%;
+    
+}
+
+.buttn-success-1{
+    text-align: center;
+}
+
+.head-add-item{
+    display: flex;
+}
+
+.back-buttn-item-view{
+    margin-left: 80%;
+    margin-top: 5px;
+}
+
+.back-buttn-damaged-view{
+    margin-left: 70%;
+    margin-top: 5px;
+}

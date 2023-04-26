@@ -38,6 +38,7 @@ router.post('/otherPurchase/post', (req, res) => {
     })
 })
 
+<<<<<<< HEAD
 /*Send Email*/
 
 router.post('/sendEmail', (req, res) => {
@@ -71,5 +72,10 @@ router.post('/sendEmail', (req, res) => {
         }
     })
 })
+=======
+
+
+
+>>>>>>> 9f54763bf05e5e14a6fd95a4e616126d85c7a4c5
 
 module.exports = router

@@ -19,6 +19,24 @@ function PurchasingFunc() {
   )
 } 
 
+//stock
+function StockFunc() {
+  return (
+    <div>
+      <h4 style={{textAlign:"center"}}>Stock Management System</h4>
+      <a href='/stock/add-item'><button className='home-tab' >Add Item</button></a>
+      <a href={`/stock/damaged-item`}><button className='home-tab' >Damaged Item List</button></a>
+      <a href={`/stock/disposed-item`}><button className='home-tab' >Disposed Item List</button></a>
+      <a href={`/stock/released-item`}><button className='home-tab' >Released Item List</button></a>
+      <a href={`/stock/view-lowstock-item`}><button className='home-tab' >Low Stock Item List</button></a>
+      <button className='home-tab' >Generate Reports</button>
+      <a href={`/stock/send-email`}><button className='home-tab' >Send Emails</button></a>
+       
+        
+    </div>
+  )
+} 
+
 function DashboardFunc() {
   return (
     <div>
@@ -39,7 +57,7 @@ class SideBar extends Component {
             <a href={`/order-home`}><button className='system'><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;&nbsp;&nbsp;Order Management</button></a><br/><br/>
             <a href={`/financial-home`}><button className='system'><i class="fa-solid fa-hand-holding-dollar"></i>&nbsp;&nbsp;&nbsp;&nbsp;Financial Management</button></a><br/><br/>
             <a href={`/employee-home`}><button className='system'><i class="fa-solid fa-id-card"></i>&nbsp;&nbsp;&nbsp;&nbsp;Employee Management</button></a><br/><br/>
-            <a href={`/stock-home`}><button className='system'><i class="fa-solid fa-boxes-stacked"></i>&nbsp;&nbsp;&nbsp;&nbsp;Stock Management</button></a><br/><br/>
+            <a href={`/stock/stock-home`}><button className='system'><i class="fa-solid fa-boxes-stacked"></i>&nbsp;&nbsp;&nbsp;&nbsp;Stock Management</button></a><br/><br/>
             <a href={`/supplier-home`}><button className='system'><i class="fa-solid fa-truck-field"></i>&nbsp;&nbsp;&nbsp;&nbsp;Supplier Management</button></a><br/><br/>
             <a href={`/purchasing/purchasing-home`}><button className='system'><i class="fa-solid fa-bag-shopping"></i>&nbsp;&nbsp;&nbsp;&nbsp;Purchasing Management</button></a><br/><br/>
             <a href={`/delivery-home`}><button className='system'><i class="fa-solid fa-truck"></i>&nbsp;&nbsp;&nbsp;&nbsp;Delivery Management</button></a>
@@ -50,6 +68,8 @@ class SideBar extends Component {
           <Routes>
               <Route path="/purchasing/:name" element={<PurchasingFunc/>}/>
               <Route path="/purchasing/:name/:name" element={<PurchasingFunc/>}/>
+              <Route path="/stock/:name" element={<StockFunc/>}/>
+              <Route path="/stock/:name/:name" element={<StockFunc/>}/>
               <Route path="/dashboard-home" element={<DashboardFunc/>}/>
           </Routes>
         </BrowserRouter>
