@@ -159,7 +159,7 @@ label {
     border: 2px solid #ff5520;
 }
 
-.form-textarea {
+.form-textarea-purchasing {
     border: 1px solid #ff5520;
     border-radius: 8px;
     width: 99%;
@@ -168,7 +168,7 @@ label {
     margin-bottom: 15px;
 }
 
-.form-textarea:focus {
+.form-textarea-purchasing:focus {
     outline: none;
     border: 2px solid #ff5520;
 }

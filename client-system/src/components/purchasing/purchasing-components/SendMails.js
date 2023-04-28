@@ -71,7 +71,7 @@ export default class SendMails extends Component {
             <input type='text' className='form-input' name='to' placeholder='To' value={this.state.to} onChange={this.handleInputChange} style={{width:"100%"}} required/><br/> 
             <input type='text' className='form-input' name='name' placeholder='Name of Receiver' value={this.state.name} onChange={this.handleInputChange} style={{width:"100%"}} required/><br/> 
             <input type='text' className='form-input' name='subject' placeholder='Subject' value={this.state.subject} onChange={this.handleInputChange} style={{width:"100%"}} required/><br/> 
-            <textarea className='form-textarea' name='msg' cols={30} rows={4} placeholder='Message' value={this.state.msg} onChange={this.handleInputChange} style={{padding:"5px"}} required></textarea>   
+            <textarea className='form-textarea-purchasing' name='msg' cols={30} rows={4} placeholder='Message' value={this.state.msg} onChange={this.handleInputChange} style={{padding:"5px"}} required></textarea>   
             <div style={{width:"100%"}}>
                 <a onClick={this.handlePopUp}><button className='btn btn-success' onClick={this.onSubmit} style={{float:"right",width:"120px"}}>Send</button></a>
                 <br/>

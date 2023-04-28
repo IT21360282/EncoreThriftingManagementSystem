@@ -24,6 +24,7 @@ export default class PlaceStockOrder extends Component {
       paymentStatus: "",
       supplier: "",
       purFullID:"",
+      note:"",
       stockItems: [],
       stockItemsQty: [],
       stockItemsUnitPrice: [],
@@ -287,7 +288,7 @@ export default class PlaceStockOrder extends Component {
         name:`Order Manager of ${this.state.supplier}`,
         email:"nilankasanjana803@gmail.com",
         subject:`Placing a Order Under Title ${this.state.title}`,
-        msg:`I hope this email finds you well. As the purchasing manager of our inventory, I would like to place an order for the following items:\n${stocksItems}\nPlease provide me with the unit prices and any applicable discounts for these items. Also, please confirm the availability of the items and the estimated time of delivery.\n\nWe are expecting to receive the order by ${this.state.expectedDate}. Please let me know if this timeline is feasible and if there are any issues that may delay the delivery.\n\nIf everything is in order, please send me an invoice with the total cost of the items, including any taxes or shipping fees.\n\nThank you for your prompt attention to this matter. I look forward to hearing from you soon.\n\nBest regards,\nSanjana Nilanka\nPurchasing Manager,\nEncore Thrift Store\n`
+        msg:`I hope this email finds you well. As the purchasing manager of our inventory, I would like to place an order for the following items:\n${stocksItems}\nPlease provide me with the unit prices and any applicable discounts for these items. Also, please confirm the availability of the items and the estimated time of delivery.\n\nWe are expecting to receive the order by ${this.state.expectedDate}. Please let me know if this timeline is feasible and if there are any issues that may delay the delivery.\n\nIf everything is in order, please send me an invoice with the total cost of the items, including any taxes or shipping fees.\n\n${this.state.note}\n\nThank you for your prompt attention to this matter. I look forward to hearing from you soon.\n\nBest regards,\nSanjana Nilanka\nPurchasing Manager,\nEncore Thrift Store\n`
     }
 
     axios.post('http://localhost:8000/purchasingPost/sendEmail',mailOptions).then((res) => {
@@ -346,7 +347,7 @@ export default class PlaceStockOrder extends Component {
                 <option>Send to Financial Manager</option>
               </select><br/>
               <label>Note for Supplier:</label>
-              <textarea className='form-textarea' name='' cols={30} rows={6} onFocus={this.titleSupplierValidation} placeholder='Special Note for Supplier'></textarea>
+              <textarea className='form-textarea-purchasing' name='note' value={this.state.note} cols={30} rows={6} onFocus={this.titleSupplierValidation} onChange={this.handleInputChange} placeholder='Special Note for Supplier'></textarea>
             
           </div>
 
