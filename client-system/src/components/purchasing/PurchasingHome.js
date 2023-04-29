@@ -91,23 +91,23 @@ export default class PurchasingHome extends Component {
       <div className='Purchasing'>
         <div >
           <div className='btn-inline' style={{marginTop:"140px"}} >
-            <a href={`/purchasing/place-order`}><button className='btn-inline'>Place Stock Order</button></a>
-            <a><button className='btn-inline'>Add Other Purchase</button></a>
-            <a href={`/purchasing/display-orders`}><button className='btn-inline'>View All Stock Orders</button></a>
-            <a href={`/purchasing/display-purchases`}><button className='btn-inline'>View All Other Purchases</button></a>
+            <a href={`/purchasing/place-order`}><button className='btn-inline-purchasing'>Place Stock Order</button></a>
+            <a><button className='btn-inline-purchasing'>Add Other Purchase</button></a>
+            <a href={`/purchasing/display-orders`}><button className='btn-inline-purchasing'>View All Stock Orders</button></a>
+            <a href={`/purchasing/display-purchases`}><button className='btn-inline-purchasing'>View All Other Purchases</button></a>
           </div>
 
           <div className='btn-inline' style={{marginTop:"30px",marginBottom:"30px"}}>
-            <button className='btn-inline'>Generate Reports</button>
-            <button className='btn-inline'>Send Emails</button>
-            <button className='btn-inline'>Graph Generator</button>
-            <button className='btn-inline'>Data Analyzing and Calculating</button>
+            <button className='btn-inline-purchasing'>Generate Reports</button>
+            <button className='btn-inline-purchasing'>Send Emails</button>
+            <button className='btn-inline-purchasing'>Graph Generator</button>
+            <button className='btn-inline-purchasing'>Data Analyzing and Calculating</button>
           </div>
 
           <div className='btn-inline' style={{marginTop:"20px"}}>
-            <div className='semi-preview-container'>Pending Stock Orders<br/>{pendingOrder}</div>
-            <div className='semi-preview-container'>Pending Payments<br/>{pendingPayment}</div>
-            <div className='semi-preview-container'>Total Stock Orders in {currentMonth}<br/>{totalOrderMonth}</div>
+            <div className='semi-preview-container-purchasing'>Pending Stock Orders<br/>{pendingOrder}</div>
+            <div className='semi-preview-container-purchasing'>Pending Payments<br/>{pendingPayment}</div>
+            <div className='semi-preview-container-purchasing'>Total Stock Orders in {currentMonth}<br/>{totalOrderMonth}</div>
           </div>
 
           <div className='btn-inline'>

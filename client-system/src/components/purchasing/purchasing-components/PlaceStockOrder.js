@@ -54,7 +54,7 @@ export default class PlaceStockOrder extends Component {
   }
 
   handlePopUp(){
-    this.setState({isOpen:true})
+    this.setState({isOpen:!this.state.isOpen})
   }
 
   handleInputChange = (e) => {
@@ -257,14 +257,15 @@ export default class PlaceStockOrder extends Component {
             totalQty: "",
             paymentStatus: "",
             supplier: "",
-            stockItems:[],
-            stockItemsQty:[],
+            stockItems:[""],
+            stockItemsQty:[""],
             stockItemsUnitPrice:[],
             stockItemsInput: [],
           }
         )
       }
     this.sendPlacingEmail()
+    this.setState({isSuccess:true})
     }).catch(error=>{
       console.error("error orccured")
       let popUpMsg = this.state.popUpMsg
@@ -396,7 +397,12 @@ export default class PlaceStockOrder extends Component {
               <a onClick={this.handlePopUp} ><button className="btn btn-success"  onClick={this.onSubmit}>Place</button></a>
               <ReactModal isOpen={this.state.isOpen} onRequestClose={this.handlePopUp} className="popUp20 zoom-in">
                 <h2 ><span style={{color:'red'}}>{this.state.redAlert}</span>{this.state.popUpMsg}</h2>
-                <a href={`/purchasing/place-order`}><button onClick={this.handlePopUp} className="btn btn-primary" >Place Another Order</button></a>&nbsp;&nbsp;&nbsp;
+                {this.state.isSuccess==false && 
+                  <a><button onClick={this.handlePopUp} className="btn btn-primary" >OK</button></a>
+                }
+                {this.state.isSuccess && 
+                  <a href='/purchasing/place-order'><button onClick={this.handlePopUp} className="btn btn-primary" >Place Another Order</button></a>
+                }&nbsp;&nbsp;&nbsp;
                 <a href={`/purchasing/display-orders`}><button onClick={this.handlePopUp} className="btn btn-primary" >View All Orders</button></a>&nbsp;&nbsp;&nbsp;
                 <a href={`/purchasing/purchasing-home`}><button onClick={this.handlePopUp} className="btn btn-primary" ><i class="fa-solid fa-house"></i>&nbsp;Home</button></a>
               </ReactModal>

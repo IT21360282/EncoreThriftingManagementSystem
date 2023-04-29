@@ -96,11 +96,6 @@ export default class GenerateReport extends Component {
     }
 
     generatePDF(){
-        const conPenTable = document.getElementById('conPenTable')
-        const {height, width} = conPenTable.getBoundingClientRect()
-        
-        const penTable = document.getElementById('penTable')
-        const {height2, width2} = penTable.getBoundingClientRect()
         
         const pdf = new jsPDF()
         const columns = [];
@@ -108,32 +103,46 @@ export default class GenerateReport extends Component {
           columns.push({ header: `Column ${i + 1}`, dataKey: `col${i}` });
         }
 
-        const scaleFactor = pdf.internal.pageSize.width / width
-        pdf.autoTable({
-            html: '#conPenTable',
-            startY: 42,
-            theme: 'grid',
-            margin: { top: 20, bottom: 20,  },
-            tableWidth: 560 * scaleFactor,
-            columnStyles: {
-              0: { fontStyle: 'bold' },
-            },
-            scaleFactor: scaleFactor,
-            columns
-        })
+        const test1 = true
+        const test2 = false
+       
+        if(test1 == true){
+            const conPenTable = document.getElementById('conPenTable')
+            const {height1, width1} = conPenTable.getBoundingClientRect()
+            const scaleFactor1 = pdf.internal.pageSize.width / width1
+            pdf.autoTable({
+                html: '#conPenTable',
+                startY: 42,
+                theme: 'grid',
+                margin: { top: 20, bottom: 20,  },
+                tableWidth: 560 * scaleFactor1,
+                columnStyles: {
+                0: { fontStyle: 'bold' },
+                },
+                scaleFactor: scaleFactor1,
+                columns
+            })
+        }
 
-        pdf.autoTable({
-            html: '#penTable',
-            startY: 42,
-            theme: 'grid',
-            margin: { top: 20, bottom: 20,  },
-            tableWidth: 560 * scaleFactor,
-            columnStyles: {
-              0: { fontStyle: 'bold' },
-            },
-            scaleFactor: scaleFactor,
-            columns
-        })
+        
+        if(test2==true) {
+        const position = {x:10, y:pdf.lastAutoTable.finalY + 10}
+        const penTable = document.getElementById('penTable')
+        const {height2, width2} = penTable.getBoundingClientRect()
+        const scaleFactor2 = pdf.internal.pageSize.width / width2
+            pdf.autoTable({
+                html: '#penTable',
+                startY: position.y,
+                theme: 'grid',
+                margin: { top: 20, bottom: 20,  },
+                tableWidth: 560 * scaleFactor2,
+                columnStyles: {
+                0: { fontStyle: 'bold' },
+                },
+                scaleFactor: scaleFactor2,
+                columns
+            })
+        }
         
         pdf.setFontSize("28")
         pdf.setTextColor("#ff5520")

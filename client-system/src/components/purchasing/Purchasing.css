@@ -31,7 +31,7 @@ div.btn-inline {
     width: 100%;
 }
 
-button.btn-inline {
+button.btn-inline-purchasing {
     border: #ff5520 2px solid;
     border-radius: 20px;
     padding: 10px;
@@ -71,7 +71,7 @@ input.search:focus {
     outline: none;
 }
 
-.semi-preview-container {
+.semi-preview-container-purchasing {
     width: 25%;
     background-color: #81C3D8;
     padding: 30px;
