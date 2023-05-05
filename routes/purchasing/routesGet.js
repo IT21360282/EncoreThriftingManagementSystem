@@ -139,6 +139,18 @@ router.get('/stockOrder/receivedAll', (req, res) => {
     })
 })
 
+router.get('/stockOrder/canceledAll', (req, res) => {
+    stockOrderModel.find({ orderStatus: "Canceled" }).then((results) => {
+        console.log(results)
+        return res.status(200).json({
+            success: true,
+            canceledOrders: results
+        })
+    }).catch((err) => {
+        console.error(err)
+    })
+})
+
 router.get('/stockOrder/pending', (req, res) => {
     stockOrderModel.find({ orderStatus: "Pending" }).sort({ _id: -1 }).limit(4).then((results) => {
         console.log(results)
@@ -181,6 +193,38 @@ router.get('/stockOrder/confirmation-pendingAll', (req, res) => {
         return res.status(200).json({
             success: true,
             confirmationPendingOrders: results
+        })
+    }).catch((err) => {
+        console.error(err)
+    })
+})
+
+router.get('/stockOrder/searchSupplier', (req, res) => {
+    const orderQuery = req.query.q
+    const regex = new RegExp(orderQuery, 'i')
+
+    stockOrderModel.find({ supplier: regex }).sort({ _id: -1 }).then((results) => {
+        console.log(results)
+        return res.status(200).json({
+            success: true,
+            searchedDetails: results
+        })
+    }).catch((err) => {
+        console.error(err)
+    })
+})
+
+router.get('/stockOrder/searchPlacedDate', (req, res) => {
+    const startDate = req.query.qStart
+    const endDate = req.query.qEnd
+
+    stockOrderModel.find({ placedDate: { $gte: startDate, $lte: endDate } }).sort({ _id: -1 }).then((results) => {
+        console.log(results)
+        return res.status(200).json({
+            sDate: startDate,
+            eDate: endDate,
+            success: true,
+            searchedDetails: results
         })
     }).catch((err) => {
         console.error(err)
