@@ -263,17 +263,15 @@ router.get('/otherPurchase/search', (req, res) => {
     })
 })
 
+router.get('/otherPurchase/searchPurchasedDate', (req, res) => {
+    const startDate = req.query.qStart
+    const endDate = req.query.qEnd
 
-
-//report generating APIs
-
-router.get('/stockOrder/search', (req, res) => {
-    const purchaseQuery = req.query.q
-    const regex = new RegExp(purchaseQuery, 'i')
-
-    otherPurchaseModel.find({ $or: [{ title: regex }, { shop: regex }, { purDigitID: regex }, { purID: regex }] }).sort({ _id: -1 }).then((results) => {
+    otherPurchaseModel.find({ purchasedDate: { $gte: startDate, $lte: endDate } }).sort({ _id: -1 }).then((results) => {
         console.log(results)
         return res.status(200).json({
+            sDate: startDate,
+            eDate: endDate,
             success: true,
             searchedDetails: results
         })
@@ -281,5 +279,9 @@ router.get('/stockOrder/search', (req, res) => {
         console.error(err)
     })
 })
+
+//report generating APIs
+
+
 
 module.exports = router

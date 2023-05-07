@@ -26,8 +26,15 @@ export default class AddOtherPurchase extends Component {
             isOpen: false,
             popUpMsg: "Purchase Details are Added Successfully.",
             redAlert: "",
+            isSuccess: false,
+            isTitle: false,
+            isShop: false,
+            isPurchasedDate: false,
+            isItem: false,
         }
         this.handlePopUp = this.handlePopUp.bind(this)
+        this.handlePopUpclose = this.handlePopUpclose.bind(this)
+        this.inputValidations = this.inputValidations.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
     }
 
@@ -44,6 +51,10 @@ export default class AddOtherPurchase extends Component {
     handlePopUp(){
         this.setState({isOpen:true})
       }
+
+    handlePopUpclose(){
+        this.setState({isOpen:false})
+    }
     
     handleOtherInputChange = (e) => {
         const {name,value} = e.target
@@ -92,6 +103,23 @@ export default class AddOtherPurchase extends Component {
         this.setState({ purchasedItems })
         this.setState({ purchasedItemQuantities })
         this.setState({ purchasedItemUnitPrices })
+    }
+
+    inputValidations(){
+        const {title, shop, purchasedDate} = this.state
+        if(!title){
+            this.setState({isTitle:true})
+        }
+        if(!shop){
+            this.setState({isShop:true})
+        }
+        if(!purchasedDate){
+            this.setState({isPurchasedDate:true})
+        }
+    }
+
+    validateBeforeSubmit = (e) => {
+        e.preventDefault()
     }
 
     onSubmit = (e) =>{
@@ -157,6 +185,7 @@ export default class AddOtherPurchase extends Component {
               }
             )
           }
+          this.setState({isSuccess:true})
         }).catch(error=>{
           console.error("error orccured")
           let popUpMsg = this.state.popUpMsg
@@ -193,14 +222,22 @@ export default class AddOtherPurchase extends Component {
                 <div>
                     <br/>
                     <label>Title of Purchase:</label>
-                    <input type='text' className='form-input' name='title' placeholder='Title' value={this.state.title} onChange={this.handleOtherInputChange}/><br/>
+                    <input type='text' className='form-input' style={{marginBottom:"0px"}} name='title' placeholder='Title'  value={this.state.title} onChange={this.handleOtherInputChange}/>
+                    <div style={{marginBottom:"10px"}}>
+                        {this.state.isTitle && <span style={{color:"red"}}>Title is Required.</span>}<br/>
+                    </div>
                     <label>Shop Name:</label>
-                    <input type='text' className='form-input' name='shop' placeholder='Purchased From' value={this.state.shop} onChange={this.handleOtherInputChange}/><br/>
-                    
+                    <input type='text' className='form-input' style={{marginBottom:"0px"}} name='shop' placeholder='Purchased From' value={this.state.shop} onChange={this.handleOtherInputChange}/><br/>
+                    <div >
+                        {this.state.isShop && <span style={{color:"red"}}>Shop Name is Required.</span>}<br/>
+                    </div>
                     <label>Purchased Date:</label>
-                    <input type='date' className='form-input' name='purchasedDate' placeholder='' value={this.state.purchasedDate} onChange={this.handleOtherInputChange}/>
+                    <input type='date' className='form-input' style={{marginBottom:"0px"}} name='purchasedDate' placeholder='' value={this.state.purchasedDate} onChange={this.handleOtherInputChange}/>
+                    <div >
+                        {this.state.isPurchasedDate && <span style={{color:"red"}}>Purchased Date is Required.</span>}<br/>
+                    </div>
                     <label>For Which Section:</label>
-                    <select className='form-select' name='purchasedSection' value={this.state.purchasedSection} onChange={this.handleOtherInputChange}>
+                    <select className='form-select' name='purchasedSection' value={this.state.purchasedSection} onFocus={this.inputValidations} onChange={this.handleOtherInputChange}>
                     <option>Select One</option>
                         <option>Order Section</option>
                         <option>Financial Section</option>
@@ -271,7 +308,9 @@ export default class AddOtherPurchase extends Component {
                     <a onClick={this.handlePopUp} ><button className="btn btn-success"  onClick={this.onSubmit}>Add</button></a>
                     <ReactModal isOpen={this.state.isOpen} onRequestClose={this.handlePopUp} className="popUp20 zoom-in">
                         <h2><span style={{color:'red'}}>{this.state.redAlert}</span>{this.state.popUpMsg}{this.state.itemTypeQty}</h2>
-                        <a href={`/purchasing/add-purchase`}><button onClick={this.handlePopUp} className="btn btn-primary" >Add Another Purchase</button></a>&nbsp;&nbsp;&nbsp;
+                        {this.state.isSuccess  == false  && <button onClick={this.handlePopUpclose} className="btn btn-primary" >OK</button>}
+                        {this.state.isSuccess && <a href={`/purchasing/add-purchase`}><button onClick={this.handlePopUp} className="btn btn-primary" >Add Another Purchase</button></a>}
+                        &nbsp;&nbsp;&nbsp;
                         <a href={`/purchasing/display-purchases`}><button onClick={this.handlePopUp} className="btn btn-primary" >View All Other Purchases</button></a>&nbsp;&nbsp;&nbsp;
                         <a href={`/purchasing/purchasing-home`}><button onClick={this.handlePopUp} className="btn btn-primary" ><i class="fa-solid fa-house"></i>&nbsp;Home</button></a>
                     </ReactModal>

@@ -24,11 +24,11 @@ const other_purchases_schema = new mongoose.Schema({
     },
     totalCost: {
         type: String,
-        required: false
+        required: true
     },
     totalQty: {
         type: String,
-        required: false
+        required: true
     },
     paymentStatus: {
         type: String,
@@ -36,19 +36,19 @@ const other_purchases_schema = new mongoose.Schema({
     },
     shop: {
         type: String,
-        required: false
+        required: true
     },
     purchasedItems: {
         type: [String],
-        required: false
+        required: true
     },
     purchasedItemQuantities: {
         type: [Number],
-        required: false
+        required: true
     },
     purchasedItemUnitPrices: {
         type: [Number],
-        required: false
+        required: true
     },
     addedDate: {
         type: Date,

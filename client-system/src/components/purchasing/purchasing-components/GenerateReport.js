@@ -11,6 +11,7 @@ export default class GenerateReport extends Component {
         this.state = {
             isOpen:false,
             isSupplierOpen:false,
+            isPlacedDateOpen:false,
             confirmPend:false,
             pending:false,
             received:false,
@@ -21,19 +22,25 @@ export default class GenerateReport extends Component {
             canceledOrders:[],
             searchQuery:"",
             stockOrderDetailsBySupplier:[],
+            stockOrderDetailsInTimePeriod:[],
+            OtherPurchaseDetailsInTimePeriod:[],
             supplier: "",
-            fromStockOrder: "",
-            toStockOrder: "",
+            purchaseType: "",
+            from: "",
+            to: "",
             errMsg: "",
             errMsgFrom: "",
         }
   
         this.handlePopUp = this.handlePopUp.bind(this)
         this.handleSupplierPopUp = this.handleSupplierPopUp.bind(this)
+        this.handlePlacedDatePopUp = this.handlePlacedDatePopUp.bind(this)
         this.getData = this.getData.bind(this)
         this.generateStockOrderStatusPDF = this.generateStockOrderStatusPDF.bind(this)
         this.generateStockOrderSupplierPDF = this.generateStockOrderSupplierPDF.bind(this)
+        this.generatePurchasedDatePDF = this.generatePurchasedDatePDF.bind(this)
         this.getDetasilsSupplier = this.getDetasilsSupplier.bind(this)
+        this.getDetasilsPurchasedDate = this.getDetasilsPurchasedDate.bind(this)
         this.inputHandleChange = this.inputHandleChange.bind(this)
         this.handleInputFromDateStockChange = this.handleInputFromDateStockChange.bind(this)
         this.handleInputToDateStockChange = this.handleInputToDateStockChange.bind(this)
@@ -116,18 +123,18 @@ export default class GenerateReport extends Component {
             this.setState({
                 errMsgFrom: "",
                 errMsg: "",
-                fromStockOrder:value
+                from:value
             }) 
             if(new Date(value) < new Date(new Date().getTime() + 5.5 * 60 * 60 * 1000)){
                 this.setState({
                     errMsgFrom: "",
-                    fromStockOrder:value
+                    from:value
                 }) 
             }
             else{
                 this.setState({
                     errMsgFrom: "You Cannot Select Future Date",
-                    fromStockOrder:""
+                    from:""
                 }) 
             }
         }
@@ -136,31 +143,31 @@ export default class GenerateReport extends Component {
      handleInputToDateStockChange = (e) => {
         const value = e.target.value
 
-        if(this.state.fromStockOrder==""){
+        if(this.state.from==""){
             this.setState({
-                toStockOrder:"",
+                to:"",
                 errMsg:`First, Select Date for 'From' Field`,
                 errMsgFrom: "This Field is Required"
             }) 
         }
         else{
             if(new Date(value) < new Date(new Date().getTime() + 5.5 * 60 * 60 * 1000)){
-                if(new Date(this.state.fromStockOrder) <= new Date(value)){
+                if(new Date(this.state.from) <= new Date(value)){
                     this.setState({
-                        toStockOrder:value,
+                        to:value,
                         errMsg:"",
                     }) 
                 }
                 else{
                     this.setState({
-                        toStockOrder:"",
-                        errMsg:`Select a Date After ' ${this.state.fromStockOrder} '`,
+                        to:"",
+                        errMsg:`Select a Date After ' ${this.state.from} '`,
                     }) 
                 }
             }
             else{
                 this.setState({
-                    toStockOrder:"",
+                    to:"",
                     errMsg:`You Cannot Select Future Date`,
                 }) 
             }
@@ -186,6 +193,12 @@ export default class GenerateReport extends Component {
         this.getDetasilsSupplier()
     
         this.setState({isSupplierOpen:!this.state.isSupplierOpen})
+    }
+    
+    handlePlacedDatePopUp(){
+        this.getDetasilsPurchasedDate()
+    
+        this.setState({isPlacedDateOpen:!this.state.isPlacedDateOpen})
     }
 
     generateStockOrderStatusPDF(){
@@ -418,6 +431,74 @@ export default class GenerateReport extends Component {
 
     }
 
+    getDetasilsPurchasedDate(){
+        if(this.state.purchaseType == "Stock Orders"){
+            axios.get(`http://localhost:8000/purchasingGet/stockOrder/searchPlacedDate?qStart=${this.state.from}&qEnd=${this.state.to}`).then(res => {
+                this.setState({
+                    stockOrderDetailsInTimePeriod: res.data.searchedDetails,
+                        
+                })
+            })
+        }
+        else if(this.state.purchaseType == "Other Purchases"){
+            axios.get(`http://localhost:8000/purchasingGet/otherPurchase/searchPurchasedDate?qStart=${this.state.from}&qEnd=${this.state.to}`).then(res => {
+                this.setState({
+                    OtherPurchaseDetailsInTimePeriod: res.data.searchedDetails,
+                        
+                })
+            })
+        }
+        else{
+
+        }
+        
+    }
+
+    generatePurchasedDatePDF(){
+        const pdf = new jsPDF()
+        const columns = [];
+        for (let i = 0; i < 7; i++) {
+          columns.push({ header: `Column ${i + 1}`, dataKey: `col${i}` });
+        }
+
+        let headerY = 15
+        let titleY = headerY + 8
+
+        pdf.setFontSize("28")
+        pdf.setTextColor("#ff5520")
+        pdf.text("Encore Thirfting Store",58,headerY)
+        pdf.setFontSize("16")
+        pdf.setTextColor("Black")
+        if(this.state.purchaseType == "Stock Orders"){
+            pdf.text(`Details of Stock Orders that Ordered Between`,46,titleY)
+            
+        }
+        if(this.state.purchaseType == "Other Purchases"){
+            
+        }
+        pdf.setFontSize("14")
+        pdf.text(`${this.state.from} and ${this.state.to}`,72,titleY+5)
+        
+        const supplierTable = document.getElementById('placedDateTable')
+        const {height, width} = supplierTable.getBoundingClientRect()
+        const scaleFactor1 = pdf.internal.pageSize.width / width
+        pdf.autoTable({
+            html: '#placedDateTable',
+            startY: titleY+10,
+            theme: 'grid',
+            margin: { top: 20, bottom: 20,  },
+            tableWidth: 560 * scaleFactor1,
+            columnStyles: {
+            0: { fontStyle: 'bold' },
+            },
+            scaleFactor: scaleFactor1,
+            columns
+        })
+
+        pdf.save(`All Stock Orders from ${this.state.supplier}.pdf`)
+
+    }
+
     render() {
         let test = "not"
         if(this.state.canceled){
@@ -452,19 +533,26 @@ export default class GenerateReport extends Component {
                         <button className='btn btn-success' onClick={this.handleSupplierPopUp}>Generate PDF</button>
                     </div>
                 </div>
-
+                <h3>Generate Report Related to Ordered/Purchased Dates:</h3>
                 <div className='btn-inline report-main'>
                     <div className='gray-box' style={{padding:"20px", width:'100%'}}>
+                    <label>Select Supplier to Generate Report of Stock Orders Categorized by Suppliers</label><br/>
+                        <select className='form-select' style={{marginBottom:"20px"}} name='purchaseType' value={this.state.purchaseType}  onChange={this.inputHandleChange}>
+                            <option value={"Both"}>Both</option>
+                            <option value={"Stock Orders"}>Stock Orders</option>
+                            <option value={"Other Purchases"}>Other Purchases</option>
+                        </select>
+
                         <label>Select Time Period to Generate Report of Stock Orders Which are Ordered in that Time Period</label><br/>
-                        <div className='btn-inline' style={{marginTop:"20px"}}>
+                        <div className='btn-inline' style={{marginTop:"10px"}}>
                             <div style={{width:'48%'}}>
                                 <label style={{fontWeight:"unset"}}>From</label>
-                                <input type='date' className='form-input' style={{marginBottom:"0px"}} name='fromStockOrder' max={today} value={this.state.fromStockOrder} onChange={this.handleInputFromDateStockChange}/>
+                                <input type='date' className='form-input' style={{marginBottom:"0px"}} name='from' max={today} value={this.state.from} onChange={this.handleInputFromDateStockChange}/>
                             </div>
 
                             <div style={{width:'48%'}}>
                                 <label style={{fontWeight:"unset"}}>To</label>
-                                <input type='date' className='form-input' style={{marginBottom:"0px"}} name='toStockOrder' max={today} min={this.state.fromStockOrder} value={this.state.toStockOrder} onChange={this.handleInputToDateStockChange}/>
+                                <input type='date' className='form-input' style={{marginBottom:"0px"}} name='to' max={today} min={this.state.from} value={this.state.to} onChange={this.handleInputToDateStockChange}/>
                             </div>
                         </div>
 
@@ -473,59 +561,11 @@ export default class GenerateReport extends Component {
                             <div style={{color:"red", width:'48%'}}>{this.state.errMsg}</div>
                         </div>
 
-                        <button className='btn btn-success' >Generate PDF</button>
+                        <button className='btn btn-success' onClick={this.handlePlacedDatePopUp} >Generate PDF</button>
                     </div>
 
-                    {/*<div className={this.state.stockOrderCat} style={{padding:"20px"}}>
-                        <label>Select Weekly or Monthly</label><br/>
-                        <span><input type='radio' value='all' name='otherPurchaseSelect' onChange={this.handleRadioMonthWeekChange}/>&nbsp;All</span><br/>
-                        <span><input type='radio' value='month' name='otherPurchaseSelect' onChange={this.handleRadioMonthWeekChange}/>&nbsp;Monthly</span><br/>
-                        <span><input type='radio' value='week' name='otherPurchaseSelect' onChange={this.handleRadioMonthWeekChange}/>&nbsp;Weekly</span><br/>
-                        <br/>{test}
-                        <div className={this.state.month}>
-                            <label>Select Month</label><br/>
-                            <input type='month' name='whichMonth' value={this.state.whichMonth} onChange={this.handleInputChange}/>
-                            <input type='submit' value='Generate Report'/>
-                            {this.state.whichMonth}
-                        </div>
-                        <div className={this.state.week}>
-                            <label>Select Week</label><br/>
-                            <input type='week' name='whichWeek' value={this.state.whichWeek} onChange={this.handleInputChange}/>
-                            <input type='submit' value='Generate Report'/>
-                            {this.state.whichWeek}
-                        </div>
-                        <div className={this.state.all}>
-                            <input type='submit' onClick={this.handlePopUp} value='Generate Report'/>
-                        </div>
-                    </div>*/}
-                </div>
-                
-                <h3>Generate Report Related to Other Purchases:</h3>
-                <div className='btn-inline gray-box report-main'>
-                    
-                    <div className={this.state.stockOrderCat} style={{padding:"20px"}}>
-                        <label>Select Order Status</label><br/>
-                        <input type='checkbox' checked={this.state.confirmPend} name='confirmPend' onChange={this.handleCheckBoxChange}/>&nbsp;Confirmation Pending Stock Orders<br/>
-                        <input type='checkbox' checked={this.state.pending} name='pendind' onChange={this.handleCheckBoxChange}/>&nbsp;Pending Stock Orders<br/>
-                        <input type='checkbox' checked={this.state.received} name='received' onChange={this.handleCheckBoxChange}/>&nbsp;Received Stock Orders<br/>
-                        <input type='checkbox' checked={this.state.canceled} name='canceled' onChange={this.handleCheckBoxChange}/>&nbsp;Canceled Stock Orders<br/><br/>
-                    
-                    </div>
-                </div>
-                
-                <h3>Generate Report Related to Both Stock Orders & Other Purchases:</h3>
-                <div className='btn-inline gray-box report-main'>
-                    
-                    <div className={this.state.stockOrderCat} style={{padding:"20px"}}>
-                        <label>Select Order Status</label><br/>
-                        <input type='checkbox' checked={this.state.confirmPend} name='confirmPend' onChange={this.handleCheckBoxChange}/>&nbsp;Confirmation Pending Stock Orders<br/>
-                        <input type='checkbox' checked={this.state.pending} name='pendind' onChange={this.handleCheckBoxChange}/>&nbsp;Pending Stock Orders<br/>
-                        <input type='checkbox' checked={this.state.received} name='received' onChange={this.handleCheckBoxChange}/>&nbsp;Received Stock Orders<br/>
-                        <input type='checkbox' checked={this.state.canceled} name='canceled' onChange={this.handleCheckBoxChange}/>&nbsp;Canceled Stock Orders<br/><br/>
-                    
-                    </div>
-                </div>
 
+                </div>
             </div>
             <ReactModal isOpen={this.state.isOpen} onRequestClose={this.handlePopUp} className="popUp90 zoom-in">
                 <h2>PDF Including Data You Selected is Generated</h2>
@@ -708,6 +748,85 @@ export default class GenerateReport extends Component {
                     <div className='btn-inline'>
                         <button className="btn btn-primary" onClick={this.handleSupplierPopUp} ><i class="fa-solid fa-arrow-left"></i>&nbsp;&nbsp;Back</button>
                         <a><button className="btn btn-primary" onClick={this.generateStockOrderSupplierPDF} title="Download This in PDF Format"><i class="fa-solid fa-download"></i>&nbsp;&nbsp;Download PDF</button></a> 
+                    </div> 
+                </div>
+                </div>
+            </ReactModal>
+
+            <ReactModal isOpen={this.state.isPlacedDateOpen} onRequestClose={this.handlePlacedDatePopUp} className="popUp90 zoom-in">
+                <div style={{marginBottom:"20px"}}>
+                    <h2>PDF Including Data You Selected is Generated</h2>
+                    <h4>A preview of the PDF is below & You can download it by 'Download' button</h4>
+                    <div className='PDFpreview'>
+                        <h1 style={{color:"#ff5520"}}>Encore Thrifting Store</h1>
+                        
+                        {this.state.purchaseType == "Stock Orders" && 
+                            <div>
+                                <h3>Details of Stock Orders that Ordered Between <br/>{this.state.from} and {this.state.to}</h3>
+                                <table className='pdfTable' id='placedDateTable' >
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">PurID</th>
+                                            <th scope="col">Title</th>
+                                            <th scope="col">Placed Date</th>
+                                            <th scope="col">Order Status</th>
+                                            <th scope="col">Total Cost</th>
+                                            <th scope="col">Total Qty</th>
+                                            <th scope="col">Supplier</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody scope="raw" >    
+                                        {this.state.stockOrderDetailsInTimePeriod.map((results,index)=>(
+                                        <tr>
+                                            <td>{results.purID}{results.purDigitID}</td>
+                                            <td title={results.title}>{results.title}</td>
+                                            <td>{results.placedDate}</td>
+                                            <td>{results.orderStatus}</td>
+                                            <td>{results.totalCost}</td>
+                                            <td>{results.totalQty}</td>
+                                            <td>{results.supplier}</td>
+                                        </tr>
+                                        ))}
+                                    </tbody>
+                                </table>  
+                            </div>
+                        }
+                        {this.state.purchaseType == "Other Purchases" && 
+                            <div>
+                                <h3>Details of Other Purchases that Ordered Between <br/>{this.state.from} and {this.state.to}</h3>
+                                <table className='pdfTable' id='placedDateTable' >
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">PurID</th>
+                                            <th scope="col">Title</th>
+                                            <th scope="col">Purchased Date</th>
+                                            <th scope="col">Purchased For</th>
+                                            <th scope="col">Total Cost</th>
+                                            <th scope="col">Total Qty</th>
+                                            <th scope="col">Shop</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody scope="raw" >    
+                                        {this.state.OtherPurchaseDetailsInTimePeriod.map((results,index)=>(
+                                        <tr>
+                                            <td>{results.purID}{results.purDigitID}</td>
+                                            <td title={results.title}>{results.title}</td>
+                                            <td>{results.purchasedDate}</td>
+                                            <td>{results.purchasedSection}</td>
+                                            <td>{results.totalCost}</td>
+                                            <td>{results.totalQty}</td>
+                                            <td>{results.shop}</td>
+                                        </tr>
+                                        ))}
+                                    </tbody>
+                                </table>  
+                            </div>
+                        }
+                    </div>
+                    <div className='spec-btn-inline' style={{marginTop:"20px",marginBottom:"20px", width:"35%"}}>
+                    <div className='btn-inline'>
+                        <button className="btn btn-primary" onClick={this.handlePlacedDatePopUp} ><i class="fa-solid fa-arrow-left"></i>&nbsp;&nbsp;Back</button>
+                        <a><button className="btn btn-primary" onClick={this.generatePurchasedDatePDF} title="Download This in PDF Format"><i class="fa-solid fa-download"></i>&nbsp;&nbsp;Download PDF</button></a> 
                     </div> 
                 </div>
                 </div>
