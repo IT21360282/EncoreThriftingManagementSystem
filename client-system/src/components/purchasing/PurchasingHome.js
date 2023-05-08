@@ -13,6 +13,7 @@ export default class PurchasingHome extends Component {
       pendingOrderDetails: [],
       pendingOrderDetailsAll: [],
       confirmationPendingOrderDetails: [],
+      confirmationPendingOrderDetailsAll: [],
       isOpen:true,
       searchQuery: "",
     }
@@ -55,6 +56,16 @@ export default class PurchasingHome extends Component {
         })
       }
     })
+
+    
+      axios.get("http://localhost:8000/purchasingGet/stockOrder/confirmation-pendingAll").then(res =>{
+          if(res.data.success){
+            this.setState({
+              confirmationPendingOrderDetailsAll:res.data.confirmationPendingOrders
+            })
+          }
+      })
+  
     
     axios.get("http://localhost:8000/purchasingGet/otherPurchase/getLastFourOrder").then(res =>{
       if(res.data.success){
@@ -79,10 +90,9 @@ export default class PurchasingHome extends Component {
   render() {
 
     let un = "Sanjana"
-    let thisMonth = "March"
     const {currentMonth} = this.state
     const pendingOrder = this.state.pendingOrderDetailsAll.length
-    const pendingPayment = 3
+    const confirmationPendingOrder = this.state.confirmationPendingOrderDetailsAll.length
     const totalOrderMonth = 54
 
     
@@ -105,9 +115,9 @@ export default class PurchasingHome extends Component {
           </div>
 
           <div className='btn-inline' style={{marginTop:"20px"}}>
-            <div className='semi-preview-container-purchasing'>Pending Stock Orders<br/>{pendingOrder}</div>
-            <div className='semi-preview-container-purchasing'>Pending Payments<br/>{pendingPayment}</div>
-            <div className='semi-preview-container-purchasing'>Total Stock Orders in {currentMonth}<br/>{totalOrderMonth}</div>
+            <div className='semi-preview-container-purchasing'>Confirmation Pending Orders<br/><span className='semi-preview-container-purchasing'>{confirmationPendingOrder}</span></div>
+            <div className='semi-preview-container-purchasing'>Pending Stock Orders<br/><span className='semi-preview-container-purchasing'>{pendingOrder}</span></div>
+            <div className='semi-preview-container-purchasing'>Total Stock Orders in {currentMonth}<br/><span className='semi-preview-container-purchasing'>{totalOrderMonth}</span></div>
           </div>
 
           <div className='btn-inline'>

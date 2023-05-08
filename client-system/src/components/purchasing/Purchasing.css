@@ -40,7 +40,7 @@ button.btn-inline-purchasing {
     font-weight: bold;
 }
 
-button.btn-inline:hover {
+button.btn-inline-purchasing:hover {
     background-color: #ff5520;
     color: white;
     cursor: pointer;
@@ -71,13 +71,19 @@ input.search:focus {
     outline: none;
 }
 
-.semi-preview-container-purchasing {
+div.semi-preview-container-purchasing {
     width: 25%;
     background-color: #81C3D8;
     padding: 30px;
     text-align: center;
     color: white;
     font-weight: bold;
+}
+
+span.semi-preview-container-purchasing {
+    color: #ff5520;
+    font-weight: bold;
+    font-size: x-large;
 }
 
 .div-frame {
