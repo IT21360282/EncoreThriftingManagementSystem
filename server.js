@@ -17,15 +17,7 @@ app.use('/purchasingGet', getRouterPurchasing)
 app.use('/purchasingDelete', deleteRouterPurchasing)
 app.use('/purchasingPut', putRouterPurchasing)
 
-//stock
-const postRoutes = require('./routes/stock/routesPost')
-const getRoutes = require('./routes/stock/routesGet')
-const deleteRoutes = require('./routes/stock/routesDelete')
-const UpdateRoutes = require('./routes/stock/routesUpdate')
-app.use( postRoutes)
-app.use(getRoutes)
-app.use(deleteRoutes)
-app.use(UpdateRoutes)
+
 
 const PORT = 8000
 const DB_URL = "mongodb+srv://t5:1234@cluster0.awr06ma.mongodb.net/THRIFT_STORE?retryWrites=true&w=majority"

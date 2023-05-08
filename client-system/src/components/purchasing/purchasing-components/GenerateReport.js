@@ -449,7 +449,18 @@ export default class GenerateReport extends Component {
             })
         }
         else{
-
+            axios.get(`http://localhost:8000/purchasingGet/stockOrder/searchPlacedDate?qStart=${this.state.from}&qEnd=${this.state.to}`).then(res => {
+                this.setState({
+                    stockOrderDetailsInTimePeriod: res.data.searchedDetails,
+                        
+                })
+            })
+            axios.get(`http://localhost:8000/purchasingGet/otherPurchase/searchPurchasedDate?qStart=${this.state.from}&qEnd=${this.state.to}`).then(res => {
+                this.setState({
+                    OtherPurchaseDetailsInTimePeriod: res.data.searchedDetails,
+                        
+                })
+            })
         }
         
     }
@@ -471,29 +482,88 @@ export default class GenerateReport extends Component {
         pdf.setTextColor("Black")
         if(this.state.purchaseType == "Stock Orders"){
             pdf.text(`Details of Stock Orders that Ordered Between`,46,titleY)
+            const placedDateTable = document.getElementById('placedDateTable')
+            const {height, width} = placedDateTable.getBoundingClientRect()
+            const scaleFactor1 = pdf.internal.pageSize.width / width
+            pdf.autoTable({
+                html: '#placedDateTable',
+                startY: titleY+10,
+                theme: 'grid',
+                margin: { top: 20, bottom: 20,  },
+                tableWidth: 560 * scaleFactor1,
+                columnStyles: {
+                    0: { fontStyle: 'bold' },
+                },
+                scaleFactor: scaleFactor1,
+                columns
+            })
             
         }
-        if(this.state.purchaseType == "Other Purchases"){
+        else if(this.state.purchaseType == "Other Purchases"){
+            pdf.text(`Details of Other Purchases that Purchesd Between`,45,titleY)
+            const purchasedDateTable = document.getElementById('purchasedDateTable')
+            const {height, width} = purchasedDateTable.getBoundingClientRect()
+            const scaleFactor1 = pdf.internal.pageSize.width / width
+            pdf.autoTable({
+                html: '#purchasedDateTable',
+                startY: titleY+10,
+                theme: 'grid',
+                margin: { top: 20, bottom: 20,  },
+                tableWidth: 560 * scaleFactor1,
+                columnStyles: {
+                    0: { fontStyle: 'bold' },
+                },
+                scaleFactor: scaleFactor1,
+                columns
+            })
+        }
+        else{
+            pdf.text(`Details of All Purchases that Purchased Between`,45,titleY)
+
+            pdf.setFontSize("14")
+            pdf.text("Stock Orders",72,titleY+15)
+
+            const placedDateTable = document.getElementById('placedDateTable')
+            const {height1, width1} = placedDateTable.getBoundingClientRect()
+            const scaleFactor1 = pdf.internal.pageSize.width / width1
+            pdf.autoTable({
+                html: '#placedDateTable',
+                startY: titleY+20,
+                theme: 'grid',
+                margin: { top: 20, bottom: 20,  },
+                tableWidth: 550 * scaleFactor1,
+                columnStyles: {
+                    0: { fontStyle: 'bold' },
+                },
+                scaleFactor: scaleFactor1,
+                columns
+            })
+
+            pdf.setFontSize("14")
+            pdf.text("Other Purchases",72,pdf.lastAutoTable.finalY + 10)
+
+            const purchasedDateTable = document.getElementById('purchasedDateTable')
+            const {height2, width2} = purchasedDateTable.getBoundingClientRect()
+            const scaleFactor2 = pdf.internal.pageSize.width / width2
+            pdf.autoTable({
+                html: '#purchasedDateTable',
+                startY: pdf.lastAutoTable.finalY + 20,
+                theme: 'grid',
+                margin: { top: 20, bottom: 20,  },
+                tableWidth: 550 * scaleFactor1,
+                columnStyles: {
+                    0: { fontStyle: 'bold' },
+                },
+                scaleFactor: scaleFactor2,
+                columns
+            })
+
             
         }
         pdf.setFontSize("14")
         pdf.text(`${this.state.from} and ${this.state.to}`,72,titleY+5)
         
-        const supplierTable = document.getElementById('placedDateTable')
-        const {height, width} = supplierTable.getBoundingClientRect()
-        const scaleFactor1 = pdf.internal.pageSize.width / width
-        pdf.autoTable({
-            html: '#placedDateTable',
-            startY: titleY+10,
-            theme: 'grid',
-            margin: { top: 20, bottom: 20,  },
-            tableWidth: 560 * scaleFactor1,
-            columnStyles: {
-            0: { fontStyle: 'bold' },
-            },
-            scaleFactor: scaleFactor1,
-            columns
-        })
+        
 
         pdf.save(`All Stock Orders from ${this.state.supplier}.pdf`)
 
@@ -760,7 +830,7 @@ export default class GenerateReport extends Component {
                     <div className='PDFpreview'>
                         <h1 style={{color:"#ff5520"}}>Encore Thrifting Store</h1>
                         
-                        {this.state.purchaseType == "Stock Orders" && 
+                        {(this.state.purchaseType == "Stock Orders" || !this.state.purchaseType) && 
                             <div>
                                 <h3>Details of Stock Orders that Ordered Between <br/>{this.state.from} and {this.state.to}</h3>
                                 <table className='pdfTable' id='placedDateTable' >
@@ -791,10 +861,10 @@ export default class GenerateReport extends Component {
                                 </table>  
                             </div>
                         }
-                        {this.state.purchaseType == "Other Purchases" && 
+                        {(this.state.purchaseType == "Other Purchases" || !this.state.purchaseType) && 
                             <div>
                                 <h3>Details of Other Purchases that Ordered Between <br/>{this.state.from} and {this.state.to}</h3>
-                                <table className='pdfTable' id='placedDateTable' >
+                                <table className='pdfTable' id='purchasedDateTable' >
                                     <thead>
                                         <tr>
                                             <th scope="col">PurID</th>

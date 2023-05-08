@@ -13,7 +13,7 @@ function PurchasingFunc() {
       <a href={`/purchasing/display-purchases`}><button className='home-tab' >View All Other Purchases</button></a>
       <a href='/purchasing/generate-report'><button className='home-tab' >Generate Reports</button></a>
       <a href='/purchasing/send-mails'><button className='home-tab' >Send Emails</button></a>
-      <button className='home-tab' >Graph Generator</button>  
+      <a href='/purchasing/generate-graph'><button className='home-tab' >Graph Generator</button></a>
       <button className='home-tab' >Data Analyzing & Calculating</button>  
     </div>
   )
@@ -24,13 +24,7 @@ function StockFunc() {
   return (
     <div>
       <h4 style={{textAlign:"center"}}>Stock Management System</h4>
-      <a href='/stock/add-item'><button className='home-tab' >Add Item</button></a>
-      <a href={`/stock/damaged-item`}><button className='home-tab' >Damaged Item List</button></a>
-      <a href={`/stock/disposed-item`}><button className='home-tab' >Disposed Item List</button></a>
-      <a href={`/stock/released-item`}><button className='home-tab' >Released Item List</button></a>
-      <a href={`/stock/view-lowstock-item`}><button className='home-tab' >Low Stock Item List</button></a>
-      <button className='home-tab' >Generate Reports</button>
-      <a href={`/stock/send-email`}><button className='home-tab' >Send Emails</button></a>
+      
        
         
     </div>
