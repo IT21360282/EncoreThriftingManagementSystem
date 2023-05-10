@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import axios from 'axios'
 import  './employee.css'
 
@@ -25,7 +25,21 @@ export default class EmployeeHome extends Component {
     })
   }
 
-  render() {
+  componentDidMount(){
+    this.fetchEmpCount();
+  }
+
+  fetchEmpCount = async() => {
+    try {
+      const response = await axios.get("http://localhost:8000/employeeGet/get/employee/count");
+      this.setState({employeeCount: response.data.count})
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+
+  render() {   
     
     
     const {currentDate} = this.state
@@ -53,7 +67,7 @@ export default class EmployeeHome extends Component {
           <div style={{width:"99%"}}>
             <div className='btn-inline' style={{marginTop:"20px"}}>
             <div className='btn-inline' style={{marginTop:"20px"}}>
-            <div className='semi-preview-container'>Total number of employees<br/>{totalEmployees}</div>
+            <div className='semi-preview-container'>Total number of employees<br/>{this.state.employeeCount}</div>
             <div className='semi-preview-container'>Daily average working time<br/>{avgDailyWorkingTime}</div>
             <div className='semi-preview-container'>Total number of attendence in today{currentDate}<br/>{numOfAttendence}</div>
             </div>

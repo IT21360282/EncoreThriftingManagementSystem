@@ -44,5 +44,15 @@ router.get('/employeeDetails/search', (req, res) => {
     })
 })
 
+//Get Employee Count
+router.get("/get/employee/count", async (req, res) => {
+    try {
+        const count = await addEmployeeDetailsModel.countDocuments();
+        res.json({count});
+    } catch (error) {
+        return res.status(500).json({ error });
+    }
+});
+
 module.exports = router
 
