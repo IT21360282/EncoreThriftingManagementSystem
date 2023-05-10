@@ -73,22 +73,30 @@ const ManagerManagement = () => {
 
   //Create Record Function
   const createRecord = () => {
-    if (First_Name == null || First_Name == "" || First_Name == undefined) {
-      toast.error("Please Enter First Name !!");
-    } else if (Last_Name == null || Last_Name == "" || Last_Name == undefined) {
-      toast.error("Please Enter Last Name !!");
-    } else if (NIC == null || NIC == "" || NIC == undefined) {
-      toast.error("Please Enter NIC Number  !!");
-    } else if (Address == null || Address == "" || Address == undefined) {
-      toast.error("Please Enter Address  !!");
-    } else if (Contact == null || Contact == "" || Contact == undefined) {
-      toast.error("Please Enter Contact Number  !!");
-    } else if (
-      Designation == null ||
-      Designation == "" ||
-      Designation == undefined
-    ) {
-      toast.error("Please Select Designation !!");
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Regular expressions to validate NIC and Contact fields
+    const nicRegex = /^[0-9]{9}[vV]$/;
+    const contactRegex = /^[0-9]{10}$/;
+
+    if (!First_Name) {
+      toast.error("Please Enter First Name!!");
+    } else if (!Last_Name) {
+      toast.error("Please Enter Last Name!!");
+    } else if (!NIC) {
+      toast.error("Please Enter NIC Number!!");
+    } else if (!nicRegex.test(NIC)) {
+      toast.error("Please Enter a Valid NIC Number (e.g. 123456789V)!!");
+    } else if (!Address) {
+      toast.error("Please Enter Address!!");
+    } else if (!Contact) {
+      toast.error("Please Enter Contact Number!!");
+    } else if (!contactRegex.test(Contact)) {
+      toast.error("Please Enter a Valid Contact Number (e.g. 0712345678)!!");
+    } else if (!Designation) {
+      toast.error("Please Select Designation!!");
+    } else if (!emailRegex.test(Email)) {
+      toast.error("Please Enter a Valid Email Address!!");
     } else {
       const model = {
         First_name: First_Name,
@@ -115,22 +123,20 @@ const ManagerManagement = () => {
     }
   };
   //Get Count of Each Manager
-const getCount=(data)=>{
-  const st=data.filter((item=>item.Designation=="Stock Manager"))
-  setStockCount(st.length)
-  const emp=data.filter((item=>item.Designation=="Employee Manager"))
-  setEmpCount(emp.length)
-  const sup=data.filter((item=>item.Designation=="Supplier Manager"))
-  setSupplierCount(sup.length)
-  const pu=data.filter((item=>item.Designation=="Purchasing Manager"))
-  setPurchasingCount(pu.length)
-  const fi=data.filter((item=>item.Designation=="Finance Manager"))
-  setFinanceCount(fi.length)
-  const del=data.filter((item=>item.Designation=="Delivery Manager"))
-  setDeliveryCount(del.length)
-
-
-}
+  const getCount = (data) => {
+    const st = data.filter((item) => item.Designation == "Stock Manager");
+    setStockCount(st.length);
+    const emp = data.filter((item) => item.Designation == "Employee Manager");
+    setEmpCount(emp.length);
+    const sup = data.filter((item) => item.Designation == "Supplier Manager");
+    setSupplierCount(sup.length);
+    const pu = data.filter((item) => item.Designation == "Purchasing Manager");
+    setPurchasingCount(pu.length);
+    const fi = data.filter((item) => item.Designation == "Finance Manager");
+    setFinanceCount(fi.length);
+    const del = data.filter((item) => item.Designation == "Delivery Manager");
+    setDeliveryCount(del.length);
+  };
   //Get All Data from Backend
   const getData = () => {
     axios
@@ -138,13 +144,11 @@ const getCount=(data)=>{
       .then((response) => {
         console.log(response);
         setTableData(response.data);
-        getCount(response.data)
-        
+        getCount(response.data);
       })
       .catch((error) => {
         toast.error("Error While Fetching Data !!.");
       });
-      
   };
   //Delete Record
   const deleteRecord = (id) => {
@@ -226,44 +230,62 @@ const getCount=(data)=>{
 
     doc.setFontSize(15);
     doc.text("All Report", 40, 40);
-    var data
-    var price = 0
-    var count = 0
+    var data;
+    var price = 0;
+    var count = 0;
 
-    await axios
-      .get(API_URL + "/")
-      .then(res => {
-        if (res.data) {
-         
-      
-          console.log(res.data)
-          data = res.data 
-          const headers = [["ID", "First Name", "Last Name", "Designation", "Email","NIC","Contact","Address"]];
-          const datas = res.data.map(elt => [++count, elt.First_name, elt.Last_name, elt.Designation, elt.Email,elt.NIC,elt.Contact,elt.Address]);
-          let content = {
-            startY: 50,
-            head: headers,
-            body: datas
-          };
+    await axios.get(API_URL + "/").then((res) => {
+      if (res.data) {
+        console.log(res.data);
+        data = res.data;
+        const headers = [
+          [
+            "ID",
+            "First Name",
+            "Last Name",
+            "Designation",
+            "Email",
+            "NIC",
+            "Contact",
+            "Address",
+          ],
+        ];
+        const datas = res.data.map((elt) => [
+          ++count,
+          elt.First_name,
+          elt.Last_name,
+          elt.Designation,
+          elt.Email,
+          elt.NIC,
+          elt.Contact,
+          elt.Address,
+        ]);
+        let content = {
+          startY: 50,
+          head: headers,
+          body: datas,
+        };
 
-          data.map(res => {
-            price = price + res.cost
-          });
+        data.map((res) => {
+          price = price + res.cost;
+        });
 
-
-          doc.autoTable(content)
-        } else {
-          //  sweat("ERROR!", "NIC ERROR!", "error")
-        }
-      })
+        doc.autoTable(content);
+      } else {
+        //  sweat("ERROR!", "NIC ERROR!", "error")
+      }
+    });
     // doc.text("Total Price = Rs. " + price + " /-", 40, 800)
     // doc.text("Total  = " + count, 400, 800)
-    doc.save("report.pdf")
+    doc.save("report.pdf");
   };
   return (
     <div>
-      <h4 className='head-title' style={{textAlign:"center"}}> Dashboard Management </h4>
-      <hr/>
+      <h4 className="head-title" style={{ textAlign: "center" }}>
+        {" "}
+        Dashboard Management{" "}
+      </h4>
+      <hr />
       <br></br>
       <br></br>
       <div className="row">
@@ -286,7 +308,15 @@ const getCount=(data)=>{
             Search
           </Button>
         </div>
-        <div className="col-md-2"><Button  onClick={()=>{savePDF()}}>Download Report</Button></div>
+        <div className="col-md-2">
+          <Button
+            onClick={() => {
+              savePDF();
+            }}
+          >
+            Download Report
+          </Button>
+        </div>
         <div className="col-md-2">
           <Button color="success" onClick={() => addToggle()}>
             {" "}
@@ -502,7 +532,7 @@ const getCount=(data)=>{
                     <FormGroup>
                       <label>Designation</label>
                       <select
-                      value={UDesignation}
+                        value={UDesignation}
                         onChange={(e) => {
                           setUDesignation(e.target.value);
                         }}
