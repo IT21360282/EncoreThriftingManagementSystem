@@ -19,6 +19,24 @@ function PurchasingFunc() {
   )
 } 
 
+function FinanceFunc() {
+  return (
+    <div>
+      <h4 style={{textAlign:"center"}}>Financial Management System</h4>
+      <a href='/financial/AddPaymentDetails'><button className='home-tab' >Add Payment Details</button></a>
+      <a href='/financial/AddBankDetails'><button className='home-tab' >Add Bank Details</button></a>
+      <a href='/financial/ViewPaymentDetails'><button className='home-tab' >View Payment Details</button></a>
+      <a href='/financial/ViewBankDetails'><button className='home-tab' >View Bank Details</button></a>
+      <a href='/financial/UpdatePaymentDetails'><button className='home-tab' >Update Payment Details</button></a>
+      <a href='/financial/UpdateBankDetails'><button className='home-tab' >Update Bank Details</button></a>
+      <a href='/financial/SalaryCalculation'><button className='home-tab' >Salary Calculation</button> </a> 
+      <a href='/financial/Rates'><button className='home-tab' >Rates</button>  </a>
+      <a href='/financial/SendEmail'><button className='home-tab' >Send an Email</button></a>
+      <a href='/financial/ReportGenerate'><button className='home-tab' >Report Generation</button></a>  
+    </div>
+  )
+} 
+
 function DashboardFunc() {
   return (
     <div>
@@ -37,7 +55,7 @@ class SideBar extends Component {
           <div className='tabBody'>
             <a href={`/dashboard-home`}><button className='system'><i class="fa-solid fa-table-cells-large"></i>&nbsp;&nbsp;&nbsp;&nbsp;Dashboard</button></a><br/><br/>
             <a href={`/order-home`}><button className='system'><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;&nbsp;&nbsp;Order Management</button></a><br/><br/>
-            <a href={`/financial-home`}><button className='system'><i class="fa-solid fa-hand-holding-dollar"></i>&nbsp;&nbsp;&nbsp;&nbsp;Financial Management</button></a><br/><br/>
+            <a href={`/financial/financial-home`}><button className='system'><i class="fa-solid fa-hand-holding-dollar"></i>&nbsp;&nbsp;&nbsp;&nbsp;Financial Management</button></a><br/><br/>
             <a href={`/employee-home`}><button className='system'><i class="fa-solid fa-id-card"></i>&nbsp;&nbsp;&nbsp;&nbsp;Employee Management</button></a><br/><br/>
             <a href={`/stock-home`}><button className='system'><i class="fa-solid fa-boxes-stacked"></i>&nbsp;&nbsp;&nbsp;&nbsp;Stock Management</button></a><br/><br/>
             <a href={`/supplier-home`}><button className='system'><i class="fa-solid fa-truck-field"></i>&nbsp;&nbsp;&nbsp;&nbsp;Supplier Management</button></a><br/><br/>
@@ -50,6 +68,7 @@ class SideBar extends Component {
           <Routes>
               <Route path="/purchasing/:name" element={<PurchasingFunc/>}/>
               <Route path="/dashboard-home" element={<DashboardFunc/>}/>
+              <Route path="/financial/:name" element={<FinanceFunc/>}/>
           </Routes>
         </BrowserRouter>
         </div>
