@@ -35,7 +35,7 @@ export default class EmployeeMails extends Component{
 
 import React, { Component } from 'react'
 import axios from 'axios'
-import '../Employee.css'
+import '../employee.css'
 
 
 export default class EmployeeMails extends Component{

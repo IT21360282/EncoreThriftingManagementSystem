@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import {useParams} from 'react-router-dom'
-import '../Employee.css'
+import '../employee.css'
 
 export default function Updateemployees() {
   const {id} = useParams()
