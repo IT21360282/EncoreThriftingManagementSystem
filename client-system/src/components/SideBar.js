@@ -13,8 +13,8 @@ function PurchasingFunc() {
       <a href={`/purchasing/display-purchases`}><button className='home-tab' >View All Other Purchases</button></a>
       <a href='/purchasing/generate-report'><button className='home-tab' >Generate Reports</button></a>
       <a href='/purchasing/send-mails'><button className='home-tab' >Send Emails</button></a>
-      <button className='home-tab' >Graph Generator</button>  
-      <button className='home-tab' >Data Analyzing & Calculating</button>  
+      <a href='/purchasing/data-analysis'><button className='home-tab' >Data Analysis</button></a>
+      
     </div>
   )
 } 
@@ -32,6 +32,7 @@ function StockFunc() {
       <a href={`/stock/stock-out`}><button className='home-tab' >Low </button></a>
       <a href={`/stock/generate-report`}><button className='home-tab' >Generate Reports</button></a>
       <a href={`/stock/mail`}><button className='home-tab' >Send Emails</button></a>
+      
        
         
     </div>

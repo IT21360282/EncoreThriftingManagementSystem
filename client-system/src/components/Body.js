@@ -41,7 +41,7 @@ import DisplayOtherPurchases from './purchasing/purchasing-components/DisplayOth
 import UpdateOtherPurchase from './purchasing/purchasing-components/UpdateOtherPurchase'
 import DisplaySpecificOtherPurchase from './purchasing/purchasing-components/DisplaySpecificOtherPurchase'
 import SearchStockOrders from './purchasing/purchasing-components/SearchStockOrders'
-import GenerateReport from './purchasing/purchasing-components/GenerateReport'
+import PurchasingGenerateReport from './purchasing/purchasing-components/GenerateReport'
 import SendMails from './purchasing/purchasing-components/SendMails'
 import GenerateGraph from './purchasing/purchasing-components/GenerateGraph'
 import PurchasingCalculating from './purchasing/purchasing-components/PurchasingCalculating'
@@ -70,8 +70,8 @@ export default class Body extends Component {
             <Route path="/purchasing/TestPurchasing" element={<TestPurchasing/>}/>
             <Route path="/purchasing/spec-purchase/:id" element={<DisplaySpecificOtherPurchase/>}/>
             <Route path="/purchasing/search-order/:name" element={<SearchStockOrders/>}/>
-            <Route path="/purchasing/generate-report" element={<GenerateReport/>}/>
-            <Route path="/purchasing/generate-graph" element={<GenerateGraph/>}/>
+            <Route path="/purchasing/generate-report" element={<PurchasingGenerateReport/>}/>
+            <Route path="/purchasing/data-analysis" element={<GenerateGraph/>}/>
             <Route path="/purchasing/send-mails" element={<SendMails/>}/>
             <Route path="/purchasing/calc" element={<PurchasingCalculating/>}/>
 
@@ -107,6 +107,7 @@ export default class Body extends Component {
             <Route path="/stock/mail" element={<SendEmail/>}/>
             
 
+         
 
 
             <Route path="/supplier-home" element={<SupplierHome/>}/>

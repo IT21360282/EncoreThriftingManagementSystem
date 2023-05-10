@@ -29,6 +29,10 @@ export default class DeleteStockOrder extends Component {
         axios.get(`http://localhost:8000/purchasingGet/stockOrder/get/${id}`).then(res =>{
             this.setState({
                 orderStatus:res.data.existingDetails.orderStatus,
+                purDigitID:res.data.existingDetails.purDigitID,
+                purID:res.data.existingDetails.purID,
+                title:res.data.existingDetails.title,
+                supplier:res.data.existingDetails.supplier,
             }, () => {
                 this.checkIsCanceled()
             })

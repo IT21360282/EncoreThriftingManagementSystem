@@ -31,7 +31,7 @@ div.btn-inline {
     width: 100%;
 }
 
-button.btn-inline {
+button.btn-inline-purchasing {
     border: #ff5520 2px solid;
     border-radius: 20px;
     padding: 10px;
@@ -40,7 +40,7 @@ button.btn-inline {
     font-weight: bold;
 }
 
-button.btn-inline:hover {
+button.btn-inline-purchasing:hover {
     background-color: #ff5520;
     color: white;
     cursor: pointer;
@@ -71,13 +71,19 @@ input.search:focus {
     outline: none;
 }
 
-.semi-preview-container {
+div.semi-preview-container-purchasing {
     width: 25%;
     background-color: #81C3D8;
     padding: 30px;
     text-align: center;
     color: white;
     font-weight: bold;
+}
+
+span.semi-preview-container-purchasing {
+    color: #ff5520;
+    font-weight: bold;
+    font-size: x-large;
 }
 
 .div-frame {
@@ -159,7 +165,7 @@ label {
     border: 2px solid #ff5520;
 }
 
-.form-textarea {
+.form-textarea-purchasing {
     border: 1px solid #ff5520;
     border-radius: 8px;
     width: 99%;
@@ -168,7 +174,7 @@ label {
     margin-bottom: 15px;
 }
 
-.form-textarea:focus {
+.form-textarea-purchasing:focus {
     outline: none;
     border: 2px solid #ff5520;
 }

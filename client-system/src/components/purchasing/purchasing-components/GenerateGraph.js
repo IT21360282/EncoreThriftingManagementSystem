@@ -51,17 +51,17 @@ export default class GenerateGraph extends Component {
       {name: 'Received', value: resLen},
     ]
 
-    const data = [
+    /*const data = [
         {name: 'A', value: 10},
         {name: 'B', value: 5},
         {name: 'C', value: 15},
         {name: 'D', value: 20},
         {name: 'E', value: 8},
-    ];
+    ]*/
 
     const colorsForOrderType = ['#D11E00', '#FF2400', '#FF4B2E']
 
-    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#FF0090'];
+    //const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#FF0090']
     return (
       <div className='Purchasing-others'npm install react-vis>
         <h2 style={{marginTop:"70px"}}>Generate Graph</h2>
@@ -69,27 +69,43 @@ export default class GenerateGraph extends Component {
         <div>
         </div>
         <div className='gray-box' style={{overflowY:"scroll",height:"64vh"}}> 
-          <div className='chartCenter'>
-            <h4 style={{textAlign:"center"}}>Current Stock Order Counts Categorized by Order Status</h4>
-            <PieChart width={500} height={300} >
-                <Pie
-                    data={orderTypeData}
-                    cx={250}
-                    cy={150}
-                    labelLine={false}
-                    label={({ name, value }) => `${name}: ${value}`}
-                    outerRadius={100}
-                    fill="#ff5520"
-                    dataKey="value"
-                >
-                    {orderTypeData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={colorsForOrderType[index]} />
-                    ))}
-                </Pie>
+          
+          <h4 style={{textAlign:"center"}}>Current Stock Order Counts Categorized by Order Status</h4>
+          <div className='btn-inline'>
+            <div className='chartCenter'>
+              <PieChart width={400} height={300} >
+                  <Pie
+                      data={orderTypeData}
+                      cx={260}
+                      cy={150}
+                      labelLine={false}
+                      label={({ name, value }) => `${name}: ${value}`}
+                      outerRadius={100}
+                      fill="#ff5520"
+                      dataKey="value"
+                  >
+                      {orderTypeData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={colorsForOrderType[index]} />
+                      ))}
+                  </Pie>
+                  <Tooltip />
+                  <Legend />
+                
+              </PieChart>
+              <span ><p style={{textAlign:"center"}}>All Stock Orders: {conLen+resLen+penLen}</p></span>
+            </div>
+
+            <div className='chartCenter'>
+              <BarChart width={400} height={300} data={orderTypeData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
                 <Tooltip />
-              
-            </PieChart>
-            <span ><p style={{textAlign:"center"}}>All Stock Orders: {conLen+resLen+penLen}</p></span>
+                <Legend />
+                <Bar dataKey="value" fill="#8884d8" />
+              </BarChart>
+              <span ><p style={{textAlign:"center"}}>All Stock Orders: {conLen+resLen+penLen}</p></span>
+            </div>
           </div>
         </div>
         

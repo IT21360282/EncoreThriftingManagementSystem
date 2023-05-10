@@ -24,6 +24,7 @@ export default class PlaceStockOrder extends Component {
       paymentStatus: "",
       supplier: "",
       purFullID:"",
+      note:"",
       stockItems: [],
       stockItemsQty: [],
       stockItemsUnitPrice: [],
@@ -34,10 +35,13 @@ export default class PlaceStockOrder extends Component {
       errMsg:"",
       titleErr:"",
       supplierErr:"",
+      submitErr: false,
+      stockItemErr: false,
       isSuccess:false,
     }
     this.handlePopUp = this.handlePopUp.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
+    this.validateBeforeSubmit = this.validateBeforeSubmit.bind(this)
     this.titleValidation = this.titleValidation.bind(this)
     this.titleSupplierValidation = this.titleSupplierValidation.bind(this)
   }
@@ -53,7 +57,7 @@ export default class PlaceStockOrder extends Component {
   }
 
   handlePopUp(){
-    this.setState({isOpen:true})
+    this.setState({isOpen:!this.state.isOpen})
   }
 
   handleInputChange = (e) => {
@@ -201,8 +205,24 @@ export default class PlaceStockOrder extends Component {
     }
   }
 
-  onSubmit = (e) =>{
-    e.preventDefault()
+  validateBeforeSubmit = (e) => {
+    e.preventDefault();
+    const {title, supplier} = this.state
+    if(!title || !supplier || !this.state.stockItems[0] || !this.state.stockItemsQty[0]){
+      this.setState({submitErr:true})
+      this.titleValidation()
+      this.titleSupplierValidation()
+    }
+    if(!this.state.stockItems[0] || !this.state.stockItemsQty[0]){
+      this.setState({stockItemErr:true})
+    }
+    else{
+      this.onSubmit()
+      this.handlePopUp()
+    }
+  }
+
+  onSubmit(){
 
     let totalQty = this.state.totalQty
       for(let i = 0; i < this.state.stockItemsQty.length; i++){
@@ -256,20 +276,21 @@ export default class PlaceStockOrder extends Component {
             totalQty: "",
             paymentStatus: "",
             supplier: "",
-            stockItems:[],
-            stockItemsQty:[],
+            stockItems:[""],
+            stockItemsQty:[""],
             stockItemsUnitPrice:[],
             stockItemsInput: [],
           }
         )
       }
     this.sendPlacingEmail()
+    this.setState({isSuccess:true})
     }).catch(error=>{
       console.error("error orccured")
       let popUpMsg = this.state.popUpMsg
       let redAlert = this.state.redAlert
       popUpMsg = "Stock Order is not placed."
-      redAlert = "Something Wrong! "
+      redAlert = "Something is Wrong! "
       this.setState({popUpMsg})
       this.setState({redAlert})
     })
@@ -287,7 +308,7 @@ export default class PlaceStockOrder extends Component {
         name:`Order Manager of ${this.state.supplier}`,
         email:"nilankasanjana803@gmail.com",
         subject:`Placing a Order Under Title ${this.state.title}`,
-        msg:`I hope this email finds you well. As the purchasing manager of our inventory, I would like to place an order for the following items:\n${stocksItems}\nPlease provide me with the unit prices and any applicable discounts for these items. Also, please confirm the availability of the items and the estimated time of delivery.\n\nWe are expecting to receive the order by ${this.state.expectedDate}. Please let me know if this timeline is feasible and if there are any issues that may delay the delivery.\n\nIf everything is in order, please send me an invoice with the total cost of the items, including any taxes or shipping fees.\n\nThank you for your prompt attention to this matter. I look forward to hearing from you soon.\n\nBest regards,\nSanjana Nilanka\nPurchasing Manager,\nEncore Thrift Store\n`
+        msg:`I hope this email finds you well. As the purchasing manager of our inventory, I would like to place an order for the following items:\n${stocksItems}\nPlease provide me with the unit prices and any applicable discounts for these items. Also, please confirm the availability of the items and the estimated time of delivery.\n\nWe are expecting to receive the order by ${this.state.expectedDate}. Please let me know if this timeline is feasible and if there are any issues that may delay the delivery.\n\nIf everything is in order, please send me an invoice with the total cost of the items, including any taxes or shipping fees.\n\n${this.state.note}\n\nThank you for your prompt attention to this matter. I look forward to hearing from you soon.\n\nBest regards,\nSanjana Nilanka\nPurchasing Manager,\nEncore Thrift Store\n`
     }
 
     axios.post('http://localhost:8000/purchasingPost/sendEmail',mailOptions).then((res) => {
@@ -336,7 +357,7 @@ export default class PlaceStockOrder extends Component {
               </select>
               <div style={{color:"red",marginBottom:"15px"}}>{this.state.supplierErr}</div>
               <label>Order Expected Day:</label>
-              <input type='date' className='form-input' style={{marginBottom:"0px"}} name='expectedDate' placeholder='' value={this.state.expectedDate} onFocus={this.titleSupplierValidation} onChange={this.handleDateInputChange}/>
+              <input type='date' className='form-input' style={{marginBottom:"0px"}} name='expectedDate' min={new Date(new Date().getTime() + 5.5 * 60 * 60 * 1000 + 24 * 60 * 60 * 1000).toISOString().slice(0,10)} value={this.state.expectedDate} onFocus={this.titleSupplierValidation} onChange={this.handleDateInputChange}/>
               <div style={{color:"red",marginBottom:"15px"}}>{this.state.errMsg}</div>
               <label>Payment:</label>
               <select className='form-select' name='paymentStatus' value={this.state.paymentStatus} onFocus={this.titleSupplierValidation} onChange={this.handleInputChange}>
@@ -346,7 +367,7 @@ export default class PlaceStockOrder extends Component {
                 <option>Send to Financial Manager</option>
               </select><br/>
               <label>Note for Supplier:</label>
-              <textarea className='form-textarea' name='' cols={30} rows={6} onFocus={this.titleSupplierValidation} placeholder='Special Note for Supplier'></textarea>
+              <textarea className='form-textarea-purchasing' name='note' value={this.state.note} cols={30} rows={6} onFocus={this.titleSupplierValidation} onChange={this.handleInputChange} placeholder='Special Note for Supplier'></textarea>
             
           </div>
 
@@ -371,7 +392,10 @@ export default class PlaceStockOrder extends Component {
                   <button type="button" className='remove-stock-input' onClick={() => this.handleRemoveStockItem(index+1)}><i class="fa-solid fa-minus"></i></button>
                 </div>
               ))}
+              
+              {this.state.submitErr && <div style={{color:"red"}}>To place a order, atleast one stock item is required.</div>}
               <button className="btn btn-success" style={{right:"0",marginTop:"10px"}} type="button" onClick={this.handleAddStockItem}><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Add Another Item</button>
+              
               <div className='btn-inline' style={{marginBottom:'5px', marginTop:'15px'}}>
                 <div className='form-preview-container'>Item Type quantity<br/><span style={{color:"red",fontSize:"20px"}}>{itemTypeQty}</span></div> 
                 <div className='form-preview-container'>Total Item Quantity<br/><span style={{color:"red",fontSize:"20px"}}>{totalQty}</span></div>
@@ -385,23 +409,31 @@ export default class PlaceStockOrder extends Component {
           </div>
 
           <div className='form-main'>
+          
             <div style={{textAlign:"justify"}}>
               <p style={{width:"100%"}}><span style={{color:"red"}}>*</span>When place the order, An email informing about order will be sent to the relevent supplier. You can able to change or cancel order untill order will be confirmed.</p>
+              {this.state.submitErr && <span style={{color:"red"}}>Please fill all required fields to place this order.</span>}
             </div>
             <div className='form-btn'>
               <br/>
               <a href={`/purchasing/display-orders`}><button className="btn btn-primary" >View All Orders</button></a>&nbsp;&nbsp;&nbsp;
               <button className="btn btn-warning" type='reset' >Reset</button>&nbsp;&nbsp;&nbsp;
-              <a onClick={this.handlePopUp} ><button className="btn btn-success"  onClick={this.onSubmit}>Place</button></a>
+              <a  ><button className="btn btn-success"  onClick={this.validateBeforeSubmit}>Place</button></a>
               <ReactModal isOpen={this.state.isOpen} onRequestClose={this.handlePopUp} className="popUp20 zoom-in">
                 <h2 ><span style={{color:'red'}}>{this.state.redAlert}</span>{this.state.popUpMsg}</h2>
-                <a href={`/purchasing/place-order`}><button onClick={this.handlePopUp} className="btn btn-primary" >Place Another Order</button></a>&nbsp;&nbsp;&nbsp;
+                {this.state.isSuccess==false && 
+                  <a><button onClick={this.handlePopUp} className="btn btn-primary" >OK</button></a>
+                }
+                {this.state.isSuccess && 
+                  <a href='/purchasing/place-order'><button onClick={this.handlePopUp} className="btn btn-primary" >Place Another Order</button></a>
+                }&nbsp;&nbsp;&nbsp;
                 <a href={`/purchasing/display-orders`}><button onClick={this.handlePopUp} className="btn btn-primary" >View All Orders</button></a>&nbsp;&nbsp;&nbsp;
                 <a href={`/purchasing/purchasing-home`}><button onClick={this.handlePopUp} className="btn btn-primary" ><i class="fa-solid fa-house"></i>&nbsp;Home</button></a>
               </ReactModal>
               <br/>
               <br/>
             </div>
+            
           </div>
         </div>
       </div>

@@ -29,6 +29,7 @@ app.use(deleteRoutes)
 app.use(UpdateRoutes)
 const app = express();
 
+
 const getRouter = require("./routes/purchasing/routesGet");
 const postRouter = require("./routes/purchasing/routesPost");
 
@@ -42,8 +43,7 @@ app.use("/purchasingGet", getRouter);
 app.use("/dashboard", DashboardRouter);
 
 const PORT = 8000;
-const DB_URL =
-    "mongodb+srv://t5:1234@cluster0.awr06ma.mongodb.net/THRIFT_STORE?retryWrites=true&w=majority";
+const DB_URL = "mongodb+srv://t5:1234@cluster0.awr06ma.mongodb.net/THRIFT_STORE?retryWrites=true&w=majority";
 
 mongoose
     .connect(DB_URL)
@@ -55,22 +55,6 @@ mongoose
         console.log(err);
     });
 
-app.listen(PORT, () => { <<
-    <<
-    << < HEAD
+app.listen(PORT, () => {
     console.log(`Server is Running on ${PORT}`)
 })
-
-
-
-
-
-
-
-===
-===
-=
-console.log(`Server is Running on ${PORT}`);
-}); >>>
->>>
-> IT21266546_SathsaraniHES

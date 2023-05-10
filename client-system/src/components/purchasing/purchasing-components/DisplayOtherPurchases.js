@@ -99,13 +99,12 @@ export default class DisplayOtherPurchases extends Component {
         return (
             <div className='Purchasing-others'>
                 <h2 style={{marginTop:"70px"}}>{this.state.title}&nbsp;&nbsp;<span style={{color:"#ff5520"}}>{this.state.searchQuery}</span></h2>
-                <div className='btn-inline'>
-                    <div><span type='submit' className='search' ><i class="fa-solid fa-magnifying-glass"></i></span>
-                    <input className='search' style={{width:"500px"}} name='searchQuery' placeholder='Search Details By PurchaseID or Title or Shop Name' value={this.state.searchQuery} onChange={this.handleSearchInput} ></input></div>
-                    <FilterOtherPurchases/>
-                    <a href='/purchasing/display-purchases'><button className='btn-inline' style={{width:"200px"}}>Clear Filter</button></a>
+                <div style={{width:"100%"}} >
+                    <div><span className='search' ><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <input className='search' style={{width:"93%"}} name='searchQuery' placeholder='Search Details By PurchaseID or Title or Shop Name' value={this.state.searchQuery} onChange={this.handleSearchInput} ></input></div>
+                    {/*<FilterOtherPurchases/>
+                    <a href='/purchasing/display-purchases'><button className='btn-inline' style={{width:"200px"}}>Clear Filter</button></a>*/}
                 </div>
-                <br/>
                 <br/>
         
                 <div className='div-frame'>
@@ -123,7 +122,7 @@ export default class DisplayOtherPurchases extends Component {
                             </tr>
                         </thead>
                     </table>
-                    <div  style={{overflowY:"scroll",height:"36vh"}} >  
+                    <div  style={{overflowY:"scroll",height:"40vh"}} >  
                             <table className='details-table'  >
                             <tbody scope="raw" >      
                                 {this.state.otherPurchaseDetails.map((results,index)=>(

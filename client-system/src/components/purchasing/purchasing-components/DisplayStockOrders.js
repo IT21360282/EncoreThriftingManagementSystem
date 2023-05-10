@@ -5,6 +5,10 @@ import 'jspdf-autotable'
 import CancelStockOrder from './CancelStockOrder'
 import ChangeStockOrder from './ChangeStockOrder'
 import ReactModal from 'react-modal'
+import DeleteStockOrder from './DeleteStockOrder'
+import UpdateStockOrder from './UpdateStockOrder'
+import UpReceiveStockOrder from './UpReceiveStockOrder'
+import UpConfirmStockOrder from './UpConfirmStockOrder'
 
 export default class DisplayStockOrders extends Component {
     constructor(props){
@@ -105,8 +109,8 @@ export default class DisplayStockOrders extends Component {
                     <span className='search' ><i class="fa-solid fa-magnifying-glass"></i></span>
                     <input className='search' style={{width:"500px"}} name='searchQuery' placeholder='Search Details By PurchaseID or Title or Shop Name' value={this.state.searchQuery} onChange={this.handleSearchInput} ></input>
                 </div>
-                <a><button className='btn-inline' style={{width:"200px"}}>Add Filter</button></a>
-                <a><button className='btn-inline' style={{width:"200px"}}>Clear Filter</button></a>
+                <a><button className='btn-inline-purchasing' style={{width:"200px"}}>Add Filter</button></a>
+                <a><button className='btn-inline-purchasing' style={{width:"200px"}}>Clear Filter</button></a>
             </div>
             <br/>
             <br/>
@@ -141,12 +145,32 @@ export default class DisplayStockOrders extends Component {
                                     <td style={{width:"8%"}}>{results.totalQty}</td>
                                     <td style={{width:"18%"}}>{results.supplier}</td>
                                     <td style={{padding:"5px",border:"none",width:"25%"}}>
-                                        <div className='btn-inline-table'>
-                                            <ChangeStockOrder ID={results._id}/>
-                                            <CancelStockOrder digitID={results.purDigitID} PID={results.purID} orderTitel={results.title} supplier={results.supplier} payment={results.paymentStatus} ID={results._id} />
-                                            <a href={`/purchasing/${results._id}`}><button type="button" className="btn btn-primary"><i class="fa fa-circle-ellipsis"></i> More</button></a>
-                                            
-                                        </div>
+                                        {results.orderStatus == "Confirmation Pending" &&
+                                            <div className='btn-inline-table'>
+                                                <ChangeStockOrder ID={results._id}/>
+                                                <CancelStockOrder digitID={results.purDigitID} PID={results.purID} orderTitel={results.title} supplier={results.supplier} payment={results.paymentStatus} ID={results._id} />
+                                                <a href={`/purchasing/${results._id}`}><button type="button" className="btn btn-primary"><i class="fa fa-circle-ellipsis"></i> More</button></a>                                             
+                                            </div>
+                                        }
+                                        {results.orderStatus == "Canceled" &&
+                                            <div className='btn-inline-table' style={{width:"60%"}}>
+                                                <DeleteStockOrder ID = {results._id}/>
+                                                <a href={`/purchasing/${results._id}`}><button type="button" className="btn btn-primary"><i class="fa fa-circle-ellipsis"></i> More</button></a>                                             
+                                            </div>        
+                                        }
+                                        {results.orderStatus == "Pending" &&
+                                            <div className='btn-inline-table' >
+                                                <UpdateStockOrder ID = {results._id}/>
+                                                <UpReceiveStockOrder ID = {results._id}/>
+                                                <a href={`/purchasing/${results._id}`}><button type="button" className="btn btn-primary"><i class="fa fa-circle-ellipsis"></i> More</button></a>                                             
+                                            </div>        
+                                        }
+                                        {results.orderStatus == "Received" &&
+                                            <div className='btn-inline-table' style={{width:"60%"}}>
+                                                
+                                                <a href={`/purchasing/${results._id}`}><button type="button" className="btn btn-primary" style={{width:"150px"}}><i class="fa fa-circle-ellipsis"></i> More</button></a>                                             
+                                            </div>        
+                                        }
                                     </td>
                                 </tr>
                                 
