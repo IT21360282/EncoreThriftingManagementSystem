@@ -1,9 +1,9 @@
 const express = require('express')
-const mainCategoryModel = require('../../models/stock/modelMainCategory')
+    //const mainCategoryModel = require('../../models/stock/modelMainCategory')
 const subCategoryModel = require('../../models/stock/modelItemNew')
 const damagedItemModel = require('../../models/stock/modelDamagedItem')
-const disposedItemModel =require('../../models/stock/modelDisposedItem')
-const releasedItemModel = require('../../models/stock/modelReleasedItem')
+const disposedItemModel = require('../../models/stock/modelDisposedItem')
+    //const releasedItemModel = require('../../models/stock/modelReleasedItem')
 const lowStockModel = require('../../models/stock/modelStockLowItems')
 const imageDetails = require('../../models/stock/imageDetails')
 
@@ -50,20 +50,21 @@ router.post('/subcategory/post', (req, res) => {
 
 
 
- router.post("/upload-image",async(req,res)=>{
-    const {base64} = req.body;
+router.post("/upload-image", async(req, res) => {
+    const { base64 } = req.body;
 
-    try{
+    try {
 
-        imageDetails.create({image:base64})
-        
-        res.send({Status:"ok"})
-    }catch(error){
+        imageDetails.create({ image: base64 })
+
+        res.send({ Status: "ok" })
+    } catch (error) {
         res.send({
-            Status:"error",data:error
+            Status: "error",
+            data: error
         });
     }
-  })
+})
 
 
 router.post('/damageditem/post', (req, res) => {
@@ -136,55 +137,56 @@ router.post('/lowstock/post', (req, res) => {
 
 router.post('/newitem/post', (req, res) => {
     upload(req, res, (err) => {
-      if (err) {
-        return res.status(400).json({
-          error: err
-        });
-      } else {
-        let newSubCategory = new subCategoryModel(req.body);
-        if (req.file) {
-          newSubCategory.photo.data = fs.readFileSync(req.file.path);
-          newSubCategory.photo.contentType = req.file.mimetype;
+        if (err) {
+            return res.status(400).json({
+                error: err
+            });
+        } else {
+            let newSubCategory = new subCategoryModel(req.body);
+            if (req.file) {
+                newSubCategory.photo.data = fs.readFileSync(req.file.path);
+                newSubCategory.photo.contentType = req.file.mimetype;
+            }
+            newSubCategory.save().then(() => {
+                console.log('Subcategory details saved successfully');
+                return res.status(200).json({
+                    success: 'Subcategory details saved successfully'
+                });
+            }).catch((err) => {
+                console.error(err);
+                return res.status(400).json({
+                    error: err
+                });
+            });
         }
-        newSubCategory.save().then(() => {
-          console.log('Subcategory details saved successfully');
-          return res.status(200).json({
-            success: 'Subcategory details saved successfully'
-          });
-        }).catch((err) => {
-          console.error(err);
-          return res.status(400).json({
-            error: err
-          });
-        });
-      }
     });
-  });
+});
 
 
 
 
 
 
-  router.post("/upload-image",async(req,res)=>{
-    const {base64} = req.body;
+router.post("/upload-image", async(req, res) => {
+    const { base64 } = req.body;
 
-    try{
+    try {
 
-        imageDetails.create({image:base64})
-        
-        res.send({Status:"ok"})
-    }catch(error){
+        imageDetails.create({ image: base64 })
+
+        res.send({ Status: "ok" })
+    } catch (error) {
         res.send({
-            Status:"error",data:error
+            Status: "error",
+            data: error
         });
     }
-  })
+})
 
 
-  /* Send Emails to stakeholders */
+/* Send Emails to stakeholders */
 router.post('/sendEmailInventory/post', (req, res) => {
-    
+
     const inventoryReciver = req.body.inventoryReciver
     const inventorySubject = req.body.inventorySubject
     const inventoryMsg = req.body.inventoryMsg
@@ -210,30 +212,30 @@ router.post('/sendEmailInventory/post', (req, res) => {
             res.status(500).send('Error Occurred When Sending Email');
         } else {
             console.log('Email sent: ' + info.response);
-            res.status(200).send('Email Sent Successfully');
-        }
-    })
+            res.status(200).send('Email Sent Successfully');     
+        }    
+    })
 })
 
-  
+
 const multer = require('multer');
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 router.post('/upload-image', upload.single('file'), (req, res) => {
-  const fileData = req.file.buffer;
-  const image = new Image({
-    data: fileData,
-    contentType: req.file.mimetype
-  });
-  image.save((err) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send('Error uploading image');
-    } else {
-      res.status(200).send('Image uploaded successfully');
-    }
-  });
+    const fileData = req.file.buffer;
+    const image = new Image({
+        data: fileData,
+        contentType: req.file.mimetype
+    });
+    image.save((err) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('Error uploading image');
+        } else {
+            res.status(200).send('Image uploaded successfully');
+        }
+    });
 });
 
 

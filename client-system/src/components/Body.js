@@ -16,15 +16,14 @@ import AddItem from '../components/stock/stock-components/AddItem'
 import EditSubCategory from '../components/stock/stock-components/EditItem'
 import DamagedItem from '../components/stock/stock-components/DamagedItemList'
 import AddDamagedItem from '../components/stock/stock-components/AddDamagedItem'
-import ViewDamage from '../components/stock/stock-components/ViewDamage'
 import DisposedItem from '../components/stock/stock-components/DisposedItemList'
-import ViewDisposed from '../components/stock/stock-components/ViewDisposed'
-import ReleasedItem from '../components/stock/stock-components/ReleasedItem'
+//import ViewDisposed from '../components/stock/stock-components/ViewDisposed'
+//import ReleasedItem from '../components/stock/stock-components/ReleasedItem'
 import AddReleasedItem from '../components/stock/stock-components/AddReleasedItem'
 import AddDisposedItem from '../components/stock/stock-components/AddDisposedItem'
 import ViewLowStock from '../components/stock/stock-components/ViewLowStock'
-import ViewReleasedItem from '../components/stock/stock-components/ViewReleasedItem'
-import LowStockList from '../components/stock/stock-components/LowStockList'
+//import ViewReleasedItem from '../components/stock/stock-components/ViewReleasedItem'
+//import LowStockList from '../components/stock/stock-components/LowStockList'
 import GenerateReport from '../components/stock/stock-components/GenerateReport'
 
 import SendEmail from '../components/stock/stock-components/SendMailForm'
@@ -92,16 +91,16 @@ export default class Body extends Component {
             <Route path="/stock/add-item" element={<AddItem/>}/>
             <Route path="/stock/damaged-item" element={<DamagedItem/>}/>
             <Route path="/stock/add-damaged-item" element={<AddDamagedItem/>}/>
-            <Route path="/stock/view-damaged-item/:id" element={<ViewDamage/>}/>
+            {/*<Route path="/stock/view-damaged-item/:id" element={<ViewDamage/>}/>*/}
             <Route path="/stock/disposed-item" element={<DisposedItem/>}/>
-            <Route path="/stock/view-disposed-item/:id" element={<ViewDisposed/>}/>
-            <Route path="/stock/released-item" element={<ReleasedItem/>}/>
+            {/*<Route path="/stock/view-disposed-item/:id" element={<ViewDisposed/>}/>*/}
+            {/*<Route path="/stock/released-item" element={<ReleasedItem/>}/>*/}
             <Route path="/stock/add-released-item" element={<AddReleasedItem/>}/>
             <Route path="/stock/edit-sub-item/:id"element={<EditSubCategory/>}/>
             <Route path="/stock/add-disposed-item" element={<AddDisposedItem/>}/>
             <Route path="/stock/view-lowstock-item" element={<ViewLowStock/>}/>
-            <Route path="/stock/view-released-item/:id" element={<ViewReleasedItem/>}/>
-            <Route path="/stock/view-lowstock-item" element={<LowStockList/>}/>
+            {/*<Route path="/stock/view-released-item/:id" element={<ViewReleasedItem/>}/>
+            <Route path="/stock/view-lowstock-item" element={<LowStockList/>}/>*/}
             <Route path="/stock/generate-report" element={<GenerateReport/>}/>
             <Route path="/stock/stock-out" element={<OutStock/>}/>
             <Route path="/stock/mail" element={<SendEmail/>}/>

@@ -27,7 +27,7 @@ app.use(postRoutes)
 app.use(getRoutes)
 app.use(deleteRoutes)
 app.use(UpdateRoutes)
-const app = express();
+
 
 
 const getRouter = require("./routes/purchasing/routesGet");
