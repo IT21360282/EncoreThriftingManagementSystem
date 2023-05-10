@@ -361,7 +361,7 @@ onSubmit=(e)=>{
                                   
 
                                   <div >
-                                  <td ><a href={`/stock/edit-sub-item/${results._id}`}><button className="btn btn-warning">Edit</button></a></td>
+                                  <td ><a href={`/stock/edit-damaged-item-details/${results._id}`}><button className="btn btn-warning">Edit</button></a></td>
                                   <td ><button className="btn btn-danger"  onClick={()=>{this.onDelete(results._id);displayLoginNotification()}} >Delete</button></td>
                                   <td ><a href={`/stock/view-damaged-item/${results._id}`}><button className="btn btn-primary">View</button></a></td>
                                   </div>
