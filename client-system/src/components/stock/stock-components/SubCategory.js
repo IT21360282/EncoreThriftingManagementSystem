@@ -410,7 +410,7 @@ class SubCategory extends Component {
                       <div style={{ color: "red" }}>{errors.pDescription}</div>
                     )}
                      <div className='buttn-success-1'>
-                      <button className="btn btn-success" type='submit' style={{marginTop:"15px"}} ><i class="fa-regular fa-square-check" style={{marginRight:"10px"}} onClick={this.onSubmit}></i>Save</button>
+                      <button className="btn btn-success"  style={{marginTop:"15px"}} ><i class="fa-regular fa-square-check" style={{marginRight:"10px"}} onClick={this.onSubmit}></i>Save</button>
                       
 										
                       </div>
