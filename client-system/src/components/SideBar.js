@@ -19,11 +19,15 @@ function PurchasingFunc() {
   )
 } 
 
-function DashboardFunc() {
+function SupplierFunc() {
   return (
     <div>
-      <h4 style={{textAlign:"center"}}>Dashboard</h4>
-      
+      <h4 style={{textAlign:"center"}}>Supplier Management System</h4>
+      <a href='/supplier/supplier-home'><button className='home-tab' >Home</button></a>
+      <a href='/supplier/AddNewSupplier'><button className='home-tab' >Add New Suppliers</button></a>
+      <a href='/supplier/DisplayAllSuppliers'><button className='home-tab' >Display All Suppliers</button></a>
+      <a href='/supplier/BestSupplier'><button className='home-tab' >Find Best Suppliers</button></a>
+      <a href='/supplier/BestSupplier'><button className='home-tab' >Contact Suppliers</button></a>
     </div>
   )
 } 
@@ -40,7 +44,7 @@ class SideBar extends Component {
             <a href={`/financial-home`}><button className='system'><i class="fa-solid fa-hand-holding-dollar"></i>&nbsp;&nbsp;&nbsp;&nbsp;Financial Management</button></a><br/><br/>
             <a href={`/employee-home`}><button className='system'><i class="fa-solid fa-id-card"></i>&nbsp;&nbsp;&nbsp;&nbsp;Employee Management</button></a><br/><br/>
             <a href={`/stock-home`}><button className='system'><i class="fa-solid fa-boxes-stacked"></i>&nbsp;&nbsp;&nbsp;&nbsp;Stock Management</button></a><br/><br/>
-            <a href={`/supplier-home`}><button className='system'><i class="fa-solid fa-truck-field"></i>&nbsp;&nbsp;&nbsp;&nbsp;Supplier Management</button></a><br/><br/>
+            <a href={`/supplier/supplier-home`}><button className='system'><i class="fa-solid fa-truck-field"></i>&nbsp;&nbsp;&nbsp;&nbsp;Supplier Management</button></a><br/><br/>
             <a href={`/purchasing/purchasing-home`}><button className='system'><i class="fa-solid fa-bag-shopping"></i>&nbsp;&nbsp;&nbsp;&nbsp;Purchasing Management</button></a><br/><br/>
             <a href={`/delivery-home`}><button className='system'><i class="fa-solid fa-truck"></i>&nbsp;&nbsp;&nbsp;&nbsp;Delivery Management</button></a>
           </div>
@@ -49,7 +53,7 @@ class SideBar extends Component {
         <BrowserRouter>
           <Routes>
               <Route path="/purchasing/:name" element={<PurchasingFunc/>}/>
-              <Route path="/dashboard-home" element={<DashboardFunc/>}/>
+              <Route path="/supplier/:name" element={<SupplierFunc/>}/>
           </Routes>
         </BrowserRouter>
         </div>

@@ -22,6 +22,27 @@ function PurchasingFunc() {
     )
 } 
 
+function SupplierHomeFunc() {
+  const un = "Dhanuka Jayathilaka"
+  return (
+    <div >
+      <h1 className='head-title'>Supplier Management System</h1>
+      <hr/>
+      <h4 style={{marginLeft:"20px"}}>Welcome {un}</h4>
+    </div>
+  )
+} 
+
+function SupplierFunc() {
+  const un = "Dhanuka Jayathilaka"
+  return (
+    <div >
+      <h1 className='head-title'>Supplier Management System</h1>
+      <hr/>
+    </div>
+  )
+} 
+
 export default class SystemTitle extends Component {
   render() {
     return (
@@ -29,6 +50,8 @@ export default class SystemTitle extends Component {
             <Routes>
                 <Route path="/purchasing/purchasing-home" element={<PurchasingHomeFunc/>}/>
                 <Route path="/purchasing/:name" element={<PurchasingFunc/>}/>
+                <Route path="/supplier/supplier-home" element={<SupplierHomeFunc/>}/>
+                <Route path="/Supplier/:name" element={<SupplierFunc/>}/>
             </Routes>
       </BrowserRouter>
     )
