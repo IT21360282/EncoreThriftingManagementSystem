@@ -152,7 +152,7 @@ class SubCategory extends Component {
     }
 
 
-    // validation for
+    
 
     onSubmit=(e)=>{
 
@@ -206,7 +206,7 @@ class SubCategory extends Component {
             }
         })
 
-        window.location.reload()
+        
 
     }
 
@@ -247,8 +247,6 @@ class SubCategory extends Component {
 
         
 
-        
-
         return (
 
           
@@ -278,8 +276,8 @@ class SubCategory extends Component {
                 <div className='semi-preview-container'>Total Product<br/>{totalProduct}</div>
                 <div className='semi-preview-container'>All Item Count <br/>{allItem}</div>
                 <div className='semi-preview-container'>Out Of Stock<br/><div className='redNumb'>{outOfStock}</div></div>
-                <a href={`/stock/sub-category`}><button className='btn-back'><i class="fa-sharp fa-solid fa-rotate-right"></i> Refresh</button></a>
-                <a href='/stock/sub-category'><button className='btn-back'><i class="fa-solid fa-arrow-left"></i> Back</button></a>
+                <a href={`/stock/sub-category`}><button className='btn-back'><i className="fa-sharp fa-solid fa-rotate-right"></i> Refresh</button></a>
+                <a href='/stock/sub-category'><button className='btn-back'><i className="fa-solid fa-arrow-left"></i> Back</button></a>
 
 
 
@@ -300,7 +298,7 @@ class SubCategory extends Component {
                 <div > 
                 <div className='my-add' >
                   <h3 className='popup-head-add-item'>Add Item</h3>
-                  <button className='close-btn' onClick={() => close()}><i class="fa-solid fa-xmark"></i></button>
+                  <button className='close-btn' onClick={() => close()}><i className="fa-solid fa-xmark"></i></button>
                   </div>
                   <form className='add-form'  > 
                   <div className='popUp-form' >
@@ -310,7 +308,7 @@ class SubCategory extends Component {
                       <input type='text' id="username" className='form-enter' name='pName' placeholder='Enter Name'  value={this.state.pName} onChange={this.handleInputChange} aria-errormessage='username-error' required />
                       
                       {errors.pName && (
-                      <div class="error-msg" style={{ color: "red" }}>{errors.pName}</div>
+                      <div className="error-msg" style={{ color: "red" }}>{errors.pName}</div>
                     )}
                       </div>
 

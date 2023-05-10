@@ -21,6 +21,7 @@ class EditdamagedItemBody extends Component {
             
             pName:"",
             pCategory:"",
+            pSubCategory:"",
             pQuantity:"",
             pPrice:"",
             pImageURL:"",
@@ -44,13 +45,14 @@ class EditdamagedItemBody extends Component {
 
         e.preventDefault();
 
-            const{pName,pCategory,pQuantity,pPrice,pImageURL,pReason,pPlacedDate}=this.state;
+            const{pName,pCategory,pSubCategory,pQuantity,pPrice,pImageURL,pReason,pPlacedDate}=this.state;
 
         
         const data ={
             
             pName:pName,
             pCategory:pCategory,
+            pSubCategory:pSubCategory,
             pQuantity:pQuantity,
             pPrice:pPrice,
             pImageURL:pImageURL,
@@ -59,7 +61,7 @@ class EditdamagedItemBody extends Component {
         }
 
         console.log(data)
-        alert("Hello")
+        
 
         axios.put(`http://localhost:8000/damageditem/update/${this.state.id}`,data).then((res)=>{
         
@@ -69,6 +71,7 @@ class EditdamagedItemBody extends Component {
                         
                       pName:"",
                       pCategory:"",
+                      pSubCategory:"",
                       pQuantity:"",
                       pPrice:"",
                       pImageURL:"",
@@ -91,7 +94,7 @@ class EditdamagedItemBody extends Component {
                     
                     pName:res.data.existingDetails.pName,
                     pCategory:res.data.existingDetails.pCategory,
-                   
+                    pSubCategory:res.data.existingDetails.pSubCategory,
                     pQuantity:res.data.existingDetails.pQuantity,
                     pPrice:res.data.existingDetails.pPrice,
                     pPlacedDate:res.data.existingDetails.pPlacedDate,
@@ -129,6 +132,36 @@ class EditdamagedItemBody extends Component {
                         <option>Books</option>
                         <option>Clothes</option>
                       </select><br/>
+                      <label>Sub Category:</label><br/>
+                        <select className='form-input' name='pSubCategory' value={this.state.pSubCategory} onChange={this.handleInputChange}>
+                          <option value="">--Select a subcategory--</option>
+                          {
+                            this.state.pCategory=== 'Books' ?
+                            <>
+                              <option value="novel">Novel</option>
+                              <option value="story">Story</option>
+                            </> :
+                            this.state.pCategory === 'Electronics' ?
+                            <>
+                              <option value="phone">mobile-Phone</option>
+                              <option value="tv">TV</option>
+                              <option value="laptop">Laptop</option>
+                              <option value="radio">Radio</option>
+                              <option value="hometheater">HomeTheater</option>
+                              
+                            </> :
+                            this.state.pCategory=== 'Clothes' ?
+                            <>
+                              <option value="short">Short</option>
+                              <option value="t-shirt">T-shirt</option>
+                              <option value="trouser">Trouser</option>
+                              <option value="frock">Frock</option>
+                              <option value="skirt">Skirt</option>
+                              <option value="blouse">Blouse</option>
+                            </> :
+                            null
+                          }
+                        </select><br/>
 
                       
                         <label>Product Quantity:</label><br/>

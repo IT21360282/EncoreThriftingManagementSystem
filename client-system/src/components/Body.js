@@ -24,11 +24,11 @@ import AddReleasedItem from '../components/stock/stock-components/AddReleasedIte
 import AddDisposedItem from '../components/stock/stock-components/AddDisposedItem'
 import ViewLowStock from '../components/stock/stock-components/ViewLowStock'
 import ViewReleasedItem from '../components/stock/stock-components/ViewReleasedItem'
-import LowStockList from '../components/stock/stock-components/LowStockList'
+
 import GenerateReports from '../components/stock/stock-components/GenerateReport'
 import EditDamagedItem from '../components/stock/stock-components/EditDamagedItem'
 import SendEmail from '../components/stock/stock-components/SendMailForm'
-import OutStock from '../components/stock/stock-components/OutStock'
+import EditDisposedItem from '../components/stock/stock-components/EditDisposedItem'
 
 
 import SupplierHome from './supplier/SupplierHome'
@@ -92,11 +92,14 @@ export default class Body extends Component {
             <Route path="/stock/add-disposed-item" element={<AddDisposedItem/>}/>
             <Route path="/stock/view-lowstock-item" element={<ViewLowStock/>}/>
             <Route path="/stock/view-released-item/:id" element={<ViewReleasedItem/>}/>
-            <Route path="/stock/view-lowstock-item" element={<LowStockList/>}/>
+            
             <Route path="/stock/generate-report" element={<GenerateReports/>}/>
-            <Route path="/stock/stock-out" element={<OutStock/>}/>
+            
             <Route path="/stock/mail" element={<SendEmail/>}/>
             <Route path="/stock/edit-damaged-item-details/:id" element={<EditDamagedItem/>}/>
+            <Route path="/stock/edit-damaged-item/:id" element={<EditDisposedItem/>}/>
+            
+
             
 
 

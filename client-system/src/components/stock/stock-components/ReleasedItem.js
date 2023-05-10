@@ -45,7 +45,7 @@ class ReleasedItem extends Component {
             <div className='stock'>
                 <div>
 
-            <div className='btn-inline' style={{marginTop:"140px"}} >
+            <div className='btn-inline' style={{marginTop:"70px"}} >
                 <div className='semi-preview-container'>Total Released Item<br/>{totalProduct}</div>
                 <button className='btn-back'><i class="fa-solid fa-arrow-left"></i> Back</button>
                 
@@ -53,12 +53,7 @@ class ReleasedItem extends Component {
 
               </div>
 
-            <div className='btn-inline' style={{marginTop:"20px"}} >
-                <a href={`/stock/add-item`}><button className='btn-inline'>Add Item</button></a>
-                <button className='btn-inline'>Add Other Purchase</button>
-                <button className='btn-inline'>View All Purchases</button>
-                <div><button className='search'><i class="fa-solid fa-magnifying-glass"></i></button><input className='search' placeholder='Search Details Here'></input></div>
-              </div>
+            
 
               <div>
                 <a href={`/stock/add-released-item`}><button className='btn btn-warning' style={{marginTop:"15px"}}><i class="fa-solid fa-pen-to-square"></i> Add Released Item</button></a>

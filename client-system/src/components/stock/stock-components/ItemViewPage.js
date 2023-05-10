@@ -57,6 +57,7 @@ class ItemViewPageBody extends Component {
                              <img className='view-content-img' style={{width:"250px"}} src={this.state.specificItemView.pImageURL}/><br/>   
                              <li><label className='view-content-data'>Product Name:</label>{this.state.specificItemView.pName}</li><br/>
                              <li><label className='view-content-data'>Product Category:</label>{this.state.specificItemView.pCategory}</li><br/>
+                             <li><label className='view-content-data'>Product SubCategory:</label>{this.state.specificItemView.pSubCategory}</li><br/>
                              <li><label className='view-content-data'>Product Quantity:</label>{this.state.specificItemView.pQuantity}</li><br/>
                              <li><label className='view-content-data'>Product Reorder Level:</label>{this.state.specificItemView.pLevel}</li><br/>
                              <li><label className='view-content-data'>Unit Price:</label>{this.state.specificItemView.pPrice}</li><br/>
