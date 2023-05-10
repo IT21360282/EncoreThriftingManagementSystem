@@ -37,14 +37,7 @@ function FinanceFunc() {
   )
 } 
 
-function DashboardFunc() {
-  return (
-    <div>
-      <h4 style={{textAlign:"center"}}>Dashboard</h4>
-      
-    </div>
-  )
-} 
+
 
 function SupplierFunc() {
   return (

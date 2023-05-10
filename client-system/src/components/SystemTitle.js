@@ -112,7 +112,7 @@ export default class SystemTitle extends Component {
                 <Route path="/Supplier/:name" element={<SupplierFunc/>}/>
                 <Route path="/employee-home" element={<EmployeeHomeFunc/>}/>
                 <Route path="/employee/:name" element={<EmployeeFunc/>}/>
-                <Route path="/financial/financial-home" element={<FinancialHomeFunc/>}/>
+                <Route path="/financial-home" element={<FinancialHomeFunc/>}/>
                 <Route path="/financial/:name" element={<FinancialFunc/>}/>
                 <Route path="/financial/:name/:name" element={<FinancialFunc/>}/>
             </Routes>
