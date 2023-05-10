@@ -115,31 +115,32 @@ handlesearchInput = (e) => {
         <div>
           <h2 style={{marginLeft:"20px",marginTop:"65px"}}>Available Suppliers</h2>
 
-          <div style={{marginLeft:"500px",width:"50%"}} >
-            <button className='searchSupplier'><i class="fa-solid fa-magnifying-glass"></i></button><input className='searchSupplier' value={this.state.searchInput} onChange={this.handlesearchInput} placeholder='Search Details Here'></input>
+          <div style={{width:"100%",marginLeft:"20px", marginRight:"20px"}} >
+            <button className='searchSupplier'><i class="fa-solid fa-magnifying-glass"></i></button>
+            <input className='searchSupplier' value={this.state.searchInput} onChange={this.handlesearchInput} placeholder='Search Details Here'></input>
             </div>
             <br/>
           <div className='table-supplier'>
           <table className='content-tablesupplier' id='supplierDetailsTable' >
             <thead className='content-table thead tr'>
               <tr className='content-table tbody tr'>
-                <th className='content-table th' scope="col"  style={{borderTopLeftRadius:"7px"}}>Supplier ID</th>
-                <th className='content-table th' scope="col" >Supplier Name</th>
-                <th className='content-table th' scope="col" >Supplier Mobile</th>
-                <th className='content-table th' scope="col" >Supplier Email</th>
-                <th className='content-table th' scope="col" >Supplier Type</th>
-                <th className='content-table th' scope="col" style={{border:"none",borderTopRightRadius:"7px"}}>Options</th>
+                <th  scope="col"  style={{borderTopLeftRadius:"7px"}}>Supplier ID</th>
+                <th  scope="col" >Supplier Name</th>
+                <th  scope="col" >Supplier Mobile</th>
+                <th  scope="col" >Supplier Email</th>
+                <th  scope="col" >Supplier Type</th>
+                <th  scope="col" style={{border:"none",borderTopRightRadius:"7px"}}>Options</th>
               </tr>
             </thead>
             <tbody scope="raw" >      
             {this.state.supplierDetails.map((results,index)=>(
               <tr className='content-table tbody tr'>
-                <td className='content-table td'>S00{index+1}</td>
-                <td className='content-table td' title={results.supName}>{results.supName}</td>
-                <td className='content-table td' title={results.supMobileNo}>{results.supMobileNo}</td>
-                <td className='content-table td' title={results.supEmail}>{results.supEmail}</td>
-                <td classname='content-table td' title={results.supType}>{results.supType}</td>
-                <td className='content-table td' style={{padding:"5px",border:"none"}}>
+                <td >S00{index+1}</td>
+                <td  title={results.supName}>{results.supName}</td>
+                <td  title={results.supMobileNo}>{results.supMobileNo}</td>
+                <td  title={results.supEmail}>{results.supEmail}</td>
+                <td  title={results.supType}>{results.supType}</td>
+                <td  style={{padding:"5px",border:"none"}}>
                   <div className='btn-inline-table'>
                   <a href={`/supplier/UpdateSupplier/${results._id}`}><button type="button" className="btn btn-warning">UPDATE</button></a>
                   <DeleteSupplier id={results._id}/>

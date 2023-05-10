@@ -97,8 +97,9 @@ onSubmit(){
             <textarea  rows="15" cols="50" name='empmsg' value={this.state.empmsg} onChange={this.handleinput} placeholder='Message...' style={{marginLeft:'40px',border: '2px solid #ff5520',width:'90%',borderRadius:'10px'}} required></textarea>
             <br/>
             <center>
-            <a href='/employee-home'><button type='submit' className='btn btn-warning' style={{ marginTop:"20px"}}>BACK</button></a>
-            <a href='/employee/employee-mails'><button type='submit' onClick={this.onSubmit} className='btn btn-success' style={{ marginTop:"20px",marginLeft:'20px'}}>SEND</button></a>
+            <a href='/employee-home'><button  className='btn btn-warning' style={{ marginTop:"20px"}}>BACK</button></a>
+        
+            <a href='/employee/employee-mails'><button onClick={this.onSubmit} className='btn btn-success' style={{ marginTop:"20px",marginLeft:'20px'}}>SEND</button></a>
             </center>
             <br/>
             </div>

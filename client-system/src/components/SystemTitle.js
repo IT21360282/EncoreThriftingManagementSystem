@@ -91,22 +91,13 @@ export default class SystemTitle extends Component {
                 <Route path="/stock/stock-home" element={<StockHomeFunc/>}/>
                 <Route path="/stock/:name/:name" element={<StockFunc/>}/>
                 <Route path="/stock/:name" element={<StockFunc/>}/>
-                <Route path="/supplier/supplier-home" element={<SupplierHomeFunc/>}/>
+                <Route path="/supplier-home" element={<SupplierHomeFunc/>}/>
                 <Route path="/Supplier/:name" element={<SupplierFunc/>}/>
+                <Route path="/employee-home" element={<EmployeeHomeFunc/>}/>
+                <Route path="/employee/:name" element={<EmployeeFunc/>}/>
             </Routes>
       </BrowserRouter>
     )
   }
-render() {
-  return (
-      <BrowserRouter>
-          <Routes>
-              <Route path="/purchasing/purchasing-home" element={<PurchasingHomeFunc/>}/>
-              <Route path="/purchasing/:name" element={<PurchasingFunc/>}/>
-              <Route path="/employee-home" element={<EmployeeHomeFunc/>}/>
-              <Route path="/employee/:name" element={<EmployeeFunc/>}/>
-          </Routes>
-    </BrowserRouter>
-  )
-}
+
 }
