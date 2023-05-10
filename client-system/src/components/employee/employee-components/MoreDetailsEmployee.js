@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../Employee.css'
+import '../employee.css'
 import {useParams} from 'react-router-dom'
 import axios from 'axios'
 
