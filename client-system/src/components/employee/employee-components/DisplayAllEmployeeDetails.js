@@ -124,7 +124,7 @@ export default class extends Component{
           <input className='searchEmployee' style={{width:"22%"}} value={this.state.searchInput} onChange={this.handlesearchInput} placeholder='Search Details Here'></input></div>
           <br/>
           <div className='table-employee'>
-            <table className='' id="empDetailsTable" >
+            <table className='details-table' id="empDetailsTable" >
               <thead>
                 <tr>
                   <th scope="col" style={{borderTopLeftRadius:"10px"}}>Employee ID</th>

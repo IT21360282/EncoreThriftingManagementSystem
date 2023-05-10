@@ -150,7 +150,6 @@ label {
     border: 3px solid #ff5520;
 }
 
-
 .inline-formsEmployee {
     width: 49%;
     margin-left: auto;
@@ -189,11 +188,11 @@ label {
     border: 3px solid #ff5520;
 }
 
-#Employeerectangle{
+#Employeerectangle {
     margin-left: 20px;
     margin-right: 20px;
-    background:#f2f2f2;
-    border-radius:20px;
+    background: #f2f2f2;
+    border-radius: 20px;
 }
 
 button.searchEmployee {
@@ -224,13 +223,11 @@ input.searchEmployee {
 table.table-employee {
     width: 100%;
     border-collapse: collapse;
-    
 }
 
 div.table-employee {
     margin-left: 20px;
     margin-right: 20px;
-
     border: #ff5520 2px solid;
     border-radius: 10px;
 }
@@ -247,18 +244,16 @@ th.table-employee {
     padding-bottom: 7px;
 }
 
-
-
-#EmailEmployeerectangle{
+#EmailEmployeerectangle {
     margin-left: 200px;
     margin-right: 200px;
     height: 600px;
-    background:#f2f2f2;
-    border-radius:10px;
+    background: #f2f2f2;
+    border-radius: 10px;
     border: #ff5520 2px solid;
 }
 
-.inputEmployeeemail{
+.inputEmployeeemail {
     width: 90%;
     border: 2px solid #ff5520;
     border-radius: 8px;
@@ -271,4 +266,36 @@ th.table-employee {
 .inputEmployeeemail:focus {
     outline: none;
     border: 3px solid #ff5520;
+}
+
+.details-table th,
+.details-table td {
+    padding: 5px;
+    text-align: center;
+    border-right: 2px solid #ff5520;
+}
+
+.details-table th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.details-table tbody tr {
+    border-bottom: 1px solid #D9D9D9;
+}
+
+.details-table tbody tr:nth-of-type(even) {
+    background-color: #f2f2f2;
+}
+
+.details-table tr:last-of-type td:first-child {
+    border-bottom-left-radius: 7px;
+}
+
+.details-table tr:last-of-type td:last-child {
+    border-bottom-right-radius: 7px;
+}
+
+.tData {
+    align-items: center;
 }
