@@ -2,105 +2,100 @@ const router = require("express").Router();
 const { request } = require("express");
 let categoryModel = require("../../models/dashboard/categoryModel.js");
 
-
-
 //add data to Employee table
 //./Employee/add
 //Post request
 //http://localhost:8050/Employee/add
-router.route("/add").post((req,res)=>{
-    const Cname = req.body.Cname;
-    const CID = req.body.CID;
-    const Price = req.body.Price;
-    const Ctype = req.body.Ctype;
-   
+router.post("/categories", async (req, res) => {
+  try {
+    const { Category_Name, Category_ID, Price, Category_Type, Description } =
+      req.body;
     const newCategory = new categoryModel({
-        Cname,
-        CID ,
-        Price,
-        Ctype,
-       
-    })
-
-    newCategory.save().then(()=>{
-        res.json("Category Added")
-    }).catch((err)=>{
-        console.log(err);
-    })
-})
+      Category_Name,
+      Category_ID,
+      Price,
+      Category_Type,
+      Description,
+    });
+    await newCategory.save();
+    res.status(201).json({ message: "Category added successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Something went wrong" });
+  }
+});
 
 //search Employee
 //http://localhost:8050/Employee/
 //Get Request
-router.route("/").get((req,res)=>{
-    categoryModel.find().then((Category)=>{
-        res.json(Category)
-    }).catch((err)=>{
-        console.log(err)
-    })
-})
+router.route("/categories").get(async (req, res) => {
+  try {
+    const categories = await categoryModel.find();
+    res.status(200).json(categories);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Something went wrong" });
+  }
+});
 
 //update
 //http://localhost:8090/Employee/update/:id
 //Put Request
-router.route("/update/:id").put(async (req,res)=>{
-    let userId = req.params.id;
-    const { Cname,CID,Price,Ctype} = req.body;
-    const updateUser = {
-        Cname ,
-        CID,
-        Price,
-        Ctype,
-        
-    }
+router.route("/updateCategories/:id").put(async (req, res) => {
+  let userId = req.params.id;
+  const { Category_Name, Category_ID, Price, Category_Type, Description } =
+    req.body;
+  const updateCategory = {
+    Category_Name,
+    Category_ID,
+    Price,
+    Category_Type,
+    Description,
+  };
+  console.log(updateCategory);
 
-    const update = await categoryModel.findByIdAndUpdate(userId,updateUser).then(()=>{
-        res.status(200).send({status: "Category Updated"})
-    }).catch((err)=>{
-        console.log(err);
-        res.status(500).send({status: "Error with updating data"});
+  const update = await categoryModel
+    .findByIdAndUpdate(userId, updateCategory)
+    .then(() => {
+      res.status(200).send({ status: "Category Updated" });
     })
-})
+    .catch((err) => {
+      console.log(err);
+      res
+        .status(500)
+        .send({ status: "Error with updating data" + err.message });
+    });
+});
 
-//delete Employee
-//http://localhost:8050/Employee/delete/:id
+//delete category
+//http://localhost:8000/category/deleteCategories/:id
 //Delete Request
-router.route("/delete/:id").delete(async (req, res)=>{
-    let userId = req.params.id;
+//working
+router.route("/deleteCategories/:id").delete(async (req, res) => {
+  let id = req.params.id;
 
-    await categoryModel.findByIdAndDelete(userId).then(()=>{
-        res.status(200).send({status: "Category deleted"});
-    }).catch((err)=>{
-        console.log(err);
+  await categoryModel
+    .findByIdAndDelete(id)
+    .then(() => {
+      res.status(200).send({ status: "Category deleted" });
     })
-})
+    .catch((err) => {
+      console.log(err);
+      res.status(400).send({ status: "Error deleting category" });
+    });
+});
 
-//find one of the Employee
-router.route("/get/:id").get((req,res)=>{
-    let id = req.params.id;
-    categoryModel.find({Cname:id}).then((user)=>{
-        res.json(user)
-    }).catch((err)=>{
-        console.log(err);
+//find one of the category
+router.route("/getCategories/:id").get((req, res) => {
+  let id = req.params.id;
+  categoryModel
+    .find({ Category_Name: id })
+    .then((user) => {
+      res.json(user);
     })
-})
-
-//Updateone
-// router.route("/updateOne/:id").put(async (req, res) => {
-//     let Employee = await EmployeeModel.findById(req.params.id);
-//     const data = {
-//         Name: req.body.Name || Employee.Name,
-//         Address: req.body.Address || Employee.Address,
-//         PhoneNumber: req.body.PhoneNumber || Employee.PhoneNumber,
-//         NICNumber: req.body.NICNumber || Employee.NICNumber,
-//         Jobtitle: req.body.Jobtitle || Employee.Jobtitle,
-//         Salary: req.body.Salary || Employee.Salary,
-
-
-//     };
-//     Employee = await EmployeeModel.findByIdAndUpdate(req.params.id, data, { new: true });
-//     res.json(Employee);
-// });
-
+    .catch((err) => {
+      console.log(err);
+    });
+});
 
 module.exports = router;

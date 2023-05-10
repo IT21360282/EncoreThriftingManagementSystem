@@ -36,11 +36,15 @@ const postRouter = require("./routes/purchasing/routesPost");
 //Dashboard Router {Manager Managemet }
 const DashboardRouter = require("./routes/dashboard/employeeRoute.js");
 
+//dashboard Router {category management}
+const DashboardCatRouter = require("./routes/dashboard/categoryRoute.js");
+
 app.use(bodyParser.json());
 app.use(cors());
 app.use("/purchasingPost", postRouter);
 app.use("/purchasingGet", getRouter);
 app.use("/dashboard", DashboardRouter);
+app.use("/dashboard", DashboardCatRouter);
 
 const PORT = 8000;
 const DB_URL = "mongodb+srv://t5:1234@cluster0.awr06ma.mongodb.net/THRIFT_STORE?retryWrites=true&w=majority";

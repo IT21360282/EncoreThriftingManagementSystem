@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { request } = require("express");
-let EmployeeModel = require("../../models/purchasing/dashboard/employeeModel.js");
+let EmployeeModel = require("../../models/dashboard/employeeModel.js");
 
 //add data to Employee table
 //./Employee/add
@@ -101,21 +101,5 @@ router.route("/get/:id").get((req, res) => {
       console.log(err);
     });
 });
-
-//Updateone
-// router.route("/updateOne/:id").put(async (req, res) => {
-//     let Employee = await EmployeeModel.findById(req.params.id);
-//     const data = {
-//         Name: req.body.Name || Employee.Name,
-//         Address: req.body.Address || Employee.Address,
-//         PhoneNumber: req.body.PhoneNumber || Employee.PhoneNumber,
-//         NICNumber: req.body.NICNumber || Employee.NICNumber,
-//         Jobtitle: req.body.Jobtitle || Employee.Jobtitle,
-//         Salary: req.body.Salary || Employee.Salary,
-
-//     };
-//     Employee = await EmployeeModel.findByIdAndUpdate(req.params.id, data, { new: true });
-//     res.json(Employee);
-// });
 
 module.exports = router;
