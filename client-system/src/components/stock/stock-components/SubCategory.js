@@ -27,7 +27,6 @@ class SubCategory extends Component {
             pDescription:"",
             pLevel:"",
             subCategoryDetails: [],
-            errors: {},
                
         }
         
@@ -233,7 +232,7 @@ class SubCategory extends Component {
 
       let totalProduct=0
       this.state.subCategoryDetails.map((results,index)=>{
-        if(results.pSubCategory.length>0){
+        if(this.state.subCategoryDetails.length>0){
           totalProduct=totalProduct+1
         }
       })
@@ -307,9 +306,7 @@ class SubCategory extends Component {
                       <label >Product Name:</label><br/>
                       <input type='text' id="username" className='form-enter' name='pName' placeholder='Enter Name'  value={this.state.pName} onChange={this.handleInputChange} aria-errormessage='username-error' required />
                       
-                      {errors.pName && (
-                      <div className="error-msg" style={{ color: "red" }}>{errors.pName}</div>
-                    )}
+                      
                       </div>
 
                       <div className='label-1'>
@@ -320,9 +317,7 @@ class SubCategory extends Component {
                         <option>Books</option>
                         <option>Clothes</option>
                       </select><br/>
-                      {errors.pCategory && (
-                      <div style={{ color: "red" }}>{errors.pQuantity}</div>
-                    )}
+                      
                       <div className='label-2'>
                       <label>Subcategory:</label><br/>
                         <select className='form-enter' name='pSubCategory' value={this.state.pSubCategory} onChange={this.handleInputChange}>
@@ -357,58 +352,44 @@ class SubCategory extends Component {
                         </div>
                       
                       
-                      {errors.pSubCategory && (
-                      <div style={{ color: "red" }}>{errors.pSubCategory}</div>
-                    )}
+                     
 
                       
                       <label>Product Quantity:</label><br/>
                       <input type='number' min={0} className='form-enter' name='pQuantity' placeholder='10' value={this.state.pQuantity} onChange={this.handleInputChange}/><br/>
                       
-                      {errors.pQuantity && (
-                        <div style={{ color: "red" }}>{errors.pQuantity}</div>
-                      )}
+                      
 
                       
                       <label>Product Reorder Level:</label><br/>
                       <input type='number' className='form-enter' name='pLevel' placeholder='10' value={this.state.pLevel} onChange={this.handleInputChange}/><br/>
                       
-                      {errors.pLevel && (
-                        <div style={{ color: "red" }}>{errors.pLevel}</div>
-                      )}
+                      
                       
                       
                       <label>Unit Price(LKR):</label><br/>
                       <input type='number' className='form-enter' name='pPrice' placeholder='Rs:1000' value={this.state.pPrice} onChange={this.handleInputChange}/><br/>
                       
-                      {errors.pPrice && (
-                        <div style={{ color: "red" }}>{errors.pPrice}</div>
-                      )}
+                      
 
                       
                       <label>Date:</label><br/>
                       <input type='date' className='form-enter' name='pPlacedDate' placeholder='' value={this.state.pPlacedDate} onChange={this.handleInputChange}/><br/>
                       
-                      {errors.pPlacedDate && (
-                      <div style={{ color: "red" }}>{errors.pPlacedDate}</div>
-                    )}
+                      
 
 
                       
                       <label>Product Image URL:</label><br/>
                       <input type='text' className='form-enter' name='pImageURL' placeholder='https://www.abcd.com' value={this.state.pImageURL} onChange={this.handleInputChange}/><br/>
                       
-                      {errors.pImageURL && (
-                      <div style={{ color: "red" }}>{errors.pImageURL}</div>
-                    )}
+                     
 
                       
                       <label>Product Description:</label><br/>
                       <textarea className='form-textarea' rows={2} cols={20} type="text" name='pDescription' placeholder='Enter Item Details' value={this.state.pDescription} onChange={this.handleInputChange} required/><br/>
                       
-                      {errors.pDescription && (
-                      <div style={{ color: "red" }}>{errors.pDescription}</div>
-                    )}
+                    
                      <div className='buttn-success-1'>
                       <button className="btn btn-success"  style={{marginTop:"15px"}} ><i class="fa-regular fa-square-check" style={{marginRight:"10px"}} onClick={this.onSubmit}></i>Save</button>
                       
