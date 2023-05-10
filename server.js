@@ -47,6 +47,19 @@ app.use('/supplierPost', postRouterSupplier)
 app.use('/supplierGet', getRouterSupplier)
 app.use('/supplierPut', putRouterSupplier)
 
+const getRouterFinance = require('./routes/finance/routesGet')
+const postRouterFinance = require('./routes/finance/routesPost')
+const PutRouterFinance = require('./routes/finance/routePut')
+const deleteRouterFinance = require('./routes/finance/routeDelete')
+
+app.use(bodyParser.json())
+app.use(cors())
+
+app.use('/financePost', postRouterFinance)
+app.use('/financeGet', getRouterFinance)
+app.use('/financePut', PutRouterFinance)
+app.use('/financeDelete', deleteRouterFinance)
+
 const PORT = 8000
 const DB_URL = "mongodb+srv://t5:1234@cluster0.awr06ma.mongodb.net/THRIFT_STORE?retryWrites=true&w=majority"
 

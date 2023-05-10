@@ -15,6 +15,16 @@ import UpdateEmployee from './employee/employee-components/UpdateEmployeeDetails
 import EmployeeMails from './employee/employee-components/EmployeeMails'
 import EmployeeAttendance from './employee/employee-components/EmployeeAttendance'
 import FinancialHome from './financial/FinancialHome'
+import AddPaymentDetails from './financial/financial-components/AddPaymentDetails'
+import ViewPaymentDetails from './financial/financial-components/ViewPaymentDetails'
+import AddBankDetails from './financial/financial-components/AddBankDetails'
+import ViewBankDetails from './financial/financial-components/ViewBankDetails'
+import UpdatePaymentDetails from './financial/financial-components/UpdatePaymentDetails'
+import UpdateBankDetails from './financial/financial-components/UpdateBankDetails'
+import SalaryCalculation from './financial/financial-components/SalaryCalculation'
+import FinancialRates from './financial/financial-components/FinancialRates'
+import FinancialSendEmail from './financial/financial-components/SendEmail'
+import FinancialReportGenerate from './financial/financial-components/ReportGenerate'
 import StockHome from './stock/StockHome'
 import SubCategory from '../components/stock/stock-components/SubCategory'
 import ItemView from '../components/stock/stock-components/ItemViewPage'
@@ -79,6 +89,7 @@ import EmployeeHome from "./employee/EmployeeHome";
 import CategoryGraph from "./dashboard/dashboard-components/CGraph";
 import Notes from "./dashboard/dashboard-components/Notes";
 
+
 export default class Body extends Component {
   render() {
     return (
@@ -107,7 +118,17 @@ export default class Body extends Component {
             <Route path="/dashboard-home/graph" element={<Graph/>}/>
             <Route path="/dashboard-home/contact" element={<Contact/>}/>
             <Route path="/order-home" element={<OrderHome/>}/>
-            <Route path="/financial-home" element={<FinancialHome/>}/>
+            <Route path="/financial/financial-home" element={<FinancialHome/>}/>
+            <Route path="/financial/AddPaymentDetails" element={<AddPaymentDetails/>}/>
+            <Route path="/financial/AddBankDetails" element={<AddBankDetails/>}/>
+            <Route path="/financial/ViewPaymentDetails" element={<ViewPaymentDetails/>}/>
+            <Route path="/financial/ViewBankDetails" element={<ViewBankDetails/>}/>
+            <Route path="/financial/UpdatePaymentDetails" element={<UpdatePaymentDetails/>}/>
+            <Route path="/financial/UpdateBankDetail/:id" element={<UpdateBankDetails/>}/>
+            <Route path="/financial/SalaryCalculation" element={<SalaryCalculation/>}/>
+            <Route path="/financial/Rates" element={<FinancialRates/>}/>
+            <Route path="/financial/SendEmail" element={<FinancialSendEmail/>}/>
+            <Route path="/financial/ReportGenerate" element={<FinancialReportGenerate/>}/>
             <Route path="/employee-home" element={<EmployeeHome/>}/>
 
             {/*stock*/}

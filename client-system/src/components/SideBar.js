@@ -14,7 +14,33 @@ function PurchasingFunc() {
       <a href='/purchasing/generate-report'><button className='home-tab' >Generate Reports</button></a>
       <a href='/purchasing/send-mails'><button className='home-tab' >Send Emails</button></a>
       <a href='/purchasing/data-analysis'><button className='home-tab' >Data Analysis</button></a>
-      
+    
+    </div>
+  )
+} 
+
+function FinanceFunc() {
+  return (
+    <div>
+      <h4 style={{textAlign:"center"}}>Financial Management System</h4>
+      <a href='/financial/AddPaymentDetails'><button className='home-tab' >Add Payment Details</button></a>
+      <a href='/financial/AddBankDetails'><button className='home-tab' >Add Bank Details</button></a>
+      <a href='/financial/ViewPaymentDetails'><button className='home-tab' >View Payment Details</button></a>
+      <a href='/financial/ViewBankDetails'><button className='home-tab' >View Bank Details</button></a>
+      <a href='/financial/UpdatePaymentDetails'><button className='home-tab' >Update Payment Details</button></a>
+      <a href='/financial/UpdateBankDetails'><button className='home-tab' >Update Bank Details</button></a>
+      <a href='/financial/SalaryCalculation'><button className='home-tab' >Salary Calculation</button> </a> 
+      <a href='/financial/Rates'><button className='home-tab' >Rates</button>  </a>
+      <a href='/financial/SendEmail'><button className='home-tab' >Send an Email</button></a>
+      <a href='/financial/ReportGenerate'><button className='home-tab' >Report Generation</button></a>  
+    </div>
+  )
+} 
+
+function DashboardFunc() {
+  return (
+    <div>
+      <h4 style={{textAlign:"center"}}>Dashboard</h4>
       
     </div>
   )
@@ -123,6 +149,7 @@ class SideBar extends Component {
                   <Route path="/employee-home" element={<EmployeeFunc/>}/>
                   <Route path="/employee/:name" element={<EmployeeFunc/>}/>
                   <Route path="/supplier/:name" element={<SupplierFunc/>}/>
+                  <Route path="/financial/:name" element={<FinanceFunc/>}/>
               </Routes>
             </BrowserRouter>
           </div>
