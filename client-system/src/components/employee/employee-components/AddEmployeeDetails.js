@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import '../Employee.css'
 
+
 export default class AddEmployeeDetails extends Component {
   constructor(props){
     super(props)
@@ -62,10 +63,7 @@ render() {
           
           <br></br><br></br>
           <table>
-          <tr>
-            <td><label>ID : </label></td>
-            <td><input type='text' className='form-inputEmployee' name='empID' value={this.state.empID} onChange={this.haddleInputChanges} placeholder='Enter Employee Id'/></td>
-          </tr>
+          
           <tr>
             <td><label>Name : </label></td>
             <td><input type='text' className='form-inputEmployee' name='empName' value={this.state.empName} onChange={this.haddleInputChanges} placeholder='Enter Employee Name'/></td>

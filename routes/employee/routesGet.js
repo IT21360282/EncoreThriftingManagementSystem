@@ -15,7 +15,7 @@ router.get('/addEmployeeDetails/get', (req, res) => {
     })
 })
 
-
+//update
 router.get('/updateEmployeeDetails/get/:id', (req, res) => {
     addEmployeeDetailsModel.findById(req.params.id).exec().then((results) => {
         console.log(results)

@@ -3,6 +3,7 @@ import axios from 'axios'
 import '../Employee.css'
 import 'jspdf-autotable'
 import jsPDF from 'jspdf'
+import toast,{Toaster} from "react-hot-toast"
 
 class DeleteEmployee extends Component {
   constructor(props){
@@ -93,6 +94,8 @@ export default class extends Component{
       pdf.setTextColor("#00baa1")
       pdf.text("Employee Details Table",50,35)
       pdf.save("Employee.pdf")
+
+      toast.success("Download", {duration: 2000, position:"top-center"})
     }
 
 //search
@@ -119,6 +122,7 @@ export default class extends Component{
     return (
       <div>
         <div>
+        <Toaster/>
           <h2 style={{marginLeft:"20px",marginTop:"65px"}}>Available Employees </h2>
           <div><button className='searchEmployee'><i class="fa-solid fa-magnifying-glass"></i></button><input className='searchEmployee' value={this.state.searchInput} onChange={this.handlesearchInput} placeholder='Search Details Here'></input></div>
           <br/>
@@ -136,9 +140,9 @@ export default class extends Component{
                 </tr>
               </thead>
               <tbody scope="raw" >      
-              {this.state.employeeDetails.map((results)=>(
+              {this.state.employeeDetails.map((results,index)=>(
                 <tr>
-                  <td className='table-employee'>{results.empID}</td>
+                  <td className='table-employee'>EMP00{index+1}</td>
                   <td className='table-employee'title={results.empName}>{results.empName}</td>
                   <td className='table-employee'title={results.empNIC}>{results.empNIC}</td>
                   <td className='table-employee'title={results.empEmail}>{results.empEmail}</td>
@@ -148,7 +152,7 @@ export default class extends Component{
                     <div className='btn-inline-table'>
                     <a href={`/employee/update-employee/${results._id}`}><button type="button" className="btn btn-warning">UPDATE</button></a>
                     <DeleteEmployee id={results._id}/>
-                    <a href='/employee/MoreDetailsEmployee'><button type="button" className="btn btn-primary">MORE</button></a>
+                    <a href={`/employee/MoreDetailsEmployee/${results._id}`}><button type="button" className="btn btn-primary">MORE</button></a>
                     </div>
                   </td>
                 </tr>

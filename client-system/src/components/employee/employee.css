@@ -272,3 +272,25 @@ th.table-employee {
     outline: none;
     border: 3px solid #ff5520;
 }
+
+/* More Employee Details*/
+
+#MoreEmployeerectangle{
+    margin-left: 200px;
+    margin-right: 200px;
+    height: 600px;
+    background:#f2f2f2;
+    border-radius:10px;
+    border: #ff5520 2px solid;
+}
+
+#EmployeeImagerectangle{
+    margin-left: 300px;
+    margin-right: 300px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    height: 200px;
+    background:white;
+    border-radius:10px;
+    border:black 1px solid;
+}

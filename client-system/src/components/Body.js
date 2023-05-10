@@ -8,6 +8,7 @@ import OrderHome from './order/OrderHome'
 import EmployeeHome from './employee/EmployeeHome'
 import AddEmployeeDetails from './employee/employee-components/AddEmployeeDetails'
 import DisplayAllEmployeeDetails from './employee/employee-components/DisplayAllEmployeeDetails'
+import MoreDetailsEmployee from './employee/employee-components/MoreDetailsEmployee'
 import EmployeeLeave from './employee/employee-components/EmployeeLeave'
 import UpdateEmployee from './employee/employee-components/UpdateEmployeeDetails'
 import EmployeeMails from './employee/employee-components/EmployeeMails'
@@ -31,6 +32,7 @@ export default class Body extends Component {
             <Route path="/employee-home" element={<EmployeeHome/>}/>
             <Route path="/employee/add-employee" element={<AddEmployeeDetails/>}/>
             <Route path="/employee/DisplayAllEmployeeDetails" element={<DisplayAllEmployeeDetails/>}/>
+            <Route path="/employee/MoreDetailsEmployee/:id" element={<MoreDetailsEmployee/>}/>
             <Route path="/employee/employee-leave" element={<EmployeeLeave/>}/>
             <Route path="/employee/update-employee/:id" element={<UpdateEmployee/>}/>
             <Route path="/employee/employee-mails" element={<EmployeeMails/>}/>
