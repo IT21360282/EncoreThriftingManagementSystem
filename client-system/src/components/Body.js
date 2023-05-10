@@ -85,8 +85,7 @@ import DashboardHome from "./dashboard/DashboardHome";
 import OrderHome from "./order/OrderHome";
 import EmployeeHome from "./employee/EmployeeHome";
 
-
-import CategoryGraph from "./dashboard/dashboard-components/CGraph";
+import Catgraph from "./dashboard/dashboard-components/Catgraph";
 import Notes from "./dashboard/dashboard-components/Notes";
 
 
@@ -191,7 +190,7 @@ export default class Body extends Component {
           <Route path="/dashboard-home/Category" element={<Addcategory />} />
           <Route path="/dashboard-home/graph" element={<Graph />} />
           <Route path="/dashboard-home/contact" element={<Contact />} />
-          <Route path="/dashboard-home/CGraph" element={<CategoryGraph />} />
+          <Route path="/dashboard-home/Catgraph" element={<Catgraph />} />
           <Route path="/dashboard-home/Notes" element={<Notes />} />
           <Route path="/order-home" element={<OrderHome />} />
           <Route path="/financial-home" element={<FinancialHome />} />

@@ -249,15 +249,10 @@ const Addcategory = () => {
   const savePDF = async () => {
     const doc = new jsPDF("p", "pt", "a4");
 
-    const tableTitle = "Category Management";
-    const tableTitleFontSize = 20;
-    const tableTitleColor = "#FF8C00"; // Dark orange color
-
-    doc.setFontSize(tableTitleFontSize);
-    doc.setTextColor(tableTitleColor);
-    doc.text(tableTitle, doc.internal.pageSize.getWidth() / 2, 40, {
-      align: "center",
-    }); // Add table title with dark orange color and increased font size
+    doc.setFontSize(15);
+    const tableName = "Category Management";
+    doc.text(tableName, doc.internal.pageSize.getWidth() / 2, 40, "center"); // Add table name at the center of the page
+    doc.text("All Report", 40, 80); // Add "All Report" title with increased y position for the gap
     var data;
     var price = 0;
     var count = 0;

@@ -1,101 +1,132 @@
+import React, { Component } from "react";
+import "./contact.css";
+import axios from "axios";
+
+
 /*import React, { useRef } from "react";
 //import emailjs from "@emailjs/browser";
 import styled from "styled-components";
 import ".././dashboard.css";
 
-// npm i @emailjs/browser
+export default class extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sender: "encorethriftinglk@gmail.com",
+      reciever: "",
+      topic: "",
+      txt: "",
+    };
+    this.onSubmit = this.onSubmit.bind(this);
+  }
 
-const Contact = () => {
-  const form = useRef();
-
-  const sendEmail = (e) => {
-    e.preventDefault();
-    window.alert("Form submitted!");
-    emailjs
-      .sendForm(
-        "service_rlo9jvw",
-        "template_ygr6t7o",
-        form.current,
-        "QjSVmcGp2a70N8rOO"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          console.log("message sent");
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+  handleinput = (event) => {
+    const { name, value } = event.target;
+    this.setState({
+      ...this.state,
+      [name]: value,
+    });
   };
 
-  return (
-    <div>
-      <div className="emailBox">
-        <StyledContactForm>
-          <h5>Send E-mails</h5>
-          <form ref={form} onSubmit={sendEmail}>
-            <label>Name</label>
-            <input type="text" name="user_name" />
-            <label>Email</label>
-            <input type="email" name="user_email" />
-            <label>Message</label>
-            <textarea name="message" />
-            <input className="submit" type="submit" value="Send" />
-          </form>
-        </StyledContactForm>
-      </div>
-    </div>
-  );
-};
-
-export default Contact;
-
-// Styles
-
-const StyledContactForm = styled.div`
-  width: 400px;
-  form {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    width: 100%;
-    font-size: 16px;
-    input {
-      width: 100%;
-      height: 35px;
-      padding: 7px;
-      outline: none;
-      border-radius: 5px;
-      border: 1px solid rgb(220, 220, 220);
-      &:focus {
-        border: 2px solid rgba(0, 206, 158, 1);
-      }
-    }
-    textarea {
-      max-width: 100%;
-      min-width: 100%;
-      width: 100%;
-      max-height: 100px;
-      min-height: 100px;
-      padding: 7px;
-      outline: none;
-      border-radius: 5px;
-      border: 1px solid rgb(220, 220, 220);
-      &:focus {
-        border: 2px solid rgba(0, 206, 158, 1);
-      }
-    }
-    label {
-      margin-top: 1rem;
-    }
-    input[type="submit"] {
-      margin-top: 2rem;
-      cursor: pointer;
-      background: rgb(249, 105, 14);
-      color: white;
-      border: none;
-    }
+  onSubmit() {
+    const { sender, reciever, topic, txt } = this.state;
+    const mail = {
+      email: reciever,
+      subject: topic,
+      msg: txt,
+    };
+    axios
+      .post("http://localhost:8000/dashboardPost/sendMail", mail)
+      .then((response) => {
+        console.log("success");
+        this.state({ success: true });
+      })
+      .catch((error) => {
+        console.error("Error Occured:", error);
+      });
   }
 `;
 */
+
+  render() {
+    return (
+      <div>
+        <h2 style={{ marginLeft: "20px", marginTop: "65px" }}>Send an Email</h2>
+        <br></br>
+
+        <div id="fmailrectangle">
+          <div className="fmail-form">
+            <br></br>
+            <br></br>
+            <table>
+              <tr>
+                <td>
+                  <input
+                    type="text"
+                    className="form-inputmail"
+                    name="sender"
+                    value={this.state.sender}
+                    onChange={this.handleinput}
+                    readOnly
+                    placeholder="From"
+                  />
+                </td>
+                <br></br>
+              </tr>
+
+              <tr>
+                <td>
+                  <input
+                    type="text"
+                    className="form-inputmail"
+                    name="reciever"
+                    value={this.state.reciever}
+                    onChange={this.handleinput}
+                    placeholder="To"
+                  />
+                </td>
+                <br></br>
+              </tr>
+
+              <tr>
+                <td>
+                  <input
+                    type="text"
+                    className="form-inputmail"
+                    name="topic"
+                    value={this.state.topic}
+                    onChange={this.handleinput}
+                    placeholder="Subject"
+                  />
+                </td>
+                <br></br>
+              </tr>
+
+              <tr>
+                <td>
+                  <textarea
+                    id="message"
+                    placeholder="Message"
+                    name="txt"
+                    value={this.state.txt}
+                    onChange={this.handleinput}
+                    cols="40"
+                    rows="15"
+                  ></textarea>
+                </td>
+                <br></br>
+              </tr>
+
+              <br></br>
+              <button onClick={this.onSubmit} className="btn btn-success">
+                Send
+              </button>
+            </table>
+          </div>
+
+          <br></br>
+        </div>
+      </div>
+    );
+  }
+}
