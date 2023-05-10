@@ -152,7 +152,7 @@ class SubCategory extends Component {
     }
 
 
-    
+    // validation for add
 
     onSubmit=(e)=>{
 

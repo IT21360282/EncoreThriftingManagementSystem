@@ -21,7 +21,6 @@ class EditdamagedItemBody extends Component {
             
             pName:"",
             pCategory:"",
-            pSubCategory:"",
             pQuantity:"",
             pPrice:"",
             pImageURL:"",
@@ -45,25 +44,25 @@ class EditdamagedItemBody extends Component {
 
         e.preventDefault();
 
-            const{pName,pCategory,pSubCategory,pQuantity,pPrice,pImageURL,pReason,pPlacedDate}=this.state;
+        const{pName,pCategory,pSubCategory,pQuantity,pPrice,pPlacedDate,pImageURL,pDescription,pLevel}=this.state;
 
         
         const data ={
             
-            pName:pName,
-            pCategory:pCategory,
-            pSubCategory:pSubCategory,
-            pQuantity:pQuantity,
-            pPrice:pPrice,
-            pImageURL:pImageURL,
-            pReason:pReason,
-            pPlacedDate:pPlacedDate,
+          pName:pName,
+          pCategory:pCategory,
+          pSubCategory:pSubCategory,
+          pQuantity:pQuantity,
+          pPrice:pPrice,
+          pPlacedDate:pPlacedDate,
+          pImageURL:pImageURL,
+          pDescription:pDescription,
+          pLevel:pLevel
         }
 
         console.log(data)
-        
 
-        axios.put(`http://localhost:8000/damageditem/update/${this.state.id}`,data).then((res)=>{
+        axios.put(`http://localhost:8000/subcategory/update/${this.state.id}`,data).then((res)=>{
         
                 alert("Post Updated")
                 this.setState(
@@ -71,7 +70,6 @@ class EditdamagedItemBody extends Component {
                         
                       pName:"",
                       pCategory:"",
-                      pSubCategory:"",
                       pQuantity:"",
                       pPrice:"",
                       pImageURL:"",
@@ -94,7 +92,7 @@ class EditdamagedItemBody extends Component {
                     
                     pName:res.data.existingDetails.pName,
                     pCategory:res.data.existingDetails.pCategory,
-                    pSubCategory:res.data.existingDetails.pSubCategory,
+                   
                     pQuantity:res.data.existingDetails.pQuantity,
                     pPrice:res.data.existingDetails.pPrice,
                     pPlacedDate:res.data.existingDetails.pPlacedDate,
@@ -132,6 +130,7 @@ class EditdamagedItemBody extends Component {
                         <option>Books</option>
                         <option>Clothes</option>
                       </select><br/>
+
                       <label>Sub Category:</label><br/>
                         <select className='form-input' name='pSubCategory' value={this.state.pSubCategory} onChange={this.handleInputChange}>
                           <option value="">--Select a subcategory--</option>
@@ -162,8 +161,6 @@ class EditdamagedItemBody extends Component {
                             null
                           }
                         </select><br/>
-
-                      
                         <label>Product Quantity:</label><br/>
                         <input type='number' className='form-input' name='pQuantity' placeholder='10' value={this.state.pQuantity} onChange={this.handleInputChange}/><br/>
                         

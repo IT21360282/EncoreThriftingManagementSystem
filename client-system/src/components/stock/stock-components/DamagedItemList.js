@@ -382,66 +382,49 @@ class DamagedItemList extends Component {
               )}
             </Popup>
 
-            <table className="content-table">
-              <thead className="tData">
-                <tr>
-                  <th scope="col" style={{ borderTopLeftRadius: "10px" }}>
-                    C/No
-                  </th>
-                  <th scope="col">Damaged Item Name</th>
-                  <th scope="col">Item Category</th>
-                  <th scope="col">Item Quantity</th>
 
-                  <th
-                    scope="col"
-                    style={{ border: "none", borderTopRightRadius: "10px" }}
-                  >
-                    Option
-                  </th>
-                </tr>
-              </thead>
-              <tbody scope="raw">
-                {this.state.damagedItemDetails.map((results, index) => (
-                  <tr>
-                    <td>DI{String(index + 1).padStart(4, "0")}</td>
-                    <td>{results.pName}</td>
-                    <td>{results.pCategory}</td>
-                    <td>{results.pQuantity}</td>
 
-                    <div>
-                      <td>
-                        <a
-                          href={`/stock/edit-damaged-item-details/${results._id}`}
-                        >
-                          <button className="btn btn-warning">Edit</button>
-                        </a>
-                      </td>
-                      <td>
-                        <button
-                          className="btn btn-danger"
-                          onClick={() => {
-                            this.onDelete(results._id);
-                            displayLoginNotification();
-                          }}
-                        >
-                          Delete
-                        </button>
-                      </td>
-                      <td>
-                        <a href={`/stock/view-damaged-item/${results._id}`}>
-                          <button className="btn btn-primary">View</button>
-                        </a>
-                      </td>
-                    </div>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    );
-  }
+                            <table className='content-table'>
+                              <thead className='tData'>
+                                <tr>
+                                  <th scope="col"  style={{borderTopLeftRadius:"10px"}}>C/No</th>
+                                  <th scope="col" >Damaged Item Name</th>
+                                  <th scope="col" >Item Category</th>
+                                  <th scope="col" >Item Quantity</th>
+                                  
+                                  
+                                  <th scope="col"  style={{border:"none",borderTopRightRadius:"10px"}}>Option</th>
+                                </tr>
+
+                              </thead>
+                              <tbody scope="raw">
+                              {this.state.damagedItemDetails.map((results,index)=>(
+                                <tr>
+                                  <td >DI{String(index+1).padStart(4,"0")}</td>
+                                  <td >{results.pName}</td>
+                                  <td >{results.pCategory}</td>
+                                  <td >{results.pQuantity}</td>
+                                  
+
+                                  <div >
+                                  <td ><a href={`/stock/edit-sub-item/${results._id}`}><button className="btn btn-warning">Edit</button></a></td>
+                                  <td ><button className="btn btn-danger"  onClick={()=>{this.onDelete(results._id);displayLoginNotification()}} >Delete</button></td>
+                                  <td ><a href={`/stock/view-damaged-item/${results._id}`}><button className="btn btn-primary">View</button></a></td>
+                                  </div>
+                                </tr>
+                              ))}
+                              </tbody>
+                            </table>
+                          </div>
+                            
+                            
+                            
+                            
+                        </div>
+                
+            </div>
+        );
+    }
 }
 
 export default DamagedItemList;
