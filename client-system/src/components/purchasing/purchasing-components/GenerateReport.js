@@ -594,7 +594,7 @@ export default class GenerateReport extends Component {
                    
                     <div className='gray-box' style={{padding:"20px", width:'45%'}}>
                         <label>Select Supplier to Generate Report of Stock Orders Categorized by Suppliers</label><br/>
-                        <select className='form-select' style={{marginBottom:"60px"}} name='supplier' value={this.state.supplier}  onChange={this.inputHandleChange}>
+                        <select className='form-select' style={{marginBottom:"60px",width:"100%"}} name='supplier' value={this.state.supplier}  onChange={this.inputHandleChange}>
                             <option >Any</option>
                             <option value={"Leaf Knowledge"}>Leaf Knowledge (PVT Ltd.)</option>
                             <option>ZOHO International</option>
@@ -607,22 +607,22 @@ export default class GenerateReport extends Component {
                 <div className='btn-inline report-main'>
                     <div className='gray-box' style={{padding:"20px", width:'100%'}}>
                     <label>Select Supplier to Generate Report of Stock Orders Categorized by Suppliers</label><br/>
-                        <select className='form-select' style={{marginBottom:"20px"}} name='purchaseType' value={this.state.purchaseType}  onChange={this.inputHandleChange}>
+                        <select className='form-select' style={{marginBottom:"20px",width:"100%"}} name='purchaseType' value={this.state.purchaseType}  onChange={this.inputHandleChange}>
                             <option value={"Both"}>Both</option>
                             <option value={"Stock Orders"}>Stock Orders</option>
                             <option value={"Other Purchases"}>Other Purchases</option>
                         </select>
-
+                        <br/>
                         <label>Select Time Period to Generate Report of Stock Orders Which are Ordered in that Time Period</label><br/>
                         <div className='btn-inline' style={{marginTop:"10px"}}>
                             <div style={{width:'48%'}}>
-                                <label style={{fontWeight:"unset"}}>From</label>
-                                <input type='date' className='form-input' style={{marginBottom:"0px"}} name='from' max={today} value={this.state.from} onChange={this.handleInputFromDateStockChange}/>
+                                <label style={{fontWeight:"unset"}}>From</label><br/>
+                                <input type='date' className='form-input' style={{marginBottom:"0px",width:"100%"}} name='from' max={today} value={this.state.from} onChange={this.handleInputFromDateStockChange}/>
                             </div>
 
                             <div style={{width:'48%'}}>
-                                <label style={{fontWeight:"unset"}}>To</label>
-                                <input type='date' className='form-input' style={{marginBottom:"0px"}} name='to' max={today} min={this.state.from} value={this.state.to} onChange={this.handleInputToDateStockChange}/>
+                                <label style={{fontWeight:"unset"}}>To</label><br/>
+                                <input type='date' className='form-input' style={{marginBottom:"0px",width:"98%"}} name='to' max={today} min={this.state.from} value={this.state.to} onChange={this.handleInputToDateStockChange}/>
                             </div>
                         </div>
 
