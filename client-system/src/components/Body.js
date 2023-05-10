@@ -3,10 +3,23 @@ import {BrowserRouter, Routes, Route} from "react-router-dom"
 import Home from './Home'
 import PurchasingHome from './purchasing/PurchasingHome'
 import PlaceStockOrder from './purchasing/purchasing-components/PlaceStockOrder'
+<<<<<<< HEAD
 
 
 
 //stock
+=======
+import DashboardHome from './dashboard/DashboardHome'
+import OrderHome from './order/OrderHome'
+import EmployeeHome from './employee/EmployeeHome'
+import AddEmployeeDetails from './employee/employee-components/AddEmployeeDetails'
+import DisplayAllEmployeeDetails from './employee/employee-components/DisplayAllEmployeeDetails'
+import EmployeeLeave from './employee/employee-components/EmployeeLeave'
+import UpdateEmployee from './employee/employee-components/UpdateEmployeeDetails'
+import EmployeeMails from './employee/employee-components/EmployeeMails'
+import EmployeeAttendance from './employee/employee-components/EmployeeAttendance'
+import FinancialHome from './financial/FinancialHome'
+>>>>>>> IT21383816_DeSilvaKPNT
 import StockHome from './stock/StockHome'
 import SubCategory from '../components/stock/stock-components/SubCategory'
 import ItemView from '../components/stock/stock-components/ItemViewPage'
@@ -92,6 +105,7 @@ export default class Body extends Component {
             <Route path="/order-home" element={<OrderHome/>}/>
             <Route path="/financial-home" element={<FinancialHome/>}/>
             <Route path="/employee-home" element={<EmployeeHome/>}/>
+<<<<<<< HEAD
 
             {/*stock*/}
             <Route path="/stock/stock-home" element={<StockHome/>}/>
@@ -118,6 +132,15 @@ export default class Body extends Component {
          
 
 
+=======
+            <Route path="/employee/add-employee" element={<AddEmployeeDetails/>}/>
+            <Route path="/employee/DisplayAllEmployeeDetails" element={<DisplayAllEmployeeDetails/>}/>
+            <Route path="/employee/employee-leave" element={<EmployeeLeave/>}/>
+            <Route path="/employee/update-employee/:id" element={<UpdateEmployee/>}/>
+            <Route path="/employee/employee-mails" element={<EmployeeMails/>}/>
+            <Route path="/employee/employee-Attendance" element={<EmployeeAttendance/>}/>
+            <Route path="/stock-home" element={<StockHome/>}/>
+>>>>>>> IT21383816_DeSilvaKPNT
             <Route path="/supplier-home" element={<SupplierHome/>}/>
             <Route path="/delivery-home" element={<DeliveryHome/>}/>
             <Route path='/ViewCategory' element={<ViewCategory/>} />

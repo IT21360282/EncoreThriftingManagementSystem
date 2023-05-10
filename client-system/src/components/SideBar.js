@@ -19,6 +19,7 @@ function PurchasingFunc() {
   )
 } 
 
+<<<<<<< HEAD
 //stock
 function StockFunc() {
   return (
@@ -64,6 +65,23 @@ function DashboardFunc() {
   );
 }
 
+=======
+function EmployeeFunc() {
+  return (
+    <div>
+      <h4 style={{textAlign:"center"}}>Employee Management System</h4>
+      <a href='/employee/add-employee'><button className='home-tab' >Add Employee Details</button></a>
+      <a href='/employee/employee-attendanceDetails'><button className='home-tab' >Employee Attendance Details</button></a>
+      <a href='/employee/employee-leave'><button className='home-tab' >Employee Leave Management</button></a>
+      <a href='/employee/DisplayAllEmployeeDetails'><button className='home-tab' >View Employee details</button></a>
+      <a href='/employee/Generate-report'><button className='home-tab' >Generate Reports</button></a>
+      <a href='/employee/employee-mails'><button className='home-tab' >Send Emails</button></a>
+      <a href='/employee/graph-generator'><button className='home-tab' >Graph Generator</button></a> 
+      <a href='/employee/data-analyze'><button className='home-tab' >Data Analyzing & Calculating</button></a> 
+    </div>
+  )
+} 
+>>>>>>> IT21383816_DeSilvaKPNT
 class SideBar extends Component {
   render() {
     return (
@@ -81,6 +99,7 @@ class SideBar extends Component {
               <a href={`/delivery-home`}><button className='system'><i class="fa-solid fa-truck"></i>&nbsp;&nbsp;&nbsp;&nbsp;Delivery Management</button></a>
             </div>
           </div>
+<<<<<<< HEAD
 
           <div label={<i class="fa-solid fa-house"></i>}>
             <BrowserRouter>
@@ -97,6 +116,20 @@ class SideBar extends Component {
           </div>
 
           <div label={<i class="fa-solid fa-gear"></i>}>
+=======
+        </div>
+        <div label={<i class="fa-solid fa-house"></i>}>
+        <BrowserRouter>
+          <Routes>
+              <Route path="/purchasing/:name" element={<PurchasingFunc/>}/>
+              <Route path="/dashboard-home" element={<DashboardFunc/>}/>
+              <Route path="/employee-home" element={<EmployeeFunc/>}/>
+              <Route path="/employee/:name" element={<EmployeeFunc/>}/>
+          </Routes>
+        </BrowserRouter>
+        </div>
+        <div label={<i class="fa-solid fa-gear"></i>}>
+>>>>>>> IT21383816_DeSilvaKPNT
           <div className='setting'> 
             <div><h4>Dark Mode</h4></div>
               <div>
