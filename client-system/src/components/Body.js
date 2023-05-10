@@ -32,7 +32,7 @@ import ViewLowStock from '../components/stock/stock-components/ViewLowStock'
 //import ViewReleasedItem from '../components/stock/stock-components/ViewReleasedItem'
 //import LowStockList from '../components/stock/stock-components/LowStockList'
 import GenerateReport from '../components/stock/stock-components/GenerateReport'
-import ViewReleasedItem from '../components/stock/stock-components/ViewReleasedItem'
+//import ViewReleasedItem from '../components/stock/stock-components/ViewReleasedItem'
 //import LowStockList from '../components/stock/stock-components/LowStockList'
 import GenerateReports from '../components/stock/stock-components/GenerateReport'
 
@@ -111,7 +111,7 @@ export default class Body extends Component {
             <Route path="/employee-home" element={<EmployeeHome/>}/>
 
             {/*stock*/}
-            <Route path="/stock/stock-home" element={<StockHome/>}/>
+            <Route path="/stock/stock-home" element={<SubCategory/>}/>
             <Route path="/stock/sub-category" element={<SubCategory/>}/>
             <Route path="/stock/item-view/:id" element={<ItemView/>}/>
             <Route path="/stock/add-item" element={<AddItem/>}/>
@@ -128,9 +128,9 @@ export default class Body extends Component {
             {/*<Route path="/stock/view-released-item/:id" element={<ViewReleasedItem/>}/>
             <Route path="/stock/view-lowstock-item" element={<LowStockList/>}/>*/}
             <Route path="/stock/generate-report" element={<GenerateReport/>}/>
-            <Route path="/stock/stock-out" element={<OutStock/>}/>
-            <Route path="/stock/view-released-item/:id" element={<ViewReleasedItem/>}/>
-            {/*<Route path="/stock/view-lowstock-item" element={<LowStockList/>}/>*/}
+            
+            {/*<Route path="/stock/view-released-item/:id" element={<ViewReleasedItem/>}/>
+            <Route path="/stock/view-lowstock-item" element={<LowStockList/>}/>*/}
             <Route path="/stock/generate-report" element={<GenerateReports/>}/>
             
             <Route path="/stock/mail" element={<SendEmail/>}/>

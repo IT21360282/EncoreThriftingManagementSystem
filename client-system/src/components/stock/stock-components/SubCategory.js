@@ -158,21 +158,9 @@ class SubCategory extends Component {
 
         e.preventDefault();
 
-
-        
-
-        
-
-
         const{pName,pCategory,pSubCategory,pQuantity,pPrice,pPlacedDate,pImageURL,pDescription,pLevel}=this.state;
 
-        
-
-
-        
         const data ={
-            
-            
             pName:pName,
             pCategory:pCategory,
             pSubCategory:pSubCategory,
@@ -203,6 +191,8 @@ class SubCategory extends Component {
                     }
                 )
             }
+        }).catch(err => {
+          console.log("errer: ", err)
         })
 
         
@@ -391,7 +381,7 @@ class SubCategory extends Component {
                       
                     
                      <div className='buttn-success-1'>
-                      <button className="btn btn-success"  style={{marginTop:"15px"}} ><i class="fa-regular fa-square-check" style={{marginRight:"10px"}} onClick={this.onSubmit}></i>Save</button>
+                      <button className="btn btn-success"  style={{marginTop:"15px"}} style={{marginRight:"10px"}} onClick={this.onSubmit}><i class="fa-regular fa-square-check" ></i>Save</button>
                       
 										
                       </div>
