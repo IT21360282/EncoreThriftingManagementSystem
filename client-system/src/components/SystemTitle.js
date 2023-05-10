@@ -22,15 +22,39 @@ function PurchasingFunc() {
     )
 } 
 
+
+function EmployeeHomeFunc() {
+  const un = "Nethmi Tharushi"
+  return (
+    <div >
+      <h1 className='head-title'>Employee Management System</h1>
+      <hr/>
+      <h4 style={{marginLeft:"20px"}}>Welcome {un}</h4>
+    </div>
+  )
+} 
+
+function EmployeeFunc() {
+  const un = "Nethmi Tharushi"
+  return (
+    <div >
+      <h1 className='head-title'>Employee Management System</h1>
+      <hr/>
+    </div>
+  )
+} 
+
 export default class SystemTitle extends Component {
-  render() {
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/purchasing/purchasing-home" element={<PurchasingHomeFunc/>}/>
-                <Route path="/purchasing/:name" element={<PurchasingFunc/>}/>
-            </Routes>
-      </BrowserRouter>
-    )
-  }
+render() {
+  return (
+      <BrowserRouter>
+          <Routes>
+              <Route path="/purchasing/purchasing-home" element={<PurchasingHomeFunc/>}/>
+              <Route path="/purchasing/:name" element={<PurchasingFunc/>}/>
+              <Route path="/employee-home" element={<EmployeeHomeFunc/>}/>
+              <Route path="/employee/:name" element={<EmployeeFunc/>}/>
+          </Routes>
+    </BrowserRouter>
+  )
+}
 }

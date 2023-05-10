@@ -328,3 +328,12 @@ div.home-img {
 .btn-danger:hover {
     background-color: #bb2d3b;
 }
+
+.btn-success {
+    background-color: #28A745;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #28A745;
+}
