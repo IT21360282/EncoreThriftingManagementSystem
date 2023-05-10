@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { request } = require("express");
-let EmployeeModel = require("../../models/dashboard/employeeModel.js");
+let EmployeeModel = require("../../models/purchasing/dashboard/employeeModel.js");
 
 //add data to Employee table
 //./Employee/add
