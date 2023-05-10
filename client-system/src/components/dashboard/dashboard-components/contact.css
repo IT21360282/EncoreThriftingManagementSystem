@@ -1,0 +1,53 @@
+#fmailrectangle{
+    background:#f2f2f2;
+    border-radius: 20px;
+    margin-left:90px;
+    margin-right:90px;
+
+}
+.fmail-form {
+     width: 63%;
+    margin-right:auto ;
+    margin-left:auto;
+}
+
+label {
+    font-weight: bold;
+}
+
+.form-inputmail {
+    width: 200%;
+    border: 2px solid #ff5520;
+    border-radius: 8px;
+    height: 40px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.form-input:focus {
+    outline: none;
+    border: 3px solid #ff5520;
+}
+
+.form-select {
+    width: 91.5%;
+    border: 2px solid #ff5520;
+    border-radius: 8px;
+    height: 45px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.form-select:focus {
+    outline: none;
+    border: 3px solid #ff5520;
+}
+button.btn-fmail {
+    border:#299617 2px solid;
+    border-radius: 20px;
+    padding: 10px;
+    width: 150px;
+    background-color: white;
+    background-color:#299617;
+    font-weight: bold;
+}
