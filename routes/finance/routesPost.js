@@ -1,12 +1,8 @@
 const express = require('express')
-const financeModel = require('../../models/finance/modelpayment') <<
-    <<
-    << < HEAD ===
-    ===
-    =
-    const nodemailer = require('nodemailer') >>>
-        >>>
-        > yoshithanew
+const financeModel = require('../../models/finance/modelpayment')
+
+const nodemailer = require('nodemailer')
+
 
 const router = express.Router()
 

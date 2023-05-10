@@ -33,15 +33,10 @@ router.put('/otherfinance/put/:id', (req, res) => {
 
 // bank 
 
-router.put('/otherbank/put/:id', (req, res) => { <<
-    <<
-    << < HEAD
-    const B_No = req.params.B_No ===
-        ===
-        =
-        const B_No = req.params.id >>>
-            >>>
-            > yoshithanew
+router.put('/otherbank/put/:id', (req, res) => {
+
+    const B_No = req.params.id
+
     const B_Name = req.body.B_Name
     const Br_Name = req.body.Br_Name
     const Acc_No = req.body.Acc_No
