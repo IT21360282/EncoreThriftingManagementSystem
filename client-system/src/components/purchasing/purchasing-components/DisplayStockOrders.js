@@ -104,15 +104,13 @@ export default class DisplayStockOrders extends Component {
         return (
         <div className='Purchasing-others'>
             <h2 style={{marginTop:"70px"}}>{this.state.title}</h2>
-            <div className='btn-inline'>
+            <div style={{width:"100%"}}>
                 <div>
                     <span className='search' ><i class="fa-solid fa-magnifying-glass"></i></span>
-                    <input className='search' style={{width:"500px"}} name='searchQuery' placeholder='Search Details By PurchaseID or Title or Shop Name' value={this.state.searchQuery} onChange={this.handleSearchInput} ></input>
+                    <input className='search' style={{width:"93%"}} name='searchQuery' placeholder='Search Details By PurchaseID or Title or Shop Name' value={this.state.searchQuery} onChange={this.handleSearchInput} ></input>
                 </div>
-                <a><button className='btn-inline-purchasing' style={{width:"200px"}}>Add Filter</button></a>
-                <a><button className='btn-inline-purchasing' style={{width:"200px"}}>Clear Filter</button></a>
+        
             </div>
-            <br/>
             <br/>
             <div>
                 <div className='div-frame'>

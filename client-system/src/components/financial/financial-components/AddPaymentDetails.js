@@ -91,7 +91,7 @@ export default class extends Component{
 
               <tr>
               <td><label>Payment date:</label></td>
-              <td><input type='date' className='form-input' name='PaymentDate' value={this.state.PaymentDate} onChange={this.handleinput} placeholder=''/></td>
+              <td><input type='date' className='form-input' name='PaymentDate' min={new Date(new Date().getTime() + 5.5 * 60 * 60 * 1000).toISOString().slice(0,10)} value={this.state.PaymentDate} onChange={this.handleinput} placeholder=''/></td>
               </tr>
 
               <tr>

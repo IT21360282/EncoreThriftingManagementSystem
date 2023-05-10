@@ -135,7 +135,7 @@ label {
     font-weight: bold;
 }
 
-.form-input {
+.form-input-purchasing {
     width: 99%;
     border: 1px solid #ff5520;
     border-radius: 8px;
@@ -145,12 +145,12 @@ label {
     margin-top: 5px;
 }
 
-.form-input:focus {
+.form-input-purchasing:focus {
     outline: none;
     border: 2px solid #ff5520;
 }
 
-.form-select {
+.form-select-purchasing {
     width: 100%;
     border: 1px solid #ff5520;
     border-radius: 8px;
@@ -160,7 +160,7 @@ label {
     margin-top: 5px;
 }
 
-.form-select:focus {
+.form-select-purchasing:focus {
     outline: none;
     border: 2px solid #ff5520;
 }
@@ -315,7 +315,7 @@ button.remove-item-input:hover {
 }
 
 .popUp40 {
-    height: 40%;
+    height: 45%;
 }
 
 .popUp60 {

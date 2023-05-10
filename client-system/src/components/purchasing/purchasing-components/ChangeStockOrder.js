@@ -24,6 +24,7 @@ export default class ChangeStockOrder extends Component {
             stockItemsQty:[],
             stockItemsUnitPrice:[],
             x:0,
+            note:"",
         }
 
         this.handlePopUp = this.handlePopUp.bind(this)
@@ -225,6 +226,7 @@ export default class ChangeStockOrder extends Component {
 
         axios.put(`http://localhost:8000/purchasingPut/stockOrder/put/${id}`,data).then((res)=>{
             console.log("successfully updated")
+            this.sendChangingEmail()
         }).catch(error=>{
             console.error("error occurred")
             let popUpMsg = this.state.popUpMsg
@@ -234,6 +236,30 @@ export default class ChangeStockOrder extends Component {
             this.setState({popUpMsg})
             this.setState({redAlert})
         })
+    }
+    sendChangingEmail(){
+      const stocksItems = []
+      for(let i = 0; i < this.state.stockItems.length; i++){
+        stocksItems.push(
+          `   • ${this.state.stockItems[i]} - ${this.state.stockItemsQty[i]}`
+          ) 
+      }
+  
+      const mailOptions = {
+          name:`Order Manager of ${this.state.supplier}`,
+          email:"nilankasanjana803@gmail.com",
+          subject:`Change a Existing Order Under Title ${this.state.title}`,
+          msg:`I hope this email finds you well. As the purchasing manager of our inventory, I would like to change existing ordered items as following items:\n${stocksItems}\nPlease provide me with the unit prices and any applicable discounts for these items. Also, please confirm the availability of the items and the estimated time of delivery.\n\nWe are expecting to receive the order by ${this.state.expectedDate}. Please let me know if this timeline is feasible and if there are any issues that may delay the delivery.\n\nIf everything is in order, please send me an invoice with the total cost of the items, including any taxes or shipping fees.\n\n${this.state.note}\n\nThank you for your prompt attention to this matter and sorry for the inconvinience. I look forward to hearing from you soon.\n\nBest regards,\nSanjana Nilanka\nPurchasing Manager,\nEncore Thrift Store\n`
+      }
+  
+      axios.post('http://localhost:8000/purchasingPost/sendEmail',mailOptions).then((res) => {
+          console.log(res)
+          this.setState({isSuccess:true})
+          
+      }).catch((err) => {
+          console.log(err)
+          this.setState({isSuccess:false})
+      })
     }
 
     render() {
@@ -266,25 +292,27 @@ export default class ChangeStockOrder extends Component {
 
                 <div>
                     <label>Title of Order:</label>
-                    <input type='text' className='form-input' style={{marginBottom:"0px"}} name='title' placeholder='Title' value={this.state.title} onChange={this.handleTitleInputChange}/><br/>
-                    <div style={{color:"red",marginBottom:"15px"}}>{this.state.titleErr}</div>
+                    <input type='text' className='form-input-purchasing' style={{marginBottom:"0px", color:"#808080"}} name='title' placeholder='Title' value={this.state.title} onChange={this.handleTitleInputChange} readOnly/><br/>
+                    <div style={{marginBottom:"15px", textAlign:"justify"}}>
+                    <   span style={{color:"red",fontWeight:"bolder", fontSize:"20px"}}>* </span>You Cannot Change Title. Because it will be helped to identify which order is changed to supplier
+                    </div>
                     <label>Select Supplier:</label>
-                    <input className='form-input' style={{marginBottom:"0px", color:"#808080"}} name='supplier' value={this.state.supplier} onFocus={this.titleValidation} onChange={this.handleSupplierInputChange} title='You Cannot Change Supplier' readOnly/>
+                    <input className='form-input-purchasing' style={{marginBottom:"0px", color:"#808080"}} name='supplier' value={this.state.supplier} onFocus={this.titleValidation} onChange={this.handleSupplierInputChange} title='You Cannot Change Supplier' readOnly/>
                     <div style={{marginBottom:"15px"}}>
                     <   span style={{color:"red",fontWeight:"bolder", fontSize:"20px"}}>* </span>You Cannot Change Supplier. If You Placed Order to Wrong Supplier, Please Cancel this Order & Place Again the Order to Right Supplier
                     </div>
                     <label>Order Expected Day:</label>
-                    <input type='date' className='form-input' style={{marginBottom:"0px"}} name='expectedDate' placeholder='' value={this.state.expectedDate} onFocus={this.titleSupplierValidation} onChange={this.handleDateInputChange}/>
+                    <input type='date' className='form-input-purchasing' style={{marginBottom:"0px"}} name='expectedDate' placeholder='' value={this.state.expectedDate} onFocus={this.titleSupplierValidation} onChange={this.handleDateInputChange}/>
                     <div style={{color:"red",marginBottom:"15px"}}>{this.state.errMsg}</div>
                     <label>Payment:</label>
-                    <select className='form-select' name='paymentStatus' value={this.state.paymentStatus} onFocus={this.titleSupplierValidation} onChange={this.handleInputChange}>
+                    <select className='form-select-purchasing' name='paymentStatus' value={this.state.paymentStatus} onFocus={this.titleSupplierValidation} onChange={this.handleInputChange}>
                         <option>Select One</option>
                         <option>Paid</option>
                         <option>Payment Pending</option>
                         <option>Send to Financial Manager</option>
                     </select><br/>
                     <label>Note for Supplier:</label>
-                    <textarea className='form-textarea' name='' cols={30} rows={6} onFocus={this.titleSupplierValidation} placeholder='Special Note for Supplier'></textarea>
+                    <textarea className='form-textarea-purchasing' name='note' value={this.state.note} onChange={this.handleInputChange} cols={30} rows={6} onFocus={this.titleSupplierValidation} placeholder='Special Note for Supplier'></textarea>
                     
                 </div>
 

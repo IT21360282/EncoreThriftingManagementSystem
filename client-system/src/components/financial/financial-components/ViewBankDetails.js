@@ -113,32 +113,32 @@ export default class ViewBankDetails extends Component{
           <div><button style={{marginLeft:"20px"}}className='searchBank'><i class="fa-solid fa-magnifying-glass"></i></button><input className='searchBank' value={this.state.searchInput} onChange={this.handleFindInput} placeholder='Search bank'></input></div>
           <br/>
           <div className='table-bank'>
-          <table className='table-bank' id='allbankdetails' >
+          <table className='details-table' id='allbankdetails' >
             <thead>
               <tr>
-                <th scope="col" className='table-bank' style={{borderTopLeftRadius:"10px"}}>Bank No</th>
-                <th scope="col" className='table-bank'>Bank Name</th>
-                <th scope="col" className='table-bank'>Branch Name</th>
-                <th scope="col" className='table-bank'>Account No</th>
-                <th scope="col" className='table-bank'>SWIFT</th>
-                <th scope="col" className='table-bank'>Account Currency</th>
-                <th scope="col" className='table-bank'>Account Type</th>
+                <th scope="col"  style={{borderTopLeftRadius:"10px"}}>Bank No</th>
+                <th scope="col" >Bank Name</th>
+                <th scope="col" >Branch Name</th>
+                <th scope="col" >Account No</th>
+                <th scope="col" >SWIFT</th>
+                <th scope="col" >Account Currency</th>
+                <th scope="col" >Account Type</th>
                 
-                <th scope="col" className='table-bank' style={{border:"none",borderTopRightRadius:"10px"}}>Options</th>
+                <th scope="col" style={{border:"none",borderTopRightRadius:"10px"}}>Options</th>
               </tr>
             </thead>
             <tbody scope="raw" >      
             {this.state.FinanceBankDetails.map((results,index)=>(
               <tr>
-                <td className='table-bank'>B00{index+1}</td>
-                <td className='table-bank'title={results.B_Name}>{results.B_Name}</td>
-                <td className='table-bank'title={results.Br_Name}>{results.Br_Name}</td>
-                <td className='table-bank'title={results.Acc_No}>{results.Acc_No}</td>
-                <td className='table-bank'title={results.SWIFT}>{results.SWIFT}</td>
-                <td className='table-bank'title={results.Acc_Cur}>{results.Acc_Cur}</td>
-                <td className='table-bank'title={results.Acc_Type}>{results.Acc_Type}</td>
+                <td >B00{index+1}</td>
+                <td title={results.B_Name}>{results.B_Name}</td>
+                <td title={results.Br_Name}>{results.Br_Name}</td>
+                <td title={results.Acc_No}>{results.Acc_No}</td>
+                <td title={results.SWIFT}>{results.SWIFT}</td>
+                <td title={results.Acc_Cur}>{results.Acc_Cur}</td>
+                <td title={results.Acc_Type}>{results.Acc_Type}</td>
                 
-                <td className='table-bank' style={{padding:"5px",border:"none"}}>
+                <td style={{padding:"5px",border:"none"}}>
                   <div className='btn-inline-table'>
                   <a href={`/financial/UpdateBankDetails/${results._id}`}><button type="button" className="btn btn-warning">Update</button></a>
                     <DeleteBank id={results._id}/>

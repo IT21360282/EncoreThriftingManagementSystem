@@ -112,32 +112,32 @@ export default class  extends Component{
           <div><button style={{marginLeft:"20px"}}className='searchPayments'><i class="fa-solid fa-magnifying-glass"></i></button><input className='searchPayments' value={this.state.searchInput} onChange={this.handleFindInput} placeholder='Search payments'></input></div>
           <br/>
           <div className='table-finance'>
-          <table className='table-finance' id='allpaymentdetails' >
+          <table className='details-table' id='allpaymentdetails' >
             <thead>
               <tr>
-                <th scope="col" className='table-finance' style={{borderTopLeftRadius:"10px"}}>Payment ID</th>
-                <th scope="col" className='table-finance'>Full Name</th>
-                <th scope="col" className='table-finance'>Payment Type</th>
-                <th scope="col" className='table-finance'>Amount</th>
-                <th scope="col" className='table-finance'>Payment Date</th>
-                <th scope="col" className='table-finance'>Card Number</th>
-                <th scope="col" className='table-finance'>Expired Year</th>
-                <th scope="col" className='table-finance'>CVC</th>
-                <th scope="col" className='table-finance' style={{border:"none",borderTopRightRadius:"10px"}}>Options</th>
+                <th scope="col"  style={{borderTopLeftRadius:"10px"}}>Payment ID</th>
+                <th scope="col" >Full Name</th>
+                <th scope="col" >Payment Type</th>
+                <th scope="col" >Amount</th>
+                <th scope="col" >Payment Date</th>
+                <th scope="col" >Card Number</th>
+                <th scope="col" >Expired Year</th>
+                <th scope="col" >CVC</th>
+                <th scope="col"  style={{border:"none",borderTopRightRadius:"10px"}}>Options</th>
               </tr>
             </thead>
             <tbody scope="raw" >      
             {this.state.FinancePaymentDetails.map((results,index)=>(
               <tr>
-                <td className='table-finance'>B00{index+1}</td>
-                <td className='table-finance'title={results.FullName}>{results.FullName}</td>
-                <td className='table-finance'title={results.Pay_Type}>{results.Pay_Type}</td>
-                <td className='table-finance'title={results.Amount}>{results.Amount}</td>
-                <td className='table-finance'title={results.Pay_Date}>{results.Pay_Date}</td>
-                <td className='table-finance'title={results.Card_Number}>{results.Card_Number}</td>
-                <td className='table-finance'title={results.Expired_Year}>{results.Expired_Year}</td>
-                <td className='table-finance'title={results.CVC}>{results.CVC}</td>
-                <td className='table-finance' style={{padding:"5px",border:"none"}}>
+                <td >B00{index+1}</td>
+                <td title={results.FullName}>{results.FullName}</td>
+                <td title={results.Pay_Type}>{results.Pay_Type}</td>
+                <td title={results.Amount}>{results.Amount}</td>
+                <td title={results.Pay_Date}>{results.Pay_Date}</td>
+                <td title={results.Card_Number}>{results.Card_Number}</td>
+                <td title={results.Expired_Year}>{results.Expired_Year}</td>
+                <td title={results.CVC}>{results.CVC}</td>
+                <td style={{padding:"5px",border:"none"}}>
                   <div className='btn-inline-table'>
                   <a href={`/financial/UpdatePaymentDetails/${results._id}`}><button type="button" className="btn btn-warning">Update</button></a>
                     <button onClick={this.onSubmit} type="button" className="btn btn-danger">Delete</button>

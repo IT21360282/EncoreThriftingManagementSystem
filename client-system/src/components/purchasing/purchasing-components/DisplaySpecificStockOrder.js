@@ -91,56 +91,56 @@ class DisplaySpecificStockOrdersBody extends Component {
                             <div>
                                 <table style={{borderCollapse:"collapse"}}>
                                     <tr>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}><span style={{fontWeight:"bold"}}>PurID</span></td>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}>&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.specificStockOrderDetails.purID}{this.state.specificStockOrderDetails.purDigitID}<br/></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}><span style={{fontWeight:"bold"}}>PurID</span></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}>&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.specificStockOrderDetails.purID}{this.state.specificStockOrderDetails.purDigitID}<br/></td>
                                     </tr>
                                     <tr>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}><span style={{fontWeight:"bold"}}>Title</span></td>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}>&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.specificStockOrderDetails.title}<br/></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}><span style={{fontWeight:"bold"}}>Title</span></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}>&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.specificStockOrderDetails.title}<br/></td>
                                     </tr>
                                     <tr>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}><span style={{fontWeight:"bold"}}>Purchased Date</span></td>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}>&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.specificStockOrderDetails.placedDate}<br/></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}><span style={{fontWeight:"bold"}}>Purchased Date</span></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}>&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.specificStockOrderDetails.placedDate}<br/></td>
                                     </tr>
                                     <tr>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}><span style={{fontWeight:"bold"}}>Expected Date</span></td>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}>&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.specificStockOrderDetails.expectedDate}<br/></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}><span style={{fontWeight:"bold"}}>Expected Date</span></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}>&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.specificStockOrderDetails.expectedDate}<br/></td>
                                     </tr>
                                     <tr>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}><span style={{fontWeight:"bold"}}>Order Status</span></td>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}>&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.specificStockOrderDetails.orderStatus}<br/></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}><span style={{fontWeight:"bold"}}>Order Status</span></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}>&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.specificStockOrderDetails.orderStatus}<br/></td>
                                     </tr>
                                     <tr>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px"}}><span style={{fontWeight:"bold"}}>Payment Status</span></td>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px"}}>&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.specificStockOrderDetails.paymentStatus}<br/></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",textAlign:"left"}}><span style={{fontWeight:"bold"}}>Payment Status</span></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",textAlign:"left"}}>&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.specificStockOrderDetails.paymentStatus}<br/></td>
                                     </tr>
                                 </table>
                             </div>
                             <div>
                                 <table style={{borderCollapse:"collapse"}}>
                                     <tr>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}><span style={{fontWeight:"bold"}}>Confirmed Date</span></td>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}>&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.specificStockOrderDetails.confirmedDate}<br/></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}><span style={{fontWeight:"bold"}}>Confirmed Date</span></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}>&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.specificStockOrderDetails.confirmedDate}<br/></td>
                                     </tr>
                                     <tr>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}><span style={{fontWeight:"bold"}}>Recieved Date</span></td>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}>&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.specificStockOrderDetails.receivedDate}<br/></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}><span style={{fontWeight:"bold"}}>Recieved Date</span></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}>&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.specificStockOrderDetails.receivedDate}<br/></td>
                                     </tr>
                                     <tr>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}><span style={{fontWeight:"bold"}}>Total Qty</span></td>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}>&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.specificStockOrderDetails.totalQty}<br/></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}><span style={{fontWeight:"bold"}}>Total Qty</span></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}>&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.specificStockOrderDetails.totalQty}<br/></td>
                                     </tr>
                                     <tr>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}><span style={{fontWeight:"bold"}}>Total Cost</span></td>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}>&nbsp;&nbsp;:&nbsp;&nbsp;LKR {parseFloat(this.state.specificStockOrderDetails.totalCost).toFixed(2)}<br/></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}><span style={{fontWeight:"bold"}}>Total Cost</span></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}>&nbsp;&nbsp;:&nbsp;&nbsp;LKR {parseFloat(this.state.specificStockOrderDetails.totalCost).toFixed(2)}<br/></td>
                                     </tr>
                                     <tr>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}><span style={{fontWeight:"bold"}}>Supplier</span></td>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}>&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.specificStockOrderDetails.supplier}<br/></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}><span style={{fontWeight:"bold"}}>Supplier</span></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}>&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.specificStockOrderDetails.supplier}<br/></td>
                                     </tr>
                                     <tr>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px"}}><span style={{fontWeight:"bold"}}>Shipping Fee</span></td>
-                                        <td style={{paddingBottom:"10px",paddingTop:"10px"}}>&nbsp;&nbsp;:&nbsp;&nbsp;LKR {parseFloat(this.state.specificStockOrderDetails.shippingFee).toFixed(2)}<br/></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",textAlign:"left"}}><span style={{fontWeight:"bold"}}>Shipping Fee</span></td>
+                                        <td style={{paddingBottom:"10px",paddingTop:"10px",textAlign:"left"}}>&nbsp;&nbsp;:&nbsp;&nbsp;LKR {parseFloat(this.state.specificStockOrderDetails.shippingFee).toFixed(2)}<br/></td>
                                     </tr>
                                 </table> 
                             </div>     

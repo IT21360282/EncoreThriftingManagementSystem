@@ -326,22 +326,22 @@ export default class AddOtherPurchase extends Component {
                 <div>
                     <br/>
                     <label>Title of Purchase:</label>
-                    <input type='text' className='form-input' style={{marginBottom:"0px"}} name='title' placeholder='Title'  value={this.state.title} onChange={this.handleOtherInputChange}/>
+                    <input type='text' className='form-input-purchasing' style={{marginBottom:"0px"}} name='title' placeholder='Title'  value={this.state.title} onChange={this.handleOtherInputChange}/>
                     <div style={{marginBottom:"10px", color:"red"}}>
                         {this.state.titleErr}
                     </div>
                     <label>Shop Name:</label>
-                    <input type='text' className='form-input' style={{marginBottom:"0px"}} name='shop' onFocus={this.titleValidation} placeholder='Purchased From' value={this.state.shop} onChange={this.handleOtherInputChange}/><br/>
+                    <input type='text' className='form-input-purchasing' style={{marginBottom:"0px"}} name='shop' onFocus={this.titleValidation} placeholder='Purchased From' value={this.state.shop} onChange={this.handleOtherInputChange}/><br/>
                     <div style={{marginBottom:"10px", color:"red"}} >
                         {this.state.shopErr}
                     </div>
                     <label>Purchased Date:</label>
-                    <input type='date' className='form-input' style={{marginBottom:"0px"}} max={new Date(new Date().getTime() + 5.5 * 60 * 60 * 1000 ).toISOString().slice(0,10)} name='purchasedDate' onFocus={this.titleShopNameValidation} placeholder='' value={this.state.purchasedDate} onChange={this.handleOtherInputChange}/>
+                    <input type='date' className='form-input-purchasing' style={{marginBottom:"0px"}} max={new Date(new Date().getTime() + 5.5 * 60 * 60 * 1000 ).toISOString().slice(0,10)} name='purchasedDate' onFocus={this.titleShopNameValidation} placeholder='' value={this.state.purchasedDate} onChange={this.handleOtherInputChange}/>
                     <div style={{marginBottom:"10px", color:"red"}}>
                         {this.state.purchasedDate}
                     </div>
                     <label>For Which Section:</label>
-                    <select className='form-select' name='purchasedSection' value={this.state.purchasedSection} onFocus={this.titleShopPurchasedDateValidation} onChange={this.handleOtherInputChange}>
+                    <select className='form-select-purchasing' name='purchasedSection' value={this.state.purchasedSection} onFocus={this.titleShopPurchasedDateValidation} onChange={this.handleOtherInputChange}>
                     <option>Select One</option>
                         <option>Order Section</option>
                         <option>Financial Section</option>
@@ -355,7 +355,7 @@ export default class AddOtherPurchase extends Component {
                         <option>Other</option>
                     </select><br/>
                     <label>Payment:</label>
-                    <select className='form-select' name='paymentStatus' value={this.state.paymentStatus} onFocus={this.titleShopPurchasedDateValidation} onChange={this.handleOtherInputChange}>
+                    <select className='form-select-purchasing' name='paymentStatus' value={this.state.paymentStatus} onFocus={this.titleShopPurchasedDateValidation} onChange={this.handleOtherInputChange}>
                         <option>Select One</option>
                         <option>Paid</option>
                         <option>Purchase on credit</option>

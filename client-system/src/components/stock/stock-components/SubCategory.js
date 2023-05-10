@@ -364,7 +364,7 @@ class SubCategory extends Component {
 
                       
                       <label>Date:</label><br/>
-                      <input type='date' className='form-enter' name='pPlacedDate' placeholder='' value={this.state.pPlacedDate} onChange={this.handleInputChange}/><br/>
+                      <input type='date' className='form-enter' name='pPlacedDate' placeholder='' min={new Date(new Date().getTime() + 5.5 * 60 * 60 * 1000).toISOString().slice(0,10)} value={this.state.pPlacedDate} onChange={this.handleInputChange}/><br/>
                       
                       
 

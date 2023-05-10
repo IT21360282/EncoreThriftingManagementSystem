@@ -128,7 +128,7 @@ export default class Body extends Component {
             <Route path="/financial/UpdateBankDetails/:id" element={<UpdateBankDetails/>}/>
             <Route path="/financial/SalaryCalculation" element={<SalaryCalculation/>}/>
             <Route path="/financial/Rates" element={<FinancialRates/>}/>
-            <Route path="/financial/SendEmail" element={<FinancialSendEmail/>}/>
+            <Route path="/financial/SendMail" element={<FinancialSendEmail/>}/>
             <Route path="/financial/ReportGenerate" element={<FinancialReportGenerate/>}/>
             <Route path="/employee-home" element={<EmployeeHome/>}/>
 

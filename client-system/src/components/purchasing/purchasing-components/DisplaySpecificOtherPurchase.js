@@ -86,35 +86,35 @@ class DisplaySpecificOtherPurchaseBody extends Component {
                         <div>
                             <table style={{borderCollapse:"collapse"}}>
                                 <tr>
-                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}><span style={{fontWeight:"bold"}}>PurID</span></td>
-                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}>:&nbsp;&nbsp;&nbsp;&nbsp;{this.state.specificOtherPurchaseDetails.purID}{this.state.specificOtherPurchaseDetails.purDigitID}</td>
+                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}><span style={{fontWeight:"bold"}}>PurID</span></td>
+                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}>:&nbsp;&nbsp;&nbsp;&nbsp;{this.state.specificOtherPurchaseDetails.purID}{this.state.specificOtherPurchaseDetails.purDigitID}</td>
                                 </tr>
                                 <tr>
-                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}><span style={{fontWeight:"bold"}}>Title</span></td>
-                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}>:&nbsp;&nbsp;&nbsp;&nbsp;{this.state.specificOtherPurchaseDetails.title}</td>
+                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}><span style={{fontWeight:"bold"}}>Title</span></td>
+                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}>:&nbsp;&nbsp;&nbsp;&nbsp;{this.state.specificOtherPurchaseDetails.title}</td>
                                 </tr>
                                 <tr>
-                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}><span style={{fontWeight:"bold"}}>Purchased Date</span></td>
-                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}>:&nbsp;&nbsp;&nbsp;&nbsp;{this.state.specificOtherPurchaseDetails.purchasedDate}</td>
+                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}><span style={{fontWeight:"bold"}}>Purchased Date</span></td>
+                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}>:&nbsp;&nbsp;&nbsp;&nbsp;{this.state.specificOtherPurchaseDetails.purchasedDate}</td>
                                 </tr>
                                 <tr>
-                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}><span style={{fontWeight:"bold"}}>Purchased For</span></td>
-                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}>:&nbsp;&nbsp;&nbsp;&nbsp;{this.state.specificOtherPurchaseDetails.purchasedSection}</td>
+                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}><span style={{fontWeight:"bold"}}>Purchased For</span></td>
+                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}>:&nbsp;&nbsp;&nbsp;&nbsp;{this.state.specificOtherPurchaseDetails.purchasedSection}</td>
                                 </tr>
                                 <tr>
-                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}><span style={{fontWeight:"bold"}}>Purchased From &#40;Shop&#41;</span></td>
-                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}>:&nbsp;&nbsp;&nbsp;&nbsp;{this.state.specificOtherPurchaseDetails.shop}</td>
+                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}><span style={{fontWeight:"bold"}}>Purchased From &#40;Shop&#41;</span></td>
+                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}>:&nbsp;&nbsp;&nbsp;&nbsp;{this.state.specificOtherPurchaseDetails.shop}</td>
                                 </tr>
                                 <tr>
-                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}><span style={{fontWeight:"bold"}}>Payment Status</span></td>
-                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}>:&nbsp;&nbsp;&nbsp;&nbsp;{this.state.specificOtherPurchaseDetails.paymentStatus}</td>
+                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}><span style={{fontWeight:"bold"}}>Payment Status</span></td>
+                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}>:&nbsp;&nbsp;&nbsp;&nbsp;{this.state.specificOtherPurchaseDetails.paymentStatus}</td>
                                 </tr>
                                 <tr>
-                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}><span style={{fontWeight:"bold"}}>Total Qty</span></td>
-                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520"}}>:&nbsp;&nbsp;&nbsp;&nbsp;{this.state.specificOtherPurchaseDetails.totalQty}</td>
+                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}><span style={{fontWeight:"bold"}}>Total Qty</span></td>
+                                    <td style={{paddingBottom:"10px",paddingTop:"10px",borderBottom:"1px solid #ff5520",textAlign:"left"}}>:&nbsp;&nbsp;&nbsp;&nbsp;{this.state.specificOtherPurchaseDetails.totalQty}</td>
                                 </tr>
                                 <tr>
-                                    <td style={{paddingBottom:"10px",paddingTop:"10px"}}><span style={{fontWeight:"bold"}}>Total Cost</span></td>
+                                    <td style={{paddingBottom:"10px",paddingTop:"10px",textAlign:"left"}}><span style={{fontWeight:"bold"}}>Total Cost</span></td>
                                     <td style={{paddingBottom:"10px",paddingTop:"10px"}}>:&nbsp;&nbsp;&nbsp;&nbsp;LKR&nbsp;{parseFloat(this.state.specificOtherPurchaseDetails.totalCost).toFixed(2)}</td>
                                 </tr>
                             </table> 

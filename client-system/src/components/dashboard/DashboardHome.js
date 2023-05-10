@@ -36,30 +36,30 @@ export default class DashboardHome extends Component {
         <div className="featured">
           <div className="featuredItem">
             <span className="featuredTitle">Revanue</span>
-            <div className="featuredMoneyContainer">
+            <div className="featuredMoneyContainer" style={{marginLeft:"auto",marginRight:"auto",width:"65%"}}>
               <span className="featuredMoney">Rs. 85,000</span>
-              <span className="featuredMoneyRate">
-                
+              <span className="featuredMoneyRate" style={{color:"green"}}>
+              <i class="fa-solid fa-arrow-up"></i>
               </span>
             </div>
             <span className="featuredSub">Compared to last month</span>
           </div>
           <div className="featuredItem">
             <span className="featuredTitle">Sales</span>
-            <div className="featuredMoneyContainer">
+            <div className="featuredMoneyContainer" style={{marginLeft:"auto",marginRight:"auto",width:"65%"}}>
               <span className="featuredMoney">RS. 44,415</span>
-              <span className="featuredMoneyRate">
-                
+              <span className="featuredMoneyRate" style={{color:"red"}}>
+              <i class="fa-solid fa-arrow-down" ></i>
               </span>
             </div>
             <span className="featuredSub">Compared to last month</span>
           </div>
           <div className="featuredItem">
             <span className="featuredTitle">Cost</span>
-            <div className="featuredMoneyContainer">
+            <div className="featuredMoneyContainer" style={{marginLeft:"auto",marginRight:"auto",width:"65%"}}>
               <span className="featuredMoney">Rs. 22,225</span>
-              <span className="featuredMoneyRate">
-                
+              <span className="featuredMoneyRate" style={{color:"green"}}>
+              <i class="fa-solid fa-arrow-up"></i>
               </span>
             </div>
             <span className="featuredSub">Compared to last month</span>
@@ -121,7 +121,7 @@ export default class DashboardHome extends Component {
                   <span className="widgetSmUsername">Pasindu Thathsara</span>
                 </div>
                 <button className="widgetSmButton">
-                  
+                <i class="fa-solid fa-eye"></i>&nbsp;
                   Display
                 </button>
               </li>
@@ -135,7 +135,7 @@ export default class DashboardHome extends Component {
                   <span className="widgetSmUsername">Pradeepa Kodippili</span>
                 </div>
                 <button className="widgetSmButton">
-                  
+                <i class="fa-solid fa-eye"></i>&nbsp;&nbsp;
                   Display
                 </button>
               </li>
@@ -149,7 +149,7 @@ export default class DashboardHome extends Component {
                   <span className="widgetSmUsername">Sayuri Perera</span>
                 </div>
                 <button className="widgetSmButton">
-                  
+                <i class="fa-solid fa-eye"></i>&nbsp;&nbsp;
                   Display
                 </button>
               </li>
@@ -163,7 +163,7 @@ export default class DashboardHome extends Component {
                   <span className="widgetSmUsername">Anna Wimalagamuwa</span>
                 </div>
                 <button className="widgetSmButton">
-                  
+                <i class="fa-solid fa-eye"></i>&nbsp;&nbsp;
                   Display
                 </button>
               </li>
@@ -176,9 +176,9 @@ export default class DashboardHome extends Component {
                 <div className="widgetSmUser">
                   <span className="widgetSmUsername">Fedric Almeda</span>
                 </div>
-                <button className="widgetSmButton">
-                  
-                  Display
+                <button className="widgetSmButton">&nbs
+                <i class="fa-solid fa-eye"></i> 
+                &nbsp;&nbsp;Display
                 </button>
               </li>
             </ul>

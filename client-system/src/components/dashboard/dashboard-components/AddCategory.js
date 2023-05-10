@@ -216,7 +216,7 @@ const Addcategory = () => {
       console.log(modal);
 
       axios
-        .put(API_URL + "/updateCategories/" + UpdateItem, modal)
+        .put(API_URL + "/updateCategories/:id" + UpdateItem, modal)
         .then((response) => {
           if (response.data.status == 200) {
             toast.success("Successfully Updated Data !!");
@@ -249,8 +249,15 @@ const Addcategory = () => {
   const savePDF = async () => {
     const doc = new jsPDF("p", "pt", "a4");
 
-    doc.setFontSize(15);
-    doc.text("All Report", 40, 40);
+    const tableTitle = "Category Management";
+    const tableTitleFontSize = 20;
+    const tableTitleColor = "#FF8C00"; // Dark orange color
+
+    doc.setFontSize(tableTitleFontSize);
+    doc.setTextColor(tableTitleColor);
+    doc.text(tableTitle, doc.internal.pageSize.getWidth() / 2, 40, {
+      align: "center",
+    }); // Add table title with dark orange color and increased font size
     var data;
     var price = 0;
     var count = 0;
@@ -306,8 +313,8 @@ const Addcategory = () => {
       <br></br>
       <br></br>
       <div className="row">
-        <div >
-          <input
+        <div className="col-md-4">
+          <Input
             style={{ marginLeft: 20 }}
             onChange={(e) => {
               setKeyword(e.target.value);
@@ -316,20 +323,35 @@ const Addcategory = () => {
             placeholder="Search by category Name"
           />
         </div>
-        <div>
-          <button className="btn">Search</button>
+        <div className="col-md-4">
+          <Button
+            onClick={() => {
+              searchData();
+            }}
+          >
+            Search
+          </Button>
         </div>
-        <div >
-          <button className="btn btn-primary"> Download Report</button>
+        <div className="col-md-2">
+          <Button
+            onClick={() => {
+              savePDF();
+            }}
+          >
+            Download Report
+          </Button>
         </div>
-        <div >
-          <button className="btn btn-success"> <i class="fa-solid fa-plus"></i> Add Record</button>
-          </div>
-          </div>
+        <div className="col-md-2">
+          <Button color="success" onClick={() => addToggle()}>
+            {" "}
+            + Add Record
+          </Button>
+        </div>
+      </div>
       <br></br>
       <br></br>
       <br></br>
-      <table className="details-table">
+      <Table>
         <thead>
           <tr>
             <th style={{ textAlign: "center" }}>Record No</th>
@@ -353,33 +375,33 @@ const Addcategory = () => {
                   <td style={{ textAlign: "center" }}>{item.Category_Type}</td>
                   <td style={{ textAlign: "center" }}>{item.Description}</td>
                   <td style={{ textAlign: "center" }}>
-                    <button
-                      className="btn btn-warning"
+                    <Button
+                      color="primary"
                       onClick={() => {
                         UpdateToggle(item);
                       }}
                     >
-                      <i class="fa-solid fa-pen-to-square"></i>
-                    </button>
+                      <i class="bi bi-pencil"></i>
+                    </Button>
                     &nbsp;
-                    <button
-                      className="btn btn-danger"
+                    <Button
+                      color="danger"
                       onClick={() => {
                         deleteRecord(item._id);
                       }}
                     >
-                      <i class="fa-regular fa-trash-can"></i>
-                    </button>
+                      <i class="bi bi-trash3"></i>
+                    </Button>
                   </td>
                 </tr>
               );
             })}
         </tbody>
-      </table>
+      </Table>
       <br></br>
       <h2 style={{ textAlign: "center" }}>Category Count</h2>
       <br></br>
-      <table>
+      <Table>
         <thead>
           <th style={{ textAlign: "center" }}>Book Count</th>
           <th style={{ textAlign: "center" }}>Electronic & Electrical Count</th>
@@ -398,7 +420,7 @@ const Addcategory = () => {
             <td style={{ textAlign: "center" }}>{GiftCount}</td>
           </tr>
         </tbody>
-      </table>
+      </Table>
 
       {/* Update Item Modal Start */}
       <Modal isOpen={UpdateModal}>

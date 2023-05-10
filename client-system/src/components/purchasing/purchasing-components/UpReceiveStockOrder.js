@@ -111,16 +111,16 @@ export default class UpReceiveStockOrder extends Component {
                 <h5>
                     <table>
                         <tr>
-                            <td>PurID</td>
-                            <td>:&nbsp;{this.state.purID}{this.state.purDigitID}</td>
+                            <td style={{textAlign:"left"}}>PurID</td>
+                            <td style={{fontWeight:'normal',textAlign:"left"}}>:&nbsp;{this.state.purID}{this.state.purDigitID}</td>
                         </tr>
                         <tr>
-                            <td>Order Title</td>
-                            <td>:&nbsp;{this.state.title}</td>
+                            <td style={{textAlign:"left"}}>Order Title</td>
+                            <td style={{fontWeight:'normal',textAlign:"left"}}>:&nbsp;{this.state.title}</td>
                         </tr>
                         <tr>
-                            <td>Supplier Name</td>
-                            <td>:&nbsp;{this.state.supplier}</td>
+                            <td style={{textAlign:"left"}}>Supplier Name</td>
+                            <td style={{fontWeight:'normal',textAlign:"left"}}>:&nbsp;{this.state.supplier}</td>
                         </tr>
                     </table>
                 </h5>

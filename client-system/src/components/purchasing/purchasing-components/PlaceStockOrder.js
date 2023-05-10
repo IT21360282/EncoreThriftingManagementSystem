@@ -346,10 +346,10 @@ export default class PlaceStockOrder extends Component {
           <div>
             <br/>
               <label>Title of Order:</label>
-              <input type='text' className='form-input' style={{marginBottom:"0px"}} name='title' placeholder='Title' value={this.state.title} onChange={this.handleTitleInputChange}/><br/>
+              <input type='text' className='form-input-purchasing' style={{marginBottom:"0px"}} name='title' placeholder='Title' value={this.state.title} onChange={this.handleTitleInputChange}/><br/>
               <div style={{color:"red",marginBottom:"15px"}}>{this.state.titleErr}</div>
               <label>Select Supplier:</label>
-              <select className='form-select' style={{marginBottom:"0px"}} name='supplier' value={this.state.supplier} onFocus={this.titleValidation} onChange={this.handleSupplierInputChange}>
+              <select className='form-select-purchasing' style={{marginBottom:"0px"}} name='supplier' value={this.state.supplier} onFocus={this.titleValidation} onChange={this.handleSupplierInputChange}>
                 <option>Select One</option>
                 <option>Leaf Knowledge (PVT Ltd.)</option>
                 <option>ZOHO International</option>
@@ -357,10 +357,10 @@ export default class PlaceStockOrder extends Component {
               </select>
               <div style={{color:"red",marginBottom:"15px"}}>{this.state.supplierErr}</div>
               <label>Order Expected Day:</label>
-              <input type='date' className='form-input' style={{marginBottom:"0px"}} name='expectedDate' min={new Date(new Date().getTime() + 5.5 * 60 * 60 * 1000 + 24 * 60 * 60 * 1000).toISOString().slice(0,10)} value={this.state.expectedDate} onFocus={this.titleSupplierValidation} onChange={this.handleDateInputChange}/>
+              <input type='date' className='form-input-purchasing' style={{marginBottom:"0px"}} name='expectedDate' min={new Date(new Date().getTime() + 5.5 * 60 * 60 * 1000 + 24 * 60 * 60 * 1000).toISOString().slice(0,10)} value={this.state.expectedDate} onFocus={this.titleSupplierValidation} onChange={this.handleDateInputChange}/>
               <div style={{color:"red",marginBottom:"15px"}}>{this.state.errMsg}</div>
               <label>Payment:</label>
-              <select className='form-select' name='paymentStatus' value={this.state.paymentStatus} onFocus={this.titleSupplierValidation} onChange={this.handleInputChange}>
+              <select className='form-select-purchasing' name='paymentStatus' value={this.state.paymentStatus} onFocus={this.titleSupplierValidation} onChange={this.handleInputChange}>
                 <option>Select One</option>
                 <option>Paid</option>
                 <option>Payment Pending</option>

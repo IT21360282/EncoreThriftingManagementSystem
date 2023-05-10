@@ -17,7 +17,8 @@ export default class extends Component{
         AccountCurr:"",
         AccountType:"",
         errmsg:"",
-        isOpen:false
+        isOpen:false,
+        valideAccNum:""
     }
     
     
@@ -30,7 +31,18 @@ export default class extends Component{
     this.setState({
        ...this.state,[name]:value
     })
+
+    if(name=="AccountNo"){
+      if(value.length > 6){
+        this.setState({valideAccNum:"Cannot exceeded six digits"})
+      }
+      else{
+        this.setState({valideAccNum:""})
+      }
+    }
 }
+
+
 
 onSubmit(){
   const {BankNo,BankName,BranchName,AccountNo,SWIFT,AccountCurr,AccountType}=this.state
@@ -83,7 +95,8 @@ render(){
 
             <tr>
              <td> <label>Account Number:</label></td>
-            <td><input type='text' className='form-input' name='AccountNo' value={this.state.AccountNo} onChange={this.handleinput} placeholder='xxxxxxx'/></td><br></br>
+            <td><input type='text' className='form-input' name='AccountNo' value={this.state.AccountNo} onChange={this.handleinput} placeholder='xxxxxxx'/> <div style={{color:"red"}}>{this.state.valideAccNum}</div></td><br></br>
+            
             </tr>
             
              <tr>

@@ -212,14 +212,14 @@ class UpdateOtherPurchaseBody extends Component {
                 <div>
                     <br/>
                     <label>Title of Purchase:</label>
-                    <input type='text' className='form-input' name='title' placeholder='Title' value={this.state.title} onChange={this.handleInputValueChange}/><br/>
+                    <input type='text' className='form-input-purchasing' name='title' placeholder='Title' value={this.state.title} onChange={this.handleInputValueChange}/><br/>
                     <label>Shop Name:</label>
-                    <input type='text' className='form-input' name='shop' placeholder='Purchased From' value={this.state.shop} onChange={this.handleInputValueChange}/><br/>
+                    <input type='text' className='form-input-purchasing' name='shop' placeholder='Purchased From' value={this.state.shop} onChange={this.handleInputValueChange}/><br/>
                     
                     <label>Purchased Date:</label>
-                    <input type='date' className='form-input' name='purchasedDate' placeholder='' value={this.state.purchasedDate} onChange={this.handleInputValueChange}/>
+                    <input type='date' className='form-input-purchasing' name='purchasedDate' placeholder='' value={this.state.purchasedDate} onChange={this.handleInputValueChange}/>
                     <label>For Which Section:</label>
-                    <select className='form-select' name='purchasedSection' value={this.state.purchasedSection} onChange={this.handleInputValueChange}>
+                    <select className='form-select-purchasing' name='purchasedSection' value={this.state.purchasedSection} onChange={this.handleInputValueChange}>
                     <option>Select One</option>
                         <option>Order Section</option>
                         <option>Financial Section</option>
@@ -233,7 +233,7 @@ class UpdateOtherPurchaseBody extends Component {
                         <option>Other</option>
                     </select><br/>
                     <label>Payment:</label>
-                    <select className='form-select' name='paymentStatus' value={this.state.paymentStatus} onChange={this.handleInputValueChange}>
+                    <select className='form-select-purchasing' name='paymentStatus' value={this.state.paymentStatus} onChange={this.handleInputValueChange}>
                         <option>Select One</option>
                         <option>Paid</option>
                         <option>Purchase on credit</option>

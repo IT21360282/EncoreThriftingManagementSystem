@@ -91,6 +91,7 @@ export default class UpConfirmStockOrder extends Component {
 
         axios.put(`http://localhost:8000/purchasingPut/stockOrder/putOrderStatus/${id}`,data).then((res)=>{
             console.log("successfully updated")
+            this.sendConfirmingEmail()
         }).catch(error=>{
             console.error("error occurred")
             let popUpMsg = this.state.popUpMsg
@@ -102,6 +103,26 @@ export default class UpConfirmStockOrder extends Component {
         })
     }
 
+    sendConfirmingEmail(){
+        
+    
+        const mailOptions = {
+            name:`Order Manager of ${this.state.supplier}`,
+            email:"nilankasanjana803@gmail.com",
+            subject:`Confirm Stock Order Under Title ${this.state.title}`,
+            msg:`I hope this email finds you well. As the purchasing manager of our inventory, I would like to confirm order under title '${this.state.title}' \n\nThank you for your prompt attention to this matter. I look forward to hearing from you soon.\n\nBest regards,\nSanjana Nilanka\nPurchasing Manager,\nEncore Thrift Store`
+        }
+    
+        axios.post('http://localhost:8000/purchasingPost/sendEmail',mailOptions).then((res) => {
+            console.log(res)
+            this.setState({isSuccess:true})
+            
+        }).catch((err) => {
+            console.log(err)
+            this.setState({isSuccess:false})
+        })
+      }
+
     render() {
         return (
         <div>
@@ -111,16 +132,16 @@ export default class UpConfirmStockOrder extends Component {
                 <h5>
                     <table>
                         <tr>
-                            <td>PurID</td>
-                            <td>:&nbsp;{this.state.purID}{this.state.purDigitID}</td>
+                            <td style={{textAlign:"left"}}>PurID</td>
+                            <td style={{fontWeight:'normal',textAlign:"left"}}>:&nbsp;{this.state.purID}{this.state.purDigitID}</td>
                         </tr>
                         <tr>
-                            <td>Order Title</td>
-                            <td>:&nbsp;{this.state.title}</td>
+                            <td style={{textAlign:"left"}}>Order Title</td>
+                            <td style={{fontWeight:'normal',textAlign:"left"}}>:&nbsp;{this.state.title}</td>
                         </tr>
                         <tr>
-                            <td>Supplier Name</td>
-                            <td>:&nbsp;{this.state.supplier}</td>
+                            <td style={{textAlign:"left"}}>Supplier Name</td>
+                            <td style={{fontWeight:'normal',textAlign:"left"}}>:&nbsp;{this.state.supplier}</td>
                         </tr>
                     </table>
                 </h5>

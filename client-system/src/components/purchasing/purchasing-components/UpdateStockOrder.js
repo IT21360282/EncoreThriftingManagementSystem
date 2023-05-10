@@ -216,19 +216,19 @@ export default class UpdateStockOrder extends Component {
                 <h2 >Update Stock Order After Confirming Under PurID <span style={{color:"#ff5520"}}>PS{this.state.purDigitID}</span></h2>
 
                 <label>Title of Order:</label>
-                <input type='text' className='form-input' style={{marginBottom:"0px", color:"#808080"}} name='title' placeholder='Title' value={this.state.title} readOnly/><br/>
+                <input type='text' className='form-input-purchasing' style={{marginBottom:"0px", color:"#808080"}} name='title' placeholder='Title' value={this.state.title} readOnly/><br/>
                 <div style={{marginBottom:"15px"}}>
                     <span style={{color:"red",fontWeight:"bolder", fontSize:"20px"}}>* </span>You Cannot Update Title of Stock Order After Confirming It.
                 </div>
                 <label>Payment:</label>
-                <select className='form-select' name='paymentStatus' value={this.state.paymentStatus} onChange={this.handleInputChange}>
+                <select className='form-select-purchasing' name='paymentStatus' value={this.state.paymentStatus} onChange={this.handleInputChange}>
                     <option>Select One</option>
                     <option>Paid</option>
                     <option>Payment Pending</option>
                     <option>Send to Financial Manager</option>
                 </select><br/>
                 <label>Shipping Fee:</label>
-                <input type='text' className='form-input' style={{marginBottom:"0px"}} name='shippingFee' placeholder='Shipping Fee (LKR)' value={this.state.shippingFee} onChange={this.handleShippingFeeInputChange}/><br/>
+                <input type='text' className='form-input-purchasing' style={{marginBottom:"0px"}} name='shippingFee' placeholder='Shipping Fee (LKR)' value={this.state.shippingFee} onChange={this.handleShippingFeeInputChange}/><br/>
                 <div style={{marginBottom:"15px"}}>
                     <div style={{color:"red"}}>{this.state.shippingFeeErr}</div>
                     <span style={{color:"red",fontWeight:"bolder", fontSize:"20px"}}>* </span>If This Order have No Shipping Fee Input '0'.
