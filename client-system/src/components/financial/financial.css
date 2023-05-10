@@ -1,0 +1,711 @@
+.financial {
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+}
+div.btn-111 {
+    align-items: center;
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+button.btn-111 {
+    border: #ff5520 2px solid;
+    border-radius: 20px;
+    padding: 10px;
+    width: 200px;
+    background-color: white;
+    font-weight: bold;
+}
+
+button.btn-111:hover {
+    background-color: #ff5520;
+    color: white;
+    cursor: pointer;
+}
+
+button.searching {
+    border: #ff5520 2px solid;
+    color: #ff5520;
+    padding: 10px;
+    background-color: white;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+button.searching:hover {
+    background-color: #ff5520;
+    color: white;
+    cursor: pointer;
+}
+
+input.searching {
+    border: #ff5520 2px solid;
+    padding: 10px;
+    border-left: 1px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    width: 500px;
+}
+button.btn-1111 {
+    border: white 2px solid;
+    border-radius: 10px;
+    padding: 10px;
+    width: 90px;
+    background-color: blue;
+    font-weight: bold;
+}
+button.btn-1112 {
+    border: white 2px solid;
+    border-radius: 10px;
+    padding: 10px;
+    width: 90px;
+    background-color: #e6b400;
+    font-weight: bold;
+}
+button.btn-1113 {
+    border: white 2px solid;
+    border-radius: 10px;
+    padding: 10px;
+    width: 90px;
+    background-color: #299617;
+    font-weight: bold;
+}
+#rectangle2{
+    display:flex;
+}
+
+#container{
+    display:flex;
+    background-color:grey ;
+    align-content: center;
+    justify-content: center;
+}
+#container div{
+    background-color: lightblue;
+    align-items: center;
+    margin: 10px;
+    width: 100%;
+}
+#containernew{
+    display:flex;
+    background-color:grey ;
+    align-content: center;
+    justify-content: center;
+}
+#containernew div{
+    background-color: #ff5520;
+    align-items: center;
+    margin: 10px;
+    width: 100%;
+}
+
+.fhome-box{
+    width:20vh;
+    height: 20vh;
+    border-radius: 50%;
+    background-color: #299617;
+    background: repeating-conic-gradient(
+        from 0deg,
+        #299617 0deg 50deg,
+        #e6b400 50deg 250deg,
+        #1F45FC 250deg 360deg
+    );
+    
+}
+.fhome-box-cont{
+    font-size: 20px;
+    padding-left: 30px;
+}
+.fhome-box-cont h4{
+    font-size: 20px;
+    text-transform: none;
+}
+.fhome-box-cont-strong{
+    display: block;
+    margin-bottom: 9px;
+}
+.fhome1-box{
+    width:30vh;
+    height: 30vh;
+    border-radius: 50%;
+    background-color: #e6b400;
+    background: repeating-conic-gradient(
+        from 0deg,
+        #1F45FC 0deg 100deg,
+        #e6b400 100deg 300deg,
+      #299617 300deg 360deg
+    );
+    
+}
+/* success btn */
+.btn-success {
+    background-color: #28A745;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #28A745;
+}
+
+/* addpayment css*/
+#payrectangle{
+    
+    background:#f2f2f2;
+    border-radius: 20px;
+    margin-left:90px;
+    margin-right:90px;
+
+}
+.pay-form {
+     width: 63%;
+    margin-right:auto ;
+    margin-left:auto;
+}
+
+label {
+    font-weight: bold;
+}
+
+.form-input {
+    width: 240%;
+    border: 2px solid #ff5520;
+    border-radius: 8px;
+    height: 40px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.form-input:focus {
+    outline: none;
+    border: 3px solid #ff5520;
+}
+
+.form-select {
+    width: 91.5%;
+    border: 2px solid #ff5520;
+    border-radius: 8px;
+    height: 45px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.form-select:focus {
+    outline: none;
+    border: 3px solid #ff5520;
+}
+button.btn-pay {
+    border:#299617 2px solid;
+    border-radius: 20px;
+    padding: 10px;
+    width: 150px;
+    background-color: white;
+    background-color:#299617;
+    font-weight: bold;
+}
+/* searchBank */
+button.searchBank {
+    border: #ff5520 2px solid;
+    color: #ff5520;
+    padding: 10px;
+    background-color: white;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+button.searchBank:hover {
+    background-color: #ff5520;
+    color: white;
+    cursor: pointer;
+}
+
+input.searchBank {
+    border: #ff5520 2px solid;
+    padding: 10px;
+    border-left: 1px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    width: 300px;
+}
+
+input.searchBank:focus {
+    outline: none;
+}
+
+/* searchPayment */
+button.searchPayments {
+    border: #ff5520 2px solid;
+    color: #ff5520;
+    padding: 10px;
+    background-color: white;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+button.searchPayments:hover {
+    background-color: #ff5520;
+    color: white;
+    cursor: pointer;
+}
+
+input.searchPayments {
+    border: #ff5520 2px solid;
+    padding: 10px;
+    border-left: 1px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    width: 300px;
+}
+
+input.searchPayments:focus {
+    outline: none;
+}
+
+/* addbankdetails*/
+#bankrectangle{
+    
+    background:#f2f2f2;
+    border-radius: 20px;
+    margin-left:90px;
+    margin-right:90px;
+
+}
+.bank-form {
+     width: 63%;
+    margin-right:auto ;
+    margin-left:auto;
+}
+
+label {
+    font-weight: bold;
+}
+
+.form-input {
+    width: 240%;
+    border: 2px solid #ff5520;
+    border-radius: 8px;
+    height: 40px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.form-input:focus {
+    outline: none;
+    border: 3px solid #ff5520;
+}
+
+.form-select {
+    width: 91.5%;
+    border: 2px solid #ff5520;
+    border-radius: 8px;
+    height: 45px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.form-select:focus {
+    outline: none;
+    border: 3px solid #ff5520;
+}
+button.btn-bank {
+    border:#299617 2px solid;
+    border-radius: 20px;
+    padding: 10px;
+    width: 150px;
+    background-color: white;
+    background-color:#299617;
+    font-weight: bold;
+}
+/* updatepaymentdetails*/
+#payuprectangle{
+    background:#f2f2f2;
+    border-radius: 20px;
+    margin-left:90px;
+    margin-right:90px;
+
+}
+.payup-form {
+     width: 63%;
+    margin-right:auto ;
+    margin-left:auto;
+}
+
+label {
+    font-weight: bold;
+}
+
+.form-input {
+    width: 240%;
+    border: 2px solid #ff5520;
+    border-radius: 8px;
+    height: 40px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.form-input:focus {
+    outline: none;
+    border: 3px solid #ff5520;
+}
+
+.form-select {
+    width: 91.5%;
+    border: 2px solid #ff5520;
+    border-radius: 8px;
+    height: 45px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.form-select:focus {
+    outline: none;
+    border: 3px solid #ff5520;
+}
+button.btn-payup {
+    border: white 2px solid;
+    border-radius: 10px;
+    padding: 10px;
+    width: 130px;
+    background-color: #e6b400;
+    font-weight: bold;
+    text-align: center;
+    margin-right: 30px;
+    
+}
+/* updatebankdetails*/
+#bankuprectangle{
+    background:#f2f2f2;
+    border-radius: 20px;
+    margin-left:90px;
+    margin-right:90px;
+
+}
+.bankup-form {
+     width: 63%;
+    margin-right:auto ;
+    margin-left:auto;
+}
+
+label {
+    font-weight: bold;
+}
+
+.form-input {
+    width: 240%;
+    border: 2px solid #ff5520;
+    border-radius: 8px;
+    height: 40px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.form-input:focus {
+    outline: none;
+    border: 3px solid #ff5520;
+}
+
+.form-select {
+    width: 91.5%;
+    border: 2px solid #ff5520;
+    border-radius: 8px;
+    height: 45px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.form-select:focus {
+    outline: none;
+    border: 3px solid #ff5520;
+}
+button.btn-bankup {
+    border: white 2px solid;
+    border-radius: 10px;
+    padding: 10px;
+    width: 130px;
+    background-color: #e6b400;
+    font-weight: bold;
+    text-align: center;
+    margin-right: 30px;
+    
+}
+/* calculatesalary */
+#salrectangle{
+    background:#f2f2f2;
+    border-radius: 20px;
+    margin-left:90px;
+    margin-right:90px;
+
+}
+.sal-form {
+     width: 63%;
+    margin-right:auto ;
+    margin-left:auto;
+}
+
+label {
+    font-weight: bold;
+}
+
+.form-input {
+    width: 240%;
+    border: 2px solid #ff5520;
+    border-radius: 8px;
+    height: 40px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.form-input:focus {
+    outline: none;
+    border: 3px solid #ff5520;
+}
+
+.form-select {
+    width: 91.5%;
+    border: 2px solid #ff5520;
+    border-radius: 8px;
+    height: 45px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.form-select:focus {
+    outline: none;
+    border: 3px solid #ff5520;
+}
+button.btn-sal {
+    border:#1F45FC 2px solid;
+    border-radius: 20px;
+    padding: 10px;
+    width: 150px;
+    background-color: white;
+    background-color:#1F45FC;
+    font-weight: bold;
+}
+/* emailsend */
+#fmailrectangle{
+    background:#f2f2f2;
+    border-radius: 20px;
+    margin-left:90px;
+    margin-right:90px;
+
+}
+.fmail-form {
+     width: 63%;
+    margin-right:auto ;
+    margin-left:auto;
+}
+
+label {
+    font-weight: bold;
+}
+
+.form-inputmail {
+    width: 200%;
+    border: 2px solid #ff5520;
+    border-radius: 8px;
+    height: 40px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.form-input:focus {
+    outline: none;
+    border: 3px solid #ff5520;
+}
+
+.form-select {
+    width: 91.5%;
+    border: 2px solid #ff5520;
+    border-radius: 8px;
+    height: 45px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.form-select:focus {
+    outline: none;
+    border: 3px solid #ff5520;
+}
+button.btn-fmail {
+    border:#299617 2px solid;
+    border-radius: 20px;
+    padding: 10px;
+    width: 150px;
+    background-color: white;
+    background-color:#299617;
+    font-weight: bold;
+}
+/* freport*/
+#freprectangle{
+    background:#f2f2f2;
+    border-radius: 50px;
+    margin-left:90px;
+    margin-right:90px;
+}
+input.checkbox{
+
+}
+.frep-form {
+    width: 63%;
+   margin-right:auto ;
+   margin-left:auto;
+}
+button.btn-frep {
+    border:#299617 2px solid;
+    border-radius: 20px;
+    padding: 10px;
+    width: 150px;
+    background-color: white;
+    background-color:#299617;
+    font-weight: bold;
+}
+button.btn-frep1 {
+    border:#ff5520 2px solid;
+    border-radius: 20px;
+    padding: 10px;
+    width: 150px;
+    background-color: white;
+    background-color:#ff5520;
+    font-weight: bold;
+}
+input:checked{
+    width: 20px;
+    height: 40px;
+}
+/* rates */
+#ratrectangle{
+    background:#f2f2f2;
+    border-radius: 20px;
+    margin-left:90px;
+    margin-right:90px;
+
+}
+.rat-form {
+     width: 63%;
+    margin-right:auto ;
+    margin-left:auto;
+}
+
+label {
+    font-weight: bold;
+}
+
+.form-input {
+    width: 240%;
+    border: 2px solid #ff5520;
+    border-radius: 8px;
+    height: 40px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.form-input:focus {
+    outline: none;
+    border: 3px solid #ff5520;
+}
+
+.form-select {
+    width: 91.5%;
+    border: 2px solid #ff5520;
+    border-radius: 8px;
+    height: 45px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.form-select:focus {
+    outline: none;
+    border: 3px solid #ff5520;
+}
+button.btn-rat {
+    border:#1F45FC 2px solid;
+    border-radius: 20px;
+    padding: 10px;
+    width: 150px;
+    background-color: white;
+    background-color:#1F45FC;
+    font-weight: bold;
+}
+.r-box{
+    width: 40vh;
+    height: 40vh;
+    border-radius: 50%;
+    background-color: #299617;
+    background: repeating-conic-gradient(
+        from 0deg,
+        #ff5520 0deg 180deg,
+        #1F45FC 180deg 300deg,
+        #299617 300deg 360deg
+    
+    );
+}
+.r-box-cont{
+    font-size: 30px;
+    padding-left: 50px;
+}
+.r-box-cont h3{
+    font-size: 25px;
+    text-transform: uppercase;
+}
+.r-box-cont  strong{
+    display: block;
+    margin-bottom: 10px;
+}
+
+
+/* viewpayment */
+table.table-finance {
+    width: 100%;
+    border-collapse: collapse;
+    
+}
+div.table-finance {
+    margin-left: 20px;
+    margin-right: 20px;
+    border: #ff5520 2px solid;
+    border-radius: 10px;
+}
+td.table-finance {
+    text-align: center;
+    border-right: 2px solid black;
+}
+th.table-finance {
+    border-right: 2px solid black;
+    background-color: #D9D9D9;
+    padding-top: 5px;
+    padding-bottom: 7px;
+}
+/* viewbank */
+table.table-bank {
+    width: 100%;
+    border-collapse: collapse;
+    
+}
+div.table-bank {
+    margin-left: 20px;
+    margin-right: 20px;
+    border: #ff5520 2px solid;
+    border-radius: 10px;
+}
+td.table-bank {
+    text-align: center;
+    border-right: 2px solid black;
+}
+th.table-bank {
+    border-right: 2px solid black;
+    background-color: #D9D9D9;
+    padding-top: 5px;
+    padding-bottom: 7px;
+}
+
+
+
+
+
+
+
+
+
+

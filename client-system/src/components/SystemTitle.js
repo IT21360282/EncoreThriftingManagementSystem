@@ -22,6 +22,27 @@ function PurchasingFunc() {
     )
 } 
 
+function FinancialHomeFunc() {
+  const un = "Yoshitha Tennakoon"
+  return (
+    <div >
+      <h1 className='head-title'>Financial Management System</h1>
+      <hr/>
+      <h4 style={{marginLeft:"20px"}}>Welcome {un}</h4>
+    </div>
+  )
+  }
+  function FinancialFunc() {
+    const un = "Yoshitha Tennakoon"
+    return (
+      <div >
+        <h1 className='head-title'>Financial Management System</h1>
+        <hr/>
+      </div>
+    )
+} 
+  
+  
 export default class SystemTitle extends Component {
   render() {
     return (
@@ -29,6 +50,9 @@ export default class SystemTitle extends Component {
             <Routes>
                 <Route path="/purchasing/purchasing-home" element={<PurchasingHomeFunc/>}/>
                 <Route path="/purchasing/:name" element={<PurchasingFunc/>}/>
+                <Route path="/financial/financial-home" element={<FinancialHomeFunc/>}/>
+                <Route path="/financial/:name" element={<FinancialFunc/>}/>
+                <Route path="/financial/:name/:name" element={<FinancialFunc/>}/>
             </Routes>
       </BrowserRouter>
     )
