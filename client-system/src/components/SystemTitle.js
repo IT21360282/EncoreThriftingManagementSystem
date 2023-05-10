@@ -23,46 +23,47 @@ function PurchasingFunc() {
 } 
 
 
-<<<<<<< HEAD
 /*stock*/
 function StockHomeFunc() {
   const un = "Geeshan Thisera"
   return (
     <div >
       <h1 className='head-title'>Stock Management System</h1>
-=======
+      </div>
+  )
+}
+
 function EmployeeHomeFunc() {
   const un = "Nethmi Tharushi"
   return (
     <div >
       <h1 className='head-title'>Employee Management System</h1>
->>>>>>> IT21383816_DeSilvaKPNT
       <hr/>
       <h4 style={{marginLeft:"20px"}}>Welcome {un}</h4>
     </div>
   )
 } 
 
-<<<<<<< HEAD
 function StockFunc() {
   const un = "Geeshan Thisera"
   return (
     <div >
       <h1 className='head-title'>Stock Management System</h1>
-=======
+      </div>
+  )
+}
+
 function EmployeeFunc() {
   const un = "Nethmi Tharushi"
   return (
     <div >
       <h1 className='head-title'>Employee Management System</h1>
->>>>>>> IT21383816_DeSilvaKPNT
       <hr/>
     </div>
   )
 } 
 
 export default class SystemTitle extends Component {
-<<<<<<< HEAD
   render() {
     return (
         <BrowserRouter>
@@ -77,7 +78,6 @@ export default class SystemTitle extends Component {
       </BrowserRouter>
     )
   }
-=======
 render() {
   return (
       <BrowserRouter>
@@ -90,5 +90,4 @@ render() {
     </BrowserRouter>
   )
 }
->>>>>>> IT21383816_DeSilvaKPNT
 }

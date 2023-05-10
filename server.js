@@ -22,7 +22,6 @@ app.use('/purchasingGet', getRouterPurchasing)
 app.use('/purchasingDelete', deleteRouterPurchasing)
 app.use('/purchasingPut', putRouterPurchasing)
 
-<<<<<<< HEAD
 //stock
 const postRoutes = require('./routes/stock/routesPost')
 const getRoutes = require('./routes/stock/routesGet')
@@ -32,7 +31,6 @@ app.use(postRoutes)
 app.use(getRoutes)
 app.use(deleteRoutes)
 app.use(UpdateRoutes)
-=======
 app.use('/employeePost', postRouterEmp)
 app.use('/employeeGet', getRouterEmp)
 app.use('/employeePut', putRouterEmp)
@@ -40,12 +38,10 @@ app.use('/employeePut', putRouterEmp)
 
 const PORT = 8000
 const DB_URL = "mongodb+srv://t5:1234@cluster0.awr06ma.mongodb.net/THRIFT_STORE?retryWrites=true&w=majority"
->>>>>>> IT21383816_DeSilvaKPNT
 
 
 
-const getRouter = require("./routes/purchasing/routesGet");
-const postRouter = require("./routes/purchasing/routesPost");
+
 
 //Dashboard Router {Manager Managemet }
 const DashboardRouter = require("./routes/dashboard/employeeRoute.js");
@@ -55,13 +51,11 @@ const DashboardCatRouter = require("./routes/dashboard/categoryRoute.js");
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use("/purchasingPost", postRouter);
-app.use("/purchasingGet", getRouter);
+
 app.use("/dashboard", DashboardRouter);
 app.use("/dashboard", DashboardCatRouter);
 
-const PORT = 8000;
-const DB_URL = "mongodb+srv://t5:1234@cluster0.awr06ma.mongodb.net/THRIFT_STORE?retryWrites=true&w=majority";
+
 
 mongoose
     .connect(DB_URL)
