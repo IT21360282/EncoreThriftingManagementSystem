@@ -250,7 +250,9 @@ const Addcategory = () => {
     const doc = new jsPDF("p", "pt", "a4");
 
     doc.setFontSize(15);
-    doc.text("All Report", 40, 40);
+    const tableName = "Category Management";
+    doc.text(tableName, doc.internal.pageSize.getWidth() / 2, 40, "center"); // Add table name at the center of the page
+    doc.text("All Report", 40, 80); // Add "All Report" title with increased y position for the gap
     var data;
     var price = 0;
     var count = 0;

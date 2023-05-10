@@ -78,9 +78,9 @@ const CategoryGraph = () => {
 
         backgroundColor: [
           "rgba(75,192,192,1)",
-          "#50AF95",
-          "#f3ba2f",
-          "#2a71d0",
+          "#d2980d",
+          "#e27c7c",
+          "#5e569b",
         ],
         borderWidth: 1,
       },
