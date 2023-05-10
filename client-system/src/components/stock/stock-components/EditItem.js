@@ -182,14 +182,6 @@ class EditItemBody extends Component {
                       <button className="btn btn-success" type='submit' style={{marginTop:"15px"}} onClick={this.onSubmit}><i class="fa-regular fa-square-check" style={{marginRight:"10px"}}></i>Save</button>
 
 
-
-
-
-                      
-                      
-										
-								
-                      
                       </div>
                       
                     </div>

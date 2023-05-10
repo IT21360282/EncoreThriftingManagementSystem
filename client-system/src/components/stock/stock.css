@@ -202,6 +202,16 @@ button.btn-back:hover {
     margin-bottom: 10px;
 }
 
+.label-3{
+    margin-bottom: 5px;
+    margin-left: 50px;
+}
+
+.label-4{
+    
+    margin-left: 50px;
+}
+
 .popup-head-add-item{
     color: #088747;
     
@@ -225,6 +235,20 @@ button.btn-back:hover {
     
     
     border-radius: 10px;
+}
+
+.form-inputg {
+    width: 90%;
+    border: 0.5px solid #ff5520;
+    border-radius: 4px;
+    height: 25px;
+    font-size: 14px;
+    margin-bottom: 1px;
+}
+
+.form-inputg:focus {
+    outline: none;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
 
 .form-in{
@@ -269,6 +293,12 @@ button.btn-back:hover {
     margin: 0%;
     padding: 0%;
 }
+
+.my-delete{
+    display: flex;
+}
+
+
 
 .close-btn{
     width: fit-content;

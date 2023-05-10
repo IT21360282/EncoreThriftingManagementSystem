@@ -43,7 +43,6 @@ function StockFunc() {
       <a href={`/stock/disposed-item`}><button className='home-tab' >Disposed Item List</button></a>
       <a href={`/stock/released-item`}><button className='home-tab' >Released Item List</button></a>
       <a href={`/stock/view-lowstock-item`}><button className='home-tab' >Low Stock Item List</button></a>
-      <a href={`/stock/stock-out`}><button className='home-tab' >Low </button></a>
       <a href={`/stock/generate-report`}><button className='home-tab' >Generate Reports</button></a>
       <a href={`/stock/mail`}><button className='home-tab' >Send Emails</button></a>
       

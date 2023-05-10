@@ -27,7 +27,6 @@ class SubCategory extends Component {
             pDescription:"",
             pLevel:"",
             subCategoryDetails: [],
-            errors: {},
                
         }
         
@@ -151,6 +150,9 @@ class SubCategory extends Component {
         })
     }
 
+
+    // validation for add
+
     onSubmit=(e)=>{
 
 
@@ -165,73 +167,7 @@ class SubCategory extends Component {
         const{pName,pCategory,pSubCategory,pQuantity,pPrice,pPlacedDate,pImageURL,pDescription,pLevel}=this.state;
 
         
-            const errors = {};
-            if (pName.trim() === "") {
-              errors.pName = "Please enter a product name.";
-            }
-            if (pQuantity.trim() === "") {
-              errors.pQuantity = "Please enter a product quantity.";
-            } else if (isNaN(pQuantity)||pQuantity<0) {
-              errors.pQuantity = "Please enter a valid quantity.";
-            }
-            
-            if (pLevel.trim() === "") {
-              errors.pLevel = "Please enter a ReOrder Level.";
-            } else if (isNaN(pLevel)||pLevel<0) {
-              errors.pLevel = "Please enter a valid ReOrder Level.";
-            }
 
-            if (pPrice.trim() === "") {
-              errors.pPrice = "Please enter a product Price.";
-            } else if (isNaN(pPrice)||pPrice<0) {
-              errors.pPrice = "Please enter a valid Price.";
-            }
-
-            if (pPlacedDate.trim() === "") {
-              errors.pPlacedDate = "Please enter a date.";
-            }
-
-
-            if (pImageURL.trim() === "") {
-              errors.pImageURL = "Please Enter Image URL.";
-            }
-            if (pSubCategory.trim() === "") {
-              errors.pSubCategory = "Please select a product category.";
-            }
-            if (pCategory.trim() === "") {
-              errors.pCategory = "Please select a product category.";
-            }
-            if (pDescription.trim() === "") {
-              errors.pDescription = "Please Enter Product Description.";
-            }
-            
-            if (Object.keys(errors).length > 0) {
-              this.setState({ errors });
-            } else {
-              // Perform form submission logic here
-              console.log("Product Name: ", pName);
-              console.log("Product Quantity: ", pQuantity);
-              console.log("Product Reorder Level: ", pPrice);
-              console.log("Product Category: ", pCategory);
-              console.log("Product Sub Category: ", pSubCategory);
-              console.log("Product Placed Date: ", pPlacedDate);
-              console.log("Product ImageURL: ", pImageURL);
-              console.log("Product Product Description: ", pDescription);
-              console.log("Product ReOrder Level: ", pLevel);
-              // Reset form fields
-              this.setState({
-                pName: "",
-                pQuantity: "",
-                pPrice: "",
-                pCategory: "",
-                pSubCategory: "",
-                pPlacedDate:"",
-                pImageURL:"",
-                pDescription:"",
-                pLevel:"",
-                errors: {},
-              });
-            }
 
         
         const data ={
@@ -269,6 +205,8 @@ class SubCategory extends Component {
             }
         })
 
+        
+
     }
 
 
@@ -292,8 +230,15 @@ class SubCategory extends Component {
         }
       })
 
-        const totalProduct = 23
-        const allCategory = 3
+      let totalProduct=0
+      this.state.subCategoryDetails.map((results,index)=>{
+        if(this.state.subCategoryDetails.length>0){
+          totalProduct=totalProduct+1
+        }
+      })
+
+      let allItem=0
+      
         
         const displayLoginNotification = () => {
           toast.success("Deleted Succesfully");
@@ -328,10 +273,10 @@ class SubCategory extends Component {
 
             <div className='btn-inline' style={{marginTop:"65px"}} >
                 <div className='semi-preview-container'>Total Product<br/>{totalProduct}</div>
-                <div className='semi-preview-container'>All Category <br/>{allCategory}</div>
+                <div className='semi-preview-container'>All Item Count <br/>{allItem}</div>
                 <div className='semi-preview-container'>Out Of Stock<br/><div className='redNumb'>{outOfStock}</div></div>
-                <a href={`/stock/sub-category`}><button className='btn-back'><i class="fa-sharp fa-solid fa-rotate-right"></i> Refresh</button></a>
-                <a href='/stock/sub-category'><button className='btn-back'><i class="fa-solid fa-arrow-left"></i> Back</button></a>
+                <a href={`/stock/sub-category`}><button className='btn-back'><i className="fa-sharp fa-solid fa-rotate-right"></i> Refresh</button></a>
+                <a href='/stock/sub-category'><button className='btn-back'><i className="fa-solid fa-arrow-left"></i> Back</button></a>
 
 
 
@@ -349,21 +294,19 @@ class SubCategory extends Component {
 					close => (
 						<div className='modal' >
 							<div className='stock'>
-                <div> 
+                <div > 
                 <div className='my-add' >
                   <h3 className='popup-head-add-item'>Add Item</h3>
-                  <button className='close-btn' onClick={() => close()}><i class="fa-solid fa-xmark"></i></button>
+                  <button className='close-btn' onClick={() => close()}><i className="fa-solid fa-xmark"></i></button>
                   </div>
-                  <form className='add-form' onClick={this.onSubmit} > 
+                  <form className='add-form'  > 
                   <div className='popUp-form' >
                     <div style={{width:"100%"}}> 
                       <div className='label-1'>
                       <label >Product Name:</label><br/>
-                      <input type='text' id="username" className='form-enter' name='pName' placeholder='Enter Name'  value={this.state.pName} onChange={this.handleInputChange} aria-errormessage='username-error' required /><br/>
+                      <input type='text' id="username" className='form-enter' name='pName' placeholder='Enter Name'  value={this.state.pName} onChange={this.handleInputChange} aria-errormessage='username-error' required />
                       
-                      {errors.pName && (
-                      <div style={{ color: "red" }}>{errors.pName}</div>
-                    )}
+                      
                       </div>
 
                       <div className='label-1'>
@@ -374,9 +317,7 @@ class SubCategory extends Component {
                         <option>Books</option>
                         <option>Clothes</option>
                       </select><br/>
-                      {errors.pCategory && (
-                      <div style={{ color: "red" }}>{errors.pQuantity}</div>
-                    )}
+                      
                       <div className='label-2'>
                       <label>Subcategory:</label><br/>
                         <select className='form-enter' name='pSubCategory' value={this.state.pSubCategory} onChange={this.handleInputChange}>
@@ -410,64 +351,50 @@ class SubCategory extends Component {
                         </select>
                         </div>
                       
-                      </div>
-                      {errors.pSubCategory && (
-                      <div style={{ color: "red" }}>{errors.pSubCategory}</div>
-                    )}
+                      
+                     
 
-                      <div className='label-1'>
+                      
                       <label>Product Quantity:</label><br/>
                       <input type='number' min={0} className='form-enter' name='pQuantity' placeholder='10' value={this.state.pQuantity} onChange={this.handleInputChange}/><br/>
-                      </div>
-                      {errors.pQuantity && (
-                        <div style={{ color: "red" }}>{errors.pQuantity}</div>
-                      )}
+                      
+                      
 
-                      <div className='label-1'>
+                      
                       <label>Product Reorder Level:</label><br/>
                       <input type='number' className='form-enter' name='pLevel' placeholder='10' value={this.state.pLevel} onChange={this.handleInputChange}/><br/>
-                      </div>
-                      {errors.pLevel && (
-                        <div style={{ color: "red" }}>{errors.pLevel}</div>
-                      )}
                       
-                      <div className='label-1'>
+                      
+                      
+                      
                       <label>Unit Price(LKR):</label><br/>
                       <input type='number' className='form-enter' name='pPrice' placeholder='Rs:1000' value={this.state.pPrice} onChange={this.handleInputChange}/><br/>
-                      </div>
-                      {errors.pPrice && (
-                        <div style={{ color: "red" }}>{errors.pPrice}</div>
-                      )}
+                      
+                      
 
-                      <div className='label-1'>
+                      
                       <label>Date:</label><br/>
                       <input type='date' className='form-enter' name='pPlacedDate' placeholder='' value={this.state.pPlacedDate} onChange={this.handleInputChange}/><br/>
-                      </div>
-                      {errors.pPlacedDate && (
-                      <div style={{ color: "red" }}>{errors.pPlacedDate}</div>
-                    )}
+                      
+                      
 
 
-                      <div className='label-1'>
+                      
                       <label>Product Image URL:</label><br/>
                       <input type='text' className='form-enter' name='pImageURL' placeholder='https://www.abcd.com' value={this.state.pImageURL} onChange={this.handleInputChange}/><br/>
-                      </div>
-                      {errors.pImageURL && (
-                      <div style={{ color: "red" }}>{errors.pImageURL}</div>
-                    )}
+                      
+                     
 
-                      <div className='label-1'>
+                      
                       <label>Product Description:</label><br/>
                       <textarea className='form-textarea' rows={2} cols={20} type="text" name='pDescription' placeholder='Enter Item Details' value={this.state.pDescription} onChange={this.handleInputChange} required/><br/>
-                      </div>
-                      {errors.pDescription && (
-                      <div style={{ color: "red" }}>{errors.pDescription}</div>
-                    )}
+                      
+                    
                      <div className='buttn-success-1'>
-                      <button className="btn btn-success" type='submit' style={{marginTop:"15px"}} ><i class="fa-regular fa-square-check" style={{marginRight:"10px"}}></i>Save</button>
+                      <button className="btn btn-success"  style={{marginTop:"15px"}} ><i class="fa-regular fa-square-check" style={{marginRight:"10px"}} onClick={this.onSubmit}></i>Save</button>
                       
 										
-								
+                      </div>
                       </div>
                     </div>
                     

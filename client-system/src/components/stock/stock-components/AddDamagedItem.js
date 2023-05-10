@@ -7,7 +7,7 @@ class AddDamagedItem extends Component {
     constructor(props){
         super(props);
         this.state={
-            pId:"IT1006",
+            
             pName:"",
             pCategory:"",
             pQuantity:"",
@@ -32,11 +32,11 @@ class AddDamagedItem extends Component {
 
         e.preventDefault();
 
-        const{pId,pName,pCategory,pQuantity,pPrice,pPlacedDate,pImageURL,pReason}=this.state;
+        const{pName,pCategory,pQuantity,pPrice,pPlacedDate,pImageURL,pReason}=this.state;
 
         
         const data ={
-            pId: pId,
+            
             pName:pName,
             pCategory:pCategory,
             pQuantity:pQuantity,
@@ -53,7 +53,7 @@ class AddDamagedItem extends Component {
             if(res.data.success){
                 this.setState(
                     {
-                        pId:"",
+                        
                         pName:"",
                         pCategory:"",
                         pQuantity:"",
