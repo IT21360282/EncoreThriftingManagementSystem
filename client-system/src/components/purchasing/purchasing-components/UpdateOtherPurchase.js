@@ -123,6 +123,21 @@ class UpdateOtherPurchaseBody extends Component {
         this.setState({ purchasedItemUnitPrices })
     }
 
+    handleRemoveExistingOtherPurchases = (index) => {
+        const x = this.state.x
+        const purchasedItems = [...this.state.purchasedItems]
+        const purchasedItemQuantities = [...this.state.purchasedItemQuantities]
+        const purchasedItemUnitPrices = [...this.state.purchasedItemUnitPrices]
+        
+        purchasedItems.splice((index),1)
+        purchasedItemQuantities.splice((index),1)
+        purchasedItemUnitPrices.splice((index),1)
+        this.setState({ x:x-1 })
+        this.setState({ purchasedItems })
+        this.setState({ purchasedItemQuantities })
+        this.setState({ purchasedItemUnitPrices })
+      }
+
     onSubmitUpdate(){
         let totalQty = this.state.totalQty
         for(let i = 0; i < this.state.purchasedItemQuantities.length; i++){
@@ -182,7 +197,7 @@ class UpdateOtherPurchaseBody extends Component {
                     <input type="text" className='add-item-input add-input' value={this.state.purchasedItems[i]} onChange={(event) => this.handleItemInputChange(event, (i))} />
                     <input type="text" className='add-item-qty-input add-input' value={this.state.purchasedItemQuantities[i]} onChange={(event) => this.handleQtyInputChange(event, (i))} />
                     <input type="text" className='add-item-price-input add-input' value={this.state.purchasedItemUnitPrices[i]} onChange={(event) => this.handleUnitPriceInputChange(event, (i))} />
-                    <button type="button" className='remove-item-input' onClick={() => this.handleRemovePurchasedItem(i-1)}><i class="fa-solid fa-minus"></i></button>
+                    <button type="button" className='remove-item-input' onClick={() => this.handleRemoveExistingOtherPurchases(i)}><i class="fa-solid fa-minus"></i></button>
                 </div>
             )
         }

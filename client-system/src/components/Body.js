@@ -45,7 +45,7 @@ export default class Body extends Component {
             <Route path="/purchasing/spec-purchase/:id" element={<DisplaySpecificOtherPurchase/>}/>
             <Route path="/purchasing/search-order/:name" element={<SearchStockOrders/>}/>
             <Route path="/purchasing/generate-report" element={<PurchasingGenerateReport/>}/>
-            <Route path="/purchasing/generate-graph" element={<GenerateGraph/>}/>
+            <Route path="/purchasing/data-analysis" element={<GenerateGraph/>}/>
             <Route path="/purchasing/send-mails" element={<SendMails/>}/>
             <Route path="/purchasing/calc" element={<PurchasingCalculating/>}/>
 
