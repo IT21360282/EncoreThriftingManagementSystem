@@ -48,7 +48,7 @@ class ViewDamageBody extends Component {
             <div className='stock'>
 
                 <div style={{marginTop:"70px"}}>
-                <a href={`/stock/disposed-item`}><button className='btn-back' style={{marginLeft:"91%"}}><i class="fa-solid fa-arrow-left"></i> Back</button></a>
+                <a href={`/stock/damaged-item`}><button className='btn-back' style={{marginLeft:"91%"}}><i class="fa-solid fa-arrow-left"></i> Back</button></a>
                     <div className='form-view' >
                     
                         

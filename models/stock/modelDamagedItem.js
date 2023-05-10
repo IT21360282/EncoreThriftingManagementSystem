@@ -5,12 +5,19 @@ const damagedItem = new mongoose.Schema({
     
     pName: {
         type: String,
-        required: false
+        required:false
     },
+
     pCategory: {
         type: String,
         required:false
     },
+
+    pSubCategory: {
+        type: String,
+        required:false
+    },
+
     pQuantity: {
         type: Number,
         required:false
