@@ -53,4 +53,38 @@ router.get('/bankshow/getSpec/:id', (req, res) => {
     })
 })
 
+/* payment serach */
+router.get('/paymentdetails/search', (req, res) => {
+    const orderQuery = req.query.q
+    const regex = new RegExp(orderQuery, 'i')
+
+    financeModel.find({ $or: [{ FullName: regex }, { Pay_Type: regex }, ] }).then((results) => {
+        console.log(results)
+        return res.status(200).json({
+            success: true,
+            searchedDetails: results
+        })
+    }).catch((err) => {
+        console.error(err)
+    })
+})
+
+/* bank serach */
+router.get('/bankdetails/search', (req, res) => {
+    const orderQuery = req.query.q
+    const regex = new RegExp(orderQuery, 'i')
+
+    bankModel.find({ $or: [{ B_Name: regex }, { Br_Name: regex }] }).then((results) => {
+        console.log(results)
+        return res.status(200).json({
+            success: true,
+            searchedDetails: results
+        })
+    }).catch((err) => {
+        console.error(err)
+    })
+})
+
+
+
 module.exports = router

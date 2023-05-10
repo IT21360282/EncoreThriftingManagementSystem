@@ -5,7 +5,7 @@ import axios from 'axios'
 
 export default function UpdatePaymentDetails(){
 
-  const id = useParams()
+  const {id} = useParams()
   return (
     <div>
       <UpdatePaymentDetailsBody id={id}/>
@@ -28,6 +28,8 @@ class UpdatePaymentDetailsBody extends Component{
         ExpiredYear:"",
         CVC:"",
       }
+      this.handleinput = this.handleinput.bind(this)
+      this.onSubmit = this.onSubmit.bind(this)
     }
 
     componentDidMount(){
@@ -67,7 +69,7 @@ class UpdatePaymentDetailsBody extends Component{
         CVC: CVC,
       }
       
-      axios.put(`http://localhost:8000/finance/otherpayment/put/${this.state.id}`,data).then((response)=>{
+      axios.put(`http://localhost:8000/financePut/otherfinance/put/${this.state.id}`,data).then((response)=>{
         console.log("success updated")
         
       }).catch(error=>{
@@ -83,6 +85,7 @@ class UpdatePaymentDetailsBody extends Component{
                 
                 
                     
+                    {this.state.id}
         <div id="payuprectangle">
         <div className='payup-form'>
         <h3 style={{marginLeft:"20px",marginTop:"65px",color:"#ff5520",textAlign:'center'}}>Update Relevant Payment Details</h3>

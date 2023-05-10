@@ -8,7 +8,7 @@ export default class extends Component{
             principle:"",
             InterestPeriod:"",
             Duration:"",
-            rate:0
+            rate:""
         }
         this.onSubmit=this.onSubmit.bind(this)
     }
@@ -74,8 +74,9 @@ export default class extends Component{
             </table>
             <button onClick={this.onSubmit} className='btn btn-primary'>Calculate</button>
             </div>
-            <div style={{width:"30%",marginLeft:"auto",marginRight:"auto"}} className='rateshow'>
-                <span><h2>The Rate&nbsp;:&nbsp;&nbsp;{rate}%</h2></span>
+            <div style={{width:"20%",marginLeft:"auto",marginRight:"auto"}} className='rateshow'>
+                <label>The Financial Rate :</label>
+                {rate}%
             </div>
             
             <br></br>

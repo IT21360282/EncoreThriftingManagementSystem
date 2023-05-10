@@ -90,6 +90,7 @@ import CategoryGraph from "./dashboard/dashboard-components/CGraph";
 import Notes from "./dashboard/dashboard-components/Notes";
 
 
+
 export default class Body extends Component {
   render() {
     return (
@@ -123,8 +124,8 @@ export default class Body extends Component {
             <Route path="/financial/AddBankDetails" element={<AddBankDetails/>}/>
             <Route path="/financial/ViewPaymentDetails" element={<ViewPaymentDetails/>}/>
             <Route path="/financial/ViewBankDetails" element={<ViewBankDetails/>}/>
-            <Route path="/financial/UpdatePaymentDetails" element={<UpdatePaymentDetails/>}/>
-            <Route path="/financial/UpdateBankDetail/:id" element={<UpdateBankDetails/>}/>
+            <Route path="/financial/UpdatePaymentDetails/:id" element={<UpdatePaymentDetails/>}/>
+            <Route path="/financial/UpdateBankDetails/:id" element={<UpdateBankDetails/>}/>
             <Route path="/financial/SalaryCalculation" element={<SalaryCalculation/>}/>
             <Route path="/financial/Rates" element={<FinancialRates/>}/>
             <Route path="/financial/SendEmail" element={<FinancialSendEmail/>}/>

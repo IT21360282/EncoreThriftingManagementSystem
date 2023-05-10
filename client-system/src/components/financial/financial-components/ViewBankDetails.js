@@ -2,6 +2,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import '../financial.css'
+import 'jspdf-autotable'
+import jsPDF from 'jspdf'
 
 class DeleteBank extends Component {
   constructor(props){
@@ -32,9 +34,46 @@ export default class ViewBankDetails extends Component{
   constructor(props){
     super(props)
     this.state ={
-      FinanceBankDetails: []
+      FinanceBankDetails: [],
+      searchInput:""
     }
+    this.search=this.search.bind(this)
+    this.handleFindInput=this.handleFindInput.bind(this)
   }
+
+  generatePDF() {
+    const tablebank = document.getElementById("allbankdetails")
+    const {height,width} = tablebank.getBoundingClientRect()
+    const pdf = new jsPDF()
+  
+    pdf.text("Encore Stock Management",70,25)
+  
+    const columns = [];
+    for(let i=0; i<6;i++){
+      columns.push({header: `Column ${i+1}`,dataKey:`col${i}`});
+    }
+  
+    const scaleFactor = pdf.internal.pageSize.width/width
+  
+    pdf.autoTable(
+      {
+        html: '#allbankdetails',
+        startY: 50,
+        theme: 'grid',
+        margin: { left:25,top: 20, bottom: 20, },
+        tableWidth:  900* scaleFactor,
+        
+        columnStyles: { 0: {fontStyles: 'bold'},
+        },
+        scaleFactor:scaleFactor,
+        columns
+      })
+  
+      pdf.setFontSize("16")
+      pdf.setTextColor("#00baa1")
+      pdf.text("Bank Details Sheet",78,35)
+      pdf.save("Bank.pdf")
+    }
 
   componentDidMount(){
 
@@ -46,16 +85,35 @@ export default class ViewBankDetails extends Component{
       }
     })
   }
+
+  handleFindInput = (e) => {
+    const searchInput = e.target.value
+    this.setState({searchInput},() => {
+      this.search()
+    })
+   }
+
+  search(){
+    axios.get(`http://localhost:8000/financeGet/bankdetails/search?q=${this.state.searchInput}`).then(res => {
+        if(res.data.success){
+            this.setState({
+              FinanceBankDetails: res.data.searchedDetails
+            })
+        }
+        
+    })
+    
+}
   
 
   render() {
     return (
         <div>
           <h2 style={{marginLeft:"20px",marginTop:"65px"}}>All Bank Details</h2>
-          <div><button style={{marginLeft:"20px"}}className='searchBank'><i class="fa-solid fa-magnifying-glass"></i></button><input className='searchBank' placeholder='Search bank'></input></div>
+          <div><button style={{marginLeft:"20px"}}className='searchBank'><i class="fa-solid fa-magnifying-glass"></i></button><input className='searchBank' value={this.state.searchInput} onChange={this.handleFindInput} placeholder='Search bank'></input></div>
           <br/>
           <div className='table-bank'>
-          <table className='table-bank' >
+          <table className='table-bank' id='allbankdetails' >
             <thead>
               <tr>
                 <th scope="col" className='table-bank' style={{borderTopLeftRadius:"10px"}}>Bank No</th>
@@ -72,7 +130,7 @@ export default class ViewBankDetails extends Component{
             <tbody scope="raw" >      
             {this.state.FinanceBankDetails.map((results,index)=>(
               <tr>
-                <td className='table-bank'>{results.B_No}</td>
+                <td className='table-bank'>B00{index+1}</td>
                 <td className='table-bank'title={results.B_Name}>{results.B_Name}</td>
                 <td className='table-bank'title={results.Br_Name}>{results.Br_Name}</td>
                 <td className='table-bank'title={results.Acc_No}>{results.Acc_No}</td>
@@ -82,7 +140,7 @@ export default class ViewBankDetails extends Component{
                 
                 <td className='table-bank' style={{padding:"5px",border:"none"}}>
                   <div className='btn-inline-table'>
-                  <a href={`/financial/UpdateBankDetail/${results._id}`}><button type="button" className="btn btn-warning">Update</button></a>
+                  <a href={`/financial/UpdateBankDetails/${results._id}`}><button type="button" className="btn btn-warning">Update</button></a>
                     <DeleteBank id={results._id}/>
                    </div>
                 </td>
@@ -91,6 +149,7 @@ export default class ViewBankDetails extends Component{
             </tbody>
           </table>
           </div>
+          <button  style={{marginLeft:"450px",marginTop:"25px"}} className='btn btn-primary' onClick={this.generatePDF} type='primary'>Download PDF</button>
         </div>
       )
     }

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import '../financial.css'
 import axios from 'axios'
+import ReactModal from 'react-modal'
 
 
 export default class extends Component{
@@ -15,9 +16,12 @@ export default class extends Component{
         PaymentDate:"",
         CardNumber:"",
         ExpiredYear:"",
-        CVC:""
+        CVC:"",
+        isOpen:false,
+        errmsg:""
     }
     this.onSubmit=this.onSubmit.bind(this)
+    this.handlePopUp=this.handlePopUp.bind(this)
 }
 
    handleinput = (event) => {
@@ -25,6 +29,7 @@ export default class extends Component{
     this.setState({
        ...this.state,[name]:value
     })
+    
 }
 
   onSubmit(){
@@ -35,12 +40,19 @@ export default class extends Component{
 
     axios.post("http://localhost:8000/financePost/financeshow/post",payment).then((response)=>{
       console.log("success")
-      this.state({success:true})
+      this.setState({errmsg:"Added Successfully!"})
     }).catch(error=>{
        console.error("Error Occured:",error)
+       this.setState({errmsg:"Something is Wrong! Try Again"})
     })
 
   }
+
+  handlePopUp(){
+ 
+    this.setState({isOpen:!this.state.isOpen})
+  }
+  
     render(){
         return (
             <div>
@@ -104,7 +116,7 @@ export default class extends Component{
               <br></br>
 
             
-              <button onClick={this.onSubmit} className='btn btn-success'>ADD</button>
+            <a onClick={this.handlePopUp}><button onClick={this.onSubmit} className='btn btn-success'>ADD</button></a>
               
             </table>
             </div>
@@ -113,6 +125,10 @@ export default class extends Component{
             
     
           </div>
+          <ReactModal isOpen={this.state.isOpen} style={{content:{height:"20%", width:"50%", borderRadius:"10px", position:"fixed",border:"3px solid #ff5520"}}}>
+          {this.state.errmsg}<br/>
+          <button className='btn btn-primary' onClick={this.handlePopUp}>Ok</button>
+        </ReactModal>
       </div>
     
             

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 
 export default function UpdateBankDetails() {
-  const id = useParams()
+  const {id} = useParams()
   return (
     <div>
       <UpdateBankDetailsBody id={id}/>
@@ -26,6 +26,8 @@ class UpdateBankDetailsBody extends Component{
         AccountCurr:"",
         AccountType:"",
       }
+      this.onSubmit=this.onSubmit.bind(this)
+      this.handleinput=this.handleinput.bind(this)
     }
 
     componentDidMount(){
@@ -62,7 +64,7 @@ class UpdateBankDetailsBody extends Component{
         Acc_Curr:AccountCurr,
         Acc_Type:AccountType
       }
-      axios.put(`http://localhost:8000/finance/otherbank/put/${this.state.id}`,data).then((response)=>{
+      axios.put(`http://localhost:8000/financePut/otherbank/put/${this.state.id}`,data).then((response)=>{
         console.log("success updated")
         
       }).catch(error=>{

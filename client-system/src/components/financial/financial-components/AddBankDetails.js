@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import '../financial.css'
 import axios from 'axios'
+import ReactModal from 'react-modal'
+
 
 export default class extends Component{
 
@@ -13,9 +15,14 @@ export default class extends Component{
         AccountNo:"",
         SWIFT:"",
         AccountCurr:"",
-        AccountType:""
+        AccountType:"",
+        errmsg:"",
+        isOpen:false
     }
+    
+    
     this.onSubmit=this.onSubmit.bind(this)
+    this.handlePopUp=this.handlePopUp.bind(this)
 }
 
   handleinput = (event) => {
@@ -32,12 +39,20 @@ onSubmit(){
   }
   axios.post("http://localhost:8000/financePost/bankshow/post",bank).then((response)=>{
     console.log("success")
-    this.state({success:true})
+    this.setState({errmsg:"Added Successfully!"})
   }).catch(error=>{
      console.error("Error Occured:",error)
+     this.setState({errmsg:"Something is Wrong! Try Again"})
   })
 
 }
+
+handlePopUp(){
+ 
+  this.setState({isOpen:!this.state.isOpen})
+}
+
+
 
 render(){
         return (
@@ -98,14 +113,18 @@ render(){
                 <option>Fixed Deposit Account</option>
               </select></tr><br/>
 
-             <button onClick={this.onSubmit} className='btn btn-success'>ADD</button>
+            <a onClick={this.handlePopUp}><button onClick={this.onSubmit} className='btn btn-success'>ADD</button></a>
               
             </table>
             </div>
             
             <br></br>
         </div>
+        <ReactModal isOpen={this.state.isOpen} style={{content:{height:"20%", width:"50%", borderRadius:"10px", position:"fixed",border:"3px solid #ff5520"}}}>
+          {this.state.errmsg}<br/>
+          <button className='btn btn-primary' onClick={this.handlePopUp}>Ok</button>
+        </ReactModal>
       </div>
      )
-   }
+        }
 }
