@@ -38,6 +38,15 @@ function EmployeeHomeFunc() {
   return (
     <div >
       <h1 className='head-title'>Employee Management System</h1>
+      </div>
+  )
+}
+
+function SupplierHomeFunc() {
+  const un = "Dhanuka Jayathilaka"
+  return (
+    <div >
+      <h1 className='head-title'>Supplier Management System</h1>
       <hr/>
       <h4 style={{marginLeft:"20px"}}>Welcome {un}</h4>
     </div>
@@ -58,6 +67,14 @@ function EmployeeFunc() {
   return (
     <div >
       <h1 className='head-title'>Employee Management System</h1>
+      </div>
+  )
+}
+function SupplierFunc() {
+  const un = "Dhanuka Jayathilaka"
+  return (
+    <div >
+      <h1 className='head-title'>Supplier Management System</h1>
       <hr/>
     </div>
   )
@@ -74,6 +91,8 @@ export default class SystemTitle extends Component {
                 <Route path="/stock/stock-home" element={<StockHomeFunc/>}/>
                 <Route path="/stock/:name/:name" element={<StockFunc/>}/>
                 <Route path="/stock/:name" element={<StockFunc/>}/>
+                <Route path="/supplier/supplier-home" element={<SupplierHomeFunc/>}/>
+                <Route path="/Supplier/:name" element={<SupplierFunc/>}/>
             </Routes>
       </BrowserRouter>
     )

@@ -15,6 +15,20 @@ function PurchasingFunc() {
       <a href='/purchasing/send-mails'><button className='home-tab' >Send Emails</button></a>
       <a href='/purchasing/data-analysis'><button className='home-tab' >Data Analysis</button></a>
       
+      
+    </div>
+  )
+} 
+
+function SupplierFunc() {
+  return (
+    <div>
+      <h4 style={{textAlign:"center"}}>Supplier Management System</h4>
+      <a href='/supplier/supplier-home'><button className='home-tab' >Home</button></a>
+      <a href='/supplier/AddNewSupplier'><button className='home-tab' >Add New Suppliers</button></a>
+      <a href='/supplier/DisplayAllSuppliers'><button className='home-tab' >Display All Suppliers</button></a>
+      <a href='/supplier/BestSupplier'><button className='home-tab' >Find Best Suppliers</button></a>
+      <a href='/supplier/BestSupplier'><button className='home-tab' >Contact Suppliers</button></a>
     </div>
   )
 } 
@@ -109,6 +123,7 @@ class SideBar extends Component {
                   <Route path="/dashboard-home/:name/:name" element={<DashboardFunc/>}/>
                   <Route path="/employee-home" element={<EmployeeFunc/>}/>
                   <Route path="/employee/:name" element={<EmployeeFunc/>}/>
+                  <Route path="/supplier/:name" element={<SupplierFunc/>}/>
               </Routes>
             </BrowserRouter>
           </div>

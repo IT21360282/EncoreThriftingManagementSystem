@@ -36,6 +36,17 @@ app.use('/employeeGet', getRouterEmp)
 app.use('/employeePut', putRouterEmp)
 
 
+const getRouterSupplier = require('./routes/supplier/routesGet')
+const postRouterSupplier = require('./routes/supplier/routesPost')
+const putRouterSupplier = require('./routes/supplier/routesPut')
+
+app.use(bodyParser.json())
+app.use(cors())
+
+app.use('/supplierPost', postRouterSupplier)
+app.use('/supplierGet', getRouterSupplier)
+app.use('/supplierPut', putRouterSupplier)
+
 const PORT = 8000
 const DB_URL = "mongodb+srv://t5:1234@cluster0.awr06ma.mongodb.net/THRIFT_STORE?retryWrites=true&w=majority"
 
