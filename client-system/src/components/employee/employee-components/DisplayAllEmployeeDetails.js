@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import '../Employee.css'
+import '../employee.css'
 import 'jspdf-autotable'
 import jsPDF from 'jspdf'
 
@@ -98,7 +98,7 @@ export default class extends Component{
 //search
   search(){
 
-    axios.get("http://localhost:8000/employeeGet/employeeDetails/search?q=${this.state.searchInput}").then(res =>{
+    axios.get(`http://localhost:8000/employeeGet/employeeDetails/search?q=${this.state.searchInput}`).then(res =>{
       if(res.data.success){
         this.setState({
           employeeDetails:res.data.searchedDetails
@@ -120,31 +120,32 @@ export default class extends Component{
       <div>
         <div>
           <h2 style={{marginLeft:"20px",marginTop:"65px"}}>Available Employees </h2>
-          <div><button className='searchEmployee'><i class="fa-solid fa-magnifying-glass"></i></button><input className='searchEmployee' value={this.state.searchInput} onChange={this.handlesearchInput} placeholder='Search Details Here'></input></div>
+          <div><button className='searchEmployee'><i class="fa-solid fa-magnifying-glass"></i></button>
+          <input className='searchEmployee' style={{width:"22%"}} value={this.state.searchInput} onChange={this.handlesearchInput} placeholder='Search Details Here'></input></div>
           <br/>
           <div className='table-employee'>
-            <table className='table-employee' id="empDetailsTable" >
+            <table className='' id="empDetailsTable" >
               <thead>
                 <tr>
-                  <th scope="col" className='table-employee' style={{borderTopLeftRadius:"10px"}}>Employee ID</th>
-                  <th scope="col" className='table-employee'>Employee Name</th>
-                  <th scope="col" className='table-employee'>Employee NIC</th>
-                  <th scope="col" className='table-employee'>Employee Email</th>
-                  <th scope="col" className='table-employee'>Employee Mobile</th>
-                  <th scope="col" className='table-employee'>Post</th>
-                  <th scope="col" className='table-employee' style={{border:"none",borderTopRightRadius:"10px"}}>Options</th>
+                  <th scope="col" style={{borderTopLeftRadius:"10px"}}>Employee ID</th>
+                  <th scope="col" >Employee Name</th>
+                  <th scope="col" >Employee NIC</th>
+                  <th scope="col" >Employee Email</th>
+                  <th scope="col" >Employee Mobile</th>
+                  <th scope="col" >Post</th>
+                  <th scope="col" style={{border:"none",borderTopRightRadius:"10px"}}>Options</th>
                 </tr>
               </thead>
               <tbody scope="raw" >      
               {this.state.employeeDetails.map((results)=>(
                 <tr>
-                  <td className='table-employee'>{results.empID}</td>
-                  <td className='table-employee'title={results.empName}>{results.empName}</td>
-                  <td className='table-employee'title={results.empNIC}>{results.empNIC}</td>
-                  <td className='table-employee'title={results.empEmail}>{results.empEmail}</td>
-                  <td className='table-employee'title={results.empMobileNo}>{results.empMobileNo}</td>
-                  <td className='table-employee'title={results.empPost}>{results.empPost}</td>
-                  <td className='table-employee' style={{padding:"5px",border:"none"}}>
+                  <td>{results.empID}</td>
+                  <td title={results.empName}>{results.empName}</td>
+                  <td title={results.empNIC}>{results.empNIC}</td>
+                  <td title={results.empEmail}>{results.empEmail}</td>
+                  <td title={results.empMobileNo}>{results.empMobileNo}</td>
+                  <td title={results.empPost}>{results.empPost}</td>
+                  <td style={{padding:"5px",border:"none"}}>
                     <div className='btn-inline-table'>
                     <a href={`/employee/update-employee/${results._id}`}><button type="button" className="btn btn-warning">UPDATE</button></a>
                     <DeleteEmployee id={results._id}/>
