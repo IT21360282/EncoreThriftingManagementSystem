@@ -211,8 +211,8 @@ router.post('/sendEmailInventory/post', (req, res) => {
         } else {
             console.log('Email sent: ' + info.response);
             res.status(200).send('Email Sent Successfully');
-        }
-    })
+    }
+    })
 })
 
   

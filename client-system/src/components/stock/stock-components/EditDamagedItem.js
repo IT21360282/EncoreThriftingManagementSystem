@@ -8,12 +8,12 @@ export default function EditDamagedItem() {
   return (
     <div>
         {id}
-      <EditItemBody id = {id}/>
+      <EditdamagedItemBody id = {id}/>
     </div>
   )
 }
 
-class EditItemBody extends Component {
+class EditdamagedItemBody extends Component {
 
     constructor(props){
         super(props);
@@ -21,13 +21,11 @@ class EditItemBody extends Component {
             
             pName:"",
             pCategory:"",
-            pSubCategory:"",
             pQuantity:"",
             pPrice:"",
-            pPlacedDate:"",
             pImageURL:"",
-            pDescription:"",
-            pLevel:"",
+            pReason:"",
+            pPlacedDate:"",
             id:props.id,
         }
     }
@@ -46,25 +44,24 @@ class EditItemBody extends Component {
 
         e.preventDefault();
 
-        const{pName,pCategory,pSubCategory,pQuantity,pPrice,pPlacedDate,pImageURL,pDescription,pLevel}=this.state;
+            const{pName,pCategory,pQuantity,pPrice,pImageURL,pReason,pPlacedDate}=this.state;
 
         
         const data ={
             
-          pName:pName,
-          pCategory:pCategory,
-          pSubCategory:pSubCategory,
-          pQuantity:pQuantity,
-          pPrice:pPrice,
-          pPlacedDate:pPlacedDate,
-          pImageURL:pImageURL,
-          pDescription:pDescription,
-          pLevel:pLevel
+            pName:pName,
+            pCategory:pCategory,
+            pQuantity:pQuantity,
+            pPrice:pPrice,
+            pImageURL:pImageURL,
+            pReason:pReason,
+            pPlacedDate:pPlacedDate,
         }
 
         console.log(data)
+        alert("Hello")
 
-        axios.put(`http://localhost:8000/subcategory/update/${this.state.id}`,data).then((res)=>{
+        axios.put(`http://localhost:8000/damageditem/update/${this.state.id}`,data).then((res)=>{
         
                 alert("Post Updated")
                 this.setState(
@@ -72,13 +69,12 @@ class EditItemBody extends Component {
                         
                       pName:"",
                       pCategory:"",
-                      pSubCategory:"",
                       pQuantity:"",
                       pPrice:"",
-                      pPlacedDate:"",
                       pImageURL:"",
-                      pDescription:"",
-                      pLevel:""
+                      pReason:"",
+                      pPlacedDate:"",
+                      
                     }
                 )
             
@@ -88,20 +84,20 @@ class EditItemBody extends Component {
 
     componentDidMount(){
         
-        axios.get(`http://localhost:8000/subcategory/get/${this.state.id}`).then(res=>{
+        axios.get(`http://localhost:8000/damageditem/get/${this.state.id}`).then(res=>{
             if(res.data.success){
                 this.setState({
 
                     
                     pName:res.data.existingDetails.pName,
                     pCategory:res.data.existingDetails.pCategory,
-                    pSubCategory:res.data.existingDetails.pSubCategory,
+                   
                     pQuantity:res.data.existingDetails.pQuantity,
                     pPrice:res.data.existingDetails.pPrice,
                     pPlacedDate:res.data.existingDetails.pPlacedDate,
                     pImageURL:res.data.existingDetails.pImageURL,
-                    pDescription:res.data.existingDetails.pDescription,
-                    pLevel:res.data.existingDetails.pLevel
+                    pReason:res.data.existingDetails.pReason,
+                    
                 });
                 console.log(this.state.specificItemView)
             }
@@ -114,7 +110,7 @@ class EditItemBody extends Component {
                 <div style={{marginTop:"45px"}}>
                 <div className='head-add-item-edit'> 
                 <div className='back-buttn-edit-page'>
-                  <a href={`/stock/sub-category`}><button className='btn-back'><i class="fa-solid fa-arrow-left"></i> Back</button></a>
+                  <a href={`/stock/damaged-item`}><button className='btn-back'><i class="fa-solid fa-arrow-left"></i> Back</button></a>
                   
                   </div>
                   <h2 className='sub-head-edit'>Update__<div className='edit-sub-heading'> {this.state.pName}</div>__Details</h2>
@@ -134,40 +130,10 @@ class EditItemBody extends Component {
                         <option>Clothes</option>
                       </select><br/>
 
-                      <label>Sub Category:</label><br/>
-                        <select className='form-input' name='pSubCategory' value={this.state.pSubCategory} onChange={this.handleInputChange}>
-                          <option value="">--Select a subcategory--</option>
-                          {
-                            this.state.pCategory=== 'Books' ?
-                            <>
-                              <option value="novel">Novel</option>
-                              <option value="story">Story</option>
-                            </> :
-                            this.state.pCategory === 'Electronics' ?
-                            <>
-                              <option value="phone">mobile-Phone</option>
-                              <option value="tv">TV</option>
-                              <option value="laptop">Laptop</option>
-                              <option value="radio">Radio</option>
-                              <option value="hometheater">HomeTheater</option>
-                              
-                            </> :
-                            this.state.pCategory=== 'Clothes' ?
-                            <>
-                              <option value="short">Short</option>
-                              <option value="t-shirt">T-shirt</option>
-                              <option value="trouser">Trouser</option>
-                              <option value="frock">Frock</option>
-                              <option value="skirt">Skirt</option>
-                              <option value="blouse">Blouse</option>
-                            </> :
-                            null
-                          }
-                        </select><br/>
+                      
                         <label>Product Quantity:</label><br/>
                         <input type='number' className='form-input' name='pQuantity' placeholder='10' value={this.state.pQuantity} onChange={this.handleInputChange}/><br/>
-                        <label>Product Reorder Level:</label><br/>
-                        <input type='number' className='form-input' name='pLevel' placeholder='10' value={this.state.pLevel} onChange={this.handleInputChange}/><br/>
+                        
                         <label>Unit Price(LKR):</label><br/>
                         <input type='number' className='form-input' name='pPrice' placeholder='Rs:1000' value={this.state.pPrice} onChange={this.handleInputChange}/><br/>
                         <label>Date:</label><br/>
@@ -175,7 +141,7 @@ class EditItemBody extends Component {
                         <label>Product Image URL:</label><br/>
                         <input type='text' className='form-input' name='pImageURL' placeholder='https://www.abcd.com' value={this.state.pImageURL} onChange={this.handleInputChange}/><br/>
                         <label>Product Description:</label><br/>
-                        <textarea className='form-textarea-edit' rows={8} cols={34} type="text" name='pDescription' placeholder='Enter Item Details' value={this.state.pDescription} onChange={this.handleInputChange}></textarea><br/>
+                        <textarea className='form-textarea-edit' rows={8} cols={34} type="text" name='pReason' placeholder='Enter Item Details' value={this.state.pReason} onChange={this.handleInputChange}></textarea><br/>
 
 
                       <div className='buttn-success-1'>
