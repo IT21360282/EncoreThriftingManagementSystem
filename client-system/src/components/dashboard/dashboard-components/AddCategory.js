@@ -306,8 +306,8 @@ const Addcategory = () => {
       <br></br>
       <br></br>
       <div className="row">
-        <div className="col-md-4">
-          <Input
+        <div >
+          <input
             style={{ marginLeft: 20 }}
             onChange={(e) => {
               setKeyword(e.target.value);
@@ -316,35 +316,20 @@ const Addcategory = () => {
             placeholder="Search by category Name"
           />
         </div>
-        <div className="col-md-4">
-          <Button
-            onClick={() => {
-              searchData();
-            }}
-          >
-            Search
-          </Button>
+        <div>
+          <button className="btn">Search</button>
         </div>
-        <div className="col-md-2">
-          <Button
-            onClick={() => {
-              savePDF();
-            }}
-          >
-            Download Report
-          </Button>
+        <div >
+          <button className="btn btn-primary"> Download Report</button>
         </div>
-        <div className="col-md-2">
-          <Button color="success" onClick={() => addToggle()}>
-            {" "}
-            + Add Record
-          </Button>
-        </div>
-      </div>
+        <div >
+          <button className="btn btn-success"> <i class="fa-solid fa-plus"></i> Add Record</button>
+          </div>
+          </div>
       <br></br>
       <br></br>
       <br></br>
-      <Table>
+      <table className="details-table">
         <thead>
           <tr>
             <th style={{ textAlign: "center" }}>Record No</th>
@@ -368,33 +353,33 @@ const Addcategory = () => {
                   <td style={{ textAlign: "center" }}>{item.Category_Type}</td>
                   <td style={{ textAlign: "center" }}>{item.Description}</td>
                   <td style={{ textAlign: "center" }}>
-                    <Button
-                      color="primary"
+                    <button
+                      className="btn btn-warning"
                       onClick={() => {
                         UpdateToggle(item);
                       }}
                     >
-                      <i class="bi bi-pencil"></i>
-                    </Button>
+                      <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
                     &nbsp;
-                    <Button
-                      color="danger"
+                    <button
+                      className="btn btn-danger"
                       onClick={() => {
                         deleteRecord(item._id);
                       }}
                     >
-                      <i class="bi bi-trash3"></i>
-                    </Button>
+                      <i class="fa-regular fa-trash-can"></i>
+                    </button>
                   </td>
                 </tr>
               );
             })}
         </tbody>
-      </Table>
+      </table>
       <br></br>
       <h2 style={{ textAlign: "center" }}>Category Count</h2>
       <br></br>
-      <Table>
+      <table>
         <thead>
           <th style={{ textAlign: "center" }}>Book Count</th>
           <th style={{ textAlign: "center" }}>Electronic & Electrical Count</th>
@@ -413,7 +398,7 @@ const Addcategory = () => {
             <td style={{ textAlign: "center" }}>{GiftCount}</td>
           </tr>
         </tbody>
-      </Table>
+      </table>
 
       {/* Update Item Modal Start */}
       <Modal isOpen={UpdateModal}>

@@ -3,10 +3,8 @@ import {BrowserRouter, Routes, Route} from "react-router-dom"
 import Home from './Home'
 import PurchasingHome from './purchasing/PurchasingHome'
 import PlaceStockOrder from './purchasing/purchasing-components/PlaceStockOrder'
-import DashboardHome from './dashboard/DashboardHome'
-import OrderHome from './order/OrderHome'
-import EmployeeHome from './employee/EmployeeHome'
-import FinancialHome from './financial/FinancialHome'
+
+
 
 //stock
 import StockHome from './stock/StockHome'
@@ -53,22 +51,14 @@ import Addcategory from './dashboard/dashboard-components/AddCategory'
 import Contact from './dashboard/dashboard-components/Contact'
 import ViewCategory from './dashboard/dashboard-components/ViewCategory'
 
-import React, { Component } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./Home";
-import PurchasingHome from "./purchasing/PurchasingHome";
-import PlaceStockOrder from "./purchasing/purchasing-components/PlaceStockOrder";
+
+
+
 import DashboardHome from "./dashboard/DashboardHome";
 import OrderHome from "./order/OrderHome";
 import EmployeeHome from "./employee/EmployeeHome";
 import FinancialHome from "./financial/FinancialHome";
-import StockHome from "./stock/StockHome";
-import SupplierHome from "./supplier/SupplierHome";
-import DeliveryHome from "./delivery/DeliveryHome";
-import ManagerManagement from "./dashboard/dashboard-components/manager-management";
-import Graph from "./dashboard/dashboard-components/graph";
-import Addcategory from "./dashboard/dashboard-components/AddCategory";
-import Contact from "./dashboard/dashboard-components/Contact";
+
 import CategoryGraph from "./dashboard/dashboard-components/CGraph";
 import Notes from "./dashboard/dashboard-components/Notes";
 

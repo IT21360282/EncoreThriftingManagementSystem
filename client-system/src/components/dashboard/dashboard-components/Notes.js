@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ".././dashboard.css";
-import { AiOutlineDelete } from "react-icons/ai";
+/*import { AiOutlineDelete } from "react-icons/ai";
 import { BsCheckLg } from "react-icons/bs";
-import { Notes } from "@material-ui/icons";
+import { Notes } from "@material-ui/icons";*/
 
 function NotesComponent() {
   const [allTodos, setAllTodos] = useState([]);
@@ -150,16 +150,17 @@ function NotesComponent() {
                   <p>{item.description}</p>
                 </div>
                 <div>
-                  <AiOutlineDelete
+                  <button
                     title="Delete?"
-                    className="icon"
+                    className=""
                     onClick={() => handleToDoDelete(index)}
-                  />
-                  <BsCheckLg
+                  >
+                    </button>
+                  <button
                     title="Completed?"
-                    className=" check-icon"
+                    className=""
                     onClick={() => handleComplete(index)}
-                  />
+                  ></button>
                 </div>
               </div>
             ))}
@@ -176,8 +177,8 @@ function NotesComponent() {
                   </p>
                 </div>
                 <div>
-                  <AiOutlineDelete
-                    className="icon"
+                  <button
+                    className=""
                     onClick={() => handleCompletedTodoDelete(index)}
                   />
                 </div>

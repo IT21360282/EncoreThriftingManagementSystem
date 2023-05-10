@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./dashboard.css";
-import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
+/*import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
 import { Visibility } from "@material-ui/icons";
-import Button from "@material-ui/core/Button";
+import Button from "@material-ui/core/Button";*/
 
 import {
   PieChart,
@@ -39,7 +39,7 @@ export default class DashboardHome extends Component {
             <div className="featuredMoneyContainer">
               <span className="featuredMoney">Rs. 85,000</span>
               <span className="featuredMoneyRate">
-                -11.4 <ArrowDownward className="featuredIcon negative" />
+                
               </span>
             </div>
             <span className="featuredSub">Compared to last month</span>
@@ -49,7 +49,7 @@ export default class DashboardHome extends Component {
             <div className="featuredMoneyContainer">
               <span className="featuredMoney">RS. 44,415</span>
               <span className="featuredMoneyRate">
-                -1.4 <ArrowDownward className="featuredIcon negative" />
+                
               </span>
             </div>
             <span className="featuredSub">Compared to last month</span>
@@ -59,7 +59,7 @@ export default class DashboardHome extends Component {
             <div className="featuredMoneyContainer">
               <span className="featuredMoney">Rs. 22,225</span>
               <span className="featuredMoneyRate">
-                +2.4 <ArrowUpward className="featuredIcon" />
+                
               </span>
             </div>
             <span className="featuredSub">Compared to last month</span>
@@ -121,7 +121,7 @@ export default class DashboardHome extends Component {
                   <span className="widgetSmUsername">Pasindu Thathsara</span>
                 </div>
                 <button className="widgetSmButton">
-                  <Visibility className="widgetSmIcon" />
+                  
                   Display
                 </button>
               </li>
@@ -135,7 +135,7 @@ export default class DashboardHome extends Component {
                   <span className="widgetSmUsername">Pradeepa Kodippili</span>
                 </div>
                 <button className="widgetSmButton">
-                  <Visibility className="widgetSmIcon" />
+                  
                   Display
                 </button>
               </li>
@@ -149,7 +149,7 @@ export default class DashboardHome extends Component {
                   <span className="widgetSmUsername">Sayuri Perera</span>
                 </div>
                 <button className="widgetSmButton">
-                  <Visibility className="widgetSmIcon" />
+                  
                   Display
                 </button>
               </li>
@@ -163,7 +163,7 @@ export default class DashboardHome extends Component {
                   <span className="widgetSmUsername">Anna Wimalagamuwa</span>
                 </div>
                 <button className="widgetSmButton">
-                  <Visibility className="widgetSmIcon" />
+                  
                   Display
                 </button>
               </li>
@@ -177,7 +177,7 @@ export default class DashboardHome extends Component {
                   <span className="widgetSmUsername">Fedric Almeda</span>
                 </div>
                 <button className="widgetSmButton">
-                  <Visibility className="widgetSmIcon" />
+                  
                   Display
                 </button>
               </li>
