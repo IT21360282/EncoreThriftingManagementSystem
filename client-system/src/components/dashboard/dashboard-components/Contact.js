@@ -4,12 +4,12 @@ import axios from "axios";
 
 
 
-//import emailjs from "@emailjs/browser";
+/*//import emailjs from "@emailjs/browser";
 import styled from "styled-components";
-import ".././dashboard.css";*/
+import ".././dashboard.css"*/
 
 export default class extends Component {
-  /*constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       sender: "encorethriftinglk@gmail.com",
