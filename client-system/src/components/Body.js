@@ -7,7 +7,7 @@ import PlaceStockOrder from './purchasing/purchasing-components/PlaceStockOrder'
 
 
 //stock
-
+import SendMailForm from '../components/stock/stock-components/SendMailForm'
 import AddEmployeeDetails from './employee/employee-components/AddEmployeeDetails'
 import DisplayAllEmployeeDetails from './employee/employee-components/DisplayAllEmployeeDetails'
 import EmployeeLeave from './employee/employee-components/EmployeeLeave'
@@ -154,7 +154,7 @@ export default class Body extends Component {
             <Route path="/stock/view-lowstock-item" element={<LowStockList/>}/>*/}
             <Route path="/stock/generate-report" element={<GenerateReports/>}/>
             
-            <Route path="/stock/mail" element={<SendEmail/>}/>
+            <Route path="/stock/mail" element={<SendMailForm/>}/>
             
 
          

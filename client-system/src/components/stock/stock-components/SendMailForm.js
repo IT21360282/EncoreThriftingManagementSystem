@@ -3,7 +3,7 @@ import axios from 'axios'
 import '../stock.css'
 
 
-export default class sendEmailSupplier extends Component{
+export default class SendMailForm extends Component{
 constructor(props){
   super(props)
   this.state={
@@ -43,16 +43,10 @@ onSubmit(){
   render() {
     return (
         <div>
-            <h2 style={{marginLeft:"20px",marginTop:"65px"}}>Contact Supplier</h2>
+            <h2 style={{marginLeft:"20px",marginTop:"65px"}}>Send Email</h2>
             <br/>
             <div id="">
-            <br/>
-            <center>
-            <label>Send an Email</label>
-            </center>
-            <br/>
-            <br/>
-            <br/>
+            
             <input type='text' className='inputSupplieremail' name='sender' value={this.state.sender} readOnly/>
             <br/>
             <input type='text' className='inputSupplieremail' name='inventoryReciver' value={this.state.inventoryReciver} onChange={this.handleinput} placeholder='To'/>

@@ -405,10 +405,10 @@ class SubCategory extends Component {
 
 
 		</div>
-                <a href={`/stock/send-email`}><button className='btn-inline'>Send Email</button></a>
+                <a href={`/stock/mail`}><button className='btn-inline'>Send Email</button></a>
                 <a href={`/stock/view-lowstock-item`}><button className='btn-inline'>Low Stock Item</button></a>
                 <button className='btn btn-primary' onClick={this.generatePDF} type="primary">Download Table(PDF)</button>
-                <div><button className='search-1'><i class="fa-solid fa-magnifying-glass"></i></button><input className='search-1' name="searchQuery" placeholder='Search Details Here' onChange={this.handleSearchArea}></input></div>
+                <div><button className='search-1'><i class="fa-solid fa-magnifying-glass"></i></button><input className='search-1' style={{width:"72%"}} name="searchQuery" placeholder='Search Details Here' onChange={this.handleSearchArea}></input></div>
               </div>
 
              

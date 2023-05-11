@@ -125,9 +125,9 @@ class EditItemBody extends Component {
                   <div className='inline-form' >
                     <div style={{width:"100%"}}> 
                       <label>Edit Product Name:</label>
-                      <input type='text' className='form-input' name='pName' placeholder='Enter Name' value={this.state.pName} onChange={this.handleInputChange}/><br/>
+                      <input type='text' className='form-inputg' name='pName' placeholder='Enter Name' value={this.state.pName} onChange={this.handleInputChange}/><br/>
                       <label>Product Category:</label><br/>
-                      <select className='form-input' name='pCategory' value={this.state.pCategory} onChange={this.handleInputChange}>
+                      <select className='form-inputg' name='pCategory' value={this.state.pCategory} onChange={this.handleInputChange}>
                         <option>--Select a category--</option>
                         <option>Electronics</option>
                         <option>Books</option>
@@ -135,7 +135,7 @@ class EditItemBody extends Component {
                       </select><br/>
 
                       <label>Sub Category:</label><br/>
-                        <select className='form-input' name='pSubCategory' value={this.state.pSubCategory} onChange={this.handleInputChange}>
+                        <select className='form-inputg' name='pSubCategory' value={this.state.pSubCategory} onChange={this.handleInputChange}>
                           <option value="">--Select a subcategory--</option>
                           {
                             this.state.pCategory=== 'Books' ?
@@ -165,15 +165,15 @@ class EditItemBody extends Component {
                           }
                         </select><br/>
                         <label>Product Quantity:</label><br/>
-                        <input type='number' className='form-input' name='pQuantity' placeholder='10' value={this.state.pQuantity} onChange={this.handleInputChange}/><br/>
+                        <input type='number' className='form-inputg' name='pQuantity' placeholder='10' value={this.state.pQuantity} onChange={this.handleInputChange}/><br/>
                         <label>Product Reorder Level:</label><br/>
-                        <input type='number' className='form-input' name='pLevel' placeholder='10' value={this.state.pLevel} onChange={this.handleInputChange}/><br/>
+                        <input type='number' className='form-inputg' name='pLevel' placeholder='10' value={this.state.pLevel} onChange={this.handleInputChange}/><br/>
                         <label>Unit Price(LKR):</label><br/>
-                        <input type='number' className='form-input' name='pPrice' placeholder='Rs:1000' value={this.state.pPrice} onChange={this.handleInputChange}/><br/>
+                        <input type='number' className='form-inputg' name='pPrice' placeholder='Rs:1000' value={this.state.pPrice} onChange={this.handleInputChange}/><br/>
                         <label>Date:</label><br/>
-                        <input type='date' className='form-input' name='pPlacedDate' placeholder='' value={this.state.pPlacedDate} onChange={this.handleInputChange}/><br/>
+                        <input type='date' className='form-inputg' name='pPlacedDate' placeholder='' value={this.state.pPlacedDate} onChange={this.handleInputChange}/><br/>
                         <label>Product Image URL:</label><br/>
-                        <input type='text' className='form-input' name='pImageURL' placeholder='https://www.abcd.com' value={this.state.pImageURL} onChange={this.handleInputChange}/><br/>
+                        <input type='text' className='form-inputg' name='pImageURL' placeholder='https://www.abcd.com' value={this.state.pImageURL} onChange={this.handleInputChange}/><br/>
                         <label>Product Description:</label><br/>
                         <textarea className='form-textarea-edit' rows={8} cols={34} type="text" name='pDescription' placeholder='Enter Item Details' value={this.state.pDescription} onChange={this.handleInputChange}></textarea><br/>
 
