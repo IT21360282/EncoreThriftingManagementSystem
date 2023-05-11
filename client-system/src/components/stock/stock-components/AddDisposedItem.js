@@ -10,6 +10,7 @@ class AddDisposedItem extends Component {
             pId:"IT1002",
             pName:"",
             pCategory:"",
+            pSubCategory:"",
             pQuantity:"",
             pPrice:"",
             pImageURL:"",
@@ -32,13 +33,14 @@ class AddDisposedItem extends Component {
 
         e.preventDefault();
 
-        const{pId,pName,pCategory,pQuantity,pPrice,pPlacedDate,pImageURL,pReason}=this.state;
+        const{pId,pName,pCategory,pSubCategory,pQuantity,pPrice,pPlacedDate,pImageURL,pReason}=this.state;
 
         
         const data ={
             pId: pId,
             pName:pName,
             pCategory:pCategory,
+            pSubCategory:pSubCategory,
             pQuantity:pQuantity,
             pPrice:pPrice,
             pPlacedDate:pPlacedDate,
@@ -56,6 +58,7 @@ class AddDisposedItem extends Component {
                         pId:"",
                         pName:"",
                         pCategory:"",
+                        pSubCategory:"",
                         pQuantity:"",
                         pPrice:"",
                         pPlacedDate:"",
@@ -85,24 +88,63 @@ class AddDisposedItem extends Component {
                   <div className='inline-form' >
                     <div style={{width:"100%"}}> 
                       <label>Disposed Product Name:</label>
-                      <input type='text' className='form-input' name='pName' placeholder='Enter Name' value={this.state.pName} onChange={this.handleInputChange}/><br/>
+                      <input type='text' className='form-select' name='pName' placeholder='Enter Name' value={this.state.pName} onChange={this.handleInputChange}/><br/>
                       <label>Product Category:</label>
                       <select className='form-select' name='pCategory' value={this.state.pCategory} onChange={this.handleInputChange}>
                         <option>Select One</option>
                         <option>Electronics</option>
                         <option>Books</option>
                         <option>Clothes</option>
-                      </select><br/>
+                      </select>
+                      
+                              <label>Subcategory:</label>
+                              <br />
+                              <select
+                                className="form-select"
+                                name="pSubCategory"
+                                value={this.state.pSubCategory}
+                                onChange={this.handleInputChange}
+                              >
+                                <option value="">
+                                  --Select a subcategory--
+                                </option>
+                                {this.state.pCategory === "Books" ? (
+                                  <>
+                                    <option value="novel">Novel</option>
+                                    <option value="story">Story</option>
+                                  </>
+                                ) : this.state.pCategory === "Electronics" ? (
+                                  <>
+                                    <option value="phone">mobile-Phone</option>
+                                    <option value="tv">TV</option>
+                                    <option value="laptop">Laptop</option>
+                                    <option value="radio">Radio</option>
+                                    <option value="hometheater">
+                                      HomeTheater
+                                    </option>
+                                  </>
+                                ) : this.state.pCategory === "Clothes" ? (
+                                  <>
+                                    <option value="short">Short</option>
+                                    <option value="t-shirt">T-shirt</option>
+                                    <option value="trouser">Trouser</option>
+                                    <option value="frock">Frock</option>
+                                    <option value="skirt">Skirt</option>
+                                    <option value="blouse">Blouse</option>
+                                  </>
+                                ) : null}
+                              </select>
+                          
                       <label>Disposed Product Quantity:</label>
-                      <input type='number' className='form-input' name='pQuantity' placeholder='0' value={this.state.pQuantity} onChange={this.handleInputChange}/><br/>
+                      <input type='number' min={0} className='form-select' name='pQuantity' placeholder='0' value={this.state.pQuantity} onChange={this.handleInputChange}/><br/>
                       <label>Unit Price(LKR):</label>
-                      <input type='number' className='form-input' name='pPrice' placeholder='RS:1000' value={this.state.pPrice} onChange={this.handleInputChange}/><br/>
+                      <input type='number' min={0} className='form-select' name='pPrice' placeholder='RS:1000' value={this.state.pPrice} onChange={this.handleInputChange}/><br/>
                       <label>Date:</label><br/>
-                      <input type='date' className='form-input' name='pPlacedDate' placeholder='' value={this.state.pPlacedDate} onChange={this.handleInputChange}/><br/>
+                      <input type='date' className='form-select' name='pPlacedDate' placeholder='' value={this.state.pPlacedDate} onChange={this.handleInputChange}/><br/>
                       <label>Product Image URL:</label>
-                      <input type='text' className='form-input' name='pImageURL' placeholder='https://www.abcd.com' value={this.state.pImageURL} onChange={this.handleInputChange}/><br/>
+                      <input type='text' className='form-select' name='pImageURL' placeholder='https://www.abcd.com' value={this.state.pImageURL} onChange={this.handleInputChange}/><br/>
                       <label>Disposed Reason:</label><br></br>
-                      <textarea className='form-input' rows={8} cols={34} type="text" name='pReason' placeholder='Add Reason' value={this.state.pReason} onChange={this.handleInputChange}></textarea>
+                      <textarea className='form-select' rows={8} cols={34} type="text" name='pReason' placeholder='Add Reason' value={this.state.pReason} onChange={this.handleInputChange}></textarea>
                       <div className='buttn-success-1'>
                       <button className="btn btn-success" type='submit' style={{marginTop:"15px"}} onClick={this.onSubmit}><i class="fa-regular fa-square-check" style={{marginRight:"10px"}}></i>Save</button>
                       </div>

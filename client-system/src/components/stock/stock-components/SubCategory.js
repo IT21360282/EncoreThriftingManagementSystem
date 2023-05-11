@@ -381,7 +381,7 @@ class SubCategory extends Component {
                       
                     
                      <div className='buttn-success-1'>
-                      <button className="btn btn-success"  style={{marginTop:"15px"}} style={{marginRight:"10px"}} onClick={this.onSubmit}><i class="fa-regular fa-square-check" ></i>Save</button>
+                      <button className="btn btn-success"  style={{marginTop:"15px"}}  onClick={this.onSubmit}><i class="fa-regular fa-square-check" ></i>Save</button>
                       
 										
                       </div>
