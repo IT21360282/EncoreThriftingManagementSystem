@@ -3,6 +3,10 @@ import axios from 'axios'
 import ReactModal from 'react-modal'
 import  './Purchasing.css'
 import DeleteOtherPurchase from './purchasing-components/DeleteOtherPurchase'
+import DeleteStockOrder from './purchasing-components/DeleteStockOrder'
+import UpdateStockOrder from './purchasing-components/UpdateStockOrder'
+import UpReceiveStockOrder from './purchasing-components/UpReceiveStockOrder'
+import UpConfirmStockOrder from './purchasing-components/UpConfirmStockOrder'
 
 export default class PurchasingHome extends Component {
   constructor(props){
@@ -170,8 +174,8 @@ export default class PurchasingHome extends Component {
           <div className='btn-inline' style={{marginTop:"30px",marginBottom:"30px"}}>
             <button className='btn-inline-purchasing'>Generate Reports</button>
             <button className='btn-inline-purchasing'>Send Emails</button>
-            <button className='btn-inline-purchasing'>Graph Generator</button>
-            <button className='btn-inline-purchasing'>Data Analyzing and Calculating</button>
+            <button className='btn-inline-purchasing'>Data Analysus</button>
+            
           </div>
 
           <div className='btn-inline' style={{marginTop:"20px"}}>
@@ -206,8 +210,9 @@ export default class PurchasingHome extends Component {
                 <td title={results.supplier}>{results.supplier.slice(0, 4)+"..."}</td> 
                 <td style={{padding:"5px",border:"none"}}>
                   <div className='btn-inline-table'>
-                    <button type="button" className="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Received</button>
-                    <button type="button" className="btn btn-primary">More</button>
+                    <UpReceiveStockOrder ID = {results._id}/>
+                    <a href={`/purchasing/${results._id}`}><button type="button" className="btn btn-primary"><i class="fa fa-circle-ellipsis"></i> More</button></a>                                             
+                                            
                   </div>
                 </td>
               </tr>
@@ -265,7 +270,7 @@ export default class PurchasingHome extends Component {
                 <th scope="col" >Title</th>
                 <th scope="col" >Placed Date</th>
                 <th scope="col" >Supplier</th>
-                <th scope="col" style={{border:"none",borderTopRightRadius:"7px",width:"145px"}}>Options</th>
+                <th scope="col" style={{border:"none",borderTopRightRadius:"7px",width:"155px"}}>Options</th>
               </tr>
             </thead>
             <tbody scope="raw" >      
@@ -276,9 +281,9 @@ export default class PurchasingHome extends Component {
                 <td >{results.placedDate}</td>
                 <td title={results.supplier}>{results.supplier.slice(0, 4)+"..."}</td> 
                 <td style={{padding:"5px",border:"none"}}>
-                  <div className='btn-inline-table'>
-                    <button type="button" className="btn btn-warning"><i class="fa-regular fa-circle-check"></i> Confirm</button>
-                    <button type="button" className="btn btn-primary">More</button>
+                  <div className='btn-inline-table' >
+                    <UpConfirmStockOrder ID = {results._id}/>
+                    <a href={`/purchasing/${results._id}`}><button type="button" className="btn btn-primary"><i class="fa fa-circle-ellipsis"></i> More</button></a>
                   </div>
                 </td>
               </tr>
@@ -349,8 +354,8 @@ export default class PurchasingHome extends Component {
                 <td title={results.supplier}>{results.supplier.slice(0, 4)+"..."}</td> 
                 <td style={{padding:"5px",border:"none"}}>
                   <div className='btn-inline-table'>
-                    <button type="button" className="btn btn-warning"><i class="fa-regular fa-circle-check"></i> Confirm</button>
-                    <button type="button" className="btn btn-primary">More</button>
+                    <UpConfirmStockOrder ID = {results._id}/>
+                    <a href={`/purchasing/${results._id}`}><button type="button" className="btn btn-primary"><i class="fa fa-circle-ellipsis"></i> More</button></a>
                   </div>
                 </td>
               </tr>
@@ -389,8 +394,8 @@ export default class PurchasingHome extends Component {
                 <td title={results.supplier}>{results.supplier.slice(0, 4)+"..."}</td> 
                 <td style={{padding:"5px",border:"none"}}>
                   <div className='btn-inline-table'>
-                    <button type="button" className="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Received</button>
-                    <button type="button" className="btn btn-primary">More</button>
+                    <UpReceiveStockOrder ID = {results._id}/>
+                    <a href={`/purchasing/${results._id}`}><button type="button" className="btn btn-primary"><i class="fa fa-circle-ellipsis"></i> More</button></a>
                   </div>
                 </td>
               </tr>
