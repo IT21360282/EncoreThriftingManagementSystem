@@ -32,8 +32,8 @@ export default class supplierHome extends Component {
       <br/>
       <center>
       <div className='btn-inlinesupplier' style={{ width:"50%" ,marginTop:"auto" , marginLeft:"auto", fontSize:"20px"}}>
-            <div className='semi-preview-container1'>Available Suppliers<br/>13</div>
-            <div className='semi-preview-container1'>Best Suppliers<br/>05</div>
+            <div className='semi-preview-container1'>Available Suppliers<br/>08</div>
+            <div className='semi-preview-container1'>Best Suppliers<br/>04</div>
           </div>
           </center>
 
