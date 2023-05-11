@@ -611,6 +611,11 @@ export default class GenerateReport extends Component {
                             <option value={"Both"}>Both</option>
                             <option value={"Stock Orders"}>Stock Orders</option>
                             <option value={"Other Purchases"}>Other Purchases</option>
+                            <option value={"J.R. Suppliers"}>J.R. Suppliers</option>
+                            <option value={"Kasun pvt Ltd"}>Kasun pvt Ltd</option>
+                            <option value={"P & S Suppliers"}>P & S Suppliers</option>
+                            <option value={"LR Suppliers"}>LR Suppliers</option>
+                            <option value={"MJ Suppliers"}>MJ Suppliers</option>
                         </select>
                         <br/>
                         <label>Select Time Period to Generate Report of Stock Orders Which are Ordered in that Time Period</label><br/>

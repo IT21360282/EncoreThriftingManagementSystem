@@ -24,6 +24,23 @@ export default class AddNewSupplier extends Component{
     
   }
 
+  haddleInputNumberChanges = (event) => {
+    const { name, value } = event.target
+    let errorMsg = ""
+    const mobileRegex = /^[0][0-9]{9}$/ // Regex for Sri Lankan mobile numbers starting with 0 and with 10 digits
+
+    // Check if mobile number input matches the desired pattern
+    if (name === "supMobileNo" && !mobileRegex.test(value)) {
+      errorMsg = "Invalid mobile number format. Please enter a valid number starting with 0 and with 10 digits."
+    }
+
+    this.setState({
+      ...this.setState,
+      [name]: value,
+      errorMsg: errorMsg
+    })
+}
+
   onSubmitDetails(){
 
     const { supName, supEmail, supMobileNo, supType, supTime} = this.state
@@ -68,8 +85,10 @@ export default class AddNewSupplier extends Component{
 
             <tr>
              <td> <label>Mobile No : </label></td>
-            <td><input type='tel' className='form-inputSupplier' style={{ marginTop:"20px"}} placeholder="0??????????"  name='supMobileNo' value={this.state.supMobileNo} onChange={this.haddleInputChanges} /></td>
-            </tr>
+             <td><input type='tel' className='form-inputSupplier' style={{ marginTop:"20px"}} placeholder="0??????????" name='supMobileNo' value={this.state.supMobileNo} onChange={this.haddleInputNumberChanges} /*type='tel' className='form-inputSupplier' style={{ marginTop:"20px"}} placeholder="0??????????"  name='supMobileNo' value={this.state.supMobileNo} onChange={this.haddleInputChanges}*/ />{this.state.errorMsg && <p className="error-msg">{this.state.errorMsg}</p>}</td>
+
+
+             </tr>
 
             <tr>
              <td> <label>Email : </label></td>

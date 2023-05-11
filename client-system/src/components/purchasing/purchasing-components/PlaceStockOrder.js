@@ -354,6 +354,11 @@ export default class PlaceStockOrder extends Component {
                 <option>Leaf Knowledge (PVT Ltd.)</option>
                 <option>ZOHO International</option>
                 <option>Alpha Wholesale Thirifting Ltd.</option>
+                <option>J.R. Suppliers</option>
+                <option>Kasun pvt Ltd</option>
+                <option>P & S Suppliers</option>
+                <option>LR Suppliers</option>
+                <option>MJ Suppliers</option>
               </select>
               <div style={{color:"red",marginBottom:"15px"}}>{this.state.supplierErr}</div>
               <label>Order Expected Day:</label>
