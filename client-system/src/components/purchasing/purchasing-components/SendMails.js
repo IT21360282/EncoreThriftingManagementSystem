@@ -13,6 +13,7 @@ export default class SendMails extends Component {
             name:"",
             isSuccess:false,
             isOpen:false,
+            isSend:"Sending..."
         }
         this.handleInputChange = this.handleInputChange.bind(this)
         this.handlePopUp = this.handlePopUp.bind(this)
@@ -47,9 +48,11 @@ export default class SendMails extends Component {
                 msg:"",
                 name:"",
             })
+            this.setState({isSend:"Email was sent successfully."})
         }).catch((err) => {
             console.log(err)
             this.setState({isSuccess:false})
+            this.setState({isSend:"Error Occurred, Email didn't send."})
         })
         this.handlePopUp()
     }
@@ -78,7 +81,8 @@ export default class SendMails extends Component {
                 <br/>
             </div>     
             <ReactModal isOpen={this.state.isOpen}onRequestClose={this.handlePopUp} className="popUp20 zoom-in">
-                <h2>{isSuccessMsg}</h2>
+                <h2>{this.state.isSend}</h2>
+                <button className='btn btn-primary' onClick={this.handlePopUp}>Ok</button>
             </ReactModal>
         </div>
       </div>

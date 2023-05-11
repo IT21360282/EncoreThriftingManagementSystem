@@ -6,7 +6,7 @@ import axios from "axios";
 /*import React, { useRef } from "react";
 //import emailjs from "@emailjs/browser";
 import styled from "styled-components";
-import ".././dashboard.css";
+import ".././dashboard.css";*/
 
 export default class extends Component {
   constructor(props) {
@@ -45,8 +45,7 @@ export default class extends Component {
         console.error("Error Occured:", error);
       });
   }
-`;
-*/
+
 
   render() {
     return (
@@ -127,6 +126,6 @@ export default class extends Component {
           <br></br>
         </div>
       </div>
-    );
+    )
   }
 }

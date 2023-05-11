@@ -46,7 +46,7 @@ export default class GenerateGraph extends Component {
     const resLen = this.state.receivedOrders.length
 
     const orderTypeData = [
-      {name: 'Confirmation Pending', value: conLen},
+      {name: 'Confirmation Pend..', value: conLen},
       {name: 'Pending', value: penLen},
       {name: 'Received', value: resLen},
     ]
@@ -59,7 +59,7 @@ export default class GenerateGraph extends Component {
         {name: 'E', value: 8},
     ]*/
 
-    const colorsForOrderType = ['#D11E00', '#FF2400', '#FF4B2E']
+    const colorsForOrderType = ['#D11E00', '#FF2400', '#EC5800']
 
     //const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#FF0090']
     return (
@@ -76,10 +76,10 @@ export default class GenerateGraph extends Component {
               <PieChart width={400} height={300} >
                   <Pie
                       data={orderTypeData}
-                      cx={260}
+                      cx={200}
                       cy={150}
                       labelLine={false}
-                      label={({ name, value }) => `${name}: ${value}`}
+                      label={({ name, value }) => `${value}`}
                       outerRadius={100}
                       fill="#ff5520"
                       dataKey="value"
@@ -101,8 +101,8 @@ export default class GenerateGraph extends Component {
                 <XAxis dataKey="name" />
                 <YAxis />
                 <Tooltip />
-                <Legend />
-                <Bar dataKey="value" fill="#8884d8" />
+     
+                <Bar dataKey="value" fill="#D11E00" />
               </BarChart>
               <span ><p style={{textAlign:"center"}}>All Stock Orders: {conLen+resLen+penLen}</p></span>
             </div>

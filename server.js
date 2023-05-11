@@ -60,8 +60,7 @@ app.use('/financeGet', getRouterFinance)
 app.use('/financePut', PutRouterFinance)
 app.use('/financeDelete', deleteRouterFinance)
 
-const PORT = 8000
-const DB_URL = "mongodb+srv://t5:1234@cluster0.awr06ma.mongodb.net/THRIFT_STORE?retryWrites=true&w=majority"
+
 
 
 
@@ -82,7 +81,7 @@ app.use("/dashboard", DashboardCatRouter);
 app.use("/dashboardPost", postDashboard);
 
 
-const PORT = 8080;
+const PORT = 8000;
 const DB_URL =
     "mongodb+srv://t5:1234@cluster0.awr06ma.mongodb.net/THRIFT_STORE?retryWrites=true&w=majority";
 

@@ -85,6 +85,7 @@ export default class CancelStockOrder extends Component {
 
         axios.put(`http://localhost:8000/purchasingPut/stockOrder/putOrderStatus/${id}`,data).then((res)=>{
             console.log("successfully updated")
+            this.sendCancelingEmail()
         }).catch(error=>{
             console.error("error occurred")
             let popUpMsg = this.state.popUpMsg
@@ -95,6 +96,25 @@ export default class CancelStockOrder extends Component {
             this.setState({redAlert})
         })
     }
+
+    sendCancelingEmail(){
+       
+        const mailOptions = {
+            name:`Order Manager of ${this.state.supplier}`,
+            email:"nilankasanjana803@gmail.com",
+            subject:`Cancel a Existing Order Under Title ${this.state.title}`,
+            msg:`I hope this email finds you well. As the purchasing manager of our inventory, I would like to cancel order under title '${this.state.title}'.\n\nThank you for your prompt attention to this matter and sorry for the inconvinience.\n\nBest regards,\nSanjana Nilanka\nPurchasing Manager,\nEncore Thrift Store\n`
+        }
+    
+        axios.post('http://localhost:8000/purchasingPost/sendEmail',mailOptions).then((res) => {
+            console.log(res)
+            this.setState({isSuccess:true})
+            
+        }).catch((err) => {
+            console.log(err)
+            this.setState({isSuccess:false})
+        })
+      }
 
     render() {
         return (

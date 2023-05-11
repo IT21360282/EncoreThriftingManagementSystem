@@ -76,6 +76,12 @@ export default class AddOtherPurchase extends Component {
         if(name == "shop"  && value == ""){
             this.setState({shopErr:"Shop Name is Required"})
         }
+        if(name == "purchasedDate"  && value != ""){
+            this.setState({purchasedDateErr:""})
+        }
+        if(name == "shop"  && value == ""){
+            this.setState({purchasedDateErr:"Shop Name is Required"})
+        }
     }
     
     handleItemInputChange = (e, i) => {
@@ -164,28 +170,45 @@ export default class AddOtherPurchase extends Component {
               purchasedDateErr:"Purchased Date is Required",
             })
           }
-          else if(this.state.title == ""){
+        if(this.state.title == ""){
             this.setState({
               titleErr:"Title is Required",
-              shopErr:"",
-              purchasedDateErr:""
+              
             })
           }
-          else if(this.state.shop == ""){
+          if(this.state.title != ""){
             this.setState({
               titleErr:"",
+              
+            })
+          }
+        if(this.state.shop == ""){
+            this.setState({
+              
               shopErr:"Shop Name is Required",
-              purchasedDateErr:""
+              
             })
           }
-          else if(this.state.purchasedDate == ""){
+          if(this.state.shop != ""){
             this.setState({
-              titleErr:"",
+              
               shopErr:"",
+              
+            })
+          }
+        if(this.state.purchasedDate == ""){
+            this.setState({
+              
               purchasedDateErr:"Purchased Date is Required"
             })
           }
-          else{
+          if(this.state.purchasedDate != ""){
+            this.setState({
+              
+              purchasedDateErr:""
+            })
+          }
+        if(this.state.title != "" && this.state.shop != "" && this.state.purchasedDate != ""){
             this.setState({titleErr:"",shopErr:"",purchasedDateErr:""})
           }
     }
@@ -194,22 +217,22 @@ export default class AddOtherPurchase extends Component {
         e.preventDefault()
         const {title, shop, purchasedDate} = this.state
         if(!title){
-            this.setState({isTitle:true})
+            this.titleValidation()
         }
         if(title){
-            this.setState({isTitle:false})
+            this.titleValidation()
         }
         if(!shop){
-            this.setState({isShop:true})
+            this.titleShopNameValidation()
         }
         if(shop){
-            this.setState({isShop:false})
+            this.titleShopNameValidation()
         }
         if(!purchasedDate){
-            this.setState({isPurchasedDate:true})
+            this.titleShopPurchasedDateValidation()
         }
         if(purchasedDate){
-            this.setState({isPurchasedDate:false})
+            this.titleShopPurchasedDateValidation()
         }
         if(!this.state.purchasedItems[0] || !this.state.purchasedItemQuantities[0] || !this.state.purchasedItemUnitPrices[0]){
             this.setState({isItem:true})
@@ -338,7 +361,7 @@ export default class AddOtherPurchase extends Component {
                     <label>Purchased Date:</label>
                     <input type='date' className='form-input-purchasing' style={{marginBottom:"0px"}} max={new Date(new Date().getTime() + 5.5 * 60 * 60 * 1000 ).toISOString().slice(0,10)} name='purchasedDate' onFocus={this.titleShopNameValidation} placeholder='' value={this.state.purchasedDate} onChange={this.handleOtherInputChange}/>
                     <div style={{marginBottom:"10px", color:"red"}}>
-                        {this.state.purchasedDate}
+                        {this.state.purchasedDateErr}
                     </div>
                     <label>For Which Section:</label>
                     <select className='form-select-purchasing' name='purchasedSection' value={this.state.purchasedSection} onFocus={this.titleShopPurchasedDateValidation} onChange={this.handleOtherInputChange}>
