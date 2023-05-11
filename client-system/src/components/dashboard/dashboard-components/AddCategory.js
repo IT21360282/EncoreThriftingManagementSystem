@@ -307,115 +307,112 @@ const Addcategory = () => {
       <hr />
       <br></br>
       <br></br>
-      <div className="row">
-        <div className="col-md-4">
-          <Input
-            style={{ marginLeft: 20 }}
+      <div className="btn-inline" style={{width:"98%"}}>
+        <div className="btn-inline" style={{width:"25%"}}>
+          <input
+            style={{ marginLeft: 20, borderRadius:"5px", height:"25px" }}
             onChange={(e) => {
               setKeyword(e.target.value);
             }}
             type="text"
             placeholder="Search by category Name"
           />
+      
+          <button className="btn" onClick={() => {searchData();}}>Search</button>
         </div>
-        <div className="col-md-4">
-          <Button
-            onClick={() => {
-              searchData();
-            }}
-          >
-            Search
-          </Button>
-        </div>
-        <div className="col-md-2">
-          <Button
-            onClick={() => {
+      <div >
+      <button className="btn btn-primary" onClick={() => {
               savePDF();
-            }}
-          >
-            Download Report
-          </Button>
-        </div>
-        <div className="col-md-2">
-          <Button color="success" onClick={() => addToggle()}>
-            {" "}
-            + Add Record
-          </Button>
+      }}> Download Report</button>
+      </div>
+        <div >
+          <button className="btn btn-success" onClick={() => addToggle()}> <i class="fa-solid fa-plus" ></i> Add Record</button>
         </div>
       </div>
       <br></br>
       <br></br>
       <br></br>
-      <Table>
-        <thead>
-          <tr>
-            <th style={{ textAlign: "center" }}>Record No</th>
-            <th style={{ textAlign: "center" }}>Category_Name</th>
-            <th style={{ textAlign: "center" }}>Category_ID</th>
-            <th style={{ textAlign: "center" }}>Price</th>
-            <th style={{ textAlign: "center" }}>Category_Type</th>
-            <th style={{ textAlign: "center" }}>Description</th>
-            <th style={{ textAlign: "center" }}>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {TableData &&
-            TableData.map((item, index) => {
-              return (
-                <tr>
-                  <td style={{ textAlign: "center" }}>{index + 1}</td>
-                  <td style={{ textAlign: "center" }}>{item.Category_Name}</td>
-                  <td style={{ textAlign: "center" }}>{item.Category_ID}</td>
-                  <td style={{ textAlign: "center" }}>{item.Price}</td>
-                  <td style={{ textAlign: "center" }}>{item.Category_Type}</td>
-                  <td style={{ textAlign: "center" }}>{item.Description}</td>
-                  <td style={{ textAlign: "center" }}>
-                    <Button
-                      color="primary"
-                      onClick={() => {
-                        UpdateToggle(item);
-                      }}
-                    >
-                      <i class="bi bi-pencil"></i>
-                    </Button>
-                    &nbsp;
-                    <Button
-                      color="danger"
-                      onClick={() => {
-                        deleteRecord(item._id);
-                      }}
-                    >
-                      <i class="bi bi-trash3"></i>
-                    </Button>
-                  </td>
-                </tr>
-              );
-            })}
-        </tbody>
-      </Table>
+      <div className='div-frame' style={{marginLeft:"50px", marginRight:"20px", width:"90%"}}>
+        <table className="details-table">
+          <thead>
+            <tr>
+              <th style={{ textAlign: "center" }}>Record No</th>
+              <th style={{ textAlign: "center" }}>Category_Name</th>
+              <th style={{ textAlign: "center" }}>Category_ID</th>
+              <th style={{ textAlign: "center" }}>Price</th>
+              <th style={{ textAlign: "center" }}>Category_Type</th>
+              <th style={{ textAlign: "center" }}>Description</th>
+              <th style={{ textAlign: "center" }}>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {TableData &&
+              TableData.map((item, index) => {
+                return (
+                  <tr>
+                    <td style={{ textAlign: "center" }}>{index + 1}</td>
+                    <td style={{ textAlign: "center" }}>{item.Category_Name}</td>
+                    <td style={{ textAlign: "center" }}>{item.Category_ID}</td>
+                    <td style={{ textAlign: "center" }}>{item.Price}</td>
+                    <td style={{ textAlign: "center" }}>{item.Category_Type}</td>
+                    <td style={{ textAlign: "center" }}>{item.Description}</td>
+                    <td style={{ textAlign: "center" }}>
+                      <button
+                        className="btn btn-warning"
+                        onClick={() => {
+                          UpdateToggle(item);
+                        }}
+                      >
+                        <i class="fa-solid fa-pen-to-square"></i>
+                      </button>
+                      &nbsp;
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => {
+                          deleteRecord(item._id);
+                        }}
+                      >
+                        <i class="fa-regular fa-trash-can"></i>
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </table>
+        </div>
       <br></br>
       <h2 style={{ textAlign: "center" }}>Category Count</h2>
       <br></br>
-      <Table>
-        <thead>
-          <th style={{ textAlign: "center" }}>Book Count</th>
-          <th style={{ textAlign: "center" }}>Electronic & Electrical Count</th>
-          <th style={{ textAlign: "center" }}>Clothes Count</th>
-          <th style={{ textAlign: "center" }}>Furniture Count</th>
-          <th style={{ textAlign: "center" }}>Tools Count</th>
-          <th style={{ textAlign: "center" }}>Gifts Count</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td style={{ textAlign: "center" }}>{BookCount}</td>
-            <td style={{ textAlign: "center" }}>{ElectronicCount}</td>
-            <td style={{ textAlign: "center" }}>{ClothCount}</td>
-            <td style={{ textAlign: "center" }}>{FurnitureCount}</td>
-            <td style={{ textAlign: "center" }}>{ToolCount}</td>
-            <td style={{ textAlign: "center" }}>{GiftCount}</td>
-          </tr>
-        </tbody>
-      </Table>
+      <div>
+        <div className='div-frame' style={{marginLeft:"50px", marginRight:"20px", width:"90%"}}>
+            <table className='details-table' >
+              <thead>
+                <tr>
+                  <th scope="col" style={{borderTopLeftRadius:"7px"}}>Book Count</th>
+                  <th style={{ textAlign: "center" }}>Electronic & Electrical Count</th>
+            <th style={{ textAlign: "center" }}>Clothes Count</th>
+            <th style={{ textAlign: "center" }}>Furniture Count</th>
+            <th style={{ textAlign: "center" }}>Tools Count</th>
+                  <th scope="col" style={{border:"none",borderTopRightRadius:"7px",width:"145px"}}>Gift Count</th>
+                </tr>
+              </thead>
+              <tbody scope="raw" >      
+              
+                <tr>
+                  <td style={{ textAlign: "center" }}>{BookCount}</td>
+              <td style={{ textAlign: "center" }}>{ElectronicCount}</td>
+              <td style={{ textAlign: "center" }}>{ClothCount}</td>
+              <td style={{ textAlign: "center" }}>{FurnitureCount}</td>
+              <td style={{ textAlign: "center" }}>{ToolCount}</td>
+              <td style={{ textAlign: "center" }}>{GiftCount}</td>
+                </tr>
+              
+              </tbody>
+            </table>
+            </div>
+          
+          </div>
 
       {/* Update Item Modal Start */}
       <Modal isOpen={UpdateModal}>
