@@ -82,9 +82,9 @@ app.use("/dashboard", DashboardCatRouter);
 app.use("/dashboardPost", postDashboard);
 
 
-const PORT = 8080;
-const DB_URL =
-    "mongodb+srv://t5:1234@cluster0.awr06ma.mongodb.net/THRIFT_STORE?retryWrites=true&w=majority";
+// const PORT = 8080;
+// const DB_URL =
+//     "mongodb+srv://t5:1234@cluster0.awr06ma.mongodb.net/THRIFT_STORE?retryWrites=true&w=majority";
 
 mongoose
     .connect(DB_URL)
