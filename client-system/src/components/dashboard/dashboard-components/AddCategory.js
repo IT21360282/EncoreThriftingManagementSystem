@@ -441,7 +441,7 @@ const Addcategory = () => {
                   <div className="col-md-6">
                     <FormGroup>
                       <label>Category_Name</label>
-                      <Input
+                      <input className="form-input-purchasing"
                         type="text"
                         placeholder="Category_Name"
                         value={UCategory_Name}
