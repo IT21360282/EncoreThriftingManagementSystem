@@ -1,0 +1,230 @@
+.supplier {
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+}
+
+div.btn-inlinesupplier {
+    align-items: center;
+    display: inline-flex;
+    justify-content: space-between;
+    width: 60%;
+}
+
+button.btn-inlinesupplier {
+    border: #ff5520 2px solid;
+    border-radius: 20px;
+    padding: 10px;
+    width: 200px;
+    background-color: white;
+    font-weight: bold;
+}
+
+button.btn-inlinesupplier:hover {
+    background-color: #ff5520;
+    color: white;
+    cursor: pointer;
+}
+
+#rectanglesupplierhome {
+    width: 100%;
+    height: 200px;
+    background: #f2f2f2;
+    border-radius: 20px;
+}
+
+.semi-preview-container1 {
+    width: 30%;
+    background-color: #81C3D8;
+    padding: 30px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.inline-formsSupplier {
+    width: 49%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+label {
+    font-weight: bold;
+}
+
+.form-inputSupplier {
+    width: 240%;
+    border: 2px solid #ff5520;
+    border-radius: 8px;
+    height: 40px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.form-inputSupplier:focus {
+    outline: none;
+    border: 3px solid #ff5520;
+}
+
+.form-select {
+    width: 91.5%;
+    border: 2px solid #ff5520;
+    border-radius: 8px;
+    height: 45px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.form-select:focus {
+    outline: none;
+    border: 3px solid #ff5520;
+}
+
+#Supplierrectangle {
+    margin-left: 20px;
+    margin-right: 20px;
+    background: #f2f2f2;
+    border-radius: 20px;
+}
+
+button.searchSupplier {
+    border: #ff5520 2px solid;
+    color: #ff5520;
+    padding: 10px;
+    background-color: white;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+button.searchSupplier:hover {
+    background-color: #ff5520;
+    color: white;
+    cursor: pointer;
+}
+
+input.searchSupplier:focus {
+    outline: none;
+}
+
+input.searchSupplier {
+    border: #ff5520 2px solid;
+    padding: 10px;
+    border-left: 1px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    width: 91%;
+}
+
+
+/* Display all */
+
+.content-tablesupplier {
+    border-collapse: collapse;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 15px 15px 0 0;
+    padding: 50%;
+    width: 100%;
+}
+
+.content-tablesupplier thead tr {
+    background-color: #ff5520;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+.content-tablesupplier th,
+.content-tablesupplier td {
+    padding: 5px;
+    text-align: center;
+    border-right: 2px solid #ff5520;
+}
+
+.content-tablesupplier th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.content-tablesupplier tbody tr {
+    border-bottom: 1px solid #D9D9D9;
+}
+
+.content-tablesupplier tbody tr:nth-of-type(even) {
+    background-color: #f2f2f2;
+}
+
+.content-tablesupplier tbody tr:last-of-type {
+    border-bottom: none;
+}
+
+.content-tablesupplier tr:last-of-type td:first-child {
+    border-bottom-left-radius: 7px;
+}
+
+.content-tablesupplier tr:last-of-type td:last-child {
+    border-bottom-right-radius: 7px;
+}
+
+.tData {
+    align-items: center;
+}
+
+div.table-supplier {
+    margin-left: auto;
+    margin-right: auto;
+    width: 98%;
+    border: #ff5520 2px solid;
+    border-radius: 10px;
+}
+
+
+/* More Supplier Details*/
+
+#MoreSupplierrectangle {
+    margin-left: 200px;
+    margin-right: 200px;
+    height: 600px;
+    background: #f2f2f2;
+    border-radius: 10px;
+    border: #ff5520 2px solid;
+}
+
+#SupplierImagerectangle {
+    margin-left: 300px;
+    margin-right: 300px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    height: 200px;
+    background: white;
+    border-radius: 10px;
+    border: black 1px solid;
+}
+
+
+/* Supplier Email */
+
+#EmailSupplierrectangle {
+    margin-left: 200px;
+    margin-right: 200px;
+    height: 600px;
+    background: #f2f2f2;
+    border-radius: 10px;
+    border: #ff5520 2px solid;
+}
+
+.inputSupplieremail {
+    width: 90%;
+    border: 2px solid #ff5520;
+    border-radius: 8px;
+    height: 35px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    margin-left: 40px;
+}
+
+.inputSupplieremail:focus {
+    outline: none;
+    border: 3px solid #ff5520;
+}
