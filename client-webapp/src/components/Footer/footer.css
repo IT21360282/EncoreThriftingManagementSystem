@@ -1,0 +1,134 @@
+.footer {
+    background-color: whitesmoke;
+    color: #ff6600;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* border: 2px solid red; */
+  }
+
+  .footer_list01 {
+    flex-basis: 20%;
+    margin: 0;
+    padding: auto;
+    
+    /* border: 2px solid red; */
+  }
+
+  .footer_list02 {
+    flex-basis: 20%;
+    margin: 0;
+    padding: auto;
+    /* border: 2px solid red; */
+  }
+
+  .footer_feedback {
+    flex-basis: 40%;
+    margin: 0;
+    padding: auto;
+    /* background-color: white; */
+    /* border: 2px solid red; */
+  }
+
+  .footer_feedback h1 {
+    color: #ff6600;
+    margin: 10px;
+    text-align: center;
+  }
+  
+  .footer_list01, .footer_list02, .footer_feedback {
+    
+    margin: 20px auto;
+    padding: 0px;
+  }
+  
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 5px;
+  }
+
+  li {
+    list-style: none;
+    text-decoration: none;
+  }
+  
+  ul li {
+    margin-bottom: 10px;
+    margin: 30px;
+    cursor: pointer;
+    list-style: none;
+    text-decoration: none;
+  }
+
+  ul .Link {
+ 
+    cursor: pointer;
+    list-style: none;
+    text-decoration: none;
+    color: #ff6600;
+  }
+
+  ul li:hover {
+    
+    font-size: 16.5px;
+  }
+  
+  .feedback_box {
+    display: flex;
+    flex-direction: column; /* changed back to column */
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    padding-top: 30px;
+    border: 1px solid #ff6600;
+  }
+
+  /* .toast-success {
+    background-color: #FF6600;
+    color: white;
+  } */
+  
+  textarea {
+    width: 500px;
+    height: 100px;
+    margin-bottom: 10px;
+    border: 1px solid #ff6600;
+    padding: 10px;
+    border-radius: 5px;
+
+  }
+  
+
+
+
+
+  .feedback_buttons button {
+    width: 240px;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    color: white;
+    background-color: #ff6600;
+    cursor: pointer;
+  }
+
+  .feedback_buttons button:hover {
+    background-color: #333;
+    /* background-color: #8FD4EA; */
+    color: white;
+  }
+  
+  /* .feedback_buttons button:first-child {
+    background-color: #ff6600;
+  }
+   */
+
+.footerlink {
+  text-decoration: none;
+}

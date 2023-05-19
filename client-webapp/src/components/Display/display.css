@@ -1,0 +1,163 @@
+.displayBox {
+    background-color: white;
+    flex: 12;
+    height: calc(100vh - 50px);
+    overflow-y: scroll;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+@media (max-width: 768px) {
+    .displayBox {
+      height: auto;
+      overflow-y: visible;
+    }
+  }
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgb(192, 192, 213);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(144, 135, 135);
+}
+
+.container{
+    display: flex;
+    overflow-x: auto;
+    margin: 20px auto;
+}
+
+.container::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background-color: transparent;
+  }
+
+.Category {
+    border: none;
+}
+
+.Category h1 {
+    font-size: 25px;
+    color: #7E7E7E;
+    font-weight: 100;
+    margin-left: 20px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+
+
+.categoryList {
+    border: none;
+    display: flex;
+    margin-left: 25px;
+    margin-right: 25px;
+    
+}
+
+.categoryItem {
+    width: 250px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    text-align: center;
+    margin-top: 10px;
+    border: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding-bottom: 5px;
+    padding-top: 10px;
+}
+
+.categoryItem:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); 
+}
+
+
+
+.categoryImg {
+    max-width: 250px;
+    height: 280px;
+    display: flexbox;
+    border: none;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 0px;
+}
+
+/* .categoryImg img {
+    
+} */
+
+
+
+
+.description {
+    color: black;
+    font-weight: 500;
+    font-size: 12px;
+    margin-left: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.itemName {
+    color: black;
+    font-weight: 500;
+    font-size: 18px;
+    margin-left: 20px;
+    font-family: serif;   
+}
+
+.price {
+    color: #ff6600;
+    font-weight:bold;
+    font-size: 16px;
+    margin-left: 20px;
+    font-family: serif;
+}
+
+.button {
+    align-items: center;
+    display: flex;
+    border: none;
+    text-align: center;
+}
+
+.button .btn {
+    margin: 10px;
+    width: 80px;
+    height: 35px;
+    margin-left: 25px;
+    align-items: center;
+    text-align: center;
+    border: none;
+    background-color:rgb(23, 210, 247);
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: lighter;
+    margin-bottom: 10px;
+}
+
+.btn:hover {
+    background-color: aqua;
+    
+}
+
+Link {
+    text-decoration: none;
+}
+
+hr {
+    width: 95%;
+    margin: 5px auto;
+}

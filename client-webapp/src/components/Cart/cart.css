@@ -1,0 +1,99 @@
+.pageTitle {
+   margin-left: 85px;
+   margin-top: 20px;
+   margin-bottom: 5px;
+   color: #837d7d;
+}
+
+.cartBox {
+    border: none;
+    border-radius: 10px;
+    margin: 20px auto;
+    margin-top: 0px;
+    margin-left: 80px;
+    margin-right: 80px;
+    padding: 20px;
+    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); */
+}
+
+#cartTable {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-collapse: collapse;
+    width: 100%; 
+}
+
+#cartTable td, #cartTable th {
+    border: 1px solid #ddd;
+    padding: 8px; 
+}
+
+#cartTable tr:nth-child(even)
+{background-color: #f2f2f2;}
+
+#cartTable tr:hover {
+    background-color: #ddd;
+}
+
+#cartTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #ff660017;
+    color: black;
+}
+
+.cartBox{
+    border: none;
+}
+
+.card{
+    border: none;
+    max-height: auto;
+    border-radius: 10px;
+    margin: 20px auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.cardGrid img {
+    width: 150px;
+    /* height: 300px; */
+    padding: 20px;
+    /* border-radius: 10px; */
+    border: none;
+}
+
+.card {
+    display: flex;
+}
+
+.card .imgSection {
+    flex: 2;
+    margin: 20px auto;
+    padding: 10px;
+}
+.card .dataSection {
+    flex: 8;
+    margin: 10px auto;
+    padding: 5px;
+}
+
+.card .dataSection h4,h5,p {
+    padding: 10px;
+}
+
+.card .dataSection h5 {
+    color: rgb(137, 139, 139);
+}
+
+.card .dataSection .cardActions {
+    padding: 5px;
+}
+
+.card .dataSection label {
+    padding: 10px;
+}
+
+.card .dataSection input {
+    padding: 4px;
+    /* width: 100px; */
+}
