@@ -4,62 +4,12 @@ const jwt = require('jsonwebtoken');
 
 const JWT_SECRET = "aklajdhkj5482()y285kh@lksjkf%lslg%%sdsf23500sf";
 
-// // module.exports.userSignup = async (req, res) => {
-// //     const { userEmail, userPwd } = req.body;
-    
-// //     try {
-// //         const check = await UserModel.findOne({ userEmail });
-
-// //         if (check) {
-// //             res.json("exist");
-// //         } else {
-// //             await UserModel.create({ userEmail, userPwd});
-// //             res.json("notexist");
-// //         }
-// //     } catch(e) {
-// //         res.json("notexist");
-// //     }
-// // };
-
-
-// // module.exports.userSignin = async (req, res) => {
-// //     const { userEmail, userPwd } = req.body;
-
-// //     try {
-// //       const check = await UserModel.findOne({ userEmail });
-  
-// //       if (check) {
-// //         res.json("exist");
-// //     } else {
-// //       res.json("notexist");
-// //     }
-
-
-// //     } catch (e) {
-
-// //       res.json("notexist")
-// //     } 
-// // };
-
-
-// module.exports.getUserByID = async (req, res) => {
-//   UserModel.findById(req.params.id).exec().then((res) => {
-//     return res.status(200).json({
-//       success: true,
-//       existingDetails: results
-//     })
-//   }).catch((err) =>{
-//     console.error(err)
-//   })
-// };
-
-
 
 //signup API
 module.exports.userSignup = async (req, res) => {
   const { fname, lname, email, password } = req.body;
 
-  const encryptedPassword=await bcrypt.hash(password, 60*60*1000);
+  const encryptedPassword=await bcrypt.hash(password, 10);
   try {
       const oldUser= await User.findOne({ email });
 
@@ -126,3 +76,64 @@ module.exports.userData = async (req, res) => {
     res.redirect('/Signin'); 
   }
 };
+
+//get user by id
+module.exports.getUser = async (req, res) => {
+    try {
+      const user = await User.findById(req.params.id).exec();
+      if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+      return res.status(200).json({ success: true, user });
+    } catch (err) {
+      return res.status(500).json({ error: err.message });
+    }
+  };
+  
+//update user details
+module.exports.updateUser = async (req, res) => {
+  try {
+    const { mobile, dob, address } = req.body;
+
+    const updatedFields = {};
+
+    if (mobile) {
+      updatedFields.mobile = mobile;
+    }
+
+    if (dob) {
+      updatedFields.dob = dob;
+    }
+
+    if (address) {
+      updatedFields.address = address;
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(req.params.id, updatedFields, { new: true });
+
+    return res.status(200).json({
+      success: "User information updated",
+      updatedUser,
+    });
+  } catch (err) {
+    return res.status(400).json({
+      error: err.message,
+    });
+  }
+};
+
+//delete user
+module.exports.deleteUserById = async (req, res) => {
+  try{
+    const deleteUser = await User.findByIdAndRemove(req.params.id).exec();
+    return res.json({
+      message: "User Deleted",
+      deleteUser,
+    });
+  } catch (err) {
+    return res.status(400).json({
+      message: "Deletion Failed",
+      error: err
+    })
+  }
+}

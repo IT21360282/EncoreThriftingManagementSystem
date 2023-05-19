@@ -1,52 +1,58 @@
 const Cart = require('../models/CartModel');
 const ItemDetails = require('../models/itemDetails');
 
+//get cart
+module.exports.getCartItems =  async (req, res) => {
+    try {
+      const items = await Cart.find();
+      res.json(items);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  };
 
-// module.exports.addToCart = async (req, res) => {
-//     const { itemId } = req.body;
+//add item to cart
+module.exports.addToCart = async (req,res) => {
+    try{
+        const { _id, userId, itemId, pImageURL, pName, pDescription, pPrice, quantity } = req.body;
 
-//     try {
-//       // Get the item details from the item_details collection based on the itemId
-//       const item = await ItemDetails.findById(itemId);
+        //create a  new item in cart
+        const CartItem = new Cart({ userId, itemId, pImageURL, pName, pDescription, pPrice, quantity });
+        await CartItem.save();
+        res.json({ message: 'Item added to cart successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};
 
-//       // Check if the item exists
-//       if (!item) {
-//         return res.status(404).json({ message: 'Item not found' });
-//       }
+//delete item by id
+module.exports.deleteCartItemById = async (req, res) => {
+  try {
+    const deleteItem = await Cart.findByIdAndRemove(req.params.id).exec();
+    return res.json({
+      message: "Item Deleted From Cart",
+      deleteItem,
+    });
+  } catch (err) {
+    return res.status(400).json({
+      message: "Delete Unsuccessful",
+      error: err
+    });
+  }
+};
 
-//       // Create a new cart object with the item details
-//       const cart = new Cart({
-//         user: req.user.id,
-//         items: [{
-//           product: item._id,
-//           price: item.pPrice,
-//         }],
-//       });
-
-//       // Save the cart object
-//       const savedCart = await cart.save();
-
-//       console.log('Item added to cart successfully');
-//       res.status(201).json({ message: 'Item added to cart successfully', cart: savedCart });
-//     } catch (error) {
-//       console.error(error);
-//       res.status(500).json({ message: 'Server Error' });
-//     }
-//   };
-
-exports.addToCart = (req, res) => {
-    let saveCart = new Cart(req.body)
-
-    saveCart.save().then(() => {
-        console.log('Added')
-        return res.status(200).json({
-            success: "Added"
-        })
-    }).catch((err) => {
-        console.error(err)
-        return res.status(400).json({
-            error: err   
-        })    
+//update item quantity
+module.exports.updateItemQuantity = async (req, res) => {
+  try {
+    const item = await Cart.findByIdAndUpdate(req.params.id, {quantity: req.body.quantity}, {new: true});
+    return res.status(200).json({
+      success: "Quantity updated successfully",
+      item,
     })
-
+  } catch (err) {
+    return res.status(400).json({
+      error: err.messsage,
+    });
+  }
 };
