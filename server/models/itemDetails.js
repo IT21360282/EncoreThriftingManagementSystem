@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 
-const itemDetails =  mongoose.Schema({
+const itemDetails = new mongoose.Schema({
     pName:{
         type:String,
-        required:false
+        required:true
     },
 
     pCategory:{
@@ -30,13 +30,16 @@ const itemDetails =  mongoose.Schema({
         type:String,
         required:false
     },
+
+    
+    
     pImageURL:{
         type:String,
         required:false
     },
     pDescription: {
         type: String,
-        required: false
+        required: true
     }
 })
 

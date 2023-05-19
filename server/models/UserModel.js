@@ -18,21 +18,20 @@ const UserSchema = mongoose.Schema({
         required: true,
     },
     mobile: {
-        type: String,
-        required: true,
+        type: Number,
+        default: '01123456789'
     },
     dob: {
         type: Date,
-        required: true,
-    },
-    gender: {
-        type: String,
-        enum: ['male', 'female', 'other'],
-        required: true,
+        default: Date.now,
     },
     address: {
         type: String,
-        required: true,
+        default: "Your Address Here"
+    },
+    delAddress: {
+        type: String,
+        default: "Delivery Address Here"
     },
 });
 
