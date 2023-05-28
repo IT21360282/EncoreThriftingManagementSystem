@@ -1,0 +1,94 @@
+/* .displayBox {
+    background-color: white;
+    flex: 12;
+    height: calc(100vh - 50px);
+    overflow-y: scroll;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+} */
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgb(192, 192, 213);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(144, 135, 135);
+}
+
+.profileBox {
+    border: none;
+    border-radius: 10px;
+    margin: 20px auto;
+    margin-top: 20px;
+    margin-left: 80px;
+    margin-right: 80px;
+    padding: 40px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.pageTitle {
+    margin-left: 85px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+     
+ }
+
+.profileBox p {
+    margin: 10px;
+    padding: 10px;
+}
+
+/*button works here*/
+button {
+    margin: 30px;
+    margin-top: 80px;
+    margin-bottom: 10px;
+    width: 200px;
+    height: 50px;
+    margin-left: 10px;
+    align-items: center;
+    text-align: center;
+    border: none;
+    background-color: rgb(23, 210, 247);
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: black;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.profileBox input {
+    width: 80%;
+    padding: 10px;
+    
+    margin-right: 0%;
+    
+    
+}
+
+/* .dataInput label {
+    display: inline-block;
+    width: 100px;
+} */
+
+/* .dataInput  .user {
+    color: red;
+} */
+  
+.dataInput input[type='radio'] {
+    margin-left: 25px;
+    display: inline-block;
+    width: 20px;
+}
+
+
+
+  

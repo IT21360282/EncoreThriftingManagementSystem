@@ -1,0 +1,32 @@
+.paymentbox02 {
+    border: none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    margin: 20px auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 400px;
+    margin-right: 400px;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.paymentbox02 input {
+    width: 100%;
+    padding: 10px;
+    margin-left: 0;
+    margin-right: 0%;
+    
+    
+}
+
+.dataInput label {
+    display: inline-block;
+    width: 100px;
+}
+
+.paybtn02   {
+    /* text-align: right; */
+    margin-left: 400px;
+    margin-top: 0px;
+    
+}

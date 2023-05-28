@@ -1,0 +1,144 @@
+.itemBox {
+    border: none;
+    width: 1100px;
+    border-radius: 10px;
+    margin: 20px auto;
+    margin-top: 20px;
+    margin-left: 80px;
+    margin-right: 80px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.itemBoxup {
+    border: none;
+    display: flex;
+}
+
+.image {
+    flex: 2;
+    border: none;
+    /* text-align: center; */
+    /* align-items: center; */
+}
+
+.image img {
+    width: 300px;
+    height: 400px;
+    border: 1none;
+}
+
+.description {
+    flex: 5;
+    border: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.pageTitle {
+    border: none;
+    margin-left: 85px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+     
+ }
+
+.itemBox p {
+    margin: 10px;
+    padding: 2px;
+    font-size: 14px;
+}
+
+.itembuttonBox {
+    margin-left: 0;
+    align-items: left;
+}
+
+
+button {
+    margin: 10px;
+    margin-top: 10px;
+    width: 140px;
+    height: 50px;
+    margin-left: 5px;
+    align-items: center;
+    text-align: center;
+    border: none;
+    background-color: rgb(23, 210, 247);
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: none;
+}
+
+.comment {
+    border: none;
+    width: 1120px;
+    height: 100px;
+    display: flex;
+    margin: 20px auto;
+    margin-left: 80px;
+    margin-right: 80px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.commentInput {
+    border: 1px solid black;
+    width: 80%;
+    height: 80px;
+}
+
+.commentSubmitBtn {
+    background-color: rgb(23, 210, 247);
+    margin: 20px;
+    margin-left: 40px;
+}
+
+.commentList {
+    border: none;
+    margin: 20px auto;
+    width: 1120px;
+    margin-top: 40px;
+}
+
+.comments {
+    margin: 20px auto;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.commentDisplay {
+    width: 65%;
+    height: 30px;
+    margin: 1px auto;
+    border: none;
+}
+
+.commentArea {
+    border: none;
+    margin: 20px auto;
+    height: 110px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.btnArea {
+    text-align: right;
+    border: none;
+    width: auto;
+    height: 20px;
+    margin-top: -65px;
+}
+
+.userBtns {
+    border: none;
+    background-color: rgb(23, 210, 247);
+    width: 100px;
+    align-items: right;
+}

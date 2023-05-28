@@ -1,0 +1,160 @@
+.paymentBox {
+    /* display:block; */
+    display: flex;
+    border: none;
+    padding: 10px;
+    margin: 10px auto;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-top: 40px;
+    border: none;
+}
+
+
+.addressBox {
+    /* display: inline-block; */
+    flex: 8;
+    border: none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    margin: 10px;
+    margin-top: 0px;
+    padding: 30px;
+    border-radius: 2px;
+    position: relative;
+}
+
+.totalBox {
+    /* display: inline-block; */
+    flex: 3;
+    border: none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    margin: 10px;
+    margin-top: 0px;
+    /* margin-bottom: 0; */
+    padding: 30px;
+    border-radius: 2px;
+}
+
+.buttonPay button{
+    /* align-items: left;
+    text-align: left; */
+    margin-left: 0px;
+    width: 100%;
+    margin-top: 100px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    background-color: #ff6600;
+    font-size: 16px;
+}
+
+.totalBox h4 {
+    color: #ff6600;
+    /* padding: 10px; */
+}
+
+
+
+.paydata label {
+    font-size: 14px;
+    position: absolute;
+    margin: 5px;   
+}
+
+.identity {
+    display: flex;
+}
+
+.identity .paydata {
+    flex: 1;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.paymentBox .addressBox .identity .paydata input {
+    width: 100%;
+    padding: 5px;
+    margin: 5px;    
+}
+
+.userName .paydata {
+    flex: 1;
+    margin: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.paymentBox .addressBox .userName .paydata input {
+    width: 100%;
+    padding: 5px;
+    margin: 5px;    
+}
+
+.address .paydata {
+    flex: 1;
+    margin: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.paymentBox .addressBox .address .paydata input {
+    width: 100%;
+    padding: 5px;
+    margin: 5px;    
+}
+
+.deliveryAddress .paydata {
+    flex: 1;
+    margin: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.paymentBox .addressBox .deliveryAddress .paydata input {
+    width: 100%;
+    padding: 5px;
+    margin: 5px;
+    height: 40px;    
+}
+
+.cardDetails .paydata {
+    flex: 1;
+    margin: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.paymentBox .addressBox .cardDetails .paydata input {
+    width: 100%;
+    padding: 5px;
+    margin: 5px;   
+}
+
+.userCard {
+    display: flex;
+}
+
+.summary {
+    display: flex;
+}
+
+.summary .summaryAtr {
+    flex: 1;
+    font-size: 14px;
+    text-align: right;
+}
+
+.summary .summaryAtr1 {
+    flex: 1;
+    font-size: 14px;
+    text-align: left;
+}
